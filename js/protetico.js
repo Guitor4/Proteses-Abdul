@@ -58,14 +58,14 @@ function loadDados(){
                     e=dados[i].email;
                 }
                 var labels = '<div class="row">\n\
-                                <div class="col-8">\n\
+                                <div class="col-8 mt-2">\n\
                                     <label>Prontuário: </label><input readonly type="text" class="form-control"  value="'+p+'">\n\
                                     <label>Paciente: </label><input readonly type="text" class="form-control"  value="'+n+'">\n\
                                     <label>Sexo: </label><input readonly type="text" class="form-control"  value="'+s+'">\n\
                                     <label>Telefone: </label><input readonly type="text" class="form-control"  value="'+t+'">\n\
                                     <label>E-mail: </label><input readonly type="text" class="form-control"  value="'+e+'">\n\
                                 </div>\n\
-                                <div class="col-2">\n\
+                                <div class="col-2 offset-1 mt-5" >\n\
                                     <img src="./includes/img/usuario.png" alt="" width="150" height="100">\n\
                                 </div>\n\
                               </div>';
@@ -102,15 +102,15 @@ function Dados_Cadastrais() {
                     e=dados[i].email;
                 }
                 var labels = '<div class="row">\n\
-                                <div class="col-8">\n\
+                                <div class="col-8 mt-2">\n\
                                     <label>Prontuário: </label><input readonly type="text" class="form-control"  value="'+p+'">\n\
                                     <label>Paciente: </label><input readonly type="text" class="form-control"  value="'+n+'">\n\
                                     <label>Sexo: </label><input readonly type="text" class="form-control"  value="'+s+'">\n\
                                     <label>Telefone: </label><input readonly type="text" class="form-control"  value="'+t+'">\n\
                                     <label>E-mail: </label><input readonly type="text" class="form-control"  value="'+e+'">\n\
                                 </div>\n\
-                                <div class="col-2">\n\
-                                    <img src="./includes/img/usuario.png" alt="" width="150" height="100">\n\
+                                <div class="col-2 offset-1 mt-5"">\n\
+                                   <img src="./includes/img/usuario.png" alt="" width="150" height="100">\n\
                                 </div>\n\
                               </div>';
                 
@@ -155,7 +155,7 @@ function Consultas() {
                               </thead>';
                 for (var i = 0; i < dados.length; i++) {
                     tabela+= '<tbody><tr>\n\
-                                <td class "table-success" ><input class="btn btInput p- d-flex " value="' + dados[i].id + '"></td>\n\
+                                <td class "table-success" ><a class="btn btn-outline" href="Consulta.php?id='+ dados[i].id +'"> ' + dados[i].id + '</a></td>\n\
                                 <td class "table-success">' + dados[i].data + '</td>\n\
                                 <td class "table-success">' + dados[i].hora + '</td>\n\
                                 <td class "table-success">' + dados[i].relatorio + '</td>\n\

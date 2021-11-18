@@ -1,6 +1,6 @@
 
 
-<div class="container-fluid mt-2">
+<div class="container-fluid mt-2 col-10">
     <div class="row">
         <div class="row-cols-auto">
             <div class=" bg-gradient rounded-3" style=" background-color: black;opacity:100%">
@@ -48,7 +48,7 @@
 
                     <div class="col-10">
                         <div class="container-fluid mb-3 mt-3">
-                            <div class="row-cols-auto bg-gradient"  style=" background-color: whitesmoke;opacity: 100%">
+                            <div class="row-cols-auto bg-gradient overflow-auto"  style=" background-color: whitesmoke;opacity: 100%;max-height: 600px">
 
                                 <div class="container-fluid mb-2" id="apresenta_DadosCadastrais" style="margin-left: 10px">  </div>
                                 
