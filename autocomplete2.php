@@ -51,6 +51,14 @@ switch ($GET) {
         $autoCompletar = (strlen($autoCompletar) ? "WHERE nomePaciente   LIKE '%" . $autoCompletar . "%' OR  prontuario LIKE '%" . $autoCompletar . "%'  " : '');
         $query = 'select distinct * from paciente inner join consulta on prontuario = fkProntuario ' . $autoCompletar;
         break;
+    case 8:
+        define('CAMPO', 'nomeServico,idServico');
+        define('TABELA', 'servicoTerceiro');
+        break;
+    case 9:
+            define('CAMPO', 'nomeServico,nomeTerceiro');
+            $autoCompletar = (strlen($autoCompletar) ? "WHERE nomeServico   LIKE '%" . $autoCompletar . "%' OR  nomeTerceiro LIKE '%" . $autoCompletar . "%' OR idServico   LIKE '%" . $autoCompletar . "%' OR  idTerceiro   LIKE '%" . $autoCompletar . "%'" : '');
+            $query = "select nomeTerceiro,nomeServico from terceiro inner join servicoterceiro inner join terceirizado on fkTerceiro = idTerceiro and fkServicoTerceiro = idServico ".$autoCompletar;
 }
 
 $clause = explode(',', CAMPO);
@@ -82,6 +90,9 @@ $data = [];
 while ($row_msg_count = $resultado_msg_cont->fetch(PDO::FETCH_ASSOC)) {
     if (!in_Array($row_msg_count[$clause[0]], $data)) {
         $data[] = $row_msg_count[$clause[0]];
+    }
+    if (!in_Array($row_msg_count[$clause[1]], $data)) {
+        $data[] = $row_msg_count[$clause[1]];
     }
 }
 if ($data == null) {

@@ -110,7 +110,7 @@
                 <div id="to_do_list" class="list-group overflow-auto rounded p-2" style="max-height:500px;">
 
 
-                    <a href="#" class="list-group-item list-group-item-action " aria-current="true">
+<!--                     <a href="#" class="list-group-item list-group-item-action " aria-current="true">
                         <div class="d-flex w-100 justify-content-between">
                             <h5 class="mb-1">Sem Tarefas para hoje por enquanto</h5>
                             <small>Today</small>
@@ -165,85 +165,9 @@
                         </div>
                         <p class="mb-1">Caso ainda não tenha feito, alimente o banco </p>
                         <small>Em caso de erro gritar é contra indicado.</small>
-                    </a>
+                    </a> -->
 
                 </div>
-                <!-- <div class="card-header bg-dark text-white text-center border border-light" style="opacity:100%">Today</div>
-            <div class="card-body bg-dark border border-light" style="opacity:80%">
-
-                <table>
-                    <thead>
-                        <tr>
-                            <th class="text-center">today
-                            </th>
-                        </tr>
-
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th class="text-center">Today</th>
-                        </tr>
-                        <tr>
-                            <th class="text-center">Today</th>
-                        </tr>
-                        <tr>
-                            <th class="text-center">Today</th>
-                        </tr>
-                        <tr>
-                            <th class="text-center">Today</th>
-                        </tr>
-                        <tr>
-                            <th class="text-center">Today</th>
-                        </tr>
-
-
-
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="card-header bg-dark text-white text-center border border-light" style="opacity:100%">Tomorow</div>
-            <div class="card-body bg-dark border border-light" style="opacity:80%">
-                <table>
-                    <thead class="bg-dark">
-                        <tr>
-                            <th class="text-center">Aná
-                            </th>
-                        </tr>
-
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th class="text-center">Today</th>
-                        </tr>
-                        <tr>
-                            <th class="text-center">Today</th>
-                        </tr>
-                        <tr>
-                            <th class="text-center">Today</th>
-                        </tr>
-                        <tr>
-                            <th class="text-center">Today</th>
-                        </tr>
-                        <tr>
-                            <th class="text-center">Today</th>
-                        </tr>
-                        <tr>
-                            <th class="text-center">Today</th>
-                        </tr>
-                        <tr>
-                            <th class="text-center">Today</th>
-                        </tr>
-                        <tr>
-                            <th class="text-center">Today</th>
-                        </tr>
-                        <tr>
-                            <th class="text-center">Today</th>
-                        </tr>
-                    </tbody>
-                </table>
-
-            </div> -->
             </div>
         </div>
     </div>
@@ -252,4 +176,11 @@
     function alerta() {
         alert('oi');
     }
+</script>
+
+<script src="js/JQuery2.min.js"></script>
+<script>
+    $( document ).ready(function() {
+    preencherListaHome();
+});
 </script>

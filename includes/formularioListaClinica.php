@@ -56,7 +56,7 @@
         <nav class="" aria-label="...">
           <ul class="pagination">
             <li class="page-item">
-              <a class="page-link" href="listaClinica.php?pagina=<?= ($pagina_atual > 1 ? $pagina_atual - 1 : $pagina_atual) ?>" tabindex="-1">Anterior</a>
+              <a class="page-link" href="listaClinica.php?pagina=<?= ($pagina_atual > 1 ? $pagina_atual - 1 : $pagina_atual) ?><?=isset($_GET['search']) ? '&search='.$_GET['search'] : ''?>" tabindex="-1">Anterior</a>
             </li>
             <?php
             for ($i = 1; $i <= $num_pagina; $i++) {
@@ -65,12 +65,12 @@
                 $estilo = "active";
               }
             ?>
-              <li class="page-item <?= $estilo ?>"><a class="page-link" href="listaClinica.php?pagina=<?= $i; ?>"><?= $i; ?></a></li>
+              <li class="page-item <?= $estilo ?>"><a class="page-link" href="listaClinica.php?pagina=<?= $i; ?><?=isset($_GET['search']) ? '&search='.$_GET['search'] : ''?>"><?= $i; ?></a></li>
             <?php
             }
             ?>
             <li class="page-item">
-              <a class="page-link" href="listaClinica.php?pagina=<?= ($pagina_atual < $num_pagina ? $pagina_atual + 1 : $pagina_atual) ?>">Próximo</a>
+              <a class="page-link" href="listaClinica.php?pagina=<?= ($pagina_atual < $num_pagina ? $pagina_atual + 1 : $pagina_atual) ?><?=isset($_GET['search']) ? '&search='.$_GET['search'] : ''?>">Próximo</a>
             </li>
           </ul>
         </nav>

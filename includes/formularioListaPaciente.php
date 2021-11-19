@@ -86,7 +86,7 @@ $resultados = strlen($resultados) ? $resultados :
                 <nav class="" aria-label="...">
                     <ul class="pagination">
                         <li class="page-item">
-                            <a class="page-link" href="listaPaciente.php?pagina=<?= ($pagina_atual > 1 ? $pagina_atual - 1 : $pagina_atual) ?>" tabindex="-1">Anterior</a>
+                            <a class="page-link" href="listaPaciente.php?pagina=<?= ($pagina_atual > 1 ? $pagina_atual - 1 : $pagina_atual) ?><?=isset($_GET['search']) ? '&search='.$_GET['search'] : ''?>" tabindex="-1">Anterior</a>
                         </li>
                         <?php
                         for ($i = 1; $i <= $num_pagina; $i++) {

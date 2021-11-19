@@ -6,7 +6,7 @@
         </a>
     </section>
 
-
+<input type="text" hidden value="<?=IDENTIFICACAO?>"/>
     <div class="row">
 
         <div class="col-4 mt-2 <?=(isset($_GET['rProtese']) ? 'offset-3' : 'offset-4')?> p-3 bg-dark " style="border-radius:25px 30px 25px 30px">

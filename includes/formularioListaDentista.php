@@ -1,25 +1,3 @@
-<?php
-
-$resultados = '';
-foreach ($dentista as $d) {
-  $resultados .= '<tr> '
-    . '<td> ' . $d->idDentista . '</td>'
-    . '<td> ' . $d->nomeDentista . '</td>'
-    . '<td> ' . $d->statusDentista . '</td>'
-    . '<td> 
-          <a href="editaDentista.php?idDentista=' . $d->idDentista . '" 
-              class="btn btn-info" >Editar</a>
-           
-         </td>
-         </tr>';
-}
-
-$resultados = strlen($resultados) ? $resultados :
-  '<tr>'
-  . '<td colspan = "6" class = "text-center"> Nenhum dentista encontrado</td>'
-  . '</tr>';
-?>
-
 
 <div class="container-fluid">
 
@@ -39,7 +17,7 @@ $resultados = strlen($resultados) ? $resultados :
       </div>
       <div class="row">
         <div class="col-6 p-2">
-          <a href="pesquisarConsulta.php"> <input type="submit" value="Limpar Pesquisa" class="btn btn-danger w-100" /> </a>
+          <a href="listaDentista.php?pagina=1"> <input type="submit" value="Limpar Pesquisa" class="btn btn-danger w-100" /> </a>
         </div>
         <div class="col-6 p-2">
           <a href="cadastroDentista.php"> <input type="submit" value="Cadastrar Dentista" class="btn btn-success w-100" /> </a>
@@ -81,7 +59,7 @@ $resultados = strlen($resultados) ? $resultados :
         <nav class="" aria-label="...">
           <ul class="pagination">
             <li class="page-item">
-              <a class="page-link" href="listaDentista.php?pagina=<?= ($pagina_atual > 1 ? $pagina_atual - 1 : $pagina_atual) ?>" tabindex="-1">Anterior</a>
+              <a class="page-link" href="listaDentista.php?pagina=<?= ($pagina_atual > 1 ? $pagina_atual - 1 : $pagina_atual) ?><?=isset($_GET['search']) ? '&search='.$_GET['search'] : ''?>" tabindex="-1">Anterior</a>
             </li>
             <?php
             for ($i = 1; $i <= $num_pagina; $i++) {
@@ -90,12 +68,12 @@ $resultados = strlen($resultados) ? $resultados :
                 $estilo = "active";
               }
             ?>
-              <li class="page-item <?= $estilo ?>"><a class="page-link" href="listaDentista.php?pagina=<?= $i; ?>"><?= $i; ?></a></li>
+              <li class="page-item <?= $estilo ?>"><a class="page-link" href="listaDentista.php?pagina=<?= $i; ?><?=isset($_GET['search']) ? '&search='.$_GET['search'] : ''?>"><?= $i; ?></a></li>
             <?php
             }
             ?>
             <li class="page-item">
-              <a class="page-link" href="listaDentista.php?pagina=<?= ($pagina_atual < $num_pagina ? $pagina_atual + 1 : $pagina_atual) ?>">Próximo</a>
+              <a class="page-link" href="listaDentista.php?pagina=<?= ($pagina_atual < $num_pagina ? $pagina_atual + 1 : $pagina_atual) ?><?=isset($_GET['search']) ? '&search='.$_GET['search'] : ''?>">Próximo</a>
             </li>
           </ul>
         </nav>
