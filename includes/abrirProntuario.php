@@ -17,15 +17,15 @@
 
                         <input  hidden="" value="<?= $paciente ?>" id="aux"> <!--input usado para pegar o prontuario.-->
                         <div id="passar_mouse">
-                            <a class="nav-link"  role="button" onclick="Dados_Cadastrais()">
-                                <h5 style="color: white; text-align: center">Dados Cadastrais</h5>
+                            <a class="nav-link" role="button" onclick="Dados_Cadastrais()">
+                                <h5 style="color: white; text-align: left">Dados Cadastrais</h5>
                             </a>
                         </div>
 
 
                         <div id="passar_mouse">
                             <a class="nav-link"  role="button" onclick="Consultas()">
-                                <h5 style="color: white; text-align: center">Consultas</h5>
+                                <h5 style="color: white; text-align: left">Consultas</h5>
                             </a>
 
                         </div>
@@ -33,7 +33,7 @@
 
                         <div id="passar_mouse">
                             <a class="nav-link" role="button" onclick="Tratamentos()">
-                                <h5 style="color: white; text-align: center">Tratamentos</h5>
+                                <h5 style="color: white; text-align: left">Tratamentos</h5>
                             </a>
 
                             <!--<ul class="dropdown-menu col-2 text-center" aria-labelledby="navbarDropdownTrat">
@@ -64,7 +64,7 @@
                                     
                                 </div>
                                 
-                                <div class="container-fluid">
+                                <div class="container-fluid" >
                                     <table class="table table-hover bg-white" id="apresenta_Tratamentos">
                                         <thead>
 
@@ -98,35 +98,4 @@
 
 
 
-<!--
-
- <div class="form-group offset-9">
-                                    <img src="./includes/img/usuario.png" alt="" width="200" height="100">
-
-                                </div>
-                                <div class="form-group">
-                                    <label><b>Nº Prontuário:</b> <b style="color: yellow"><?= $detalhaRastreio->idRastreio ?></b></label>
-
-                                </div>
-
-                                <div class="form-group">
-                                    <label><b>Paciente:</b> <b style="color: yellow"><?= $detalhaRastreio->idRastreio ?></b></label>
-
-                                </div>
-
-                                <div class="form-group">
-                                    <label><b>Sexo:</b> <b style="color: yellow"><?= $detalhaRastreio->idRastreio ?></b></label>
-
-                                </div>
-
-                                <div class="form-group">
-                                    <label><b>Telefone:</b> <b style="color: yellow"><?= $detalhaRastreio->idRastreio ?></b></label>
-
-                                </div>
-
-                                <div class="form-group">
-                                    <label><b>E-mail:</b> <b style="color: yellow"><?= $detalhaRastreio->idRastreio ?></b></label>
-
-                                </div>
--->
 

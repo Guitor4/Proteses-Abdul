@@ -79,7 +79,7 @@ function loadDados(){
             
         }
     })
-};
+}
 
 function Dados_Cadastrais() {
     document.getElementById("apresenta_Consultas").innerHTML ="";
@@ -141,12 +141,11 @@ function Consultas() {
         dataType: "json",
         url: 'consultasAbrirProntuario.php?prontuario=' + valorAjax,
         success: function(dados) {
-            if (dados !== null) {
+            if (dados !== null && dados !== 'Sem resultados') {
                 
                 var tabela = '<thead><tr><th>Consulta</th>\n\
                                     <th>Data</th>\n\
                                     <th>Hora</th>\n\
-                                    <th>relatório</th>\n\
                                     <th>Status</th>\n\
                                     <th>Clínica</th>\n\
                                     <th>Dentista</th>\n\
@@ -155,10 +154,9 @@ function Consultas() {
                               </thead>';
                 for (var i = 0; i < dados.length; i++) {
                     tabela+= '<tbody><tr>\n\
-                                <td class "table-success" ><a class="btn btn-outline" href="arquivoPDF.html?id='+ dados[i].id +'&prontuario='+ dados[i].prontuario+'"> ' + dados[i].id + '</a></td>\n\
+                                <td class "table-success" ><a class="btn btn-outline-primary" href="consultaPDF.php?id='+ dados[i].id +'&prontuario='+ dados[i].prontuario+'" > ' + dados[i].id + '</a></td>\n\
                                 <td class "table-success">' + dados[i].data + '</td>\n\
                                 <td class "table-success">' + dados[i].hora + '</td>\n\
-                                <td class "table-success">' + dados[i].relatorio + '</td>\n\
                                 <td class "table-success">' + dados[i].status + '</td>\n\
                                 <td class "table-success">' + dados[i].clinica + '</td>\n\
                                 <td class "table-success">' + dados[i].dentista + '</td>\n\
@@ -172,6 +170,8 @@ function Consultas() {
                 /*if (valorAjax !== 0) {
                     $('#apresentaProntuario').html(tabela).show();
                 }*/
+            }else{
+                $('#apresenta_Consultas').html('<p class="text-danger">Nenhuma consulta cadastrada</p>').show();
             }
         }
     })
@@ -190,31 +190,29 @@ function Tratamentos() {
         dataType: "json",
         url: 'tratamentosAbrirProntuario.php?prontuario=' + valorAjax,
         success: function(dados) {
-            if (dados !== null) {
+            if (dados !== null && dados !== 'Sem resultados') {
                 
                 var tabela = '<thead><tr><th>Procedimento</th>\n\
-                                    <th>Obs</th>\n\
+                                    <th>Data de registro</th>\n\
                                     <th>Consulta</th>\n\
-                                    <th>Data</th>\n\
-                                    <th>Hora</th>\n\
+                                    <th>Data Consulta</th>\n\
+                                    <th>Hora Consulta</th>\n\
                                     </tr>\n\
                               </thead>';
                 for (var i = 0; i < dados.length; i++) {
                     tabela+= '<tbody><tr>\n\
-                                <td class "table-success">' + dados[i].nomeT + '</td>\n\
-                                <td class "table-success">' + dados[i].obsT + '</td>\n\
+                                <td class "table-success"><a class="btn btn-outline-primary" href="tratamentoPDF.php?id='+ dados[i].id +'&consulta='+ dados[i].idC +'&prontuario='+ dados[i].prontuario+'" >'+ dados[i].nomeT + '</a></td>\n\
+                                <td class "table-success">' + dados[i].reg + '</td>\n\
                                 <td class "table-success">' + dados[i].idC + '</td>\n\
                                 <td class "table-success">' + dados[i].dataC + '</td>\n\
                                 <td class "table-success">' + dados[i].horaC + '</td>\n\
                                 </tr></tbody>';
-                    //$('#apresentaProntuario').append('<tbody><tr><td class "table-success">' + dados[i].prontuario + '</td></tr></tbody>');
                     
                 }
                 $('#apresenta_Tratamentos').html(tabela).show();
-                
-                /*if (valorAjax !== 0) {
-                    $('#apresentaProntuario').html(tabela).show();
-                }*/
+              
+            }else{
+                $('#apresenta_Tratamentos').html('<p class="text-danger">Nenhum tratamento cadastrado<p>').show();
             }
         }
     })
