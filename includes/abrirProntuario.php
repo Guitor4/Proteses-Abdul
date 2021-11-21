@@ -64,7 +64,7 @@
                                     
                                 </div>
                                 
-                                <div class="container-fluid" >
+                                <div class="container-fluid">
                                     <table class="table table-hover bg-white" id="apresenta_Tratamentos">
                                         <thead>
 

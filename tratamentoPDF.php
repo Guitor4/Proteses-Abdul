@@ -26,7 +26,7 @@ if (isset($_GET['id'])){ //cuidado com o id da protese
 //$options->setChroot(__DIR__);
 //$protese="";
 //$outros="";
-if ($tratamento->idProcedimento==3){
+if ($tratamento->idProcedimento==3){//se igual a protese
     $t='<div>
         <h2 style="text-align:center" >'.$tratamento->nomeProcedimento.'</h2>
         <label>Código: '.$tratamento->idProtese.'</label><br>
@@ -58,9 +58,15 @@ $dompdf->loadHtml('
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
-        <title>Tratamento</title>
+        <title>Tratamento-'.$tratamento->nomePaciente.'</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <style>
+        label{
+        font-size: 14
+        }
+        </style>
     </head>
     <body>
    <h1 style="text-align:center" >Tratamento</h1>
@@ -79,13 +85,7 @@ $dompdf->loadHtml('
 </body>
 </html>');
 
-/*ob_start();
-require __DIR__.'/montaPDF.php';
-$dompdf->loadHtml(ob_get_clean());
 
-
- * 
- */
 $dompdf->setPaper($size="A4");
 
 $dompdf->render();
