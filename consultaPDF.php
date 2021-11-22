@@ -3,7 +3,17 @@ require_once './vendor/composer/dompdf/autoload.inc.php';
 require __DIR__.'/vendor/autoload.php';
 use Classes\Entity\Consulta;
 use \Classes\Entity\tratamento;
+
+
 use Dompdf\Dompdf;
+//use Dompdf\Options;
+
+
+//$options = new Options();
+//$options->set('isRemoteEnable', true);//habilita carregamento de links remotos
+
+$dompdf = new Dompdf();
+
 
 if (isset($_GET['prontuario'])){
     $consulta= Consulta::getConsultaInnerJoin('paciente,dentista,clinica,funcionario', 'idConsulta = ' . $_GET['id'], 'fkProntuario,prontuario,CFKDentista,idDentista,CFKClinica,idClinica,fkFuncionario,idFuncionario,fkConsulta');
@@ -21,14 +31,11 @@ foreach ($tratamentos as $tratamento) {
 }   
 
 
-//use Dompdf\Options;
-
-//$options = new Options();
-//$options->setChroot(__DIR__);
-
-$dompdf = new Dompdf();
-
 //$dompdf->loadHtmlFile(__DIR__.'/montaPDF.php');
+
+
+//fazer cabeçalho!!!!!!!!!!!!!
+
 $dompdf->loadHtml('
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -38,6 +45,9 @@ $dompdf->loadHtml('
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
+    <div>
+    <img src="./includes/img/DL_Logo_wStrap_Black-01.png" width="200" height="100"> 
+    </div>
    <h1 style="text-align:center" >Consulta '.$consulta->idConsulta.'</h1>
    <div>
         <label>Prontuário: '.$consulta->prontuario.'</label><br>
@@ -67,13 +77,6 @@ $dompdf->loadHtml('
 </body>
 </html>');
 
-/*ob_start();
-require __DIR__.'/montaPDF.php';
-$dompdf->loadHtml(ob_get_clean());
-
-
- * 
- */
 $dompdf->setPaper($size="A4");
 
 $dompdf->render();

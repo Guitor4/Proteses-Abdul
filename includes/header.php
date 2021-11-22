@@ -45,7 +45,7 @@
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #47b8d8;">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.php">
-                <img src="./includes/img/DL_Logo_wStrap_Black-01.png" alt="" width="200" height="100">
+                <img src="./includes/img/DL_Logo_wStrap_Black-01.png" alt="" width="200" height="100" >
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

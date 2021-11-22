@@ -5,7 +5,7 @@
                 <div class="bg-dark rounded p-2">
                     <h5 style="color: white; text-align: center ">Rastreios</h5>
                     <form method="post" action="">
-                        <div class="col-10 form-group p-2" style="margin:auto">
+                        <div class="col-10 form-group p-2" style="margin:auto;">
 
                             <input type="text" class="form-control p-1" name="busca" id="busca" required="" value="<?= $busca ?>">
                         </div>
