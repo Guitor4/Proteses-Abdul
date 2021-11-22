@@ -3,6 +3,7 @@
 //assim só sendo necessário o uso de um "use \classe" para chamá-la (válido somente para arquivos da pasta classes).
 require __DIR__.'/vendor/autoload.php';
 include __DIR__.'./includes/sessionStart.php';
+define('IDENTIFICACAO', 0);
 /* echo '<pre>';print_r($_SESSION);echo'<pre>';exit; */
 /* echo '<pre>';print_r($_SESSION);echo'<pre>';exit; */
 //Monta a página, utilizando o header.php, arquivo que contém a navbar e o início da div container; o arquivo que vai ser de fato

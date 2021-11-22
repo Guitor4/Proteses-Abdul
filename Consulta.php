@@ -118,7 +118,7 @@ if (isset($_POST['Finalizar'])) {
                 }
                 $alerta = "<script>
                 Swal.fire({
-                  title: '" . NAME . " n° " . $_GET['id'] . " cadastrada com sucesso!!',
+                  title: 'Tratamento para a " . NAME . " n° " . $_GET['id'] . " cadastrado com sucesso!!',
                   text: \"Caso haja alguma alteração a ser feita, utilize a lista de consultas fora da agenda\",
                   icon: 'success',
                   confirmButtonColor: '#3085d6',

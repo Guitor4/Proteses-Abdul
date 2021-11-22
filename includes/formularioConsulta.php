@@ -35,7 +35,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Hora da Consulta</label>
-                                <select class="form-control" name="horarios" id="horarios">
+                                <select class="form-control" name="horarios" id="horarios" style = "max-height:200px">
                                     <option hidden="hidden">---[SELECIONE UMA DATA]---</option>
                                     <option <?=(TITLE != "Cadastrar Nova Consulta" ? 'selected = selected' : '')?> hidden="hidden"><?= $objConsulta->horaConsulta?></option>
                                 </select>

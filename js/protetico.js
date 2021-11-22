@@ -56,26 +56,40 @@ $(function () {
   });
 });
 
-var data = new Date();
+function dataAtualFormatada(){
+  var data = new Date(),
+      dia  = data.getDate().toString(),
+      diaF = (dia.length == 1) ? '0'+dia : dia,
+      mes  = (data.getMonth()+1).toString(), //+1 pois no getMonth Janeiro começa com zero.
+      mesF = (mes.length == 1) ? '0'+mes : mes,
+      anoF = data.getFullYear();
+  return anoF+"-"+mesF+"-"+diaF;
+}
 
-function preencherListaHome() {
+function preencherListaHome(x = 1) {
+  console.log(x);
 /*   $("#to_do_list").html('<p style="color:white">Aguardando...</p>'); */
   $.ajax({
     type: "POST",
     dataType: "json",
-    url: "preencherListaHome.php?data=" + data,
+    url: "preencherListaHome.php?data=" + dataAtualFormatada()+"&id="+x,
     success: function (dados) {
+      lista = '';
         for(var x = 0; x < dados.length; x++)
       	{
-          p = dados[x].title
-          s = dados[x].title
-          n = dados[x].title
+          i = dados[x].id
           t = dados[x].title
-        }
+          r = dados[x].relatorio
+          s = dados[x].statusConsulta
+          h = dados[x].horaConsulta
+          
+      lista += "<a href=\"Consulta.php?id="+i+"\" class=\"list-group-item list-group-item-action \" aria-current=\"true\"><div class=\"d-flex w-100 justify-content-between\"><h5 class=\"mb-1\">"+t+"</h5><small>"+h+"</small></div><p class=\"mb-1\">Status: "+s+"</p><small>"+r+".</small></a>"
+      $("#to_do_list").html(lista);
+    }
     },
     error: function () {
-      alert("oi2");
-      var lista = "<a href=\"#\" class=\"list-group-item list-group-item-action \" aria-current=\"true\"><div class=\"d-flex w-100 justify-content-between\"><h5 class=\"mb-1\">Sem Tarefas para hoje por enquanto</h5><small>Today</small></div><p class=\"mb-1\">Caso ainda não tenha feito, alimente o banco </p><small>Em caso de erro gritar é contra indicado.</small></a>"
+      var lista = "<a href=\"#\" class=\"list-group-item list-group-item-action \" aria-current=\"true\"><div class=\"d-flex w-100"+ 
+      "justify-content-between\"><h5 class=\"mb-1\">Sem Tarefas para hoje por enquanto</h5><small>Today</small></div><p class=\"mb-1\">Caso ainda não tenha feito, alimente o banco </p><small>Em caso de erro gritar é contra indicado.</small></a>"
       $("#to_do_list").html(lista);
     },
   });

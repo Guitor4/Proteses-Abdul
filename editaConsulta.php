@@ -68,7 +68,7 @@ if (!$objFuncionario instanceof funcionario){
     $objConsulta->CFKDentista = $_POST['dentista'];
     $objConsulta->CFKClinica = $_POST['clinica'];
     $objConsulta->dataConsulta = $_POST['data'];
-    $objConsulta->horaConsulta = $_POST['hora'];
+    $objConsulta->horaConsulta = $_POST['horarios'];
     $objConsulta->statusConsulta = $_POST['status'];
     $objConsulta->relatorio = $_POST['relatorio'];
     //Executa a função cadastrar que está localizada na classe "Protese".

@@ -1,4 +1,3 @@
-
 <div class="container-fluid">
 
   <section class="d-flex justify-content-center mt-2">
@@ -58,23 +57,33 @@
       <div class="d-flex justify-content-center">
         <nav class="" aria-label="...">
           <ul class="pagination">
+          <li class="page-item">
+            <a class="page-link" href="listaDentista.php?pagina=1<?= isset($_GET['search']) ? '&search=' . $_GET['search'] : '' ?>"><<</a>
+          </li>
             <li class="page-item">
-              <a class="page-link" href="listaDentista.php?pagina=<?= ($pagina_atual > 1 ? $pagina_atual - 1 : $pagina_atual) ?><?=isset($_GET['search']) ? '&search='.$_GET['search'] : ''?>" tabindex="-1">Anterior</a>
+              <a class="page-link" href="listaDentista.php?pagina=<?= ($pagina_atual > 1 ? $pagina_atual - 1 : $pagina_atual) ?><?= isset($_GET['search']) ? '&search=' . $_GET['search'] : '' ?>" tabindex="-1">Anterior</a>
             </li>
             <?php
-            for ($i = 1; $i <= $num_pagina; $i++) {
+            $limite_paginacao = ceil(($num_pagina + $pagina_atual) / 2);
+            $pagina1 = $pagina_atual < 2 ? $pagina_atual : $pagina_atual - 2;
+            for ($i = $pagina1; $i <= $limite_paginacao; $i++) {
               $estilo = "";
               if ($pagina_atual == $i) {
                 $estilo = "active";
               }
+              if ($i != 0) {
             ?>
-              <li class="page-item <?= $estilo ?>"><a class="page-link" href="listaDentista.php?pagina=<?= $i; ?><?=isset($_GET['search']) ? '&search='.$_GET['search'] : ''?>"><?= $i; ?></a></li>
+                <li class="page-item <?= $estilo ?>"><a class="page-link" href="listaDentista.php?pagina=<?= $i; ?><?= isset($_GET['search']) ? '&search=' . $_GET['search'] : '' ?>"><?= $i; ?></a></li>
             <?php
+              }
             }
             ?>
             <li class="page-item">
-              <a class="page-link" href="listaDentista.php?pagina=<?= ($pagina_atual < $num_pagina ? $pagina_atual + 1 : $pagina_atual) ?><?=isset($_GET['search']) ? '&search='.$_GET['search'] : ''?>">Próximo</a>
+              <a class="page-link" href="listaDentista.php?pagina=<?= ($pagina_atual < $num_pagina ? $pagina_atual + 1 : $pagina_atual) ?><?= isset($_GET['search']) ? '&search=' . $_GET['search'] : '' ?>">Próximo</a>
             </li>
+            <li class="page-item">
+            <a class="page-link" href="listaDentista.php?pagina=<?= $num_pagina?><?= isset($_GET['search']) ? '&search=' . $_GET['search'] : '' ?>">>></a>
+          </li>
           </ul>
         </nav>
       </div>
