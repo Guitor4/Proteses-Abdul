@@ -55,14 +55,24 @@ $(function () {
     source: "autocomplete2.php?teste=" + identificacao,
   });
 });
+
 var data = new Date();
+
 function preencherListaHome() {
-  $("#to_do_list").html('<p style="color:white">Aguardando...</p>');
+/*   $("#to_do_list").html('<p style="color:white">Aguardando...</p>'); */
   $.ajax({
     type: "POST",
     dataType: "json",
     url: "preencherListaHome.php?data=" + data,
-    success: function (dados) {},
+    success: function (dados) {
+        for(var x = 0; x < dados.length; x++)
+      	{
+          p = dados[x].title
+          s = dados[x].title
+          n = dados[x].title
+          t = dados[x].title
+        }
+    },
     error: function () {
       alert("oi2");
       var lista = "<a href=\"#\" class=\"list-group-item list-group-item-action \" aria-current=\"true\"><div class=\"d-flex w-100 justify-content-between\"><h5 class=\"mb-1\">Sem Tarefas para hoje por enquanto</h5><small>Today</small></div><p class=\"mb-1\">Caso ainda não tenha feito, alimente o banco </p><small>Em caso de erro gritar é contra indicado.</small></a>"

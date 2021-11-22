@@ -107,10 +107,10 @@
                         <input name="Filtro1" onchange="alerta()" type="radio" value="Teste"></input>
                     </div>
                 </div>
-                <div id="to_do_list" class="list-group overflow-auto rounded p-2" style="max-height:500px;">
+                <div id="to_do_list" class="list-group overflow-auto rounded p-2 bg-light" style="min-height:500px;max-height:500px;">
 
 
-<!--                     <a href="#" class="list-group-item list-group-item-action " aria-current="true">
+                  <a href="#" class="list-group-item list-group-item-action " aria-current="true">
                         <div class="d-flex w-100 justify-content-between">
                             <h5 class="mb-1">Sem Tarefas para hoje por enquanto</h5>
                             <small>Today</small>
@@ -165,7 +165,7 @@
                         </div>
                         <p class="mb-1">Caso ainda não tenha feito, alimente o banco </p>
                         <small>Em caso de erro gritar é contra indicado.</small>
-                    </a> -->
+                    </a> 
 
                 </div>
             </div>
