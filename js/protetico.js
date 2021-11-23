@@ -150,17 +150,19 @@ function Consultas() {
                                     <th>Clínica</th>\n\
                                     <th>Dentista</th>\n\
                                     <th>Procedimento</th>\n\
+                                    <th>Ação</th>\n\
                                     </tr>\n\
                               </thead>';
                 for (var i = 0; i < dados.length; i++) {
                     tabela+= '<tbody><tr>\n\
-                                <td class "table-success" ><a class="btn btn-outline-primary" href="consultaPDF.php?id='+ dados[i].id +'&prontuario='+ dados[i].prontuario+'" > ' + dados[i].id + '</a></td>\n\
+                                <td class "table-success"> ' + dados[i].id + '</td>\n\
                                 <td class "table-success">' + dados[i].data + '</td>\n\
                                 <td class "table-success">' + dados[i].hora + '</td>\n\
                                 <td class "table-success">' + dados[i].status + '</td>\n\
                                 <td class "table-success">' + dados[i].clinica + '</td>\n\
                                 <td class "table-success">' + dados[i].dentista + '</td>\n\
                                 <td class "table-success">' + dados[i].procedimento + '</td>\n\
+                                <td class "table-success"><a class="btn btn-outline-primary" data-toggle="collapse"  onclick="Tratamentos(' + dados[i].id + ')" role="button" aria-expanded="false" aria-controls="apresenta_Tratamentos" > Abrir </a></td>\n\
                                 </tr></tbody>';
                     //$('#apresentaProntuario').append('<tbody><tr><td class "table-success">' + dados[i].prontuario + '</td></tr></tbody>');
                     
@@ -179,9 +181,14 @@ function Consultas() {
 
 
 
-function Tratamentos() {
+function Tratamentos(id) {
+   //document.getElementById("apresenta_Tratamentos").innerHTML ="";
     document.getElementById("apresenta_DadosCadastrais").innerHTML ="";
-    document.getElementById("apresenta_Consultas").innerHTML ="";
+    
+    var click=id;
+    
+    if (click!==aux){
+    aux=click;
     var valorAjax = document.getElementById('aux').value;
     
     $('#apresenta_Tratamentos').html('<p>Aguardando...</p>');
@@ -197,23 +204,34 @@ function Tratamentos() {
                                     <th>Consulta</th>\n\
                                     <th>Data Consulta</th>\n\
                                     <th>Hora Consulta</th>\n\
+                                    <th>Ação</th>\n\
                                     </tr>\n\
                               </thead>';
                 for (var i = 0; i < dados.length; i++) {
                     tabela+= '<tbody><tr>\n\
-                                <td class "table-success"><a class="btn btn-outline-primary" href="tratamentoPDF.php?id='+ dados[i].id +'&consulta='+ dados[i].idC +'&prontuario='+ dados[i].prontuario+'" >'+ dados[i].nomeT + '</a></td>\n\
+                                <td class "table-success">'+ dados[i].nomeT + '</td>\n\
                                 <td class "table-success">' + dados[i].reg + '</td>\n\
                                 <td class "table-success">' + dados[i].idC + '</td>\n\
                                 <td class "table-success">' + dados[i].dataC + '</td>\n\
                                 <td class "table-success">' + dados[i].horaC + '</td>\n\
+                                <td class "table-success"><a class="btn btn-outline-primary" href="tratamentoPDF.php?id='+ dados[i].id +'&consulta='+ dados[i].idC +'&prontuario='+ dados[i].prontuario+'" ><img src="./includes/img/pdf.2.png" width="35" height="40"></a></td>\n\
                                 </tr></tbody>';
                     
                 }
                 $('#apresenta_Tratamentos').html(tabela).show();
-              
+                $('#mostraTitulo').html("TRATAMENTOS").show();
+                
             }else{
                 $('#apresenta_Tratamentos').html('<p class="text-danger">Nenhum tratamento cadastrado<p>').show();
             }
         }
     })
+}else{
+    document.getElementById("apresenta_Tratamentos").innerHTML ="";
+    document.getElementById("mostraTitulo").innerHTML ="";
+    aux=0;
+    //document.getElementById("click").value=id;
+    
 }
+}
+
