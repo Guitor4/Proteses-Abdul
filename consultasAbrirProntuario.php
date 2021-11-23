@@ -31,6 +31,7 @@ if ($prontuario != null) {
            'clinica' => $row_prontuario1['nomeClinica'],
            'dentista' => $row_prontuario1['nomeDentista'],
            'procedimento' => $row_prontuario1['nomeProcedimento'],
+           'idProcedimento' => $row_prontuario1['idProcedimento'],
            'prontuario' => $row_prontuario1['prontuario'],
          
             );

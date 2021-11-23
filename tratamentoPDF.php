@@ -8,9 +8,9 @@ use Dompdf\Dompdf;
 
 
 
-if (isset($_GET['id'])){ //cuidado com o id da protese
+if (isset($_GET['idProcedimento'])){ //cuidado com o id da protese
     
-    $tratamento = Prontuario::getTratamentoInner($_GET['id'],$_GET['consulta'],$_GET['prontuario']);
+    $tratamento = Prontuario::getTratamentoInner($_GET['idProcedimento'],$_GET['consulta'],$_GET['prontuario']);
     //echo '<pre>';print_r($tratamento); echo '<pre>';exit;
      
 } 
@@ -26,9 +26,9 @@ if (isset($_GET['id'])){ //cuidado com o id da protese
 //$options->setChroot(__DIR__);
 //$protese="";
 //$outros="";
-if ($tratamento->idProcedimento==3){//se igual a protese
+if ($tratamento->idProcedimento==4){//se igual a protese
     $t='<div>
-        <h2 style="text-align:center" >'.$tratamento->nomeProcedimento.'</h2>
+        <h3>'.$tratamento->nomeProcedimento.'</h3>
         <label>Código: '.$tratamento->idProtese.'</label><br>
         <label>Tipo: '.$tratamento->tipo.'</label><br>
         <label>Posição: '.$tratamento->posicao.'</label><br>
@@ -46,7 +46,7 @@ if ($tratamento->idProcedimento==3){//se igual a protese
     
 } else {
     $t='<div>
-        <h2 style="text-align:center" >'.$tratamento->nomeProcedimento.'</h2>
+        <h3>'.$tratamento->nomeProcedimento.'</h3>
         <label>Observação:<textarea style="height: auto"> '.$tratamento->observacoes.'</textarea></label><br>
     </div>';
 }
@@ -69,7 +69,9 @@ $dompdf->loadHtml('
         </style>
     </head>
     <body>
-   <h1 style="text-align:center" >Tratamento</h1>
+    <div>
+         <img src="./includes/img/DL_Logo_wStrap_Black-01.png" width="200" height="100"> 
+    
    <div>
         <label>Prontuário: '.$tratamento->prontuario.'</label><br>
         <label>Paciente: '.$tratamento->nomePaciente.'</label><br>
@@ -79,6 +81,21 @@ $dompdf->loadHtml('
     </div>
     
     <hr><br>
+    
+    
+        <h1 style="text-align:center" >Consulta '.$tratamento->idConsulta.'</h1>
+            <div>
+            <label>Data: '.date('d/m/y', strtotime($tratamento->dataConsulta)).'</label><br>
+            <label>Hora: '.$tratamento->horaConsulta.'</label><br>
+            <label>Status: '.$tratamento->statusConsulta.'</label><br>
+            <label>Clinica: '.$tratamento->nomeClinica.'</label><br>
+            <label>Dentista: '.$tratamento->nomeDentista.'</label><br>
+            Relatório:<textarea style="height: auto"> '.$tratamento->relatorio.'</textarea><br>
+            </div>
+    
+    <hr><br>
+    
+        <h1 style="text-align:center" >Tratamento</h1>
    
     '.$t.'
     

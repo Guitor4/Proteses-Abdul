@@ -8,14 +8,16 @@ use Classes\Dao\db;
 
 
 $prontuario = $_REQUEST['prontuario'];
+$consulta = $_REQUEST['consulta'];
 $_SESSION['prontuario'] = $prontuario;
+
+
 sleep(1);
 $query = "SELECT * from tratamento "
     ."inner join consulta on fkConsulta=idConsulta "
-    ."inner join procedimento on fkProcedimento=idProcedimento " 
-    ."left join protese on fkConsulta=fkConsultaT "
-    ."WHERE fkProntuario=". $prontuario;
-
+    ."inner join procedimento on fkProcedimento=idProcedimento "
+    ."WHERE fkProntuario=". $prontuario. " and idConsulta=".$consulta;
+//."left join protese on fkConsulta=fkConsultaT "
 if ($prontuario != null) {
     $prontuario1 = (new db())->executeSQL($query);
 
@@ -25,11 +27,11 @@ if ($prontuario != null) {
             $array[] = array(
            'nomeT' => $row_prontuario1['nomeProcedimento'],
            'idC' => $row_prontuario1['idConsulta'],
-           'dataC' => date('d/m/y', strtotime($row_prontuario1['dataConsulta'])),
-           'horaC' => $row_prontuario1['horaConsulta'],
-           'reg'=>date('d/m/y h:i:s', strtotime($row_prontuario1['dataRegistro'])),
+           //'dataC' => date('d/m/y', strtotime($row_prontuario1['dataConsulta'])),
+           //'horaC' => $row_prontuario1['horaConsulta'],
+           //'reg'=>date('d/m/y h:i:s', strtotime($row_prontuario1['dataRegistro'])),
            'prontuario' => $row_prontuario1['fkProntuario'],
-           'id' => $row_prontuario1['fkProcedimento'],
+           'idProcedimento' => $row_prontuario1['fkProcedimento'],
             
             );
         }

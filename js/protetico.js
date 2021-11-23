@@ -84,6 +84,7 @@ function loadDados(){
 function Dados_Cadastrais() {
     document.getElementById("apresenta_Consultas").innerHTML ="";
     document.getElementById("apresenta_Tratamentos").innerHTML ="";
+    document.getElementById("mostraTitulo").innerHTML ="";
     var valorAjax = document.getElementById('aux').value;
     
     $('#apresenta_DadosCadastrais').html('<p>Aguardando...</p>');
@@ -133,6 +134,7 @@ function Dados_Cadastrais() {
 function Consultas() {
     document.getElementById("apresenta_DadosCadastrais").innerHTML ="";
     document.getElementById("apresenta_Tratamentos").innerHTML ="";
+    document.getElementById("mostraTitulo").innerHTML ="";
     var valorAjax = document.getElementById('aux').value;
     
     $('#apresenta_Consultas').html('<p>Aguardando...</p>');
@@ -143,13 +145,12 @@ function Consultas() {
         success: function(dados) {
             if (dados !== null && dados !== 'Sem resultados') {
                 
-                var tabela = '<thead><tr><th>Consulta</th>\n\
+                var tabela = '<thead><tr style="position:stick"><th>Consulta</th>\n\
                                     <th>Data</th>\n\
                                     <th>Hora</th>\n\
                                     <th>Status</th>\n\
                                     <th>Clínica</th>\n\
                                     <th>Dentista</th>\n\
-                                    <th>Procedimento</th>\n\
                                     <th>Ação</th>\n\
                                     </tr>\n\
                               </thead>';
@@ -161,19 +162,20 @@ function Consultas() {
                                 <td class "table-success">' + dados[i].status + '</td>\n\
                                 <td class "table-success">' + dados[i].clinica + '</td>\n\
                                 <td class "table-success">' + dados[i].dentista + '</td>\n\
-                                <td class "table-success">' + dados[i].procedimento + '</td>\n\
-                                <td class "table-success"><a class="btn btn-outline-primary" data-toggle="collapse"  onclick="Tratamentos(' + dados[i].id + ')" role="button" aria-expanded="false" aria-controls="apresenta_Tratamentos" > Abrir </a></td>\n\
+                                <td class "table-success"><a class="btn btn-outline-primary" data-toggle="collapse"  onclick="Tratamentos(' +dados[i].id+ ')" role="button" aria-expanded="false" aria-controls="apresenta_Tratamentos" > Abrir </a></td>\n\
                                 </tr></tbody>';
                     //$('#apresentaProntuario').append('<tbody><tr><td class "table-success">' + dados[i].prontuario + '</td></tr></tbody>');
                     
                 }
                 $('#apresenta_Consultas').html(tabela).show();
+                document.getElementById("mostraTitulo").innerHTML ="";
                 
                 /*if (valorAjax !== 0) {
                     $('#apresentaProntuario').html(tabela).show();
                 }*/
             }else{
                 $('#apresenta_Consultas').html('<p class="text-danger">Nenhuma consulta cadastrada</p>').show();
+                document.getElementById("mostraTitulo").innerHTML ="";
             }
         }
     })
@@ -187,34 +189,27 @@ function Tratamentos(id) {
     
     var click=id;
     
-    if (click!==aux){
-    aux=click;
+    if (click!==iclick){
+     iclick=click;
+        
     var valorAjax = document.getElementById('aux').value;
     
     $('#apresenta_Tratamentos').html('<p>Aguardando...</p>');
     $.ajax({
         type: 'POST',
         dataType: "json",
-        url: 'tratamentosAbrirProntuario.php?prontuario=' + valorAjax,
+        url: 'tratamentosAbrirProntuario.php?prontuario=' + valorAjax+ '&consulta=' +click,
         success: function(dados) {
             if (dados !== null && dados !== 'Sem resultados') {
                 
                 var tabela = '<thead><tr><th>Procedimento</th>\n\
-                                    <th>Data de registro</th>\n\
-                                    <th>Consulta</th>\n\
-                                    <th>Data Consulta</th>\n\
-                                    <th>Hora Consulta</th>\n\
                                     <th>Ação</th>\n\
                                     </tr>\n\
                               </thead>';
                 for (var i = 0; i < dados.length; i++) {
                     tabela+= '<tbody><tr>\n\
                                 <td class "table-success">'+ dados[i].nomeT + '</td>\n\
-                                <td class "table-success">' + dados[i].reg + '</td>\n\
-                                <td class "table-success">' + dados[i].idC + '</td>\n\
-                                <td class "table-success">' + dados[i].dataC + '</td>\n\
-                                <td class "table-success">' + dados[i].horaC + '</td>\n\
-                                <td class "table-success"><a class="btn btn-outline-primary" href="tratamentoPDF.php?id='+ dados[i].id +'&consulta='+ dados[i].idC +'&prontuario='+ dados[i].prontuario+'" ><img src="./includes/img/pdf.2.png" width="35" height="40"></a></td>\n\
+                                <td class "table-success"><a class="btn btn-outline-primary" href="tratamentoPDF.php?idProcedimento='+ dados[i].idProcedimento +'&consulta='+ dados[i].idC +'&prontuario='+ dados[i].prontuario+'" ><img src="./includes/img/pdf.2.png" width="35" height="40"></a></td>\n\
                                 </tr></tbody>';
                     
                 }
@@ -223,13 +218,14 @@ function Tratamentos(id) {
                 
             }else{
                 $('#apresenta_Tratamentos').html('<p class="text-danger">Nenhum tratamento cadastrado<p>').show();
+                document.getElementById("mostraTitulo").innerHTML ="";
             }
         }
     })
 }else{
     document.getElementById("apresenta_Tratamentos").innerHTML ="";
     document.getElementById("mostraTitulo").innerHTML ="";
-    aux=0;
+    iclick=0;
     //document.getElementById("click").value=id;
     
 }
