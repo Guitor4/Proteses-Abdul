@@ -63,4 +63,6 @@ if(isset($eventoLembretes)){
     }
 }
 
-echo json_encode($array);
+if (isset($eventoConsultas) && $eventoConsultas->rowCount() > 0 || isset($eventoLembretes) && $eventoLembretes->rowCount() > 0){
+    echo json_encode($array);
+}

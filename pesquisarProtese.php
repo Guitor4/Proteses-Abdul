@@ -85,10 +85,10 @@ $where = implode(' AND ', $condicoes);
                             <td>' . $protese->qtdOuro . '</td>
                             <td>' . date('d/m/Y à\s H:i', strtotime($protese->dataRegistro)) . '</td>
                             <td>
-                            <a href = editaProtese.php?id=' . $protese->idProtese . '>
+                            <a href = "editaProtese.php?id=' .$protese->idProtese. '">
                             <button class = "btn btn-primary">Editar</button>
                             </a>
-                            <a href = ?id=' . $protese->idProtese . '>
+                            <a href = "protese.php?idProtese='.$protese->idProtese.'">
                             <button class = "btn btn-primary">Visualizar Prótese</button>
                             </a>
                             </td>

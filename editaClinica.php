@@ -24,15 +24,19 @@ if (isset($_POST['editarClinica'])) {
 
     if (!empty($_POST['nomeClinica'])) {
 
-        $clinica->idClinica = $_POST['idClinica'];
+        $clinica->idClinica = $_GET['idClinica'];
         $clinica->nomeClinica = trim($_POST['nomeClinica']);
         $clinica->statusClinica = $_POST['status'];
         
         unset($_POST['editarClinica']);
 
-        $clinica->editarClinica();
+        if($clinica->editarClinica()){
+            header('Location: listaClinica.php?pagina=1&status=success2&id='.$clinica->idClinica);
+        }else{
+            header('Location: listaClinica.php?pagina=1&status=error2');
+        }
 
-        header('Location: listaClinica.php?status=success');
+        
     }
 }
 

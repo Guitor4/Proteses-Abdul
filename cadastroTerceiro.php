@@ -18,9 +18,9 @@ if (isset($_POST['Salvar'])){
     $objTerceiro->cadastro();
    
     if ($objTerceiro->idTerceiro > 0){
-        header ('Location: listaTerceiro.php?pagina=1&status=success&id='.$objTerceiro->idTerceiro[1]);
+        header ('Location: listaTerceiro.php?pagina=1&status=success1&id='.$objTerceiro->idTerceiro[1]);
     }else{
-        header ('Location: listaTerceiro.php?pagina=1&status=error');
+        header ('Location: listaTerceiro.php?pagina=1&status=error1');
     }
 }
 

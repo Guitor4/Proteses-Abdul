@@ -18,9 +18,9 @@ if(isset($_POST[BTN])){
     $lembretes->cadastrarLembrete();
 /* echo "<pre>"; print_r($lembretes); echo "<pre>";exit; */
     if($lembretes->idLembrete > 0){
-        header('location: listaLembrete.php?pagina=1&status=success&id='.$lembretes->idLembrete);
+        header('location: listaLembrete.php?pagina=1&status=success1&id='.$lembretes->idLembrete);
     }else{
-        header('location: listaLembrete.php?pagina=1&status=error');
+        header('location: listaLembrete.php?pagina=1&status=error1');
     }
 }
 

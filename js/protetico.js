@@ -66,9 +66,7 @@ function dataAtualFormatada() {
   return anoF + "-" + mesF + "-" + diaF;
 }
 
-function preencherListaHome(x = 1) {
-  console.log(x);
-  var lista = "";
+function preencherListaHome(x = 1, lista = "") {
   if (x === 1) {
     $.ajax({
       type: "POST",
@@ -76,6 +74,7 @@ function preencherListaHome(x = 1) {
       url: "preencherListaHome.php?data=" + dataAtualFormatada() + "&id=" + x,
       success: function (dados) {
         for (var x = 0; x < dados.length; x++) {
+          console.log("teste1");
           i = dados[x].id;
           t = dados[x].title;
           r = dados[x].relatorio;
@@ -99,16 +98,17 @@ function preencherListaHome(x = 1) {
         }
       },
       error: function () {
-        if (lista === "") {
+        if (lista === undefined) {
           var lista =
             '<a href="#" class="list-group-item list-group-item-action " aria-current="true"><div class="d-flex w-100 justify-content-between">' +
-            '<h5 class="mb-1">Sem Tarefas para hoje por enquanto</h5><small>Today</small></div><p class="mb-1">' +
+            '<h5 class="mb-1">Sem Consultas para hoje por enquanto</h5><small>Today</small></div><p class="mb-1">' +
             "Caso ainda não tenha feito, alimente o banco </p><small>Em caso de erro gritar é contra indicado.</small></a>";
           $("#to_do_list").html(lista);
         }
       },
     });
   }
+
   if (x === 2 || x === 3) {
     /* $("#to_do_list").html('Teste'); */
     $.ajax({
@@ -127,14 +127,16 @@ function preencherListaHome(x = 1) {
             lista +=
               '<a href="listaLembrete.php?pagina=1&id=' +
               i +
-              '&search='+ t +'" class="list-group-item list-group-item-action " aria-current="true">' +
+              "&search=" +
+              t +
+              '" class="list-group-item list-group-item-action " aria-current="true">' +
               '<div class="d-flex w-100 justify-content-between"><h5 class="mb-1">' +
               t +
               "</h5><small>" +
               h +
               '</small></div><p class="mb-1">Status: ' +
               s +
-              '</p><small>' +
+              "</p><small>" +
               r +
               ".</small></a>";
             $("#to_do_list").html(lista);
@@ -144,7 +146,7 @@ function preencherListaHome(x = 1) {
       error: function () {
         var lista =
           '<a href="#" class="list-group-item list-group-item-action " aria-current="true"><div class="d-flex w-100 justify-content-between">' +
-          '<h5 class="mb-1">Sem Tarefas para hoje por enquanto</h5><small>Today</small></div><p class="mb-1">' +
+          '<h5 class="mb-1">Sem Lembretes para hoje por enquanto</h5><small>Today</small></div><p class="mb-1">' +
           "Caso ainda não tenha feito, alimente o banco </p><small>Em caso de erro gritar é contra indicado.</small></a>";
         $("#to_do_list").html(lista);
       },
@@ -182,13 +184,11 @@ function preencherListaHome(x = 1) {
         }
       },
       error: function () {
-        if (lista === "") {
-          var lista =
-            '<a href="#" class="list-group-item list-group-item-action " aria-current="true"><div class="d-flex w-100 justify-content-between">' +
-            '<h5 class="mb-1">Sem Tarefas para hoje por enquanto</h5><small>Today</small></div><p class="mb-1">' +
-            "Caso ainda não tenha feito, alimente o banco </p><small>Em caso de erro gritar é contra indicado.</small></a>";
-          $("#to_do_list").html(lista);
-        }
+        var lista =
+          '<a href="#" class="list-group-item list-group-item-action " aria-current="true"><div class="d-flex w-100 justify-content-between">' +
+          '<h5 class="mb-1">Sem Tarefas para hoje por enquanto</h5><small>Today</small></div><p class="mb-1">' +
+          "Caso ainda não tenha feito, alimente o banco </p><small>Em caso de erro gritar é contra indicado.</small></a>";
+        $("#to_do_list").html(lista);
       },
     });
   }

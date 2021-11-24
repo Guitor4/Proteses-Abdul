@@ -23,9 +23,9 @@ if (isset($_POST['Salvar'])){
     $objterceirizado->cadastoTerceirizado();
    
     if ($objterceirizado->idterceirizado > 0){
-        header ('Location: listaterceirizado.php?status=success&id='.$objterceirizado->idterceirizado);
+        header ('Location: listaterceirizado.php?status=success1&id='.$objterceirizado->idterceirizado);
     }else{
-        header ('Location: listaterceirizado.php?status=error');
+        header ('Location: listaterceirizado.php?status=error1');
     }
 }
 

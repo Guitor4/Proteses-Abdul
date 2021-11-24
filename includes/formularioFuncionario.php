@@ -29,7 +29,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Telefone:</label>
-                                <input type="tel" class="form-control" name="telefone" placeholder="61 9 91919191" required="" value="<?= $objFuncionario->telefone ?>">
+                                <input type="tel" class="form-control" name="telefone" onkeypress="mascara(this, '#-#####-####')" maxlength="15" placeholder="61 9 91919191" required="" value="<?= $objFuncionario->telefone ?>">
                             </div>
                             <div class="form-group">
                                 <label>Perfil: </label>

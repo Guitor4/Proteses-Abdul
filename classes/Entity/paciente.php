@@ -29,7 +29,7 @@ class Paciente {
             'sexo' => $this->sexo,
             'telefone' => $this->tel,
             'email' => $this->email,
-        ]);
+        ])[1];
     }
 
     /**

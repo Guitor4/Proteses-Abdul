@@ -24,7 +24,7 @@
 
 
 
-<body class="text-center" style="background-image: url(includes/img/Clínica-Odontológica.jpg);background-repeat: no-repeat; background-size: 100%">
+<body class="text-center" style="background-image: url(includes/img/Clínica-Odontológica.jpg);background-repeat: no-repeat; background-size: 100%; align-items:verticall">
 
   <main class="form-signin align-middle">
     <form method = "post">
