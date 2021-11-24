@@ -39,6 +39,9 @@
                             <label><strong class="text-info">Quantidade de dentes: </strong><?= $objProtese->qtdDente ?></label>
                         </div>
                         <div class="form-group">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width:<?=$progresso?>;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><?=$objProtese->status?></div>
+                            </div>
                             <label><strong class="text-info">Status:</strong> <?= $objProtese->status ?></label>
 
                         </div>
@@ -50,7 +53,7 @@
                         </div>
                     </div>
                     <label class="mt-3 text-info" for="relatorio"><strong>Observações pré-Consulta:</strong></label>
-                    <textarea readonly name="relatorio" style=" background-color: black;opacity:80%;resize:none" class="text-white" rows="3">Relatório da prótese: <?= $objProtese->relatorio."\n Observações do tratamento: " .$objProtese->observacao ?></textarea>
+                    <textarea readonly name="relatorio" style=" background-color: black;opacity:80%;resize:none" class="text-white" rows="3">Relatório da prótese: <?= $objProtese->relatorio . "\n Observações do tratamento: " . $objProtese->observacao ?></textarea>
                     <div class="row d-flex justify-content-center text-center mt-3">
                         <a class="btn btn-success" href="pesquisarProtese.php">OK</a>
                     </div>
