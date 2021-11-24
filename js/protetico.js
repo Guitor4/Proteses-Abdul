@@ -136,7 +136,7 @@ function preencherListaHome(x = 1, lista = "") {
               h +
               '</small></div><p class="mb-1">Status: ' +
               s +
-              "</p><small>" +
+              "</p><small style = \"word-wrap: break-word;\">" +
               r +
               ".</small></a>";
             $("#to_do_list").html(lista);

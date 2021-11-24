@@ -92,9 +92,6 @@
                             <div>
                                 <button type="button" class="btn btn-danger btn-lg" style="left:10px" data-bs-dismiss="modal">Cancelar</button>
                             </div>
-                            <div>
-                                <input type="reset"  id = "reset" class="btn btn-danger btn-lg" style="left:10px">reset</input>
-                            </div>
                         </div>
                     </form>
                 </div>

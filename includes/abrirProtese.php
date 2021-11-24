@@ -14,7 +14,7 @@
 
                 <div class="row border p-3">
 
-                    <div class="col-5 offset-1 border border-success">
+                    <div class="col-5 border border-success">
                         <div class="form-group">
                             <label><strong class="text-info">Nome do paciente:</strong> <?= $objProtese->nomePaciente ?></label>
                         </div>
@@ -34,7 +34,7 @@
                             <label><strong class="text-info">Extensão:</strong> <?= $objProtese->extensao ?></label>
                         </div>
                     </div>
-                    <div class="col-5  border border-success">
+                    <div class="col-5 offset-2 border border-success">
                         <div class="form-group">
                             <label><strong class="text-info">Quantidade de dentes: </strong><?= $objProtese->qtdDente ?></label>
                         </div>
@@ -48,32 +48,11 @@
                         <div class="form-group">
                             <label><strong class="text-info">Email do Paciente: </strong><?= $objProtese->email ?></label>
                         </div>
-                        <div class="form-group">
-                            <label><strong class="text-info">Status atual da Consulta: </strong><?= $objProtese->statusConsulta ?></label>
-                        </div>
-                        <div class="form-group">
-                            <label><strong class="text-info">Status atual da Consulta: </strong><?= $objProtese->statusConsulta ?></label>
-                        </div>
                     </div>
-                    
-
-                    [idProtese] => 1
-                    [tipo] => Fixa
-                    [posicao] => Inferior
-                    [marcaDente] => [SELECIONE]
-                    [extensao] => Total
-                    [qtdDente] => 2
-                    [ouro] => nao
-                    [qtdOuro] => 0
-                    [dataRegistro] => 2021-11-09 10:35:46
-                    [status] => Cadastrada
-                    [paciente] =>
-                    [observacao] => lçakljasdf
-
                     <label class="mt-3 text-info" for="relatorio"><strong>Observações pré-Consulta:</strong></label>
-                    <textarea readonly name="relatorio" style=" background-color: black;opacity:80%;resize:none" class="text-white" rows="3"><?= $tratamento->observacao ?></textarea>
+                    <textarea readonly name="relatorio" style=" background-color: black;opacity:80%;resize:none" class="text-white" rows="3">Relatório da prótese: <?= $objProtese->relatorio."\n Observações do tratamento: " .$objProtese->observacao ?></textarea>
                     <div class="row d-flex justify-content-center text-center mt-3">
-                        <a class="btn btn-success" href="Consulta.php?id=<?= $_GET['idConsulta'] ?>">OK</a>
+                        <a class="btn btn-success" href="pesquisarProtese.php">OK</a>
                     </div>
 
                 </div>

@@ -4,15 +4,13 @@
 
     <section>
         <a href="<?= (TITLE == 'Cadastrar Nova Consulta' ? 'index.php' : 'pesquisarConsulta.php') ?>">
-            <button class="btn btn-success mt-4">Retornar</button>
+            <button class="btn btn-success">Retornar</button>
         </a>
-
-
     </section>
     <br>
     <main>
-        <div>
-            <div class="text-white  bg-gradient border border-primary p-5 rounded-3" style="background-color:black;border-width: 10px;">
+        <div class = "d-flex justify-content-center">
+            <div class="col-8 text-white  bg-gradient border border-primary p-5 rounded-3" style="background-color:black;border-width: 10px;">
                 <div>
                     <h3 style="text-align: center;"><?= TITLE ?></h3>
                 </div>
