@@ -21,8 +21,11 @@ if (isset($_POST['cadastrarClinica'])) {
         /* echo "<pre>"; print_r($clinica); echo "<pre>";exit; */
         $clinica->cadastrarClinica();
         
+        if($clinica->idClinica > 0){
         header ('Location: listaClinica.php?pagina=1&status=success&id='.$clinica->idClinica[1]);
-
+        }else{
+            header ('Location: listaClinica.php?pagina=1&status=error');
+        }
         //echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"3;
         //URL='cadastroClinica.php'\">";
     }

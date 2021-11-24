@@ -53,8 +53,8 @@
                     </div>
                     <div style="flex: 0 0 33.333333%">
                         <fieldset>
-                            <a href="listaLembretes.php?pagina=1">
-                                <img name="Paciente" class="img-fluid" title="Lista de Lembretes" style="border-radius:25%;" src="./includes/img/Servicos.png" width="200px" height="200px">
+                            <a href="listaLembrete.php?pagina=1">
+                                <img name="Paciente" class="img-fluid" title="Lista de Lembretes" style="border-radius:25%;" src="./includes/img/lembrete.png" width="200px" height="200px">
 
                             </a>
                         </fieldset>
@@ -70,7 +70,7 @@
                     <div style="flex: 0 0 33.333333%">
                         <fieldset>
                             <a href="agendamento.php">
-                                <img name="Paciente" class="img-fluid" title="Agenda de Consultas" style="border-radius:25%;" src="./includes/img/agenda2.png" width="200px" height="200px">
+                                <img name="Paciente" class="img-fluid" title="Agenda de Consultas" style="border-radius:25%;" src="./includes/img/calendario2.png" width="200px" height="200px">
 
                             </a>
                         </fieldset>
@@ -93,24 +93,26 @@
 
             <div class="col-6 mt-2 p-2 bg-dark">
                 <h4 class="text-center text-white bg-dark">To-do-List</h4>
-                <div class="d-flex justify-content-center bg-dark text-white">
-                    <div class = "p-1">
-                        <label for="Filtro1">Filtro1</label>
-                        <input name="Filtro1" onchange="alerta()" type="radio" value="Teste"></input>
+                
+                <div class="d-flex justify-content-start bg-dark text-white">
+                <h4 class="text-center text-white bg-dark p-1">Filtros: </h4>
+                    <div class = "p-2">
+                        <label for="Filtro1">Consultas</label>
+                        <input name="Filtro1" onchange="preencherListaHome(1)" checked type="radio" value="Teste"></input>
                     </div>
-                    <div class = "p-1">
-                        <label for="Filtro1">Filtro2</label>
-                        <input name="Filtro1" onchange="alerta()" type="radio" value="Teste"></input>
+                    <div class = "p-2">
+                        <label for="Filtro1">Lembretes</label>
+                        <input name="Filtro1" onchange="preencherListaHome(2)" type="radio" value="Teste"></input>
                     </div>
-                    <div class = "p-1">
-                        <label for="Filtro1">Filtro3</label>
-                        <input name="Filtro1" onchange="alerta()" type="radio" value="Teste"></input>
+                    <div class = "p-2">
+                        <label for="Filtro1">Ambos</label>
+                        <input name="Filtro1" onchange="preencherListaHome(3)" type="radio" value="Teste"></input>
                     </div>
                 </div>
                 <div id="to_do_list" class="list-group overflow-auto rounded p-2 bg-light" style="min-height:500px;max-height:500px;">
 
 
-                  <a href="#" class="list-group-item list-group-item-action " aria-current="true">
+<!--                   <a href="#" class="list-group-item list-group-item-action " aria-current="true">
                         <div class="d-flex w-100 justify-content-between">
                             <h5 class="mb-1">Sem Tarefas para hoje por enquanto</h5>
                             <small>Today</small>
@@ -165,7 +167,7 @@
                         </div>
                         <p class="mb-1">Caso ainda não tenha feito, alimente o banco </p>
                         <small>Em caso de erro gritar é contra indicado.</small>
-                    </a> 
+                    </a> --> 
 
                 </div>
             </div>

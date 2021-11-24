@@ -45,6 +45,30 @@ $num_registros_totais = count($registros_totais);
 
 $num_pagina = ceil($num_registros_totais / $itens_por_pagina);
 
+/* echo "<pre>"; print_r($pacientes); echo "<pre>";exit; */
+
+$resultados = '';
+foreach ($pacientes as $p) {
+    $resultados .= '<tr> '
+        . '<td> ' . $p->prontuario . '</td>'
+        . '<td> ' . $p->nomePaciente . '</td>'
+        . '<td> ' . $p->sexo . '</td>'
+        . '<td> ' . $p->telefone . '</td>'
+        . '<td> ' . $p->email . '</td>'
+        . '<td> 
+          <a href="editaPaciente.php?prontuario=' . $p->prontuario . '" 
+              class="btn btn-info" >Editar</a>
+              
+            <a href="prontuario.php?paciente=' . $p->prontuario . '"
+                class="btn btn-primary" >Abrir prontuário</a>
+         </td>
+         </tr>';
+}
+
+$resultados = strlen($resultados) ? $resultados :
+    '<tr>'
+    . '<td colspan = "6" class = "text-center"> Nenhum paciente encontrado</td>'
+    . '</tr>';
 
 include __DIR__ . '/includes/header.php';
 include __DIR__ . '/includes/formularioListaPaciente.php';
