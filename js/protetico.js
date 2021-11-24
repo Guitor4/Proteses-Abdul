@@ -145,7 +145,7 @@ function Consultas() {
         success: function(dados) {
             if (dados !== null && dados !== 'Sem resultados') {
                 
-                var tabela = '<thead><tr style="position:stick"><th>Consulta</th>\n\
+                var tabela = '<thead><tr><th>Consulta</th>\n\
                                     <th>Data</th>\n\
                                     <th>Hora</th>\n\
                                     <th>Status</th>\n\

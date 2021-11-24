@@ -4,7 +4,7 @@ require __DIR__.'/vendor/autoload.php';
 
 use Classes\Entity\Prontuario;
 use Dompdf\Dompdf;
-
+use Dompdf\Options;
 
 
 
@@ -20,14 +20,13 @@ if (isset($_GET['idProcedimento'])){ //cuidado com o id da protese
 } */  
 
 
-//use Dompdf\Options;
 
-//$options = new Options();
-//$options->setChroot(__DIR__);
-//$protese="";
-//$outros="";
+
+$options = new Options();
+$options->setChroot(__DIR__);
+
 if ($tratamento->idProcedimento==4){//se igual a protese
-    $t='<div>
+    $t='
         <h3>'.$tratamento->nomeProcedimento.'</h3>
         <label>Código: '.$tratamento->idProtese.'</label><br>
         <label>Tipo: '.$tratamento->tipo.'</label><br>
@@ -42,7 +41,7 @@ if ($tratamento->idProcedimento==4){//se igual a protese
         <label>Data de Registro: '.date('d/m/y h:i:s', strtotime($tratamento->dataRegistro)).'</label><br>
         <label>Status: '.$tratamento->status.'</label><br>
         <label>Observação:<textarea style="height: auto"> '.$tratamento->observacao.'</textarea></label><br>
-    </div>';
+        ';
     
 } else {
     $t='<div>
@@ -51,9 +50,13 @@ if ($tratamento->idProcedimento==4){//se igual a protese
     </div>';
 }
 
-$dompdf = new Dompdf();
+
+
+$dompdf = new Dompdf($options);
 
 //$dompdf->loadHtmlFile(__DIR__.'/montaPDF.php');
+
+$logo='/includes/img/DL_Logo_wStrap_Black-01.png';
 $dompdf->loadHtml('
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -66,11 +69,22 @@ $dompdf->loadHtml('
         label{
         font-size: 14
         }
+        .page{
+            margin-left:90%;
+            }
+        .page:after{
+            content: counter(page);
+            }
+            
+        #tratamento{
+            position: relative;
+            margin: auto;
+        }
         </style>
     </head>
     <body>
     <div>
-         <img src="./includes/img/DL_Logo_wStrap_Black-01.png" width="200" height="100"> 
+        <p style="text-align:center;"> <img src="'.__DIR__.$logo.'"width="200" height="100" > </p>
     
    <div>
         <label>Prontuário: '.$tratamento->prontuario.'</label><br>
@@ -80,7 +94,7 @@ $dompdf->loadHtml('
         <label>E-mail: '.$tratamento->email.'</label>  
     </div>
     
-    <hr><br>
+    <hr>
     
     
         <h1 style="text-align:center" >Consulta '.$tratamento->idConsulta.'</h1>
@@ -93,13 +107,25 @@ $dompdf->loadHtml('
             Relatório:<textarea style="height: auto"> '.$tratamento->relatorio.'</textarea><br>
             </div>
     
-    <hr><br>
+    <hr>
     
         <h1 style="text-align:center" >Tratamento</h1>
    
-    '.$t.'
+        <div id="tratamento">'.$t.'</div>
+        <div style="page-break-after: always"></div>
+
+    <footer style="position: fixed; bottom:0; width: 100%; border-top: 1px solid gray;">
+    
+        <span>Denture Logic - Customised Denture Care</span><br>
+        <span>Telefone:(61)9999-0000</span><br>
+        <span>Protético:Abdul Abdul</span><br>
+        <span>'. date('d/m/Y H:i:s').'</span><br>
+        <span class="page">Página<span>
+        
+    </footer>
     
 </body>
+
 </html>');
 
 
