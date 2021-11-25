@@ -71,19 +71,26 @@ $dompdf->loadHtml('
         }
         .page{
             margin-left:90%;
+            position: relative;
+            bottom:0
+            
             }
         .page:after{
             content: counter(page);
             }
             
         #tratamento{
+            padding-bottom:60px;
             position: relative;
             margin: auto;
+            margin-bottom:50px
+           
         }
         </style>
     </head>
     <body>
-    <div>
+    
+    
         <p style="text-align:center;"> <img src="'.__DIR__.$logo.'"width="200" height="100" > </p>
     
    <div>
@@ -109,11 +116,6 @@ $dompdf->loadHtml('
     
     <hr>
     
-        <h1 style="text-align:center" >Tratamento</h1>
-   
-        <div id="tratamento">'.$t.'</div>
-        <div style="page-break-after: always"></div>
-
     <footer style="position: fixed; bottom:0; width: 100%; border-top: 1px solid gray;">
     
         <span>Denture Logic - Customised Denture Care</span><br>
@@ -124,8 +126,14 @@ $dompdf->loadHtml('
         
     </footer>
     
+        <h1 style="text-align:center" >Tratamento</h1>
+        
+        <div id="tratamento">'.$t.'</div>
+            
+        
+    
 </body>
-
+    
 </html>');
 
 
