@@ -39,10 +39,11 @@
                             <label><strong class="text-info">Quantidade de dentes: </strong><?= $objProtese->qtdDente ?></label>
                         </div>
                         <div class="form-group">
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width:<?=$progresso?>;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><?=$objProtese->status?></div>
-                            </div>
+
                             <label><strong class="text-info">Status:</strong> <?= $objProtese->status ?></label>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width:<?= $progresso ?>;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><?= $progresso ?></div>
+                            </div>
 
                         </div>
                         <div class="form-group">

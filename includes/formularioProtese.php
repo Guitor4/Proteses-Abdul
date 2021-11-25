@@ -13,7 +13,7 @@
     </main>
     <div class="col-8 offset-2">
 
-        <div class="p-3 bg-dark" style = "border-radius:25px">
+        <div class="p-3 bg-dark" style="border-radius:25px">
             <div class="border border-white rounded p-3">
                 <h3 style="text-align: center; color: white"><?= TITLE ?></h3>
                 <form method="post" style="color: white">
@@ -75,7 +75,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group mt-2">
+                            <div class="form-group mt-2" <?= (TITLE == 'Editar Protese' ? 'hidden = hidden' : '') ?>>
                                 <label>Paciente</label>
                                 <select <?= (isset($_GET['prontuario']) ? 'readonly' : '') ?> class="form-control" name="paciente">
                                     <option hidden>-----Selecione o Paciente------</option>
@@ -93,6 +93,15 @@
                                     ?>
 
                                 </select>
+                                <div class="form-group">
+                                    <label>Status</label>
+                                    <select>
+                                        <option>Cadastrada</option>
+                                        <option>Em produção</option>
+                                        <option>Em trânsito</option>
+                                        <option>Finalizada</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -108,6 +117,5 @@
                 </form>
             </div>
         </div>
-
     </div>
 </div>

@@ -92,7 +92,7 @@ class Protese{
                                 'status'=> $this->status,
                                 'observacao'=> $this->observacao,
     
-            ])[1];
+            ]);
     }
 
     /**

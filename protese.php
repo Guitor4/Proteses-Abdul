@@ -9,17 +9,21 @@ $objProtese = Protese::getProtesePaciente($_GET['idProtese']);
 /* echo "<pre>"; print_r($objProtese); echo "<pre>";exit; */
 
 
-define('TITLE',$objProtese->nomePaciente);
+define('TITLE', $objProtese->nomePaciente);
 
-switch ($objProtese->status){
+switch ($objProtese->status) {
     case 'Cadastrada':
         $progresso = '25%';
+        break;
     case 'Produção':
         $progresso = "50%";
-    case 'Com terceiros' :
+        break;
+    case 'Com terceiros':
         $progresso = "75%";
+        break;
     case 'Entregue':
-        $progresso = "100%";        
+        $progresso = "100%";
+        break;
 }
 
 include __DIR__ . '/includes/header.php';

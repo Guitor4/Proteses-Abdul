@@ -50,6 +50,7 @@ $where = implode(' AND ', $condicoes);
         $registros_totais = $proteses = $objProtese->getProtesesPaciente($where);
         /* echo "<pre>"; print_r($proteses); echo "<pre>";exit; */
     }
+    /* echo "<pre>"; print_r($registros_totais); echo "<pre>";exit; */
     //Roda o método getProteses que está localizado em Protese.php para trazer todos os registros do banco no formato de um array de objetos.
     if(strlen($where)){
 

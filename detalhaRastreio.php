@@ -47,7 +47,7 @@ if (isset($_POST['cadastrarRastreio'])) {
         unset($_POST['cadastrarRastreio']);
         
         $rastreio->cadastrarRastreio();
-        $terceirizado->cadastrarTerceirizado();
+        
         
         header ('Location: listaRastreio.php?status=success');
 
