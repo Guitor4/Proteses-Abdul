@@ -1,12 +1,12 @@
 <div class="container-fluid ">
     <section>
-        <a href="Consulta.php?id=<?= $_GET['idConsulta'] ?>" .>
+        <a href="pesquisarProtese.php?pagina=1" .>
             <button class="btn btn-success mt-4">Retornar</button>
         </a>
 
     </section>
     <div class="d-flex justify-content-center mt-5">
-        <div class="col-6">
+        <div class="col-8">
             <div class="text-white  bg-gradient border border-primary p-5 rounded-3" style="background-color:black;border-width: 10px;">
                 <div>
                     <h3 style="text-align: center;">Prótese de <?= TITLE ?></h3>

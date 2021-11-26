@@ -6,6 +6,7 @@ include __DIR__.'./includes/sessionStart.php';
 
 use \Classes\Entity\Protese;
 use \Classes\Entity\Paciente;
+use Classes\Entity\MarcaDente;
 
 define('TITLE', 'Cadastrar Prótese');
 define('BTN', 'cadastrarProtese');
@@ -23,6 +24,10 @@ if (isset($_GET['prontuario'])) {
 } else {
     $pacientes = paciente::getPacientes();
 }
+
+$marcas = MarcaDente::getMarcas();
+/* echo "<pre>"; print_r($marcas); echo "<pre>";exit; */
+
 /* echo "<pre>"; print_r($pacientes); echo "<pre>";exit; */
 $objProtese = new Protese;
 /* if (isset($_POST['cadastrarProtese'])){

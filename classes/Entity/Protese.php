@@ -84,11 +84,11 @@ class Protese{
                                 //que está sendo montada em db.php->insertSQL.
                                 'tipo' => $this->tipo,
                                 'posicao'=> $this->posicao,
-                                'marcaDente'=> $this->marca,
+                                'extensao'=> $this->extensao,
+                                'marcaDente'=> $this->marcaDente,
                                 'qtdDente'=> $this->qtdDente,
                                 'ouro'=> $this->ouro,
                                 'qtdOuro'=> $this->qtdOuro,
-                                'dataRegistro'=> $this->dataRegistro,
                                 'status'=> $this->status,
                                 'observacao'=> $this->observacao,
     

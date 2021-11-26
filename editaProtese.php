@@ -2,9 +2,10 @@
 //faz o require do autoload composer, para carregar automaticamente as principais classes do nosso projeto,  
 //assim só sendo necessário o uso de um "use \classe" para chamá-la (válido somente para arquivos da pasta classes).
 require __DIR__ . '/vendor/autoload.php';
-include __DIR__.'./includes/sessionStart.php';
+include __DIR__ . './includes/sessionStart.php';
 
 use \Classes\Entity\Protese;
+use Classes\Entity\MarcaDente;
 
 define('TITLE', 'Editar Protese');
 define('IDENTIFICACAO', '0');
@@ -16,7 +17,7 @@ if (!isset($_GET['id']) or !is_numeric($_GET['id'])) {
 $objProtese = Protese::getProtesePaciente($_GET['id']);
 /* echo "<pre>"; print_r($objProtese); echo "<pre>";exit; */
 
-
+$marcas = MarcaDente::getMarcas();
 
 //echo "<pre>"; print_r($objProtese); echo "<pre>";exit;
 
@@ -40,15 +41,21 @@ if (isset($_POST['tipo'], $_POST['qtdDentes'], $_POST['paciente'])) {
     $objProtese->posicao = $_POST['posicao'];
     $objProtese->extensao = $_POST['extensao'];
     $objProtese->qtdDente = $_POST['qtdDentes'];
+    $objProtese->marcaDente = $_POST['marca'];
     $objProtese->ouro = ($_POST['ouroDente'] == "on" ? "sim" : "nao");
     $objProtese->qtdOuro = (isset($_POST['qtdOuro']) ? $_POST['qtdOuro'] : 0);
     $objProtese->paciente = $_POST['paciente'];
-    $objProtese->status = 'Cadastrada';
+    $objProtese->status = $_POST['status'];
     $objProtese->observacao = $_POST['observacao'];
-    //Executa a função cadastrar que está localizada na classe "Protese".
-    $objProtese->atualizarProtese('idProtese ='.$_GET['id']);
 
-    header('Location: index.php?status=success');
+    /* echo "<pre>"; print_r($objProtese); echo "<pre>";exit; */
+    //Executa a função cadastrar que está localizada na classe "Protese".
+    $objProtese->atualizarProtese('idProtese =' . $_GET['id']);
+    if ($objProtese->idProtese > 0) {
+        header('Location: pesquisarProtese.php?pagina=1&status=success2&id=' . $objProtese->idProtese);
+    } else {
+        header('Location: pesquisarProtese.php?pagina=1&status=error2');
+    }
     //Caso a função cadastrar rode sem problemas, obrigatóriamente o valor do $objProtese->id será preenchido
     //Assim fazendo uma validação por meio dessa variável, e passando isso pro url da página.
     /*     if ($objProtese->id > 0){

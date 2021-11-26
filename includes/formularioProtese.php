@@ -51,7 +51,11 @@
                             <div class="form-group">
                                 <label>Marca do dente</label>
                                 <select class="form-control" name="marca">
-                                    <option hidden="hidden">[SELECIONE]</option>
+                                    <?php
+                                    foreach ($marcas as $m) {
+                                        echo "<option>" . $m->nomeMarca . "</option>";
+                                    }
+                                    ?>
                                 </select>
                             </div>
                         </div>
@@ -93,29 +97,30 @@
                                     ?>
 
                                 </select>
-                                <div class="form-group">
-                                    <label>Status</label>
-                                    <select>
-                                        <option>Cadastrada</option>
-                                        <option>Em produção</option>
-                                        <option>Em trânsito</option>
-                                        <option>Finalizada</option>
-                                    </select>
-                                </div>
+                            </div>
+                            <div class="form-group mt-2" <?= (TITLE == 'Editar Protese' ? '' : '') ?>>
+                                <label>Status</label>
+                                <select name = "status" class="form-control">
+                                    <option>Cadastrada</option>
+                                    <option>Em produção</option>
+                                    <option>Em trânsito</option>
+                                    <option>Finalizada</option>
+                                </select>
                             </div>
                         </div>
                     </div>
+            
 
-                    <label>Observações</label>
-                    <textarea name="observacao" class="form-control" rows="3"><?= $objProtese->observacao ?></textarea>
-                    <div class="d-flex justify-content-center p-2">
+            <label>Observações</label>
+            <textarea name="observacao" class="form-control" rows="3"><?= $objProtese->observacao ?></textarea>
+            <div class="d-flex justify-content-center p-2">
 
-                        <input type="submit" name="<?= BTN ?>" class="  btn btn-lg btn-success btInput" style="width:20%" value="<?= (TITLE == "Cadastrar Prótese" ? 'Cadastrar' : 'Editar') ?>" <?php //if ($btEnviar == TRUE) echo "disabled";
-                                                                                                                                                                                                    ?>>
+                <input type="submit" name="<?= BTN ?>" class="  btn btn-lg btn-success btInput" style="width:20%" value="<?= (TITLE == "Cadastrar Prótese" ? 'Cadastrar' : 'Editar') ?>" <?php //if ($btEnviar == TRUE) echo "disabled";
+                                                                                                                                                                                            ?>>
 
-                    </div>
-                </form>
             </div>
+            </form>
         </div>
     </div>
+</div>
 </div>
