@@ -25,7 +25,7 @@ if (isset($_GET['idProcedimento'])){ //cuidado com o id da protese
 $options = new Options();
 $options->setChroot(__DIR__);
 
-if ($tratamento->idProcedimento==4){//se igual a protese
+if ($tratamento->idProcedimento==3){//se igual a protese
     $t='
         <h3>'.$tratamento->nomeProcedimento.'</h3>
         <label>Código: '.$tratamento->idProtese.'</label><br>
@@ -61,7 +61,7 @@ $dompdf->loadHtml('
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
-        <title>Tratamento-'.$tratamento->nomePaciente.'</title>
+        <title>'.$tratamento->nomePaciente.'-Consulta'.$tratamento->idConsulta.'</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
@@ -92,7 +92,7 @@ $dompdf->loadHtml('
     
     
         <p style="text-align:center;"> <img src="'.__DIR__.$logo.'"width="200" height="100" > </p>
-    
+            
    <div>
         <label>Prontuário: '.$tratamento->prontuario.'</label><br>
         <label>Paciente: '.$tratamento->nomePaciente.'</label><br>
@@ -143,10 +143,11 @@ $dompdf->render();
 
 //mostra o pdf na pagina
 header('Content-type: application/pdf');
-echo $dompdf->output();
 
+$dompdf->stream($tratamento->nomePaciente."_".date('H:i:s').".pdf",["Attachment"=>false]);
+//echo $dompdf->output();
 //faz download do pdf
-//$dompdf->stream('consulta.pdf',["Attachment=>false"]);
+
 
 //salvar arquivo no disco diretamente no servidor.
 //file_put_contents(__DIR__.'/arquivoPDF.pdf',$dompdf->output() );

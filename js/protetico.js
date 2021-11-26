@@ -65,14 +65,14 @@ function loadDados(){
                                     <label>Telefone: </label><input readonly type="text" class="form-control"  value="'+t+'">\n\
                                     <label>E-mail: </label><input readonly type="text" class="form-control"  value="'+e+'">\n\
                                 </div>\n\
-                                <div class="col-2 offset-1 mt-5" >\n\
+                                <div class="col-2 mt-5" >\n\
                                     <img src="./includes/img/usuario.png" alt="" width="150" height="100">\n\
-\n\                                 <form method="post" action="prontuario.php" enctype="multipart/form-data">\n\
+                                 <form method="post" action="prontuario.php?paciente='+p+'" enctype="multipart/form-data">\n\
                                         <label>Nome: </label><br>\n\
-                                        <input type="text" name="nome"><br>\n\
+                                        <input type="text" name="nome" placeholder="perfil_'+p+'" required><br>\n\
                                         <input type="file" name="fotoPerfil"><br>\n\
                                         <input type="submit" name="cadFotoPerfil" value="Cadastrar">\n\
-\n\                                 </form>\n\
+                                 </form>\n\
                                 </div>\n\
                               </div>';
                 
@@ -118,10 +118,12 @@ function Dados_Cadastrais() {
                                 </div>\n\
                                 <div class="col-2 offset-1 mt-5">\n\
                                    <img src="./includes/img/usuario.png" alt="" width="150" height="100">\n\
-                                   <form method="post" action="prontuario.php" enctype="multipart/form-data">\n\
+                                   <form method="post" action="prontuario.php?paciente='+p+'" enctype="multipart/form-data">\n\
+                                        <label>Nome: </label><br>\n\
+                                        <input type="text" name="nome" placeholder="perfil_'+p+'" required><br>\n\
                                         <input type="file" name="fotoPerfil"><br>\n\
                                         <input type="submit" name="cadFotoPerfil" value="Cadastrar">\n\
-\n\                                 </form>\n\
+                                 </form>\n\
                                 </div>\n\
                               </div>';
                 
