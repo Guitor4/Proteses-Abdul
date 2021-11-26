@@ -32,9 +32,9 @@
 
 <div class="container-fluid">
 
-    <div class="row">
+    <div class="d-flex justify-content-center">
 
-        <div class="col-12 mt-2">
+        <div class="col-8 mt-2">
 
             <table class="table bg-light table-striped table-hover mt-1 table-responsive">
                 <thead class="table-dark">

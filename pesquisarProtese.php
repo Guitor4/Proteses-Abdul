@@ -39,7 +39,13 @@ $where = implode(' AND ', $condicoes);
     if (isset($_GET['idConsulta'],$_GET['idProcedimento'],$_GET['prontuario']) && is_numeric($_GET['idConsulta'])&& 
     is_numeric($_GET['idProcedimento'])&& is_numeric($_GET['prontuario']) && $_GET['idConsulta'] > 0 && $_GET['idProcedimento'] > 0 && $_GET['prontuario'] > 0){
         
-        $registros_totais =  $proteses = $objProtese->getProtesesPaciente('fkConsultaT ='.$_GET['idConsulta']);
+        $registros_totais =  $proteses = $objProtese->getProtesesPaciente('fkConsultaT ='.$_GET['idConsulta'],'
+        CASE
+        WHEN status = "Cadastrada" THEN CHAR(1)
+        WHEN status = "Em produção" THEN CHAR(2)
+        WHEN status = "Com terceiros" THEN CHAR(3)
+        WHEN status = "Entregue" THEN CHAR(4)
+        ELSE status END');
         /* echo "<pre>"; print_r($proteses); echo "<pre>";exit; */
         if ($proteses == null ){
             /* echo "<pre>"; print_r('testando'); echo "<pre>";exit; */
@@ -47,7 +53,13 @@ $where = implode(' AND ', $condicoes);
             
         }
     }else{
-        $registros_totais = $proteses = $objProtese->getProtesesPaciente($where);
+        $registros_totais = $proteses = $objProtese->getProtesesPaciente($where,'
+        CASE
+        WHEN status = "Cadastrada" THEN CHAR(1)
+        WHEN status = "Em produção" THEN CHAR(2)
+        WHEN status = "Com terceiros" THEN CHAR(3)
+        WHEN status = "Entregue" THEN CHAR(4)
+        ELSE status END');
         /* echo "<pre>"; print_r($proteses); echo "<pre>";exit; */
     }
     /* echo "<pre>"; print_r($registros_totais); echo "<pre>";exit; */
@@ -78,8 +90,7 @@ $where = implode(' AND ', $condicoes);
 
                             <td >' . $protese->idProtese . '</td>
                             <td>' . $protese->nomePaciente . '</td>
-                            <td>' . $protese->tipo . '</td>
-                            <td>' . $protese->extensao . '</td>
+                            <td>' . $protese->status . '</td>
                             <td>' . $protese->marcaDente . '</td>
                             <td>' . $protese->qtdDente . '</td>
                             <td>' . ($protese->ouro == 'sim' ? 'Sim' : 'Não') . '</td>
@@ -90,7 +101,7 @@ $where = implode(' AND ', $condicoes);
                             <button class = "btn btn-primary">Editar</button>
                             </a>
                             <a href = "protese.php?idProtese='.$protese->idProtese.'">
-                            <button class = "btn btn-primary">Visualizar Prótese</button>
+                            <button class = "btn btn-primary">Detalhes</button>
                             </a>
                             </td>
 

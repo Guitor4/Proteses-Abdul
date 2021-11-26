@@ -33,6 +33,7 @@ function Calendario() {
           options +=
             "<option value='' hidden >Sem horários disponíveis</option>";
           $("#horarios").html(options).show();
+          
         }
         /* return teste2; */
       },
@@ -95,6 +96,7 @@ function Calendario() {
 
           a = getHorarios(info.dateStr);
           document.getElementById("datepicker").value = info.dateStr;
+          
 
           if (a) {
             click("botaoModal");

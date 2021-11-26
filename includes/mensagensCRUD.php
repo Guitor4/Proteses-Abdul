@@ -6,7 +6,7 @@ if (isset($_GET, $_GET['status'], $_GET['id']) && is_string($_GET['status']) && 
       echo "<script>
             Swal.fire({
               title: '".NAME ." n° " .$_GET['id']. " cadastrada com sucesso!!',
-              text: \"Caso haja alguma alteração a ser feita, utilize o botão corrigir\",
+              text: \"Caso haja alguma alteração a ser feita, utilize o botão editar/corrigir\",
               icon: 'success',
               confirmButtonColor: '#3085d6',
               confirmButtonText: 'Ok'
@@ -24,7 +24,7 @@ if (isset($_GET, $_GET['status'], $_GET['id']) && is_string($_GET['status']) && 
       echo "<script>
             Swal.fire({
               title: '".NAME ." n° " .$_GET['id']. " editada com sucesso!!',
-              text: \"Caso haja alguma alteração a ser feita, utilize o botão corrigir\",
+              text: \"Caso haja alguma alteração a ser feita, utilize o botão editar/corrigir\",
               icon: 'success',
               confirmButtonColor: '#3085d6',
               confirmButtonText: 'Ok'

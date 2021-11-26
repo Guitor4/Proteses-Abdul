@@ -36,6 +36,7 @@ function getHorarios(valor) {
     type: "POST",
     dataType: "json",
     url: "horarios.php?data=" + valorAjax,
+    async: true,
     success: function (dados) {
       var options = "";
       if (dados != null) {
@@ -43,7 +44,8 @@ function getHorarios(valor) {
           options += "<option>" + dados[i].horario + "</option>";
         }
         options += "<option value='' hidden >Sem horários disponíveis</option>";
-        $("#horarios").html(options).show();
+        $("#horarios").html(options);
+        $('.selectpicker').selectpicker('refresh');
       }
     },
   });

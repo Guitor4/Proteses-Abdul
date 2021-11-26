@@ -101,10 +101,10 @@
                             <div class="form-group mt-2" <?= (TITLE == 'Editar Protese' ? '' : '') ?>>
                                 <label>Status</label>
                                 <select name = "status" class="form-control">
-                                    <option>Cadastrada</option>
-                                    <option>Em produção</option>
-                                    <option>Em trânsito</option>
-                                    <option>Finalizada</option>
+                                    <option <?=($objProtese->status == 'Cadastrada' ? ' selected = selected' : '')?>>Cadastrada</option>
+                                    <option <?=($objProtese->status == 'Em produção' ? ' selected = selected' : '')?>>Em produção</option>
+                                    <option <?=($objProtese->status == 'Com terceiros' ? ' selected = selected' : '')?>>Com terceiros</option>
+                                    <option <?=($objProtese->status == 'Entregue' ? ' selected = selected' : '')?>>Entregue</option>
                                 </select>
                             </div>
                         </div>

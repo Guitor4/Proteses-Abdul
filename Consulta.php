@@ -135,10 +135,15 @@ if (isset($_POST['Finalizar'])) {
                 <meta http-equiv=\"refresh\" content=\"5;url=Consulta.php?id=" . $_GET['id'] . "\" />
                 ";
             } else {
-                echo '<pre>';
-                print_r('Houve um erro na inserção do tratamento. Provavelmente o procedimento já foi cadastrado nessa consulta anteriormente');
-                echo '<pre>';
-                exit;
+                print("<script>
+             Swal.fire({
+               title: 'Houve um erro ao finalizar a " . NAME . "!!',
+               text: \"Algo ocorreu, tente novamente!!\",
+               icon: 'error',
+               confirmButtonColor: '#3085d6',
+               confirmButtonText: 'Ok'
+             })
+             </script>");
             }
         }
     } else {

@@ -39,7 +39,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Hora da Consulta</label>
-                                    <select class="form-control" name="horarios" id="horarios">
+                                    <select class="selectpicker form-control" name="horarios" id="horarios" data-live-search="true" data-size=5>
                                         <option hidden="hidden">---[SELECIONE UMA DATA]---</option>
                                     </select>
                                 </div>

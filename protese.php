@@ -15,7 +15,7 @@ switch ($objProtese->status) {
     case 'Cadastrada':
         $progresso = '25%';
         break;
-    case 'Produção':
+    case 'Em produção':
         $progresso = "50%";
         break;
     case 'Com terceiros':

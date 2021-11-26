@@ -29,8 +29,7 @@
 
                     <th scope="col">ID</th>
                     <th scope="col">Paciente</th>
-                    <th scope="col">Tipo</th>
-                    <th scope="col">Extensão</th>
+                    <th scope="col">Status</th>
                     <th scope="col">Marca</th>
                     <th scope="col">qtdDentes</th>
                     <th scope="col">Ouro</th>

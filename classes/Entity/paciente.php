@@ -41,7 +41,7 @@ class Paciente {
                         updateSQL('prontuario= ' .$this->prontuario,[
                                                             'nomePaciente' => $this->nomePaciente,
                                                             'sexo' => $this->sexo,
-                                                            'tel' => $this->tel,
+                                                            'telefone' => $this->tel,
                                                             'email' => $this->email
                                                         ]);
     }
