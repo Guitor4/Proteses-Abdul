@@ -56,6 +56,7 @@ function loadDados(){
                     s=dados[i].sexo;
                     t=dados[i].telefone;
                     e=dados[i].email;
+                    i=dados[i].img;
                 }
                 var labels = '<div class="row">\n\
                                 <div class="col-8 mt-2">\n\
@@ -66,12 +67,11 @@ function loadDados(){
                                     <label>E-mail: </label><input readonly type="text" class="form-control"  value="'+e+'">\n\
                                 </div>\n\
                                 <div class="col-2 mt-5" >\n\
-                                    <img src="./includes/img/usuario.png" alt="" width="150" height="100">\n\
+                                 <img src="'+i+'" alt="" width="150" height="100">\n\
                                  <form method="post" action="prontuario.php?paciente='+p+'" enctype="multipart/form-data">\n\
-                                        <label>Nome: </label><br>\n\
-                                        <input type="text" name="nome" placeholder="perfil_'+p+'" required><br>\n\
-                                        <input type="file" name="fotoPerfil"><br>\n\
+                                        <input type="file" name="imagem"><br>\n\
                                         <input type="submit" name="cadFotoPerfil" value="Cadastrar">\n\
+                                        <input type="submit" name="edFotoPerfil" value="Atualizar">\n\
                                  </form>\n\
                                 </div>\n\
                               </div>';

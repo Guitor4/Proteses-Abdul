@@ -12,16 +12,19 @@ use \PDO;
 
 class Imagem {
     public $idImagem;
-    public $nome;
+    public $titulo;
     public $img;
+    public $fkProntuario;
     
     
     public function CadastrarImagem($pac) {
         
         $db = new db('imagem');
         $this->idImagem = $db->insertSQL([
-            'nome' => $this->nome,
+            'titulo' => $this->titulo,
             'img' => $this->img,
+            'fkProntuario' => $this->fkProntuario,
+            
             
             
         ])[1]; //echo'<pre>';print_r($this);echo'</pre>';exit;
@@ -30,6 +33,16 @@ class Imagem {
         } else {
             header('Location: prontuario.php?paciente='.$pac.'&status=error');
         }
+    }
+    
+    public function EditarImagem() {
+        return (new db('imagem'))->
+                        updateSQL('idImagem= ' . $this->idImagem, [
+                            'titulo' => $this->titulo,
+                            'img' => $this->img,
+                            'fkProntuario' => $this->fkProntuario,
+                            
+        ]);
     }
     
 }
