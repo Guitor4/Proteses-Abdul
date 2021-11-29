@@ -6,6 +6,7 @@ define('TITLE', 'Cadastrar Paciente');
 define('BTN', 'cadastrarPaciente');
 
 use Classes\Entity\paciente;
+//use Classes\Entity\Imagem;
 
 $paciente = new paciente();
 
@@ -21,6 +22,11 @@ if (isset($_POST['cadastrarPaciente'])) {
         unset($_POST['cadastrarPaciente']);
         
         $paciente->cadastrarPaciente();
+//        echo "<pre>"; print_r($paciente); echo "</pre>";exit;
+//        $img= new Imagem();
+//        $img->titulo ="perfil_";
+//        $img->img ="./Imagens/usuario.png";
+//        $img->fkProntuario ="";
         
         header ('Location: listaPaciente.php?status=success');
 

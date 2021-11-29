@@ -37,12 +37,21 @@ class Imagem {
     
     public function EditarImagem() {
         return (new db('imagem'))->
-                        updateSQL('idImagem= ' . $this->idImagem, [
+                        updateSQL('idImagem='. $this->idImagem, [
                             'titulo' => $this->titulo,
                             'img' => $this->img,
                             'fkProntuario' => $this->fkProntuario,
-                            
         ]);
     }
+    
+//    public static function getImagem($pesq) {
+//
+//
+//        return $db = (new db)->executeSQL('SELECT * FROM imagem '
+//                        . 'inner JOIN paciente on fkProntuario=prontuario '
+//                        . 'where fkProntuario='.$pesq. ' and titulo like "%perfil%"')
+//                ->fetchObject(self::class);
+//    }
+    
     
 }
