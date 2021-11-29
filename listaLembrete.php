@@ -19,7 +19,7 @@ $busca = filter_input(INPUT_POST, 'busca', FILTER_SANITIZE_STRING);
 
 isset($_SESSION['pesquisa']) ? $pesquisa = $_SESSION['pesquisa'] : $pesquisa = $busca;
 if ($pesquisa != null) {
-  header('location: listaLembretes.php?pagina=1&search=' . $pesquisa);
+  header('location: listaLembrete.php?pagina=1&search=' . $pesquisa);
 }
 isset($_GET['search']) ? $search = $_GET['search'] : $search = '';
 
@@ -51,7 +51,7 @@ $num_pagina = ceil($num_registros_totais / $itens_por_pagina);
 
 $resultados = '';
 foreach ($lembretes as $l) {
-  $resultados .= '<tr style="height:80px"> '
+  $resultados .= '<tr> '
     . '<td> ' . $l->idLembrete . '</td>'
     . '<td> ' . $l->titulo . '</td>'
     . '<td style = "max-width:200px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;

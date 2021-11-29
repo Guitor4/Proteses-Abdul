@@ -1,7 +1,8 @@
 <?php
 
 require __DIR__ . '/vendor/autoload.php';
-include __DIR__.'./includes/sessionStart.php';
+include __DIR__ . './includes/sessionStart.php';
+
 use \Classes\Entity\Funcionario;
 
 define('TITLE', 'Editar Funcionário');

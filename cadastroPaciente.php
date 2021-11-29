@@ -24,7 +24,7 @@ if (isset($_POST['cadastrarPaciente'])) {
 
         if ($paciente->prontuario > 0) {
             header('Location: listaPaciente.php?pagina=1&status=success1&id=' . $paciente->prontuario[1]);
-        }else{
+        } else {
             header('Location: listaPaciente.php?pagina=1&status=error1');
         }
         //echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"3;

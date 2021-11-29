@@ -52,7 +52,7 @@ foreach ($marcas as $m) {
     $resultados .= '<tr> '
         . '<td> ' . $m->idMarcaDente . '</td>'
         . '<td> ' . $m->nomeMarca . '</td>'
-        . '<td> ' . $m->descricao . '</td>'
+        . '<td style = "max-width:200px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;"> ' . $m->descricao . '</td>'
         . '<td> 
           <a href="editaMarcaDente.php?prontuario=' . $m->idMarcaDente . '" 
               class="btn btn-info" >Editar</a>

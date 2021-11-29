@@ -34,7 +34,7 @@ switch ($GET) {
         define('TABELA', 'funcionario');
         break;
     case 4:
-        define('CAMPO', 'nomePaciente,prontuario,idProtese,idConsulta');
+        define('CAMPO', 'nomePaciente');
         $autoCompletar = (strlen($autoCompletar) ? "WHERE nomepaciente   LIKE '%" . $autoCompletar . "%' OR  prontuario LIKE '%" . $autoCompletar . "%'  " : '');
         $query = 'select distinct * from paciente inner join consulta on prontuario = fkProntuario inner join protese on fkConsultaT = idConsulta ' . $autoCompletar;
         break;
@@ -56,9 +56,10 @@ switch ($GET) {
         define('TABELA', 'servicoTerceiro');
         break;
     case 9:
-            define('CAMPO', 'nomeServico,nomeTerceiro');
-            $autoCompletar = (strlen($autoCompletar) ? "WHERE nomeServico   LIKE '%" . $autoCompletar . "%' OR  nomeTerceiro LIKE '%" . $autoCompletar . "%' OR idServico   LIKE '%" . $autoCompletar . "%' OR  idTerceiro   LIKE '%" . $autoCompletar . "%'" : '');
-            $query = "select nomeTerceiro,nomeServico from terceiro inner join servicoterceiro inner join terceirizado on fkTerceiro = idTerceiro and fkServicoTerceiro = idServico ".$autoCompletar;
+        define('CAMPO', 'nomeServico,nomeTerceiro');
+        $autoCompletar = (strlen($autoCompletar) ? "WHERE nomeServico   LIKE '%" . $autoCompletar . "%' OR  nomeTerceiro LIKE '%" . $autoCompletar . "%' OR idServico   LIKE '%" . $autoCompletar . "%' OR  idTerceiro   LIKE '%" . $autoCompletar . "%'" : '');
+        $query = "select nomeTerceiro,nomeServico from terceiro inner join servicoterceiro inner join terceirizado on fkTerceiro = idTerceiro and fkServicoTerceiro = idServico " . $autoCompletar;
+        break;
 }
 
 $clause = explode(',', CAMPO);
@@ -88,15 +89,15 @@ $resultado_msg_cont = (new db())->executeSQL($query);
 
 $data = [];
 while ($row_msg_count = $resultado_msg_cont->fetch(PDO::FETCH_ASSOC)) {
-    if (!in_Array($row_msg_count[$clause[0]], $data)) {
-        $data[] = $row_msg_count[$clause[0]];
+    for ($x = 0; $x < $clause_count; $x++) {
+
+        if (!in_Array($row_msg_count[$clause[$x]], $data)) {
+            $data[] = $row_msg_count[$clause[$x]];
+        }
     }
-    if (!in_Array($row_msg_count[$clause[1]], $data)) {
-        $data[] = $row_msg_count[$clause[1]];
+    if ($data == null) {
+        $data = ['Sem Resultados'];
     }
-}
-if ($data == null) {
-    $data = ['Sem Resultados'];
 }
 /* $data = ['Sem resultados 1','Sem resultados 2']; */
 echo json_encode($data);

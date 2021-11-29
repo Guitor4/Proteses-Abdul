@@ -98,7 +98,7 @@
 
                                 </select>
                             </div>
-                            <div class="form-group mt-2" <?= (TITLE == 'Editar Protese' ? '' : '') ?>>
+                            <div class="form-group mt-2" <?= (TITLE == 'Editar Protese' ? '' : 'hidden=hidden') ?>>
                                 <label>Status</label>
                                 <select name = "status" class="form-control">
                                     <option <?=($objProtese->status == 'Cadastrada' ? ' selected = selected' : '')?>>Cadastrada</option>
@@ -112,7 +112,7 @@
             
 
             <label>Observações</label>
-            <textarea name="observacao" class="form-control" rows="3"><?= $objProtese->observacao ?></textarea>
+            <textarea name="observacao" class="form-control" placeholder = "Especificações sobre os dentes, comentários sobre a prótese, etc..." rows="3"><?= $objProtese->observacao ?></textarea>
             <div class="d-flex justify-content-center p-2">
 
                 <input type="submit" name="<?= BTN ?>" class="  btn btn-lg btn-success btInput" style="width:20%" value="<?= (TITLE == "Cadastrar Prótese" ? 'Cadastrar' : 'Editar') ?>" <?php //if ($btEnviar == TRUE) echo "disabled";
