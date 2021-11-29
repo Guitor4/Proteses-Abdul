@@ -5,7 +5,9 @@
     "license": "GPL-3.0-or-later",
     "authors": [{
         "name": "Guilherme Torquato",
-        "email": "guilhermetor10@gmail.com"
+        "email": "guilhermetor10@gmail.com",
+        "name": "Fernando Olímpio do Nascimento",
+        "email": "folimpio09@gmail.com"
     }],
     "autoload": {
         "psr-4": {

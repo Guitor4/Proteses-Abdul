@@ -7,6 +7,7 @@ define('BTN', 'cadastrarPaciente');
 define('IDENTIFICACAO', '0');
 
 use Classes\Entity\paciente;
+//use Classes\Entity\Imagem;
 
 $paciente = new paciente();
 
@@ -21,6 +22,13 @@ if (isset($_POST['cadastrarPaciente'])) {
         $paciente->email = $_POST['email'];
 
         $paciente->cadastrarPaciente();
+//        echo "<pre>"; print_r($paciente); echo "</pre>";exit;
+//        $img= new Imagem();
+//        $img->titulo ="perfil_";
+//        $img->img ="./Imagens/usuario.png";
+//        $img->fkProntuario ="";
+        
+        header ('Location: listaPaciente.php?status=success');
 
         if ($paciente->prontuario > 0) {
             header('Location: listaPaciente.php?pagina=1&status=success1&id=' . $paciente->prontuario[1]);

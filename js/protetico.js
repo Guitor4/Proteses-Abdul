@@ -45,7 +45,7 @@ function getHorarios(valor) {
         }
         options += "<option value='' hidden >Sem horários disponíveis</option>";
         $("#horarios").html(options);
-        $('.selectpicker').selectpicker('refresh');
+        $(".selectpicker").selectpicker("refresh");
       }
     },
   });
@@ -138,7 +138,7 @@ function preencherListaHome(x = 1, lista = "") {
               h +
               '</small></div><p class="mb-1">Status: ' +
               s +
-              "</p><small style = \"word-wrap: break-word;\">" +
+              '</p><small style = "word-wrap: break-word;">' +
               r +
               ".</small></a>";
             $("#to_do_list").html(lista);
@@ -200,6 +200,9 @@ function preencherListaHome(x = 1, lista = "") {
 //$(window).on("load",
 function loadDados() {
   var valorAjax = document.getElementById("aux").value;
+  //var urlImagem = document.getElementById('iUrl').value;
+  //var verificaFoto = document.getElementById('fotoCadastrada').value;
+  //console.log(verificaFoto);
 
   $("#apresenta_DadosCadastrais").html("<p>Aguardando...</p>");
   $.ajax({
@@ -208,17 +211,27 @@ function loadDados() {
     url: "prontuarioAbrirProntuario.php?prontuario=" + valorAjax,
     success: function (dados) {
       if (dados !== null) {
-        var p, n, s, t, e;
+        var p, n, s, t, e, urli, id;
         for (var i = 0; i < dados.length; i++) {
           p = dados[i].prontuario;
           n = dados[i].nomePaciente;
           s = dados[i].sexo;
           t = dados[i].telefone;
           e = dados[i].email;
+          urli = dados[i].img;
+          id = dados[i].idImagem;
+        }
+        var nome = urli.substring(10);
+        if (urli !== "./Imagens/usuario.png") {
+          var at = "hidden";
+          var del = "";
+        } else {
+          at = "";
+          del = "hidden";
         }
         var labels =
           '<div class="row">\n\
-                                <div class="col-8">\n\
+                                <div class="col-8 mt-2">\n\
                                     <label>Prontuário: </label><input readonly type="text" class="form-control"  value="' +
           p +
           '">\n\
@@ -235,8 +248,32 @@ function loadDados() {
           e +
           '">\n\
                                 </div>\n\
-                                <div class="col-2">\n\
-                                    <img src="./includes/img/usuario.png" alt="" width="150" height="100">\n\
+                                <div class="col-2 mt-5" >\n\
+                                <img src="' +
+          urli +
+          '" alt="" width="150" height="100">\n\
+                                 <form method="post" action="prontuario.php?paciente=' +
+          p +
+          '" enctype="multipart/form-data">\n\
+                                        <input hidden type="text" name="titulo" value="perfil_' +
+          p +
+          '">\n\
+                                        <input hidden type="text" name="idImg" value="' +
+          id +
+          '">\n\
+                                        <input hidden type="text" name="nome" value="' +
+          nome +
+          '">\n\
+                                        <input ' +
+          at +
+          ' type="file" name="imagem"><br>\n\
+\n                                     <input ' +
+          del +
+          ' type="submit" name="delFotoPerfil" value="Deletar">\n\
+                                        <input ' +
+          at +
+          ' type="submit" name="edFotoPerfil" value="Atualizar"><br>\n\
+                                 </form>\n\
                                 </div>\n\
                               </div>';
 
@@ -249,6 +286,7 @@ function loadDados() {
 function Dados_Cadastrais() {
   document.getElementById("apresenta_Consultas").innerHTML = "";
   document.getElementById("apresenta_Tratamentos").innerHTML = "";
+  document.getElementById("mostraTitulo").innerHTML = "";
   var valorAjax = document.getElementById("aux").value;
 
   $("#apresenta_DadosCadastrais").html("<p>Aguardando...</p>");
@@ -268,7 +306,7 @@ function Dados_Cadastrais() {
         }
         var labels =
           '<div class="row">\n\
-                                <div class="col-8">\n\
+                                <div class="col-8 mt-2">\n\
                                     <label>Prontuário: </label><input readonly type="text" class="form-control"  value="' +
           p +
           '">\n\
@@ -285,8 +323,18 @@ function Dados_Cadastrais() {
           e +
           '">\n\
                                 </div>\n\
-                                <div class="col-2">\n\
-                                    <img src="./includes/img/usuario.png" alt="" width="150" height="100">\n\
+                                <div class="col-2 offset-1 mt-5">\n\
+                                   <img src="./includes/img/usuario.png" alt="" width="150" height="100">\n\
+                                   <form method="post" action="prontuario.php?paciente=' +
+          p +
+          '" enctype="multipart/form-data">\n\
+                                        <label>Nome: </label><br>\n\
+                                        <input type="text" name="nome" placeholder="perfil_' +
+          p +
+          '" required><br>\n\
+                                        <input type="file" name="fotoPerfil"><br>\n\
+                                        <input type="submit" name="cadFotoPerfil" value="Cadastrar">\n\
+                                 </form>\n\
                                 </div>\n\
                               </div>';
 
@@ -303,6 +351,7 @@ function Dados_Cadastrais() {
 function Consultas() {
   document.getElementById("apresenta_DadosCadastrais").innerHTML = "";
   document.getElementById("apresenta_Tratamentos").innerHTML = "";
+  document.getElementById("mostraTitulo").innerHTML = "";
   var valorAjax = document.getElementById("aux").value;
 
   $("#apresenta_Consultas").html("<p>Aguardando...</p>");
@@ -311,32 +360,28 @@ function Consultas() {
     dataType: "json",
     url: "consultasAbrirProntuario.php?prontuario=" + valorAjax,
     success: function (dados) {
-      if (dados !== null) {
+      if (dados !== null && dados !== "Sem resultados") {
         var tabela =
           "<thead><tr><th>Consulta</th>\n\
                                     <th>Data</th>\n\
                                     <th>Hora</th>\n\
-                                    <th>relatório</th>\n\
                                     <th>Status</th>\n\
                                     <th>Clínica</th>\n\
                                     <th>Dentista</th>\n\
-                                    <th>Procedimento</th>\n\
+                                    <th>Ação</th>\n\
                                     </tr>\n\
                               </thead>";
         for (var i = 0; i < dados.length; i++) {
           tabela +=
             '<tbody><tr>\n\
-                                <td class "table-success" ><input class="btn btInput p- d-flex " value="' +
+                                <td class "table-success"> ' +
             dados[i].id +
-            '"></td>\n\
+            '</td>\n\
                                 <td class "table-success">' +
             dados[i].data +
             '</td>\n\
                                 <td class "table-success">' +
             dados[i].hora +
-            '</td>\n\
-                                <td class "table-success">' +
-            dados[i].relatorio +
             '</td>\n\
                                 <td class "table-success">' +
             dados[i].status +
@@ -347,69 +392,84 @@ function Consultas() {
                                 <td class "table-success">' +
             dados[i].dentista +
             '</td>\n\
-                                <td class "table-success">' +
-            dados[i].procedimento +
-            "</td>\n\
-                                </tr></tbody>";
+                                <td class "table-success"><a class="btn btn-outline-primary" data-toggle="collapse"  onclick="Tratamentos(' +
+            dados[i].id +
+            ')" role="button" aria-expanded="false" aria-controls="apresenta_Tratamentos" > Abrir </a></td>\n\
+                                </tr></tbody>';
           //$('#apresentaProntuario').append('<tbody><tr><td class "table-success">' + dados[i].prontuario + '</td></tr></tbody>');
         }
         $("#apresenta_Consultas").html(tabela).show();
+        document.getElementById("mostraTitulo").innerHTML = "";
 
         /*if (valorAjax !== 0) {
                     $('#apresentaProntuario').html(tabela).show();
                 }*/
+      } else {
+        $("#apresenta_Consultas")
+          .html('<p class="text-danger">Nenhuma consulta cadastrada</p>')
+          .show();
+        document.getElementById("mostraTitulo").innerHTML = "";
       }
     },
   });
 }
 
-function Tratamentos() {
+function Tratamentos(id) {
+  //document.getElementById("apresenta_Tratamentos").innerHTML ="";
   document.getElementById("apresenta_DadosCadastrais").innerHTML = "";
-  document.getElementById("apresenta_Consultas").innerHTML = "";
-  var valorAjax = document.getElementById("aux").value;
 
-  $("#apresenta_Tratamentos").html("<p>Aguardando...</p>");
-  $.ajax({
-    type: "POST",
-    dataType: "json",
-    url: "tratamentosAbrirProntuario.php?prontuario=" + valorAjax,
-    success: function (dados) {
-      if (dados !== null) {
-        var tabela =
-          "<thead><tr><th>Procedimento</th>\n\
-                                    <th>Obs</th>\n\
-                                    <th>Consulta</th>\n\
-                                    <th>Data</th>\n\
-                                    <th>Hora</th>\n\
+  var click = id;
+
+  if (click !== iclick) {
+    iclick = click;
+
+    var valorAjax = document.getElementById("aux").value;
+
+    $("#apresenta_Tratamentos").html("<p>Aguardando...</p>");
+    $.ajax({
+      type: "POST",
+      dataType: "json",
+      url:
+        "tratamentosAbrirProntuario.php?prontuario=" +
+        valorAjax +
+        "&consulta=" +
+        click,
+      success: function (dados) {
+        if (dados !== null && dados !== "Sem resultados") {
+          var tabela =
+            "<thead><tr><th>Procedimento</th>\n\
+                                    <th>Ação</th>\n\
                                     </tr>\n\
                               </thead>";
-        for (var i = 0; i < dados.length; i++) {
-          tabela +=
-            '<tbody><tr>\n\
+          for (var i = 0; i < dados.length; i++) {
+            tabela +=
+              '<tbody><tr>\n\
                                 <td class "table-success">' +
-            dados[i].nomeT +
-            '</td>\n\
-                                <td class "table-success">' +
-            dados[i].obsT +
-            '</td>\n\
-                                <td class "table-success">' +
-            dados[i].idC +
-            '</td>\n\
-                                <td class "table-success">' +
-            dados[i].dataC +
-            '</td>\n\
-                                <td class "table-success">' +
-            dados[i].horaC +
-            "</td>\n\
-                                </tr></tbody>";
-          //$('#apresentaProntuario').append('<tbody><tr><td class "table-success">' + dados[i].prontuario + '</td></tr></tbody>');
+              dados[i].nomeT +
+              '</td>\n\
+                                <td class "table-success"><a class="btn btn-outline-primary" href="tratamentoPDF.php?idProcedimento=' +
+              dados[i].idProcedimento +
+              "&consulta=" +
+              dados[i].idC +
+              "&prontuario=" +
+              dados[i].prontuario +
+              '" ><img src="./includes/img/pdf.2.png" width="35" height="40"></a></td>\n\
+                                </tr></tbody>';
+          }
+          $("#apresenta_Tratamentos").html(tabela).show();
+          $("#mostraTitulo").html("TRATAMENTOS").show();
+        } else {
+          $("#apresenta_Tratamentos")
+            .html('<p class="text-danger">Nenhum tratamento cadastrado<p>')
+            .show();
+          document.getElementById("mostraTitulo").innerHTML = "";
         }
-        $("#apresenta_Tratamentos").html(tabela).show();
-
-        /*if (valorAjax !== 0) {
-                    $('#apresentaProntuario').html(tabela).show();
-                }*/
-      }
-    },
-  });
+      },
+    });
+  } else {
+    document.getElementById("apresenta_Tratamentos").innerHTML = "";
+    document.getElementById("mostraTitulo").innerHTML = "";
+    iclick = 0;
+    //document.getElementById("click").value=id;
+  }
 }

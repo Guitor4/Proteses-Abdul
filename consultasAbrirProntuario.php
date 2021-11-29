@@ -24,19 +24,20 @@ if ($prontuario != null) {
     if ($prontuario1->rowCount() > 0) {
         while ($row_prontuario1 = $prontuario1->fetch(PDO::FETCH_ASSOC)) {
             $array[] = array(
-                'id' => $row_prontuario1['idConsulta'],
-                'data' => $row_prontuario1['dataConsulta'],
-                'hora' => $row_prontuario1['horaConsulta'],
-                'relatorio' => $row_prontuario1['relatorio'],
-                'status' => $row_prontuario1['statusConsulta'],
-                'clinica' => $row_prontuario1['nomeClinica'],
-                'dentista' => $row_prontuario1['nomeDentista'],
-                'procedimento' => $row_prontuario1['nomeProcedimento'],
-
+           'id' => $row_prontuario1['idConsulta'],
+           'data' => date('d/m/y', strtotime($row_prontuario1['dataConsulta'])),
+           'hora' => $row_prontuario1['horaConsulta'],
+           'status' => $row_prontuario1['statusConsulta'],
+           'clinica' => $row_prontuario1['nomeClinica'],
+           'dentista' => $row_prontuario1['nomeDentista'],
+           'procedimento' => $row_prontuario1['nomeProcedimento'],
+           'idProcedimento' => $row_prontuario1['idProcedimento'],
+           'prontuario' => $row_prontuario1['prontuario'],
+         
             );
         }
         echo json_encode($array);
-    }
-} else {
+    }else{
     echo json_encode('Sem resultados');
+}
 }
