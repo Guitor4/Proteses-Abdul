@@ -21,7 +21,7 @@
     <link rel='stylesheet' type='text/css' href='FullCalendar/main.min.css' />
     <link rel='stylesheet' type='text/css' href='FullCalendar/style.css' />
 
-<!--     <link rel="stylesheet" href="css/css-debug.css"> -->
+    <link rel="stylesheet" href="css/css-debug.css">
 
     <script src="js/sweetalert2.min.js"></script>
 

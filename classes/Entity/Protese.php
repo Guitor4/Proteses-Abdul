@@ -78,7 +78,7 @@ class Protese{
             //dos dados no banco de dados. Possui como retorno o útimo id inserido caso a inserção tenha sido um sucesso.
             //O parâmetro que deve ser passado no insertSQL é no formato array e deve estar de 
             $obdb = new db('protese');
-            $this->idProtese = $obdb->updateSQL($idProtese,[
+            return $obdb->updateSQL($idProtese,[
                                 //Envia como um parâmetro e por meio de um array (titulo => valor) os valores que foram trazidos do POST e agora estão
                                 //na classe Protese, para que sejam contabilizados e devidamente adicionados à query (comando que vai pro SQL) 
                                 //que está sendo montada em db.php->insertSQL.

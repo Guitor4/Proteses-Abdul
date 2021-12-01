@@ -25,7 +25,7 @@ isset($_GET['search']) ? $search = $_GET['search'] : $search = '';
 
 //condições sql
 $condicoes = [
-    strlen($busca) ? 'nomePaciente LIKE "%' . str_replace('', '%', $busca) . '%"' : null
+    strlen($search) ? 'nomePaciente LIKE "%' . str_replace('', '%', $search) . '%"' : null
 
 ];
 
@@ -43,7 +43,7 @@ if (
     is_numeric($_GET['idProcedimento']) && is_numeric($_GET['prontuario']) && $_GET['idConsulta'] > 0 && $_GET['idProcedimento'] > 0 && $_GET['prontuario'] > 0
 ) {
 
-    $registros_totais =  $proteses = $objProtese->getProtesesPaciente('fkConsultaT =' . $_GET['idConsulta'], '
+    $registros_totais = $objProtese->getProtesesPaciente('fkConsultaT =' . $_GET['idConsulta'], '
  dataRegistro desc');
     /* echo "<pre>"; print_r($proteses); echo "<pre>";exit; */
     if ($proteses == null) {
@@ -51,7 +51,7 @@ if (
         header('location:cadastrarProtese.php?idConsulta=' . $_GET['idConsulta'] . '&idProcedimento=' . $_GET['idProcedimento'] . '&prontuario=' . $_GET['prontuario']);
     }
 } else {
-    $registros_totais = $proteses = $objProtese->getProtesesPaciente($where, '
+    $registros_totais = $objProtese->getProtesesPaciente($where, '
         dataRegistro desc');
     /* echo "<pre>"; print_r($proteses); echo "<pre>";exit; */
 }
@@ -70,7 +70,7 @@ $inicio = ($itens_por_pagina * $pagina_atual) - $itens_por_pagina;
 
 
 
-$registros_filtrados = $objProtese->getProtesesPaciente($where, 'statusConsulta,dataConsulta  desc ', $inicio . ',' . $itens_por_pagina);
+$registros_filtrados = $proteses =  $objProtese->getProtesesPaciente($where, 'statusConsulta,dataConsulta  desc ', $inicio . ',' . $itens_por_pagina);
 /* echo "<pre>"; print_r($registros_filtrados); echo "<pre>";exit; */
 $num_registros_totais = count($registros_totais);
 
