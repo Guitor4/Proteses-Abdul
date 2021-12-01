@@ -33,7 +33,7 @@ sleep(-0.9);
                     'telefone' => $row_prontuario1['telefone'],
                     'email' => $row_prontuario1['email'],
                     'idImagem' => $row_prontuario1['idImagem'],
-                    'img' => $row_prontuario1['img'],
+                    'img' => $row_prontuario1['url'],
                         //'fkProntuario' => $row_prontuario1['fkProntuario']
                         //'titulo' => $row_prontuario1['titulo'],
                 );

@@ -81,7 +81,7 @@ function loadDados(){
                                         <input hidden type="text" name="idImg" value="'+id+'">\n\
                                         <input hidden type="text" name="nome" value="'+nome+'">\n\
                                         <input '+at+' type="file" name="imagem"><br>\n\
-\n\                                     <input '+del+' type="submit" name="delFotoPerfil" value="Deletar">\n\
+                                        <input '+del+' type="submit" name="delFotoPerfil" value="Deletar">\n\
                                         <input '+at+' type="submit" name="edFotoPerfil" value="Atualizar"><br>\n\
                                  </form>\n\
                                 </div>\n\
@@ -110,14 +110,19 @@ function Dados_Cadastrais() {
         url: 'prontuarioAbrirProntuario.php?prontuario=' + valorAjax,
         success: function(dados) {
             if (dados !== null) {
-                var p,n,s,t,e;
+                var p,n,s,t,e,urli,id;
                 for (var i = 0; i < dados.length; i++) {
                     p=dados[i].prontuario;
                     n=dados[i].nomePaciente;
                     s=dados[i].sexo;
                     t=dados[i].telefone;
                     e=dados[i].email;
+                    urli=dados[i].img;
+                    id=dados[i].idImagem;
                 }
+                
+                var nome=urli.substring(10);
+                if(urli !== './Imagens/usuario.png'){var at="hidden";var del="";} else{at="";del="hidden";}
                 var labels = '<div class="row">\n\
                                 <div class="col-8 mt-2">\n\
                                     <label>Prontuário: </label><input readonly type="text" class="form-control"  value="'+p+'">\n\
@@ -126,13 +131,15 @@ function Dados_Cadastrais() {
                                     <label>Telefone: </label><input readonly type="text" class="form-control"  value="'+t+'">\n\
                                     <label>E-mail: </label><input readonly type="text" class="form-control"  value="'+e+'">\n\
                                 </div>\n\
-                                <div class="col-2 offset-1 mt-5">\n\
-                                   <img src="./includes/img/usuario.png" alt="" width="150" height="100">\n\
-                                   <form method="post" action="prontuario.php?paciente='+p+'" enctype="multipart/form-data">\n\
-                                        <label>Nome: </label><br>\n\
-                                        <input type="text" name="nome" placeholder="perfil_'+p+'" required><br>\n\
-                                        <input type="file" name="fotoPerfil"><br>\n\
-                                        <input type="submit" name="cadFotoPerfil" value="Cadastrar">\n\
+                                <div class="col-2 mt-5">\n\
+                                   <img src="'+urli+'" alt="" width="150" height="100">\n\
+                                 <form method="post" action="prontuario.php?paciente='+p+'" enctype="multipart/form-data">\n\
+                                        <input hidden type="text" name="titulo" value="perfil_'+p+'">\n\
+                                        <input hidden type="text" name="idImg" value="'+id+'">\n\
+                                        <input hidden type="text" name="nome" value="'+nome+'">\n\
+                                        <input '+at+' type="file" name="imagem"><br>\n\
+                                        <input '+del+' type="submit" name="delFotoPerfil" value="Deletar">\n\
+                                        <input '+at+' type="submit" name="edFotoPerfil" value="Atualizar"><br>\n\
                                  </form>\n\
                                 </div>\n\
                               </div>';
