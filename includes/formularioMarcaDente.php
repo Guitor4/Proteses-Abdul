@@ -12,11 +12,11 @@
                     </div>
                     <div class="form-group">
                         <label for="relatorio">Descrição (opcional)</label>
-                        <textarea name="descricao" style="opacity:80%;resize:none" class="text-black form-control" rows="5"></textarea>
+                        <textarea name="descricao" style="opacity:80%;resize:none" class="text-black form-control" rows="5"><?= $marca->descricao ?></textarea>
                     </div>
                     <div class="d-flex justify-content-center p-2">
 
-                        <input type="submit" name="<?= BTN ?>" class="  btn btn-lg btn-success btInput" value="<?= (TITLE == "Cadastrar Marca de Dente" ? 'Cadastrar' : 'Editar') ?>">
+                        <input type="submit" name="<?= BTN?>" class="  btn btn-lg btn-success btInput" value="<?= (TITLE == "Cadastrar Marca de Dente" ? 'Cadastrar' : 'Editar') ?>">
 
                     </div>
                 </div>

@@ -22,7 +22,7 @@ class MarcaDente
 
     public function updateMarcaDente()
     {
-        (new db('marcaDente'))->updateSQL('idMarcaDente = ' . $this->idMarcaDente, [
+        return (new db('marcaDente'))->updateSQL('idMarcaDente = ' . $this->idMarcaDente, [
             'nomeMarca' => $this->nomeMarca,
             'descricao' => $this->descricao
         ]);
@@ -35,8 +35,8 @@ class MarcaDente
         return $marcas;
     }
 
-    public static function getMarca($id){
-        $marca = (new db('marcaDente'))->selectSQL('idMarcaDente = '.$id)->fetchObject(PDO::FETCH_CLASS,self::class);
+    public function getMarca($id){
+        $marca = (new db('marcaDente'))->selectSQL('idMarcaDente = '.$id)->fetchObject(self::class);
         return $marca;
     }
 }

@@ -1,4 +1,4 @@
-<div class="container-fluid" style="background-image: url(./includes/img/bg.jpg); height:793px;background-repeat: no-repeat; background-size: 100%">
+<div class="container-fluid">
     <main>
 
         <section>
@@ -10,7 +10,7 @@
     </main>
 
     <div class="col-4 mt-4 offset-4">
-        <div class="p-3 bg-dark" style = "border-radius:25px">
+        <div class="p-3 bg-dark" style="border-radius:25px">
             <div class="border border-white rounded p-2">
                 <h3 style="text-align: center; color: white"><?= TITLE ?></h3>
                 <form class="d-flex justify-content-center" method="post" style="color: white">
@@ -19,8 +19,9 @@
                             <label>Nome do Procedimento: </label>
                             <input type="text" class="form-control" name="nomeProcedimento" placeholder="Procedimento" value="<?= $objProcedimento->nomeProcedimento ?>">
                         </div>
+                        <label>Status do Procedimento: </label>
                         <div class="form-group">
-                            <label>Status do Procedimento: </label>
+
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="statusProcedimento" value="Ativo" checked="">
                                 <label class="form-check-label">

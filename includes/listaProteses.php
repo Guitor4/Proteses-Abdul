@@ -8,7 +8,7 @@
                     <form method="post" action="">
                         <div class="col-10 form-group p-2" style="margin:auto">
 
-                            <input type="text" class="form-control p-1" name="busca" id="busca" required="" value="<?= $busca ?>">
+                            <input type="text" class="form-control p-1" name="busca" id="busca" required="" value="<?= $search ?>">
                         </div>
                         <input type="submit" name="pesquisarProtese" class="btn btn-secondary btInput p- d-flex " style="margin:auto" value="Pesquisar">
 

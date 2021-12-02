@@ -43,8 +43,9 @@
                 </div>
                 <form <?= $visibilidadiv ?> method="post" class="mt-4">
                     <div class="col-10 offset-1 form-group p-4">
+                        <label for="procedimento[]">Procedimentos</label>
                         <select name="procedimento[]" class="selectpicker form-control" multiple="multiple" data-live-search="true">
-                            <option hidden>-[SELECIONE O PROCEDIMENTO A SER REALIZADO]-</option>
+                            
                             <?php
                             foreach ($objProcedimento as $procedimento) {
                                 echo '<option value = ' . $procedimento->idProcedimento . '>' . $procedimento->nomeProcedimento . '</option>';
@@ -62,14 +63,14 @@
                     </div>
                     <div class="row py-3">
                         <div class="text-center">
-                            <input type="submit" class="btn btn-success btn-large" style="width:25%" name="Finalizar" value="Finalizar"></input>
+                            <input type="submit" class="btn btn-success btn-large" style="width:25%" name="Finalizar" value="Enviar"></input>
                         </div>
 
                     </div>
                 </form>
                 <?php
                 if ($visibilidadiv != '') {
-                    echo "<table class=\"table bg-light text-center col-6 bg-gradient mt-3\">
+                    echo "<table class=\"table bg-light text-center table-hover col-6 bg-gradient mt-3\">
                     <thead class=\"bg-dark text-light\">
                         <tr>
                             <th>Procedimento Realizados nesta Consulta</th>

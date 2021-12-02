@@ -48,11 +48,8 @@ if (isset($_POST['tipo'], $_POST['qtdDentes'], $_POST['paciente'])) {
     $objProtese->status = $_POST['status'];
     $objProtese->observacao = $_POST['observacao'];
 
-    /* echo "<pre>"; print_r($objProtese); echo "<pre>";exit; */
-    //Executa a função cadastrar que está localizada na classe "Protese".
-    $objProtese->atualizarProtese('idProtese =' . $_GET['id']);
-    if ($objProtese->idProtese > 0) {
-        header('Location: pesquisarProtese.php?pagina=1&status=success2&id=' . $objProtese->idProtese);
+    if ($objProtese->atualizarProtese('idProtese =' . $_GET['id'])) {
+        header('Location: pesquisarProtese.php?pagina=1&status=success2&id=' . $_GET['id']);
     } else {
         header('Location: pesquisarProtese.php?pagina=1&status=error2');
     }

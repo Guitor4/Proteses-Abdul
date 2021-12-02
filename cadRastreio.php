@@ -67,7 +67,7 @@ if (isset($_POST['cadastrarRastreio'])) {
     $rastreio->cadastrarRastreio();
 
     if ($rastreio->idRastreio > 0) {
-        header('Location: listaRastreio.php?status=success1&id='.$rastreio->idRastreio);
+        header('Location: listaRastreio.php?status=success1&id=' . $rastreio->idRastreio);
     } else {
         header('Location: listaRastreio.php?status=error1');
     }
