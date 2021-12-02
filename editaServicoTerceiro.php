@@ -5,7 +5,7 @@ include __DIR__.'./includes/sessionStart.php';
 use \Classes\Entity\ServicoTerceiro;
 
 define('TITLE', 'Editar Serviço Terceiro');
-
+define('IDENTIFICACAO', '0');
 
 if (!isset($_GET['id']) or !is_numeric($_GET['id'])) {
     header('Location: index.php?status=error');

@@ -1,94 +1,27 @@
 <div class="container-fluid" style=" height:793px;background-repeat: no-repeat; background-size: 100%">
     <main>
-        <section>
-            <a href="index.php">
-                <button class="btn btn-success mt-4">Retornar</button>
-            </a>
+    <section class="d-flex justify-content-center mt-2">
+      <div class="col-4">
+        <div class="bg-dark rounded p-2">
+          <h5 style="color: white; text-align: center ">Buscar Prontuário</h5>
+          <form method="post" action="">
+            <div class="col-10 form-group p-2" style="margin:auto">
 
-            <div class="row">
-
-                <div class="col-2 offset-5 bg-gradient"  style=" background-color: black;opacity: 90%">
-                    <h3 style="color: white; text-align: center">Busca Prontuário</h3>
-                </div>
+              <input type="text" class="form-control p-1" name="busca" id="busca" required="" value="<?= $busca ?>">
             </div>
+            <input type="submit" name="pesquisarPron" class="btn btn-secondary btInput p- d-flex " style="margin:auto" value="Pesquisar">
 
-            <div class="row">
-                <div class="col-2 offset-5 bg-gradient" style=" background-color: black; opacity: 80%;">
+          </form>
 
+        </div>
+        <div class="d-flex justify-content-center">
+          <div class="col-6 p-2">
+            <a href="listaConsultaR.php"> <input type="submit" value="Limpar Pesquisa" class="btn btn-danger w-100" /> </a>
+          </div>
+        </div>
+      </div>
 
-                    <form method="post" action="" style="color: white" >
-
-                        <div class="form-group">
-
-                            <input type="text" class="form-control p-1" name="busca" required=""  value="<?= $busca ?>">
-                        </div>
-
-                </div>
-            </div>
-
-            <div class="row">
-
-                <div class="col-2 offset-5 bg-gradient " style=" background-color: black;opacity: 100%">
-
-                    <input type="submit"  name="pesquisarPron"
-                           class="btn btn-success btInput p-1 d-flex " style="text-align: center; margin: 0 auto" value="Pesquisar">
-
-                </div>
-
-                </form>
-            </div>
-            <br>
-              <div class="row">
-            <div class=" col-2 offset-5">
-                <a href="listaConsultaR.php?rastreio=check"> <input type="submit" value="Limpar Pesquisa" class="btn btn-danger w-100" /> </a>
-
-            </div>
-            
-
-        </section>
-
-        <?php
-        if (isset($_GET['rastreio']) == "check") {
-            $disabledRastreio = 'class = "btn btn-secondary"';
-            $disabled2 = 'ok';
-            $disabled1 = 'hidden=""';
-        } else {
-            $disabledRastreio = 'hidden=""';
-            $disabled2 = '';
-            $disabled1 = '';
-        }
-        $resultados = '';
-        
-        foreach ($innerTratamentos as $dados) {
-            //foreach($rastreio as $r){ ***comentário inserido: Fernando
-            $disabled = ($dados->idProtese==$dados->fkProtese ? 'class = "btn btn-secondary" disabled = disabled' : 'class = "btn btn-primary"');
-            //$disabled = ($disabled2 == 'ok' ? 'hidden=""' : $disabled);
-
-            $resultados .= '<tr ">
-                            <td class "table-success >' . $dados->prontuario . '</td>
-                                <td>' . $dados->nomePaciente . '</td>
-                                <td>' . $dados->idConsulta . '</td>
-                            <td>' . date('d/m/Y', strtotime($dados->dataConsulta)) . '</td>
-                            <td>' . date(' H:i', strtotime($dados->horaConsulta)) . '</td>
-                            <td>' . $dados->statusConsulta . '</td>
-                            <td>' . $dados->nomeDentista . '</td>
-                            <td>' . $dados->nomeClinica . '</td>
-                            <td>' . $dados->nomeProcedimento . '</td>
-                            
-                            <td>
-                            
-                            <a ' . $disabled . 'href = cadRastreio.php?rProtese='.$dados->idProtese .'>Confirmar</a>
-                            </td>
-                            </tr>';
-            //}***comentário inserido: Fernando
-        }
-        
-        $resultados = strlen($resultados) ? $resultados :
-                '<tr>'
-                . '<td colspan = "12" class = "text-center"> Nenhuma Consulta foi encontrada no histórico</td>'
-                . '</tr>';
-        
-        ?>
+    </section>
 
 
         <section>

@@ -1,7 +1,8 @@
 <?php
 
 require 'vendor/autoload.php';
-include __DIR__.'./includes/sessionStart.php';
+include __DIR__ . './includes/sessionStart.php';
+
 use Classes\Entity\Procedimento;
 
 define('NAME', 'Procedimento');
@@ -13,26 +14,25 @@ if (!isset($_GET['pagina'])) {
 }
 //busca
 $busca = filter_input(INPUT_POST, 'busca', FILTER_SANITIZE_STRING);
-if ($busca != null) {
-  echo "<pre>";
-  print_r($busca);
-  echo "<pre>";
-  exit;
+
+isset($_SESSION['pesquisa']) ? $pesquisa = $_SESSION['pesquisa'] : $pesquisa = $busca;
+if ($pesquisa != null) {
+  header('location: listaProcedimento.php?pagina=1&search=' . $pesquisa);
 }
+isset($_GET['search']) ? $search = $_GET['search'] : $search = '';
+
+
 //condições sql
 $condicoes = [
-  strlen($busca) ? 'nomeProcedimento LIKE "%' . str_replace('', '%', $busca) . '%"' : null
+  strlen($search) ? 'nomeProcedimento LIKE "%' . str_replace('', '%', $search) . '%"' : null
 
 ];
 
 $where = implode(' AND ', $condicoes);
 
-if (strlen($where)) {
 
-  $pagina_atual = 1;
-} else {
-  $pagina_atual = intval($_GET['pagina']);
-}
+$pagina_atual = intval($_GET['pagina']);
+
 
 $pagina_atual = intval($_GET['pagina']);
 

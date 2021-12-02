@@ -6,7 +6,7 @@ use \Classes\Entity\Terceiro;
 
 define('TITLE', 'Editar Terceiro');
 define('BTN', 'editarTerceiro');
-
+define('IDENTIFICACAO', '0');
 
 if (!isset($_GET['id']) or !is_numeric($_GET['id'])) {
     header('Location: index.php?status=error');

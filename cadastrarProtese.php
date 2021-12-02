@@ -2,28 +2,38 @@
 //faz o require do autoload composer, para carregar automaticamente as principais classes do nosso projeto,  
 //assim só sendo necessário o uso de um "use \classe" para chamá-la (válido somente para arquivos da pasta classes).
 require __DIR__ . '/vendor/autoload.php';
-include __DIR__.'./includes/sessionStart.php';
+include __DIR__ . './includes/sessionStart.php';
 
 use \Classes\Entity\Protese;
 use \Classes\Entity\Paciente;
+use Classes\Entity\MarcaDente;
 
 define('TITLE', 'Cadastrar Prótese');
+define('BTN', 'cadastrarProtese');
+define('IDENTIFICACAO', '0');
 
+if (!isset($_GET['prontuario'], $_GET['idConsulta'], $_GET['idProcedimento'])) {
+    header('location: pesquisarProtese.php?pagina=1&status=error1');
+}
 /**
  * Validação do POST, ainda incompleta pois não possui todos os campos necessários
  */
 if (isset($_GET['prontuario'])) {
-    
+
     $pacientes = paciente::getPaciente($_GET['prontuario']);
 } else {
     $pacientes = paciente::getPacientes();
 }
+
+$marcas = MarcaDente::getMarcas();
+/* echo "<pre>"; print_r($marcas); echo "<pre>";exit; */
+
 /* echo "<pre>"; print_r($pacientes); echo "<pre>";exit; */
 $objProtese = new Protese;
 /* if (isset($_POST['cadastrarProtese'])){
     echo "<pre>"; print_r($_POST); echo "<pre>";exit;
 } */
-if (isset($_POST['cadastrarProtese'])) {
+if (isset($_POST[BTN])) {
     /**
      * Aqui a classe Protese é instanciada e tem todos as sua variáveis preenchidas pelos valores recebidos do POST, exceto a dataRegistro
      * e a variável ID que são preenchidas automaticamente posteriormente.
@@ -50,9 +60,9 @@ if (isset($_POST['cadastrarProtese'])) {
     //Caso a função cadastrar rode sem problemas, obrigatóriamente o valor do $objProtese->id será preenchido
     //Assim fazendo uma validação por meio dessa variável, e passando isso pro url da página.
     if ($objProtese->idProtese > 0) {
-        header('Location: pesquisarProtese.php?pagina=1&status=success&id='.$objProtese->idProtese);
+        header('Location: pesquisarProtese.php?pagina=1&status=success1&id=' . $objProtese->idProtese);
     } else {
-        header('Location: pesquisarProtese.php?pagina=1&status=error');
+        header('Location: pesquisarProtese.php?pagina=1&status=error1');
     }
 }
 //Monta a página, utilizando o header.php, arquivo que contém a navbar e o início da div container; o arquivo que vai ser de fato

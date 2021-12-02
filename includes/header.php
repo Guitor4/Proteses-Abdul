@@ -14,17 +14,18 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/jquery-ui.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/bootstrap-select-picker.min.css">
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/sweetalert2.min.css">
     <link rel="stylesheet" href="css/bootstrap-select-picker.min.css">
+    <link rel='stylesheet' type='text/css' href='FullCalendar/main.min.css' />
+    <link rel='stylesheet' type='text/css' href='FullCalendar/style.css' />
 
-     <!-- <link rel="stylesheet" href="css/css-debug.css"> -->
+    <link rel="stylesheet" href="css/css-debug.css">
 
     <script src="js/sweetalert2.min.js"></script>
-    
-    
+
+
 
     <title>Abdull Proteses</title>
 
@@ -39,9 +40,18 @@
             }
         }
     </script>
+    <script type='text/javascript'>
+        function click(id) {
+            var btn = document.getElementById(id);
+            btn.click();
+            $("#exampleModalLabel").html('Cadastro Consulta Teste')
+            $('.selectpicker').selectpicker();
+        }
+        
+    </script>
 </head>
 
-<body style="border:10px;border-color:red;background-image: url(./includes/img/bg.jpg);background-repeat: no-repeat; background-size: cover">
+<body style="border:10px;border-color:red;background-repeat: no-repeat; background-size: cover">
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #47b8d8;">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.php">
@@ -64,7 +74,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="./listaPaciente.php">
+                        <a class="nav-link" href="./listaPaciente.php?pagina=1">
                             <div id="passar_mouse">
                                 <img src="./includes/img/user.png" width="30" height="30" alt="carteira id" />
                                 <div id="mostrar">Paciente</div>
@@ -73,7 +83,18 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="pesquisarConsulta.php">
+
+                        <a class="nav-link active" aria-current="page" href="agendamento.php?pagina=1">
+                            <div id="passar_mouse">
+                                <img src="./includes/img/miniAgenda.png" width="30" height="30" alt="home" />
+                                <div id="mostrar">Agenda</div>
+                            </div>
+                        </a>
+
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="pesquisarConsulta.php?pagina=1">
                             <div id="passar_mouse">
                                 <img src="./includes/img/consulta.png" width="30" height="30" alt="consulta" />
                                 <div id="mostrar">Consulta</div>
@@ -82,7 +103,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="pesquisarProtese.php">
+                        <a class="nav-link" href="pesquisarProtese.php?pagina=1">
                             <div id="passar_mouse">
                                 <img src="./includes/img/dentadura.png" width="30" height="30" alt="dentadura" />
                                 <div id="mostrar">Dentadura</div>
@@ -90,7 +111,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="listaFuncionario.php">
+                        <a class="nav-link" href="listaFuncionario.php?pagina=1">
                             <div id="passar_mouse">
                                 <img src="./includes/img/carteira-de-identidade.png" width="30" height="30" alt="dentadura" />
                                 <div id="mostrar">Funcionario</div>
@@ -105,17 +126,18 @@
                             </a>
 
                             <ul class="dropdown-menu offset-3" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="./listaDentista.php">Dentista</a></li>
-                                <li><a class="dropdown-item" href="./listaClinica.php">Clinica</a></li>
+                                <li><a class="dropdown-item" href="./listaDentista.php?pagina=1">Dentista</a></li>
+                                <li><a class="dropdown-item" href="./listaClinica.php?pagina=1">Clinica</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="./listaRastreio.php">Rastreio</a></li>
+                                <li><a class="dropdown-item" href="./listaRastreio.php?pagina=1">Rastreio</a></li>
 
-                                <li><a class="dropdown-item" href="./listaProcedimento.php">Procedimento</a></li>
+                                <li><a class="dropdown-item" href="./listaProcedimento.php?pagina=1">Procedimento</a></li>
 
-                                <li><a class="dropdown-item" href="./listaTerceiro.php">Terceirizado</a></li>
-                                <li><a class="dropdown-item" href="./listaServicoTerceiro.php">ServiçoTerceirizado</a></li>
+                                <li><a class="dropdown-item" href="./listaTerceiro.php?pagina=1">Terceiro</a></li>
+                                <li><a class="dropdown-item" href="./listaServicoTerceiro.php?pagina=1">ServiçoTerceirizado</a></li>
+                                <li><a class="dropdown-item" href="./listaTerceirizado.php?pagina=1">Terceirizado</a></li>
                             </ul>
                     </li>
                     <div>
@@ -127,7 +149,7 @@
                             <img src="<?= ($_SESSION['perfil'] == 'Administrador' ? './includes/img/usuario.png' : './includes/img/abc.png') ?>" width="40" height="40" style="border-radius: 20px;" alt="sair" /><strong>Usuário: <?= $_SESSION['nome'] ?></strong>
                             <br><label><?= $_SESSION['perfil'] ?></label>
                         </a>
-                        <ul class="dropdown-menu text-center" style = "width:100%" aria-labelledby="perfil">
+                        <ul class="dropdown-menu text-center" style="width:100%" aria-labelledby="perfil">
                             <li hidden><a class="dropdown-item" href="./listaDentista.php">DentistaDentistaDentistaDentistaDe</a></li>
                             <li><a class="dropdown-item" href="./listaDentista.php">Dentista</a></li>
                             <li><a class="dropdown-item" href="./listaClinica.php">Clinica</a></li>
@@ -159,3 +181,4 @@
         </div>
 
     </nav>
+    <input hidden id = "identificacao" value = "<?=IDENTIFICACAO?>"></input>

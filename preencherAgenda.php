@@ -20,12 +20,14 @@ if ($eventoConsultas->rowCount() > 0) {
     while ($row_eventoConsultas = $eventoConsultas->fetch(PDO::FETCH_ASSOC)) {
         $data = $row_eventoConsultas['horaConsulta'];
         $hora = date('H:i:s', strtotime("{$data} + {$v[0]} hours {$v[1]} minutes {$v[2]} seconds"));
+        ($row_eventoConsultas['statusConsulta'] != 'Finalizada' ? $props ="'extendedProps' :{ ['status' => 'done']}" : $props ='' );
         $array[] = array(
             'id' => $row_eventoConsultas['idConsulta'],
             'title' => "Consulta de " . $row_eventoConsultas['nomePaciente'],
             'start' => $row_eventoConsultas['dataConsulta'] . 'T' . $row_eventoConsultas['horaConsulta'],
-            'end' => $row_eventoConsultas['dataConsulta'] . 'T' . $hora
-
+            'end' => $row_eventoConsultas['dataConsulta'] . 'T' . $hora,
+             $props
+            
         );
     }
 

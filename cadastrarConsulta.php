@@ -13,35 +13,69 @@ use \Classes\Entity\funcionario;
 
 
 define('TITLE', 'Cadastrar Nova Consulta');
-$objClinica = clinica::getClinicas();
+define('IDENTIFICACAO', '0');
+$erro = "";
+$objClinica = clinica::getClinicas('statusClinica != "inativo"');
+if (count($objClinica) < 1){
+    $erro = ("<script>
+    Swal.fire({
+      title: 'Sem clínicas!!',
+      text: \"Não foram encontradas clínicas registradas ou ativas, por favor registre ao menos uma antes de cadastrar a consulta\",
+      icon: 'error',
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'Ok'
+    })
+    </script>"."<meta http-equiv=\"refresh\" content=\"5;url=listaClinica.php\" />");
+}
 /* echo '<pre>';print_r($objClinica);echo'<pre>';exit; */
-$objDentista = dentista::getDentistas();
+$objDentista = dentista::getDentistas('statusDentista != "inativo"');
+if (count($objDentista) < 1){
+    $erro = ("<script>
+    Swal.fire({
+      title: 'Sem Dentistas!!',
+      text: \"Não foram encontrados dentistas registrados ou ativas, por favor registre ao menos uma antes de cadastrar a consulta\",
+      icon: 'error',
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'Ok'
+    })
+    </script>"."<meta http-equiv=\"refresh\" content=\"5;url=listaDentista.php\" />");
+}
 /* echo '<pre>';print_r($objDentista);echo'<pre>';exit; */
 $objPaciente = paciente::getPacientes();
+if (count($objPaciente) < 1){
+    $erro = ("<script>
+    Swal.fire({
+      title: 'Sem Pacientes!!',
+      text: \"Não foram encontrados pacientes registrados, por favor registre ao menos uma antes de cadastrar a consulta\",
+      icon: 'error',
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'Ok'
+    })
+    </script>"."<meta http-equiv=\"refresh\" content=\"5;url=listaPaciente.php\" />");
+}
 /* echo '<pre>';print_r($objPaciente);echo'<pre>';exit; */
 $objFuncionario = funcionario::getFuncionarios();
 /* echo "<pre>"; print_r($objFuncionario); echo "<pre>";exit; */
 
 $objConsulta = new consulta;
-if (isset($_POST['paciente'], $_POST['data'], $_POST['hora'], $_POST['dentista'], $_POST['clinica'])) {
-
-    $objConsulta->dataConsulta = $_POST['data'];
-    $objConsulta->horaConsulta = $_POST['hora'];
+if (isset($_POST['paciente'], $_POST['horarios'], $_POST['dentista'], $_POST['clinica'])) {
+    $objConsulta->dataConsulta = date('Y-m-d',strtotime($_POST['data']));
+    $objConsulta->horaConsulta = $_POST['horarios'];
     $objConsulta->statusConsulta = ($_POST['status'] != '' ? $_POST['status'] : 'Agendada');
     $objConsulta->relatorio = ($_POST['relatorio'] != null ? $_POST['relatorio'] : 'Sem observações');
     $objConsulta->fkProntuario = $_POST['paciente'];
     $objConsulta->fkFuncionario = $_SESSION['idFuncionario'];
     $objConsulta->CFKClinica = $_POST['clinica'];
     $objConsulta->CFKDentista = $_POST['dentista'];
-    /*     echo "<pre>"; print_r($objConsulta); echo "<pre>";exit; */
+        /* echo "<pre>"; print_r($objConsulta); echo "<pre>";exit; */
 
     //echo '<pre>';print_r($objConsulta);echo'<pre>';exit;
     $objConsulta->cadastrarConsulta();
 
     if ($objConsulta->idConsulta > 0) {
-        header('Location: pesquisarConsulta.php?pagina=1&status=success&id=' . $objConsulta->idConsulta);
+        header('Location: pesquisarConsulta.php?pagina=1&status=success1&id=' . $objConsulta->idConsulta);
     } else {
-        header('Location: pesquisarConsulta.php?pagina=1&status=error');
+        header('Location: pesquisarConsulta.php?pagina=1&status=error1');
     }
 }
 //Monta a página, utilizando o header.php, arquivo que contém a navbar e o início da div container; o arquivo que vai ser de fato

@@ -1,115 +1,89 @@
 <div class="container-fluid">
-    <main>
-
-        <section>
-            <a href="index.php">
-                <button class="btn btn-success mt-4">Retornar</button>
-            </a>
-
-            <section>
-                <a href="index.php">
-                    <button class="btn btn-success mt-4">Menu</button>
-                </a>
-
-    </main>
-
-    <div class="row">
-        <div>
-            <div class="row">
-
-                <div class="col-4 offset-4 bg-gradient rounded-3" style=" background-color: black;opacity: 90%">
-                    <h3 style="color: white; text-align: center"><?= TITLE ?></h3>
-                </div>
-            </div>
-        </div>
-        <div class="col-4 offset-4 bg-gradient rounded-3" style=" background-color: black;opacity: 80%">
-
-
-            <form method="post" style="color: white">
-                <!-- <h3>Cadastar Serviços</h3>-->
-                <div class="form-group">
-                    <label>Número do ID Funcionário:</label>
-                    <input type="text" placeholder="000" class="form-control" name="idFuncionario" value=" <?= $objFuncionario->idFuncionario ?>">
-                </div>
-
-                <div class="form-group">
-                    <label>Nome: </label>
-                    <input type="text" class="form-control" name="nomeFuncionario" placeholder="Nome Completo" required="" value="<?= $objFuncionario->nomeFuncionario ?>">
-                </div>
-                <div class="form-group">
-                    <label>Sexo: </label>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="sexo" value="Masculino" checked="">
-                        <label class="form-check-label" for="exampleRadios1">
-                            Masculino
-                        </label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="sexo" value="feminino" <?= $objFuncionario->sexo == 'Feminino' ? 'checked' : '' ?>>
-                        <label class="form-check-label" for="exampleRadios2">
-                            Feminino
-                        </label>
-                    </div>
-                    <div class="form-group">
-                        <label>E-mail:</label>
-                        <input type="email" class="form-control" name="email" placeholder="email@gmail.com" required="" value="<?= $objFuncionario->email ?>">
-                    </div>
-                    <div class="form-group">
-                        <label>Telefone:</label>
-                        <input type="tel" class="form-control" name="telefone" placeholder="61 9 91919191" required="" value="<?= $objFuncionario->telefone ?>">
-                    </div>
-                    <div class="form-group">
-                        <label>Perfil: </label>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="perfil" id="" value="Funcionário" checked="">
-                            <label class="form-check-label" for="exampleRadios3">
-                                Funcionário
-                            </label>
+    <div class="col-6 mt-2 offset-3">
+        <div class="p-3 bg-dark" style = "border-radius:25px">
+            <div class="border border-white rounded p-2">
+                <h3 style="text-align: center; color: white"><?= TITLE ?></h3>
+                <form class="d-flex justify-content-center" method="post" style="color: white">
+                    <div class="col-11">
+                        <div class="form-group">
+                            <label>Nome: </label>
+                            <input type="text" class="form-control" name="nomeFuncionario" placeholder="Nome Completo" required="" value="<?= $objFuncionario->nomeFuncionario ?>">
                         </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="perfil" value="Administrador" <?= $objFuncionario->perfil == 'Administrador' ? 'checked' : '' ?>>
-                            <label class="form-check-label">
-                                Administrador
-                            </label>
+                        <div class="form-group">
+                            <label>Sexo: </label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="sexo" value="Masculino" checked="">
+                                <label class="form-check-label" for="exampleRadios1">
+                                    Masculino
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="sexo" value="feminino" <?= $objFuncionario->sexo == 'Feminino' ? 'checked' : '' ?>>
+                                <label class="form-check-label" for="exampleRadios2">
+                                    Feminino
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label>E-mail:</label>
+                                <input type="email" class="form-control" name="email" placeholder="email@gmail.com" required="" value="<?= $objFuncionario->email ?>">
+                            </div>
+                            <div class="form-group">
+                                <label>Telefone:</label>
+                                <input type="tel" class="form-control" name="telefone" onkeypress="mascara(this, '#-#####-####')" maxlength="15" placeholder="61 9 91919191" required="" value="<?= $objFuncionario->telefone ?>">
+                            </div>
+                            <div class="form-group">
+                                <label>Perfil: </label>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="perfil" id="" value="Funcionário" checked="">
+                                    <label class="form-check-label" for="exampleRadios3">
+                                        Funcionário
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="perfil" value="Administrador" <?= $objFuncionario->perfil == 'Administrador' ? 'checked' : '' ?>>
+                                    <label class="form-check-label">
+                                        Administrador
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Login:</label>
+                            <input type="tel" class="form-control" name="login" value="<?= $objFuncionario->login ?>" placeholder="Fulano" required="">
+                        </div>
+                        <div class="form-group">
+                            <label>Senha:</label>
+                            <input type="password" class="form-control" name="senha" style="padding-center: 45px;" value="<?= $objFuncionario->senha ?>" placeholder="oooooo" required="">
+
+                        </div>
+                        <div class="form-group mt-3">
+                            <label>Status do Funcionário: </label>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" class="btn-check" name="status" id="success-outlined" autocomplete="off" <?= $objFuncionario->statusFuncionario == 'Inativo' ? '' : 'checked' ?>>
+                                <label class="btn btn-outline-success" for="success-outlined">Ativo</label>
+
+
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" class="btn-check" name="status" id="danger-outlined" autocomplete="off" <?= $objFuncionario->statusFuncionario == 'Inativo' ? 'checked' : '' ?>>
+                                <label class="btn btn-outline-danger" for="danger-outlined">Inativo</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Data de Contrato:</label>
+                            <input type="date" class="form-control" name="dtContrato" value="<?= $objFuncionario->dtContrato ?>">
+                        </div>
+                        <div class="d-flex justify-content-center p-2">
+
+                            <input type="submit" name="<?= BTN ?>" class="  btn btn-lg btn-success btInput" value="<?= (TITLE == "Cadastrar Funcionário" ? 'Cadastrar' : 'Editar') ?>" <?php //if ($btEnviar == TRUE) echo "disabled";
+                                                                                                                                                                                            ?>>
+
                         </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label>Login:</label>
-                    <input type="tel" class="form-control" name="login" value="<?= $objFuncionario->login ?>" placeholder="Fulano" required="">
-                </div>
-                <div class="form-group">
-                    <label>Senha:</label>
-                    <input type="password" class="form-control" name="senha" style="padding-center: 45px;" value="<?= $objFuncionario->senha ?>" placeholder="oooooo" required="">
 
-                </div>
-                <div class="form-group mt-3">
-                    <label>Status do Funcionário: </label>
-                    <div class="form-check form-check-inline">
-                        <input type="radio" class="btn-check" name="status" id="success-outlined" autocomplete="off"<?=$objFuncionario->statusFuncionario == 'Inativo' ? '' : 'checked' ?>>
-                        <label class="btn btn-outline-success" for="success-outlined">Ativo</label>
+                </form>
 
-
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input type="radio" class="btn-check" name="status" id="danger-outlined" autocomplete="off" <?=$objFuncionario->statusFuncionario == 'Inativo' ? 'checked' : '' ?>>
-                        <label class="btn btn-outline-danger" for="danger-outlined">Inativo</label>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>Data de Contrato:</label>
-                    <input type="date" class="form-control" name="dtContrato" value="<?= $objFuncionario->dtContrato ?>">
-                </div>
-        </div>
-        <div>
-            <div class="row">
-                <div class="col-4 offset-4 bg-gradient rounded-3" style=" background-color: black;opacity: 100%">
-                    <br>
-                    <input type="submit" name="<?= BTN ?>" class="btn btn-success btInput p-1 offset-5" value="Salvar" <?php //if ($btEnviar == TRUE) echo "disabled"; 
-                                                                                                                        ?>>
-                    <br>
-                    <br>
-                </div>
             </div>
         </div>
     </div>
+</div>

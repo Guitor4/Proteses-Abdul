@@ -78,21 +78,21 @@ class Protese{
             //dos dados no banco de dados. Possui como retorno o útimo id inserido caso a inserção tenha sido um sucesso.
             //O parâmetro que deve ser passado no insertSQL é no formato array e deve estar de 
             $obdb = new db('protese');
-            $this->idProtese = $obdb->updateSQL($idProtese,[
+            return $obdb->updateSQL($idProtese,[
                                 //Envia como um parâmetro e por meio de um array (titulo => valor) os valores que foram trazidos do POST e agora estão
                                 //na classe Protese, para que sejam contabilizados e devidamente adicionados à query (comando que vai pro SQL) 
                                 //que está sendo montada em db.php->insertSQL.
                                 'tipo' => $this->tipo,
                                 'posicao'=> $this->posicao,
-                                'marcaDente'=> $this->marca,
+                                'extensao'=> $this->extensao,
+                                'marcaDente'=> $this->marcaDente,
                                 'qtdDente'=> $this->qtdDente,
                                 'ouro'=> $this->ouro,
                                 'qtdOuro'=> $this->qtdOuro,
-                                'dataRegistro'=> $this->dataRegistro,
                                 'status'=> $this->status,
                                 'observacao'=> $this->observacao,
     
-            ])[1];
+            ]);
     }
 
     /**
@@ -144,8 +144,8 @@ class Protese{
         if (strlen($where)){
             $where = 'WHERE '.$where;
         }
-        $order = (strlen($order) ? 'ORDER BY '.$order :'');
-        $limit = (strlen($limit) ? 'LIMIT '.$limit : '');
+        $order = (strlen($order) ? ' ORDER BY '.$order :'');
+        $limit = (strlen($limit) ? ' LIMIT '.$limit : '');
         $query = 'select * from paciente inner join consulta on prontuario = fkProntuario inner join protese on fkConsultaT = idConsulta '.$where.$order.$limit;
         /* echo "<pre>"; print_r($query); echo "<pre>";exit; */
         return (new db)->executeSQL($query)->fetchAll(PDO::FETCH_CLASS,self::class);

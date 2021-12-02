@@ -10,13 +10,13 @@ use Classes\Dao\db;
 $prontuario = $_REQUEST['prontuario'];
 $_SESSION['prontuario'] = $prontuario;
 sleep(1);
-$query = "SELECT * from consulta inner join paciente " 
-."on fkProntuario=prontuario " 
-."inner join clinica on CFKClinica=idClinica "
-."inner join dentista on CFKDentista=idDentista "
-."inner join tratamento on fkConsulta=idConsulta "
-."inner join procedimento on fkProcedimento=idProcedimento "
-."where prontuario=". $prontuario;
+$query = "SELECT * from consulta inner join paciente "
+    . "on fkProntuario=prontuario "
+    . "inner join clinica on CFKClinica=idClinica "
+    . "inner join dentista on CFKDentista=idDentista "
+    . "inner join tratamento on fkConsulta=idConsulta "
+    . "inner join procedimento on fkProcedimento=idProcedimento "
+    . "where prontuario=" . $prontuario;
 if ($prontuario != null) {
     $prontuario1 = (new db())->executeSQL($query);
 

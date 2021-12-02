@@ -2,12 +2,14 @@
 //faz o require do autoload composer, para carregar automaticamente as principais classes do nosso projeto,  
 //assim só sendo necessário o uso de um "use \classe" para chamá-la (válido somente para arquivos da pasta classes).
 require __DIR__ . '/vendor/autoload.php';
-include __DIR__.'./includes/sessionStart.php';
+include __DIR__ . './includes/sessionStart.php';
+
 use Classes\Entity\Consulta;
 use \Classes\Entity\Procedimento;
 use \Classes\Entity\tratamento;
 
 $erro = 0;
+$alerta = '';
 $ConsultaInnerJoin = consulta::getConsultaInnerJoin('paciente,dentista,clinica,funcionario', 'idConsulta = ' . $_GET['id'], 'fkProntuario,prontuario,CFKDentista,idDentista,CFKClinica,idClinica,fkFuncionario,idFuncionario');
 if (!$ConsultaInnerJoin instanceof consulta) {
     header('location: pesquisarConsulta.php?status=error');
@@ -37,6 +39,8 @@ if ($ConsultaInnerJoin->statusConsulta == 'Finalizada') {
 define('TITLE', 'Dados da consulta de ' . $ConsultaInnerJoin->nomePaciente);
 define('NAME', 'Consulta ');
 define('LINK', '');
+define('IDENTIFICACAO', '0');
+
 $visibilidadiv = '';
 if ($ConsultaInnerJoin->statusConsulta == 'Finalizada') {
     $visibilidadiv = "style = display:none;";
@@ -47,6 +51,29 @@ if (!isset($_GET['id']) or !is_numeric($_GET['id'])) {
 }
 /* echo "<pre>"; print_r($erro); echo "<pre>";exit; */
 $objTratamento = new Tratamento;
+if ($objProcedimento == null && $ConsultaInnerJoin->statusConsulta != "Finalizada") {
+
+    $alerta = "<script>
+    Swal.fire({
+      title: 'Sem procedimentos disponíveis para essa Consulta',
+      text: \"Essa consulta será finalizada pois já não existem procedimentos possíveis a serem cadastrados\",
+      icon: 'success',
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'Ok'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        redirecionamento()
+    }
+    })
+    function redirecionamento(){
+      window.location.href = \"Consulta.php?id=" . $_GET['id'] . "\"
+    }
+    </script>
+    <meta http-equiv=\"refresh\" content=\"5;url=Consulta.php?id=" . $_GET['id'] . "\" />
+    ";
+    $objTratamento->atualizarStatusConsulta($_GET['id'], 'Finalizada');
+}
+
 if (isset($_POST['Finalizar'])) {
     /*     echo '<pre>';
     print_r($_POST);
@@ -89,12 +116,34 @@ if (isset($_POST['Finalizar'])) {
                 if (isset($_POST['finalizarConsulta']) && $_POST['finalizarConsulta'] == 'on') {
                     $objTratamento->atualizarStatusConsulta($_GET['id'], 'Finalizada');
                 }
-                header('location: Consulta.php?id=' . $ConsultaInnerJoin->idConsulta);
+                $alerta = "<script>
+                Swal.fire({
+                  title: 'Tratamento para a " . NAME . " n° " . $_GET['id'] . " cadastrado com sucesso!!',
+                  text: \"Caso haja alguma alteração a ser feita, utilize a lista de consultas fora da agenda\",
+                  icon: 'success',
+                  confirmButtonColor: '#3085d6',
+                  confirmButtonText: 'Ok'
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    redirecionamento()
+                }
+                })
+                function redirecionamento(){
+                  window.location.href = \"Consulta.php?id=" . $_GET['id'] . "\"
+                }
+                </script>
+                <meta http-equiv=\"refresh\" content=\"5;url=Consulta.php?id=" . $_GET['id'] . "\" />
+                ";
             } else {
-                echo '<pre>';
-                print_r('Houve um erro na inserção do tratamento. Provavelmente o procedimento já foi cadastrado nessa consulta anteriormente');
-                echo '<pre>';
-                exit;
+                print("<script>
+             Swal.fire({
+               title: 'Houve um erro ao finalizar a " . NAME . "!!',
+               text: \"Algo ocorreu, tente novamente!!\",
+               icon: 'error',
+               confirmButtonColor: '#3085d6',
+               confirmButtonText: 'Ok'
+             })
+             </script>");
             }
         }
     } else {

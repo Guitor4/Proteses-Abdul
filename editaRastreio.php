@@ -5,7 +5,7 @@ include __DIR__.'./includes/sessionStart.php';
 
 define('TITLE', 'Editar Rastreio');
 define('BTN', 'editarRastreio');
-
+define('IDENTIFICACAO', '0');
 
 
 use Classes\Entity\rastreio;

@@ -1,38 +1,43 @@
 <?php
 
 require 'vendor/autoload.php';
-include __DIR__.'./includes/sessionStart.php';
+include __DIR__ . './includes/sessionStart.php';
 define('TITLE', 'Editar Paciente');
 define('BTN', 'editarPaciente');
+define('IDENTIFICACAO', '0');
 
 use \Classes\Entity\paciente;
 
 
 //consulta vaga
 if (isset($_GET['prontuario'])) {
-   $paciente = paciente::getPaciente($_GET['prontuario']); 
+    $paciente = paciente::getPaciente($_GET['prontuario']);
 }
 
 
 //validação da vaga
-if(!$paciente instanceof paciente){
+if (!$paciente instanceof paciente) {
     header('location: index.php?status=error');
 }
 
-if (isset($_POST['editarPaciente'])) {
+if (isset($_POST[BTN])) {
 
-    if (!empty($_POST['nome'])) {
+    if (!empty($_POST['nomePaciente'])) {
 
-        $paciente->prontuario = $_POST['prontuario'];
-        $paciente->nome = trim($_POST['nome']);
+        $paciente->prontuario = $_GET['prontuario'];
+        $paciente->nome = trim($_POST['nomePaciente']);
         $paciente->sexo = $_POST['sexo'];
         $paciente->tel = $_POST['tel'];
         $paciente->email = $_POST['email'];
-        unset($_POST['editarPaciente']);
+
 
         $paciente->editarPaciente();
 
-        header('Location: listaPaciente.php?status=success');
+        if ($paciente->prontuario > 0) {
+            header('location:listaPaciente.php?pagina=1&status=success2&id=' . $paciente->prontuario);
+        } else {
+            header('location:listaPaciente.php?pagina=1&status=error2');
+        }
     }
 }
 

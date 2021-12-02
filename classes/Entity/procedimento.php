@@ -18,7 +18,7 @@ class Procedimento{
          $obdb = new db('Procedimento');
             $this->idProcedimento= $obdb->insertSQL([ 'nomeProcedimento' => $this->nomeProcedimento,
             'statusProcedimento' => $this->statusProcedimento
-        ]);
+        ])[1];
     }
 
     /**

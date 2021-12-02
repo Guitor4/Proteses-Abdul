@@ -1,4 +1,18 @@
 
+div#to_do_list::-webkit-scrollbar { 
+	display: none !important;
+}
+
+body{
+  background-size: cover;
+background-image: "./images/bg.jpg";
+background-position: auto;
+}
+
+.dropdown-content {
+  max-height: 200px !important;
+}
+
 /* cor base pesquisada no site paletton 00CCCC */
 
 /*header{
