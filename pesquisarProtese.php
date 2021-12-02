@@ -45,9 +45,10 @@ if (
 
     $registros_totais = $objProtese->getProtesesPaciente('fkConsultaT =' . $_GET['idConsulta'], '
  dataRegistro desc');
-    /* echo "<pre>"; print_r($proteses); echo "<pre>";exit; */
-    if ($proteses == null) {
-        /* echo "<pre>"; print_r('testando'); echo "<pre>";exit; */
+    $registros_filtrados = $proteses = $objProtese->getProtesesPaciente('fkConsultaT =' . $_GET['idConsulta'], '
+ dataRegistro desc');
+    /*     echo "<pre>"; print_r($protese); echo "<pre>";exit; */
+    if ($registros_totais == null) {
         header('location:cadastrarProtese.php?idConsulta=' . $_GET['idConsulta'] . '&idProcedimento=' . $_GET['idProcedimento'] . '&prontuario=' . $_GET['prontuario']);
     }
 } else {
@@ -69,9 +70,10 @@ $itens_por_pagina = 6;
 $inicio = ($itens_por_pagina * $pagina_atual) - $itens_por_pagina;
 
 
-
-$registros_filtrados = $proteses =  $objProtese->getProtesesPaciente($where, 'statusConsulta,dataConsulta  desc ', $inicio . ',' . $itens_por_pagina);
-/* echo "<pre>"; print_r($registros_filtrados); echo "<pre>";exit; */
+if (!isset($registros_filtrados)) {
+    $registros_filtrados = $proteses = $objProtese->getProtesesPaciente($where, 'statusConsulta,dataConsulta  desc ', $inicio . ',' . $itens_por_pagina);
+    /* echo "<pre>"; print_r($registros_filtrados); echo "<pre>";exit; */
+}
 $num_registros_totais = count($registros_totais);
 
 $num_pagina = ceil($num_registros_totais / $itens_por_pagina);

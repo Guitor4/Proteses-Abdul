@@ -54,6 +54,6 @@ class Procedimento{
         return (new db('procedimento'))->updateSQL('idProcedimento= ' . $this->idProcedimento, [
                 'nomeProcedimento' => $this->nomeProcedimento,
                 'statusProcedimento' => $this->statusProcedimento
-            ])[1];
+            ]);
     }
 }

@@ -14,6 +14,7 @@ use \Classes\Entity\funcionario;
 
 define('TITLE', 'Cadastrar Nova Consulta');
 define('IDENTIFICACAO', '0');
+define('BTN', 'cadastrarConsulta');
 $erro = "";
 $select = "";
 $objClinica = clinica::getClinicas('statusClinica != "inativo"');
@@ -68,7 +69,16 @@ if (isset($_POST['paciente'], $_POST['horarios'], $_POST['dentista'], $_POST['cl
     $objConsulta->fkFuncionario = $_SESSION['idFuncionario'];
     $objConsulta->CFKClinica = $_POST['clinica'];
     $objConsulta->CFKDentista = $_POST['dentista'];
-        /* echo "<pre>"; print_r($objConsulta); echo "<pre>";exit; */
+    
+    /* echo "<pre>"; print_r($_POST); echo "<pre>";exit; */
+    // Validação dos campos select
+
+ /*    if($_POST['paciente'] == "[SELECIONE]"){
+        echo "<pre>"; print_r('teste'); echo "<pre>";exit;
+    } */
+ 
+
+
 
     //echo '<pre>';print_r($objConsulta);echo'<pre>';exit;
     $objConsulta->cadastrarConsulta();

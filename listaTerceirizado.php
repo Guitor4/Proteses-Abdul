@@ -6,6 +6,8 @@ include __DIR__ . './includes/sessionStart.php';
 use Classes\Entity\Terceirizado;
 
 define("IDENTIFICACAO", 9);
+define("NAME", 'Serviço Prestado');
+define("LINK", 'listaTerceirizado.php?pagina=1');
 
 if (!isset($_GET['pagina'])) {
   header('location:?pagina=1');

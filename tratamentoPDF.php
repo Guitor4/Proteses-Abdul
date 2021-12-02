@@ -11,7 +11,7 @@ use Dompdf\Options;
 if (isset($_GET['idProcedimento'])){ //cuidado com o id da protese
     
     $tratamento = Prontuario::getTratamentoInner($_GET['idProcedimento'],$_GET['consulta'],$_GET['prontuario']);
-    echo '<pre>';print_r($tratamento); echo '<pre>';exit;
+    /* echo '<pre>';print_r($tratamento); echo '<pre>';exit; */
      
 } 
 /*foreach ($tratamentos as $tratamento) {
@@ -31,10 +31,8 @@ if ($tratamento->idProcedimento==3){//se igual a protese
         <label>Código: '.$tratamento->idProtese.'</label><br>
         <label>Tipo: '.$tratamento->tipo.'</label><br>
         <label>Posição: '.$tratamento->posicao.'</label><br>
-        <label>Material: '.$tratamento->material.'</label><br>
-        <label>Dureza: '.$tratamento->dureza.'</label><br>
+        <label>Marca Dente: '.$tratamento->marcaDente.'</label><br>
         <label>Extensão: '.$tratamento->extensao.'</label><br>
-        <label>Dente: '.$tratamento->dente.'</label><br>
         <label>Qtd. de Dente: '.$tratamento->qtdDente.'</label><br>
         <label>Ouro?: '.$tratamento->ouro.'</label><br>
         <label>Qtd. Ouro: '.$tratamento->qtdOuro.'</label><br>

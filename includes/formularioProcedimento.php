@@ -37,7 +37,7 @@
                         </div>
                         <div class="d-flex justify-content-center p-2">
 
-                            <input type="submit" name="<?= TITLE ?>" class="  btn btn-lg btn-success btInput" value="<?= (TITLE == "Cadastrar Procedimento" ? 'Cadastrar' : 'Editar') ?>" <?php //if ($btEnviar == TRUE) echo "disabled";
+                            <input type="submit" name="<?= BTN ?>" class="  btn btn-lg btn-success btInput" value="<?= (TITLE == "Cadastrar Procedimento" ? 'Cadastrar' : 'Editar') ?>" <?php //if ($btEnviar == TRUE) echo "disabled";
                                                                                                                                                                                             ?>>
 
                         </div>

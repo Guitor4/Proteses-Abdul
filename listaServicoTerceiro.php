@@ -6,6 +6,8 @@ include __DIR__ . './includes/sessionStart.php';
 use Classes\Entity\ServicoTerceiro;
 
 define('IDENTIFICACAO',8);
+define('NAME','Servico Terceiro');
+define('LINK','listaServicoTerceiro.php?pagina=1');
 
 if (!isset($_GET['pagina'])) {
     header('location:?pagina=1');

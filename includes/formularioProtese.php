@@ -79,7 +79,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group mt-2" <?= (TITLE != 'Cadastrar Protese' ? 'hidden = hidden' : '') ?>>
+                            <div class="form-group mt-2" <?= (TITLE != 'Cadastrar Prótese' ? 'hidden = hidden' : '') ?>>
                                 <label>Paciente</label>
                                 <select <?= (isset($_GET['prontuario']) ? 'readonly' : '') ?> class="form-control" name="paciente">
                                     <option hidden>-----Selecione o Paciente------</option>

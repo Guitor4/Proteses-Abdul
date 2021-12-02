@@ -19,9 +19,9 @@ if (isset($_POST['Salvar'])) {
     $objServicoTerceiro->cadastro();
 
     if ($objServicoTerceiro->idServico > 0) {
-        header('Location: listaTerceirizado.php?pagina=1&status=success1&id=' . $objServicoTerceiro->idServico);
+        header('Location: listaServicoTerceiro.php?pagina=1&status=success1&id=' . $objServicoTerceiro->idServico);
     } else {
-        header('Location: listaTerceirizado.php?pagina=1&status=error1');
+        header('Location: listaServicoTerceiro.php?pagina=1&status=error1');
     }
 }
 
