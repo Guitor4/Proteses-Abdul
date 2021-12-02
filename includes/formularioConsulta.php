@@ -35,7 +35,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Hora da Consulta</label>
-                                <select class="selectpicker form-control" name="horarios" id="horarios" data-live-search="true" data-size=5>
+                                <select class="selectpicker form-control" <??>name="horarios" id="horarios" data-live-search="true" data-size=5>
                                     <option>---[SELECIONE UMA DATA]---</option>
                                     <option <?=(TITLE != "Cadastrar Nova Consulta" ? 'selected = selected' : '')?> hidden="hidden"><?= $objConsulta->horaConsulta?></option>
                                 </select>

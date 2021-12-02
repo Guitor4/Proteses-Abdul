@@ -22,7 +22,6 @@ class Protese{
     public $qtdOuro = 0 ;
     public $dataRegistro;
     public $status;
-    public $paciente;
     public $observacao;
     public $fkConsultaT;
     public $fkProcedimentoT;
@@ -92,7 +91,7 @@ class Protese{
                                 'status'=> $this->status,
                                 'observacao'=> $this->observacao,
     
-            ]);
+            ])[1];
     }
 
     /**
@@ -144,8 +143,8 @@ class Protese{
         if (strlen($where)){
             $where = 'WHERE '.$where;
         }
-        $order = (strlen($order) ? 'ORDER BY '.$order :'');
-        $limit = (strlen($limit) ? 'LIMIT '.$limit : '');
+        $order = (strlen($order) ? ' ORDER BY '.$order :'');
+        $limit = (strlen($limit) ? ' LIMIT '.$limit : '');
         $query = 'select * from paciente inner join consulta on prontuario = fkProntuario inner join protese on fkConsultaT = idConsulta '.$where.$order.$limit;
         /* echo "<pre>"; print_r($query); echo "<pre>";exit; */
         return (new db)->executeSQL($query)->fetchAll(PDO::FETCH_CLASS,self::class);

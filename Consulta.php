@@ -91,6 +91,7 @@ if (isset($_POST['Finalizar'])) {
 
 
                 $teste = $objTratamento->cadastrarTratamento();
+                echo "<pre>"; print_r($teste); echo "<pre>";exit;
                 if (gettype($teste[0]) == 'object') {
                     if (isset($_POST['finalizarConsulta']) && $_POST['finalizarConsulta'] == 'on') {
                         $objTratamento->atualizarStatusConsulta($_GET['id'], 'Finalizada');

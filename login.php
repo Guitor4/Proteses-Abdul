@@ -10,6 +10,7 @@ if (isset($_POST) && isset($_POST['Entrar'])){
     $login = $_POST['login'];
     $senha = $_POST['senha'];
     $validacao = $objFuncionario->getLogin($login,$senha);
+    /* echo "<pre>"; print_r($validacao); echo "<pre>";exit; */
     unset($_POST['Entrar']);
     if(gettype($validacao) == 'object'){
         $_SESSION['nome'] = $validacao->nomeFuncionario;

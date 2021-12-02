@@ -21,7 +21,7 @@ class Terceiro{
             'nomeTerceiro' => $this->nomeTerceiro,
             'telefone' => $this->telefone,
             'statusTerceiro' => $this->statusTerceiro
-        ]);
+        ])[1];
     }
 
     /**
@@ -58,6 +58,6 @@ class Terceiro{
                 'nomeTerceiro' => $this->nomeTerceiro,
                 'telefone' => $this->telefone,
                 'statusTerceiro' => $this->statusTerceiro
-            ]);
+            ])[1];
     }
 }

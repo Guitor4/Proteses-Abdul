@@ -18,7 +18,7 @@ class Procedimento{
          $obdb = new db('Procedimento');
             $this->idProcedimento= $obdb->insertSQL([ 'nomeProcedimento' => $this->nomeProcedimento,
             'statusProcedimento' => $this->statusProcedimento
-        ]);
+        ])[1];
     }
 
     /**
@@ -49,11 +49,11 @@ class Procedimento{
                                    ->fetchObject(self::class); 
 
     }
-    public function AtualizarProcedimento()
+    public function atualizarProcedimento()
     {
         return (new db('procedimento'))->updateSQL('idProcedimento= ' . $this->idProcedimento, [
                 'nomeProcedimento' => $this->nomeProcedimento,
                 'statusProcedimento' => $this->statusProcedimento
-            ]);
+            ])[1];
     }
 }

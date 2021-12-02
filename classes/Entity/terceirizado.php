@@ -19,7 +19,7 @@ class Terceirizado
             'fkTerceiro' => $this->fkTerceiro,
             'fkServicoTerceiro' => $this->fkServicoTerceiro,
             
-        ]);
+        ])[1];
         //echo'<pre>';print_r($terceiro);echo'</pre>';exit;
         return $terceiro;
     }
@@ -57,10 +57,10 @@ class Terceirizado
      * @return object
      */
 
-    public function AtualizarTerceiro()
+    public function atualizarTerceirizado()
     {
-        return (new db('terceiriziado'))->updateSQL('idterceiriziado= ' . $this->idTerceiro, [
-                'nometerceiriziado' => $this->nomeTerceiro,
+        return (new db('terceirizado'))->updateSQL('idterceirizado= ' . $this->idTerceiro, [
+                'nomeTerceirizado' => $this->nomeTerceiro,
                 'telefone' => $this->telefone,
                 'statusTerceiro' => $this->statusTerceiro
             ]);

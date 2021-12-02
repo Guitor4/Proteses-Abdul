@@ -15,6 +15,7 @@ use \Classes\Entity\funcionario;
 define('TITLE', 'Cadastrar Nova Consulta');
 define('IDENTIFICACAO', '0');
 $erro = "";
+$select = "";
 $objClinica = clinica::getClinicas('statusClinica != "inativo"');
 if (count($objClinica) < 1){
     $erro = ("<script>
