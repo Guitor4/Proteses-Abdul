@@ -34,6 +34,7 @@
                                 <input class="form-control" placeholder="YYYY- MM - DD" onkeypress="mascara(this, '####-##-##')" onchange="getHorarios(this.value)" type="text" id="datepicker" name="data" value="<?= $objConsulta->dataConsulta ?>">
                             </div>
                             <div class="form-group">
+                                <input type="text" hidden name="horarioAUX" id="horarioAUX" value="">
                                 <label>Hora da Consulta</label>
                                 <select class="selectpicker form-control" name="horarios" id="horarios" data-live-search="true" data-size=5>
                                     <option>---[SELECIONE UMA DATA]---</option>
@@ -96,6 +97,7 @@
 <script src="js/JQuery2.min.js"></script>
 <script>
     $( document ).ready(function() {
-        /* getHorarios('2021-11-16'); */
+        data = document.getElementById('datepicker');
+        document.getElementById('horarios').value = getHorarios(data.value);
 });
 </script>

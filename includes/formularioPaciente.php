@@ -3,10 +3,6 @@
          <div class="border border-white rounded p-2">
              <h3 style="text-align: center; color: white"><?= TITLE ?></h3>
              <form class="p-2" method="post" style="color: white">
-                 <div class="form-group">
-                     <label>Número Prontuário</label>
-                     <input type="text" class="form-control" name="prontuario" readonly placeholder="Número" value=" <?= $paciente->prontuario ?>">
-                 </div>
 
                  <div class="form-group">
                      <label>Nome</label>
@@ -41,8 +37,8 @@
                  <br>
                  <div class="d-flex justify-content-center p-2">
 
-                     <input type="submit" name="<?=BTN?>" class="  btn btn-lg btn-success btInput" value="<?= (TITLE == "Cadastrar Paciente" ? 'Cadastrar' : 'Editar') ?>" <?php //if ($btEnviar == TRUE) echo "disabled";
-                                                                                                                                                                                    ?>>
+                     <input type="submit" name="<?= BTN ?>" class="  btn btn-lg btn-success btInput" value="<?= (TITLE == "Cadastrar Paciente" ? 'Cadastrar' : 'Editar') ?>" <?php //if ($btEnviar == TRUE) echo "disabled";
+                                                                                                                                                                            ?>>
 
                  </div>
          </div>

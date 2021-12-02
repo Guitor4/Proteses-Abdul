@@ -14,12 +14,45 @@ define('TITLE', 'Editar Consulta');
 define('IDENTIFICACAO', '0');
 $objConsulta = consulta::getConsulta($_GET['id']);
 /* echo "<pre>"; print_r($objConsulta); echo "<pre>";exit; */
-$objClinica = clinica::getClinicas();
-/* echo "<pre>"; print_r($objClinica); echo "<pre>";exit; */
-$objDentista = dentista::getDentistas();
-/* echo "<pre>"; print_r($objDentista); echo "<pre>";exit; */
+$erro = "";
+$objClinica = clinica::getClinicas('statusClinica != "inativo"');
+if (count($objClinica) < 1) {
+    $erro = ("<script>
+    Swal.fire({
+      title: 'Sem clínicas!!',
+      text: \"Não foram encontradas clínicas registradas ou ativas, por favor registre ao menos uma antes de cadastrar a consulta\",
+      icon: 'error',
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'Ok'
+    })
+    </script>" . "<meta http-equiv=\"refresh\" content=\"5;url=listaClinica.php\" />");
+}
+/* echo '<pre>';print_r($objClinica);echo'<pre>';exit; */
+$objDentista = dentista::getDentistas('statusDentista != "inativo"');
+if (count($objDentista) < 1) {
+    $erro = ("<script>
+    Swal.fire({
+      title: 'Sem Dentistas!!',
+      text: \"Não foram encontrados dentistas registrados ou ativas, por favor registre ao menos uma antes de cadastrar a consulta\",
+      icon: 'error',
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'Ok'
+    })
+    </script>" . "<meta http-equiv=\"refresh\" content=\"5;url=listaDentista.php\" />");
+}
+/* echo '<pre>';print_r($objDentista);echo'<pre>';exit; */
 $objPaciente = paciente::getPacientes();
-/* echo "<pre>"; print_r($objPaciente); echo "<pre>";exit; */
+if (count($objPaciente) < 1) {
+    $erro = ("<script>
+    Swal.fire({
+      title: 'Sem Pacientes!!',
+      text: \"Não foram encontrados pacientes registrados, por favor registre ao menos uma antes de cadastrar a consulta\",
+      icon: 'error',
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'Ok'
+    })
+    </script>" . "<meta http-equiv=\"refresh\" content=\"5;url=listaPaciente.php\" />");
+}
 $objFuncionario = funcionario::getFuncionarios();
 /* echo "<pre>"; print_r($objFuncionario); echo "<pre>";exit; */
 

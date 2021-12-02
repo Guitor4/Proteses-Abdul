@@ -11,7 +11,7 @@ use Dompdf\Options;
 if (isset($_GET['idProcedimento'])){ //cuidado com o id da protese
     
     $tratamento = Prontuario::getTratamentoInner($_GET['idProcedimento'],$_GET['consulta'],$_GET['prontuario']);
-    //echo '<pre>';print_r($tratamento); echo '<pre>';exit;
+    echo '<pre>';print_r($tratamento); echo '<pre>';exit;
      
 } 
 /*foreach ($tratamentos as $tratamento) {

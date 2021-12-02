@@ -46,4 +46,9 @@ class Lembrete
         $lembretes = (new db('lembrete,funcionario'))->selectSQL($where, $like, $order, $limit, $fields, 'fkFuncionario,idFuncionario')->fetchObject();
         return $lembretes;
     }
+
+    public function deletarLembrete($id){
+        $query = 'delete from lembrete where idLembrete ='.$id;
+        (new db('lembrete'))->executeSQL($query);
+    }
 }
