@@ -41,7 +41,7 @@ if (isset($_POST['editarRastreio'])) {
         $rastreioEdit->RFKServico = $_POST['RFKServico'];
         $rastreioEdit->fkProtese = $_POST['fkProtese'];
         
-       echo'<pre>';print_r($rastreioEdit);echo'</pre>';exit;
+       /* echo'<pre>';print_r($rastreioEdit);echo'</pre>';exit; */
         unset($_POST['editarRastreio']);
         
         $rastreioEdit->editarRastreio();

@@ -22,7 +22,6 @@ class Protese{
     public $qtdOuro = 0 ;
     public $dataRegistro;
     public $status;
-    public $paciente;
     public $observacao;
     public $fkConsultaT;
     public $fkProcedimentoT;

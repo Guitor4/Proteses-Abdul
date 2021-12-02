@@ -26,11 +26,11 @@ if ($ConsultaInnerJoin->statusConsulta == 'Finalizada') {
 
         if ($tratamento->nomeProcedimento == 'Protese') {
             $resultados .= '<tr>
-                        <td><a href="pesquisarProtese.php?pagina=1&idConsulta=' . $_GET["id"] . '&idProcedimento=' . $tratamento->idProcedimento . '&prontuario=' . $ConsultaInnerJoin->prontuario . '" style = "text-decoration:none;color:red">' . $tratamento->nomeProcedimento . '</a></td>
+                        <td><a style="display:block;text-decoration:none;color:red" href="pesquisarProtese.php?pagina=1&idConsulta=' . $_GET["id"] . '&idProcedimento=' . $tratamento->idProcedimento . '&prontuario=' . $ConsultaInnerJoin->prontuario . '">' . $tratamento->nomeProcedimento . '</a></td>
                         </tr>';
         } else {
             $resultados .= '<tr>
-            <td><a href="tratamento.php?idConsulta=' . $_GET["id"] . '&idProcedimento=' . $tratamento->idProcedimento . '&prontuario=' . $ConsultaInnerJoin->prontuario . '" style = "text-decoration:none;color:red">' . $tratamento->nomeProcedimento . '</a></td>
+            <td><a href="tratamento.php?idConsulta=' . $_GET["id"] . '&idProcedimento=' . $tratamento->idProcedimento . '&prontuario=' . $ConsultaInnerJoin->prontuario . '" style = "display:block;text-decoration:none;color:red">' . $tratamento->nomeProcedimento . '</a></td>
             </tr>';
         }
     }
@@ -91,6 +91,7 @@ if (isset($_POST['Finalizar'])) {
 
 
                 $teste = $objTratamento->cadastrarTratamento();
+                echo "<pre>"; print_r($teste); echo "<pre>";exit;
                 if (gettype($teste[0]) == 'object') {
                     if (isset($_POST['finalizarConsulta']) && $_POST['finalizarConsulta'] == 'on') {
                         $objTratamento->atualizarStatusConsulta($_GET['id'], 'Finalizada');

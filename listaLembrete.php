@@ -39,7 +39,7 @@ $itens_por_pagina = 5;
 
 $inicio = ($itens_por_pagina * $pagina_atual) - $itens_por_pagina;
 
-$lembretes = $registros_totais = Lembrete::getLembretesInner($where);
+$registros_totais = Lembrete::getLembretesInner($where);
 
 $lembretes =  $registros_filtrados = Lembrete::getLembretesInner($where, null, null, $inicio . ',' . $itens_por_pagina, 'idLembrete,titulo,descricao,dataLembrete,nomeFuncionario');
 
@@ -50,6 +50,23 @@ $num_pagina = ceil($num_registros_totais / $itens_por_pagina);
 /* echo "<pre>"; print_r($lembretes); echo "<pre>";exit; */
 
 $resultados = '';
+$status = '';
+if (isset($_POST['excluirLembrete'])) {
+  $id = $_POST['ide'];
+  $objLembrete->deletarLembrete($id);
+  $status = "<script>
+  Swal.fire({
+    title: 'Lembrete deletado com sucesso!!',
+    text: \"Tudo certo por aqui!!\",
+    icon: 'success',
+    confirmButtonColor: '#3085d6',
+    confirmButtonText: 'Ok'
+  })
+  </script>
+  <meta http-equiv=\"refresh\" content=\"5;url=index.php\" />
+  ";
+}
+
 foreach ($lembretes as $l) {
   $resultados .= '<tr> '
     . '<td> ' . $l->idLembrete . '</td>'
@@ -60,11 +77,31 @@ foreach ($lembretes as $l) {
     . '<td> 
           <a href="editaLembrete.php?id=' . $l->idLembrete . '" 
               class="btn btn-info" >Editar</a>
-              <a href="editaLembrete.php?id=' . $l->idLembrete . '" 
-              class="btn btn-danger" >Excluir</a>
+              <button ' . $l->idLembrete . '" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal' . $l->idLembrete . '" >Excluir</button>
          </td>
          
-         </tr>';
+         </tr>
+         <div class="modal fade" id="exampleModal' . $l->idLembrete . '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <div class="modal-dialog">
+             <div class="modal-content">
+                 <div class="modal-header">
+                     <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                 </div>
+                 <div class="modal-body">
+                     <form method="post" action="">
+                         <label><strong>Deseja excluir o produto
+                                 ' . $l->titulo . '?</strong></label>
+                         <input type="hidden" name="ide" value="' . $l->idLembrete . '">
+                 </div>
+                 <div class="modal-footer">
+                     <button type="submit" name="excluirLembrete" class="btn btn-primary">Sim</button>
+                     <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+                 </div>
+                 </form>
+             </div>
+         </div>
+     </div>';
 }
 
 $resultados = strlen($resultados) ? $resultados :

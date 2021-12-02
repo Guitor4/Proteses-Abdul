@@ -11,6 +11,7 @@ define('IDENTIFICACAO', '0');
 
 /* echo "<pre>"; print_r($_SESSION); echo "<pre>";exit; */
 
+use Classes\Entity\Lembrete;
 use Classes\Entity\rastreio;
 use Classes\Entity\terceiro;
 use Classes\Entity\terceirizado;
@@ -43,7 +44,7 @@ if (isset($_GET['rProtese'])) {
 
 
 $rastreio = new rastreio();
-
+$lembrete = new Lembrete();
 
 $terceirizado = new terceirizado();
 
@@ -65,6 +66,12 @@ if (isset($_POST['cadastrarRastreio'])) {
 
 
     $rastreio->cadastrarRastreio();
+    $lembrete->titulo = 'Retorno de Prótese';
+    $lembrete->dataLembrete = $_POST['dtRetorno'];
+    $lembrete->descricao = 'Data de retorno da Prótese nº' . $_POST['fkProtese'];
+    $lembrete->Funcionario = $_SESSION['idFuncionario'];
+
+    $lembrete->cadastrarLembrete();
 
     if ($rastreio->idRastreio > 0) {
         header('Location: listaRastreio.php?status=success1&id=' . $rastreio->idRastreio);

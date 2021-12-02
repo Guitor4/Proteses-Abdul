@@ -29,15 +29,11 @@ if (isset($_POST['editarProcedimento'])) {
         $objProcedimento->statusProcedimento = $_POST['statusProcedimento'];
         //echo '<pre>';print_r($objProcedimento);echo '<pre>';exit;
 
-        $objProcedimento->AtualizarProcedimento();
-
-        header('Location: index.php?status=success');
-
-        /*     if ($objProcedimento->id > 0){
-        header ('Location: index.php?status=success');
-    }else{
-        header ('Location: index.php?status=error');
-    } */
+        if ($objProcedimento->AtualizarProcedimento()) {
+            header('Location: listaProcedimento.php?pagina=1&status=success2&id='.$_GET['id']);
+        } else {
+            header('Location: listaProcedimento.php?pagina=1&status=error2');
+        }
     }
 }
 include __DIR__ . '/includes/header.php';

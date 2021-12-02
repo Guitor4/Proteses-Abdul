@@ -12,7 +12,7 @@
 
     </main>
     <div class="col-8 offset-2">
-        <div class="p-3 bg-dark" style = "border-radius:25px">
+        <div class="p-3 bg-dark" style="border-radius:25px">
             <div class="border border-white rounded p-2">
                 <h3 style="text-align: center; color: white"><?= TITLE ?></h3>
                 <form method="post" style="color: white">
@@ -34,10 +34,11 @@
                                 <input class="form-control" placeholder="YYYY- MM - DD" onkeypress="mascara(this, '####-##-##')" onchange="getHorarios(this.value)" type="text" id="datepicker" name="data" value="<?= $objConsulta->dataConsulta ?>">
                             </div>
                             <div class="form-group">
+                                <input type="text" hidden name="horarioAUX" id="horarioAUX" value="">
                                 <label>Hora da Consulta</label>
                                 <select class="selectpicker form-control" name="horarios" id="horarios" data-live-search="true" data-size=5>
                                     <option>---[SELECIONE UMA DATA]---</option>
-                                    <option <?=(TITLE != "Cadastrar Nova Consulta" ? 'selected = selected' : '')?> hidden="hidden"><?= $objConsulta->horaConsulta?></option>
+                                    <option <?= (TITLE != "Cadastrar Nova Consulta" ? 'selected = selected' : '') ?> hidden="hidden"><?= $objConsulta->horaConsulta ?></option>
                                 </select>
                             </div>
                         </div>
@@ -83,8 +84,8 @@
                     <textarea name="relatorio" class="form-control" rows="3"><?= (TITLE != 'Cadastrar Nova Consulta'  ? $objConsulta->relatorio : '') ?></textarea>
                     <div class="d-flex justify-content-center p-2">
 
-                        <input type="submit" name="<?= TITLE ?>" class="  btn btn-lg btn-success btInput" style="width:20%" value="<?= (TITLE == "Cadastrar Nova Consulta" ? 'Cadastrar' : 'Editar') ?>" <?php //if ($btEnviar == TRUE) echo "disabled";
-                                                                                                                                                                                                            ?>>
+                        <input type="submit" name="<?= BTN ?>" class="  btn btn-lg btn-success btInput" style="width:20%" value="<?= (TITLE == "Cadastrar Nova Consulta" ? 'Cadastrar' : 'Editar') ?>" <?php //if ($btEnviar == TRUE) echo "disabled";
+                                                                                                                                                                                                        ?>>
 
                     </div>
                 </form>
@@ -92,10 +93,15 @@
         </div>
     </div>
 </div>
-<?=$erro?>
+<?= $erro ?>
 <script src="js/JQuery2.min.js"></script>
-<script>
+<?php
+if (TITLE != "Cadastrar Nova Consulta") {
+    echo "<script>
     $( document ).ready(function() {
-        /* getHorarios('2021-11-16'); */
+        data = document.getElementById('datepicker');
+        document.getElementById('horarios').value = getHorarios(data.value);
 });
-</script>
+</script>";
+}
+?>

@@ -33,6 +33,7 @@ function Calendario() {
           options +=
             "<option value='' hidden >Sem horários disponíveis</option>";
           $("#horarios").html(options).show();
+          $(".selectpicker").selectpicker("refresh");
           
         }
         /* return teste2; */

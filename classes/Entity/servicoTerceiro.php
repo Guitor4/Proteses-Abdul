@@ -4,25 +4,29 @@ namespace Classes\Entity;
 
 use \Classes\Dao\db;
 use \PDO;
-class ServicoTerceiro{
+
+class ServicoTerceiro
+{
 
     public $idServico;
     public $nomeServico;
     public $descricao;
     public $statusServicoTerceiro;
-    
-   
-    public function cadastro(){
+
+
+    public function cadastro()
+    {
 
         $this->dataRegistro = date('Y-m-d H-i-s');
 
-         $obdb = new db('ServicoTerceiro');
-            $this->idServico= $obdb->insertSQL([ 'nomeServico' => $this->nomeServico,
+        $obdb = new db('ServicoTerceiro');
+        $this->idServico = $obdb->insertSQL([
+            'nomeServico' => $this->nomeServico,
             'descricao' => $this->descricao,
             'statusServicoTerceiro
-            ' => $this-> statusServicoTerceiro
+            ' => $this->statusServicoTerceiro
 
-        ]);
+        ])[1];
     }
 
     /**
@@ -38,9 +42,10 @@ class ServicoTerceiro{
      * @param string $fields
      * @return array
      */
-    public static function getServicoTerceiros($where = null, $like = null, $order = null, $limit = null, $fields = '*'){
-        return (new db('ServicoTerceiro'))->selectSQL($where,$like,$order,$limit,$fields)
-                                  ->fetchAll(PDO::FETCH_CLASS,self::class);
+    public static function getServicoTerceiros($where = null, $like = null, $order = null, $limit = null, $fields = '*')
+    {
+        return (new db('ServicoTerceiro'))->selectSQL($where, $like, $order, $limit, $fields)
+            ->fetchAll(PDO::FETCH_CLASS, self::class);
     }
     /**
      * Método para obter uma vaga específica por meio do uso do ID $id
@@ -48,25 +53,18 @@ class ServicoTerceiro{
      * @param int $id
      * @return object
      */
-    public static function getServicoTerceiro($idServico){
-        return (new db('ServicoTerceiro'))->selectSQL('idServico = '.$idServico)
-                                   ->fetchObject(self::class); 
-
+    public static function getServicoTerceiro($idServico)
+    {
+        return (new db('ServicoTerceiro'))->selectSQL('idServico = ' . $idServico)
+            ->fetchObject(self::class);
     }
     public function AtualizarServicoTerceiro()
     {
         return (new db('ServicoTerceiro'))->updateSQL('idServico= ' . $this->idServico, [
-                '  nomeServico ' => $this->nomeServico,
-                'descricao' => $this->descricao,
-                'statusServicoTerceiro' => $this->statusServicoTerceiro
-            ]);
-    }
-    
-    public static function getServicoInner($ter) {
-
-
-        return $db = (new db)->executeSQL('SELECT * FROM serv where statusServicoTerceiro="ativo" AND fkTerceiro='.$ter)
-                ->fetchAll(PDO::FETCH_CLASS,self::class);
+            '  nomeServico ' => $this->nomeServico,
+            'descricao' => $this->descricao,
+            'statusServicoTerceiro' => $this->statusServicoTerceiro
+        ])[1];
     }
 }
 

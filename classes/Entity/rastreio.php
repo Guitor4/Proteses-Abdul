@@ -58,7 +58,7 @@ class Rastreio {
                             'RFKServico' => $this->RFKServico,
                             'fkProtese' => $this->fkProtese,
                             
-        ]);
+        ])[1];
     }
 
    
