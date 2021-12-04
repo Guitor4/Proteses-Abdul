@@ -83,20 +83,20 @@ foreach ($lembretes as $l) {
          </tr>
          <div class="modal fade" id="exampleModal' . $l->idLembrete . '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
          <div class="modal-dialog">
-             <div class="modal-content">
+             <div class="modal-content bg-dark text-white" style = "margin-top:10rem;">
                  <div class="modal-header">
-                     <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                     <h5 class="modal-title" id="exampleModalLabel">Excluir Lembrete ?</h5>
                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                  </div>
-                 <div class="modal-body">
+                 <div class="modal-body ">
                      <form method="post" action="">
                          <label><strong>Deseja excluir o produto
                                  ' . $l->titulo . '?</strong></label>
                          <input type="hidden" name="ide" value="' . $l->idLembrete . '">
                  </div>
                  <div class="modal-footer">
-                     <button type="submit" name="excluirLembrete" class="btn btn-primary">Sim</button>
-                     <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+                     <button type="submit" name="excluirLembrete" class="btn btn-success">Sim</button>
+                     <button type="reset" class="btn btn-danger" data-bs-dismiss="modal">Não</button>
                  </div>
                  </form>
              </div>
