@@ -17,7 +17,7 @@ class Imagem {
     public $fkProntuario;
     
     
-    public function CadastrarImagem($pac) {
+    public function CadastrarImagem() {
         
         $db = new db('imagem');
         $this->idImagem = $db->insertSQL([

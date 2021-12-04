@@ -32,16 +32,13 @@ class Paciente {
             'email' => $this->email,
         ])[1];
         if ($this->prontuario > 0) {
-//            echo "<pre>";
-//            print_r($paciente);
-//            echo "</pre>";
-//            exit;
+          
             $img = new Imagem();
             $img->titulo = "perfil_";
-            $img->img = "./Imagens/usuario.png";
+            $img->url = "./Imagens/usuario.png";
             $img->fkProntuario = $this->prontuario;
             
-            $img->CadastrarImagem($this->prontuario);
+            $img->CadastrarImagem();
            
         } 
     }

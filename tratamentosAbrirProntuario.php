@@ -32,6 +32,7 @@ if ($prontuario != null) {
            //'reg'=>date('d/m/y h:i:s', strtotime($row_prontuario1['dataRegistro'])),
            'prontuario' => $row_prontuario1['fkProntuario'],
            'idProcedimento' => $row_prontuario1['fkProcedimento'],
+           'nomeProcedimento' => $row_prontuario1['nomeProcedimento'],
             
             );
         }
