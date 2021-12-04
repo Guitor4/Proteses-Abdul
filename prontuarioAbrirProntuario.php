@@ -32,10 +32,11 @@ sleep(-0.9);
                     'telefone' => $row_prontuario1['telefone'],
                     'email' => $row_prontuario1['email'],
                     'idImagem' => $row_prontuario1['idImagem'],
-                    'img' => $row_prontuario1['url'],
+                    'img' => $row_prontuario1['img'],
                 );
             }
             echo json_encode($array);
+            
         } else {
             echo json_encode('Sem resultados');
         }

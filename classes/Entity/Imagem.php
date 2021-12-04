@@ -22,7 +22,7 @@ class Imagem {
         $db = new db('imagem');
         $this->idImagem = $db->insertSQL([
             'titulo' => $this->titulo,
-            'url' => $this->url,
+            'img' => $this->url,
             'fkProntuario' => $this->fkProntuario,
             
             
@@ -39,7 +39,7 @@ class Imagem {
         return (new db('imagem'))->
                         updateSQL('idImagem='. $this->idImagem, [
                             'titulo' => $this->titulo,
-                            'url' => $this->url,
+                            'img' => $this->url,
                             'fkProntuario' => $this->fkProntuario,
         ]);
     }

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <head>
@@ -47,7 +46,6 @@
             $("#exampleModalLabel").html('Cadastro Consulta Teste')
             $('.selectpicker').selectpicker();
         }
-        
     </script>
 </head>
 
@@ -150,7 +148,7 @@
                             <br><label><?= $_SESSION['perfil'] ?></label>
                         </a>
                         <ul class="dropdown-menu text-center" style="width:100%" aria-labelledby="perfil">
-                            <li hidden><a class="dropdown-item" href="./listaDentista.php">DentistaDentistaDentistaDentistaDe</a></li>
+
                             <li><a class="dropdown-item" href="./listaDentista.php">Dentista</a></li>
                             <li><a class="dropdown-item" href="./listaClinica.php">Clinica</a></li>
                             <li>
@@ -162,6 +160,7 @@
 
                             <li><a class="dropdown-item" href="./listaTerceiro.php">Terceirizado</a></li>
                             <li><a class="dropdown-item" href="./listaServicoTerceiro.php">ServiçoTerceirizado</a></li>
+                            <li><a class="dropdown-item" href="./config.php">Configurações</a></li>
                         </ul>
                     </li>
                 </div>
@@ -181,4 +180,4 @@
         </div>
 
     </nav>
-    <input hidden id = "identificacao" value = "<?=IDENTIFICACAO?>"></input>
+    <input hidden id="identificacao" value="<?= IDENTIFICACAO ?>"></input>

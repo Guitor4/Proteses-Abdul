@@ -24,11 +24,6 @@ function getServicoTerceiro(valor) {
   });
 }
 
-$("#reset").click(function () {
-  console.log("teste");
-  $("#formularioConsulta").reset();
-});
-
 function getHorarios(valor) {
   var valorAjax = valor;
   $("#horarios").html("<option value = 0>Aguardando...</option");
@@ -76,7 +71,6 @@ function preencherListaHome(x = 1, lista = "") {
       url: "preencherListaHome.php?data=" + dataAtualFormatada() + "&id=" + x,
       success: function (dados) {
         for (var x = 0; x < dados.length; x++) {
-          console.log("teste1");
           i = dados[x].id;
           t = dados[x].title;
           r = dados[x].relatorio;
@@ -369,7 +363,7 @@ function Tratamentos(id) {
           for (var i = 0; i < dados.length; i++) {
             tabela +='<tbody><tr>\n\
                              <td class "table-success">' +dados[i].nomeT +'</td>\n\
-                             <td class "table-success"><a class="btn btn-outline-primary" href="tratamentoPDF.php?idProcedimento=' +dados[i].idProcedimento + "&nomeProcedimento=" + dados[i].nomeProcedimento +"&consulta=" +dados[i].idC +"&prontuario=" + dados[i].prontuario + '" ><img src="./includes/img/pdf.2.png" width="35" height="40"></a></td>\n\
+                             <td class "table-success"><a class="btn btn-outline-primary" href="tratamentoPDF.php?idProcedimento=' +dados[i].idProcedimento + "&nomeProcedimento=" + dados[i].nomeT +"&consulta=" +dados[i].idC +"&prontuario=" + dados[i].prontuario + '" ><img src="./includes/img/pdf.2.png" width="35" height="40"></a></td>\n\
                              </tr></tbody>';
           }
           $("#apresenta_Tratamentos").html(tabela).show();

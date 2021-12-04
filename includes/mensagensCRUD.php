@@ -98,4 +98,22 @@ if (isset($_GET, $_GET['status'], $_GET['id']) && is_string($_GET['status']) && 
               })
               </script>");
     }
+
+    //Mensagem caso as configurações tenham sido salvas com sucesso
+
+    if (isset($_GET, $_GET['status']) && is_string($_GET['status']) && $_GET['status'] == 'success3') {
+      echo "<script>
+            Swal.fire({
+              title: '".NAME ." editadas com sucesso!!',
+              text: \"Sinta-se livre para fazer quantas alterações quiser!!\",
+              icon: 'success',
+              confirmButtonColor: '#3085d6',
+              confirmButtonText: 'Ok'
+            }).then((result) => {
+              if (result.isConfirmed) {
+                redirecionamento()
+            }
+            })
+            </script>";
+    }
 ?>

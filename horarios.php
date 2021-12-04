@@ -4,27 +4,32 @@ use Classes\Dao\db;
 
 require __DIR__ . '/vendor/autoload.php';
 date_default_timezone_set('America/Sao_Paulo');
-$horarios = [
-    '08:30',
-    '09:00',
-    '09:30',
-    '10:00',
-    '10:30',
-    '11:00',
-    '11:30',
-    '12:00',
-    '12:30',
-    '13:00',
-    '13:30',
-    '14:00',
-    '14:30',
-    '15:00',
-    '15:30',
-    '16:00',
-    '16:30',
-    '17:00',
-    '17:30'
-];
+date_default_timezone_set('America/Sao_Paulo');
+$json = json_decode(file_get_contents('config.json'));
+$start = new \DateTime('08:00');
+$interval = $json->conf->intervaloHorarioConsulta;
+switch ($interval) {
+    case 'PT15M':
+        $times = 40;
+        break;
+    case 'PT30M':
+        $times = 20;
+        break;
+    case 'PT45M':
+        $times = 13;
+        break;
+    case 'PT60M':
+        $times = 10;
+        break;
+    case 'PT120M':
+        $times = 5;
+        break;
+}
+/* $times = 11; */ // 24 hours * 30 mins in an hour
+$horarios[0] = $start->format('H:i');
+for ($i = 0; $i < $times - 1; $i++) {
+    $horarios[] = $start->add(new \DateInterval($interval))->format('H:i');
+}
 
 foreach ($horarios as $h) {
     $horariosPossiveis[] = $h;
@@ -45,7 +50,6 @@ if ($horariosUtilizados->rowCount() > 0) {
 
         $array[] = date('H:i', strtotime($row_horarios['horaConsulta']));
     }
-
 }
 $contador = 0;
 foreach ($horarios as $hu) {

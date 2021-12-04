@@ -4,7 +4,7 @@ require __DIR__ . ('./vendor/autoload.php');
 
 use Classes\Dao\db;
 
-$query1 = "select idConsulta,nomePaciente,dataConsulta,horaConsulta,statusConsulta from consulta inner join paciente on prontuario = fkProntuario where statusConsulta != 'Finalizada' ORDER BY horaConsulta,dataConsulta,nomePaciente desc";
+$query1 = "select idConsulta,nomePaciente,dataConsulta,horaConsulta,statusConsulta from consulta inner join paciente on prontuario = fkProntuario where statusConsulta != 'Finalizada' and dataConsulta BETWEEN \"2021-12-04\" AND \"2100-12-31\" ORDER BY horaConsulta,dataConsulta,nomePaciente desc";
 date_default_timezone_set('America/Sao_Paulo');
 $eventoConsultas = (new db())->executeSQL($query1);
 
