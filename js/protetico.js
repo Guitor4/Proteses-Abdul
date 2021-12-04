@@ -24,11 +24,6 @@ function getServicoTerceiro(valor) {
   });
 }
 
-$("#reset").click(function () {
-  console.log("teste");
-  $("#formularioConsulta").reset();
-});
-
 function getHorarios(valor) {
   var valorAjax = valor;
   $("#horarios").html("<option value = 0>Aguardando...</option");
@@ -76,7 +71,6 @@ function preencherListaHome(x = 1, lista = "") {
       url: "preencherListaHome.php?data=" + dataAtualFormatada() + "&id=" + x,
       success: function (dados) {
         for (var x = 0; x < dados.length; x++) {
-          console.log("teste1");
           i = dados[x].id;
           t = dados[x].title;
           r = dados[x].relatorio;
