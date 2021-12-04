@@ -162,6 +162,7 @@
 
                             <li><a class="dropdown-item" href="./listaTerceiro.php">Terceirizado</a></li>
                             <li><a class="dropdown-item" href="./listaServicoTerceiro.php">ServiçoTerceirizado</a></li>
+                            <li><a class="dropdown-item" href="./config.php">Configurações</a></li>
                         </ul>
                     </li>
                 </div>

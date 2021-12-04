@@ -34,7 +34,6 @@ function Calendario() {
             "<option value='' hidden >Sem horários disponíveis</option>";
           $("#horarios").html(options).show();
           $(".selectpicker").selectpicker("refresh");
-          
         }
         /* return teste2; */
       },
@@ -45,6 +44,7 @@ function Calendario() {
     return boolean;
   }
   var data = new Date();
+
   (function (win, doc) {
     "use strict";
 
@@ -94,13 +94,17 @@ function Calendario() {
       dateClick: function (info) {
         if (info.view.type == "dayGridMonth" && info.dateStr != null) {
           var a;
+          var parseDataShort =
+            Date.parse(data) - data.getHours() * 60 * 60 * 10000;
+          var parseDataShort2 = Date.parse(info.dateStr);
 
-          a = getHorarios(info.dateStr);
-          document.getElementById("datepicker").value = info.dateStr;
-          
+          if (parseDataShort2 >= parseDataShort) {
+            a = getHorarios(info.dateStr);
+            document.getElementById("datepicker").value = info.dateStr;
 
-          if (a) {
-            click("botaoModal");
+            if (a) {
+              click("botaoModal");
+            }
           }
         }
       },
