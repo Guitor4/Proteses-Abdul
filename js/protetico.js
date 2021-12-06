@@ -191,13 +191,9 @@ function preencherListaHome(x = 1, lista = "") {
 }
 
 //apresenta dados cadastrais ao carregar a página.
-//$(window).on("load",
 function loadDados() {
   var valorAjax = document.getElementById("aux").value;
-  //var urlImagem = document.getElementById('iUrl').value;
-  //var verificaFoto = document.getElementById('fotoCadastrada').value;
-  //console.log(verificaFoto);
-
+ 
   $("#apresenta_DadosCadastrais").html("<p>Aguardando...</p>");
   $.ajax({
     type: "POST",
@@ -216,64 +212,30 @@ function loadDados() {
           id = dados[i].idImagem;
         }
         var nome = urli.substring(10);
-        if (urli !== "./Imagens/usuario.png") {
-          var at = "hidden";
-          var del = "";
-        } else {
-          at = "";
-          del = "hidden";
-        }
-        var labels =
-          '<div class="row">\n\
-                                <div class="col-8 mt-2">\n\
-                                    <label>Prontuário: </label><input readonly type="text" class="form-control"  value="' +
-          p +
-          '">\n\
-                                    <label>Paciente: </label><input readonly type="text" class="form-control"  value="' +
-          n +
-          '">\n\
-                                    <label>Sexo: </label><input readonly type="text" class="form-control"  value="' +
-          s +
-          '">\n\
-                                    <label>Telefone: </label><input readonly type="text" class="form-control"  value="' +
-          t +
-          '">\n\
-                                    <label>E-mail: </label><input readonly type="text" class="form-control"  value="' +
-          e +
-          '">\n\
-                                </div>\n\
-                                <div class="col-2 mt-5" >\n\
-                                <img src="' +
-          urli +
-          '" alt="" width="150" height="100">\n\
-                                 <form method="post" action="prontuario.php?paciente=' +
-          p +
-          '" enctype="multipart/form-data">\n\
-                                        <input hidden type="text" name="titulo" value="perfil_' +
-          p +
-          '">\n\
-                                        <input hidden type="text" name="idImg" value="' +
-          id +
-          '">\n\
-                                        <input hidden type="text" name="nome" value="' +
-          nome +
-          '">\n\
-                                        <input ' +
-          at +
-          ' type="file" name="imagem"><br>\n\
-\n                                     <input ' +
-          del +
-          ' type="submit" name="delFotoPerfil" value="Deletar">\n\
-                                        <input ' +
-          at +
-          ' type="submit" name="edFotoPerfil" value="Atualizar"><br>\n\
+        if (urli !== "./Imagens/usuario.png") {var at = "hidden";var del = ""; } else {at = ""; del = "hidden";}
+        var labels ='<div class="row">\n\
+                        <div class="col-8 mt-2">\n\
+                                    <label>Prontuário: </label><input readonly type="text" class="form-control"  value="' +p +'">\n\
+                                    <label>Paciente: </label><input readonly type="text" class="form-control"  value="' +n +'">\n\
+                                    <label>Sexo: </label><input readonly type="text" class="form-control"  value="' +s +'">\n\
+                                    <label>Telefone: </label><input readonly type="text" class="form-control"  value="' +t +'">\n\
+                                    <label>E-mail: </label><input readonly type="text" class="form-control"  value="' +e +'">\n\
+                         </div>\n\
+                         <div class="col-2 mt-5" >\n\
+                            <img src="' +urli +'" alt="" width="150" height="100">\n\
+                                 <form method="post" action="prontuario.php?paciente=' + p +'" enctype="multipart/form-data">\n\
+                                        <input hidden type="text" name="titulo" value="perfil_' + p + '">\n\
+                                        <input hidden type="text" name="idImg" value="' +id +'">\n\
+                                        <input hidden type="text" name="nome" value="' + nome +'">\n\
+                                        <input ' + at + ' type="file" name="imagem"><br>\n\
+                                         <input ' + del +' type="submit" name="delFotoPerfil" value="Deletar">\n\
+                                        <input ' + at +' type="submit" name="edFotoPerfil" value="Atualizar"><br>\n\
                                  </form>\n\
                                 </div>\n\
                               </div>';
-
         $("#apresenta_DadosCadastrais").html(labels).show();
       }
-    },
+    }
   });
 }
 
@@ -358,11 +320,8 @@ function Dados_Cadastrais() {
 
         $("#apresenta_DadosCadastrais").html(labels).show();
 
-        /*if (valorAjax !== 0) {
-                    $('#apresentaProntuario').html(tabela).show();
-                }*/
       }
-    },
+    }
   });
 }
 
@@ -390,45 +349,26 @@ function Consultas() {
                                     </tr>\n\
                               </thead>";
         for (var i = 0; i < dados.length; i++) {
-          tabela +=
-            '<tbody><tr>\n\
-                                <td class "table-success"> ' +
-            dados[i].id +
-            '</td>\n\
-                                <td class "table-success">' +
-            dados[i].data +
-            '</td>\n\
-                                <td class "table-success">' +
-            dados[i].hora +
-            '</td>\n\
-                                <td class "table-success">' +
-            dados[i].status +
-            '</td>\n\
-                                <td class "table-success">' +
-            dados[i].clinica +
-            '</td>\n\
-                                <td class "table-success">' +
-            dados[i].dentista +
-            '</td>\n\
-                                <td class "table-success"><a class="btn btn-outline-primary" data-toggle="collapse"  onclick="Tratamentos(' +
-            dados[i].id +
-            ')" role="button" aria-expanded="false" aria-controls="apresenta_Tratamentos" > Abrir </a></td>\n\
-                                </tr></tbody>';
-          //$('#apresentaProntuario').append('<tbody><tr><td class "table-success">' + dados[i].prontuario + '</td></tr></tbody>');
+          tabela +='<tbody><tr>\n\
+                           <td class "table-success"> ' + dados[i].id + '</td>\n\
+                           <td class "table-success">' + dados[i].data +'</td>\n\
+                           <td class "table-success">' + dados[i].hora +'</td>\n\
+                           <td class "table-success">' + dados[i].status +'</td>\n\
+                           <td class "table-success">' + dados[i].clinica +'</td>\n\
+                           <td class "table-success">' + dados[i].dentista +'</td>\n\
+                           <td class "table-success"><a class="btn btn-outline-primary" data-toggle="collapse"  onclick="Tratamentos(' + dados[i].id +')" role="button" aria-expanded="false" aria-controls="apresenta_Tratamentos" > Abrir </a></td>\n\
+                           </tr></tbody>';
         }
         $("#apresenta_Consultas").html(tabela).show();
         document.getElementById("mostraTitulo").innerHTML = "";
 
-        /*if (valorAjax !== 0) {
-                    $('#apresentaProntuario').html(tabela).show();
-                }*/
       } else {
         $("#apresenta_Consultas")
           .html('<p class="text-danger">Nenhuma consulta cadastrada</p>')
           .show();
         document.getElementById("mostraTitulo").innerHTML = "";
       }
-    },
+    }
   });
 }
 
@@ -460,19 +400,10 @@ function Tratamentos(id) {
                                     </tr>\n\
                               </thead>";
           for (var i = 0; i < dados.length; i++) {
-            tabela +=
-              '<tbody><tr>\n\
-                                <td class "table-success">' +
-              dados[i].nomeT +
-              '</td>\n\
-                                <td class "table-success"><a class="btn btn-outline-primary" href="tratamentoPDF.php?idProcedimento=' +
-              dados[i].idProcedimento +
-              "&consulta=" +
-              dados[i].idC +
-              "&prontuario=" +
-              dados[i].prontuario +
-              '" ><img src="./includes/img/pdf.2.png" width="35" height="40"></a></td>\n\
-                                </tr></tbody>';
+            tabela +='<tbody><tr>\n\
+                             <td class "table-success">' +dados[i].nomeT +'</td>\n\
+                             <td class "table-success"><a class="btn btn-outline-primary" href="tratamentoPDF.php?idProcedimento=' +dados[i].idProcedimento + "&nomeProcedimento=" + dados[i].nomeT +"&consulta=" +dados[i].idC +"&prontuario=" + dados[i].prontuario + '" ><img src="./includes/img/pdf.2.png" width="35" height="40"></a></td>\n\
+                             </tr></tbody>';
           }
           $("#apresenta_Tratamentos").html(tabela).show();
           $("#mostraTitulo").html("TRATAMENTOS").show();
@@ -482,12 +413,11 @@ function Tratamentos(id) {
             .show();
           document.getElementById("mostraTitulo").innerHTML = "";
         }
-      },
+      }
     });
   } else {
     document.getElementById("apresenta_Tratamentos").innerHTML = "";
     document.getElementById("mostraTitulo").innerHTML = "";
     iclick = 0;
-    //document.getElementById("click").value=id;
   }
 }

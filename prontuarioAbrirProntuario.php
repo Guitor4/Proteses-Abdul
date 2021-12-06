@@ -1,12 +1,11 @@
 <?php
 
-//var_dump($_REQUEST['prontuario']);
+
 ob_start();
 session_start();
 require __DIR__ . '/vendor/autoload.php';
 
 use Classes\Dao\db;
-
 
 
 $prontuario = $_REQUEST['prontuario'];
@@ -34,11 +33,10 @@ sleep(-0.9);
                     'email' => $row_prontuario1['email'],
                     'idImagem' => $row_prontuario1['idImagem'],
                     'img' => $row_prontuario1['img'],
-                        //'fkProntuario' => $row_prontuario1['fkProntuario']
-                        //'titulo' => $row_prontuario1['titulo'],
                 );
             }
             echo json_encode($array);
+            
         } else {
             echo json_encode('Sem resultados');
         }
