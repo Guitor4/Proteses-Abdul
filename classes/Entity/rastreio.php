@@ -73,8 +73,10 @@ class Rastreio {
                         ->fetchObject(self::class);
     }
     
-    public static function getRastreiosInner($pesq) {
-
+    public static function getRastreiosInner($where,$order=null,$limit=null) {
+        /* echo "<pre>"; print_r($limit); echo "<pre>";exit; */
+        $order  = " ORDER BY ".$order;
+        $limit  = " LIMIT ".$limit;
 
         return $db = (new db)->executeSQL('SELECT * FROM rastreio '
                         . 'inner JOIN protese on fkProtese=idProtese '
@@ -83,7 +85,7 @@ class Rastreio {
                         . 'inner JOIN procedimento on fkProcedimento=idProcedimento '
                         . 'inner JOIN paciente on fkProntuario=prontuario '
                         . 'inner JOIN terceiro on RFKTerceiro=idTerceiro '
-                        . 'inner JOIN servicoterceiro on RFKServico=idServico '.$pesq)
+                        . 'inner JOIN servicoterceiro on RFKServico=idServico '.$where.$order.$limit)
                 ->fetchAll(PDO::FETCH_CLASS, self::class);
     }
     

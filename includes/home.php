@@ -7,7 +7,7 @@
                     <div style="flex: 0 0 33.333333%">
                         <fieldset>
                             <a style="text-decoration:none" href="pesquisarProtese.php">
-                                <img name="Dentadura" class="img-fluid " title="Lista de Próteses" style="border-radius:25%;" src="./includes/img/novaProtese3.png" width="200px" height="200px">
+                                <img name="Dentadura" class="img-fluid " title="Lista de Próteses" style="border-radius:25%;" src="./includes/img/proteses.png" width="200px" height="200px">
                             </a>
                         </fieldset>
                     </div>
@@ -16,7 +16,7 @@
                     <div style="flex: 0 0 33.333333%">
                         <fieldset>
                             <a href="listaPaciente.php?pagina=1">
-                                <img name="Paciente" class="img-fluid" title="Lista de Pacientes" style="border-radius:25%;" src="./includes/img/pessoa2.png" width="200px" height="200px">
+                                <img name="Paciente" class="img-fluid" title="Lista de Pacientes" style="border-radius:25%;" src="./includes/img/pessoa.png" width="200px" height="200px">
 
                             </a>
                         </fieldset>
@@ -26,7 +26,7 @@
                     <div style="flex: 0 0 33.333333%">
                         <fieldset>
                             <a href="listaFuncionario.php?pagina=1">
-                                <img name="Funcionario" class="img-fluid" title="Lista de Funcionários" style="border-radius:25%;" src="./includes/img/abc.png" width="200px" height="200px">
+                                <img name="Funcionario" class="img-fluid" title="Lista de Funcionários" style="border-radius:25%;" src="./includes/img/funcionario.png" width="200px" height="200px">
 
                             </a>
                         </fieldset>
@@ -37,7 +37,7 @@
                     <div style="flex: 0 0 33.333333%">
                         <fieldset>
                             <a style="text-decoration:none" href="pesquisarConsulta.php?pagina=1">
-                                <img name="Dentadura" class="img-fluid " title="Lista de Consultas" style="border-radius:25%;" src="./includes/img/Consulta2.png" width="200px" height="200px">
+                                <img name="Dentadura" class="img-fluid " title="Lista de Consultas" style="border-radius:25%;" src="./includes/img/consultas.png" width="200px" height="200px">
                             </a>
                         </fieldset>
                     </div>
@@ -46,7 +46,7 @@
                     <div style="flex: 0 0 33.333333%">
                         <fieldset>
                             <a href="listaProcedimento.php?pagina=1">
-                                <img name="Paciente" class="img-fluid" title="Lista de Procedimentos" style="border-radius:25%;" src="./includes/img/Servicos.png" width="200px" height="200px">
+                                <img name="Procedimentos" class="img-fluid" title="Lista de Procedimentos" style="border-radius:25%;" src="./includes/img/procedimentos.png" width="200px" height="200px">
 
                             </a>
                         </fieldset>
@@ -54,7 +54,7 @@
                     <div style="flex: 0 0 33.333333%">
                         <fieldset>
                             <a href="listaLembrete.php?pagina=1">
-                                <img name="Paciente" class="img-fluid" title="Lista de Lembretes" style="border-radius:25%;" src="./includes/img/lembrete.png" width="200px" height="200px">
+                                <img name="Paciente" class="img-fluid" title="Lista de Lembretes" style="border-radius:25%;" src="./includes/img/lembretes.png" width="200px" height="200px">
 
                             </a>
                         </fieldset>
@@ -62,7 +62,7 @@
                     <div style="flex: 0 0 33.333333%">
                         <fieldset>
                             <a href="listaMarcaDente.php">
-                                <img name="Paciente" class="img-fluid" title="Testes" style="border-radius:25%;" src="./includes/img/Servicos.png" width="200px" height="200px">
+                                <img name="Paciente" class="img-fluid" title="Testes" style="border-radius:25%;" src="./includes/img/marcaDente.png" width="200px" height="200px">
 
                             </a>
                         </fieldset>
@@ -70,7 +70,7 @@
                     <div style="flex: 0 0 33.333333%">
                         <fieldset>
                             <a href="agendamento.php">
-                                <img name="Paciente" class="img-fluid" title="Agenda de Consultas" style="border-radius:25%;" src="./includes/img/calendario2.png" width="200px" height="200px">
+                                <img name="Paciente" class="img-fluid" title="Agenda de Consultas" style="border-radius:25%;" src="./includes/img/agenda.png" width="200px" height="200px">
 
                             </a>
                         </fieldset>

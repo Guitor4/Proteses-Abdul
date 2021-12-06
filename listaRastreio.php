@@ -42,16 +42,17 @@ $itens_por_pagina = 6;
 $inicio = ($itens_por_pagina * $pagina_atual) - $itens_por_pagina;
 
 $registros_totais = $objRastreio->getRastreios();
-
-$registros_filtrados = $objRastreio->getRastreios( $where,null, 'dtEntrega asc', $inicio . ',' . $itens_por_pagina);
+/* echo "<pre>"; print_r($inicio); print_r($itens_por_pagina);echo "<pre>";exit; */
+$registros_filtrados = $rastreio = $objRastreio->getRastreiosInner( $where,'statusRastreio asc', $inicio . ',' . $itens_por_pagina);
 
 $num_registros_totais = count($registros_totais);
 
 $num_pagina = ceil($num_registros_totais / $itens_por_pagina);
 
+/* echo "<pre>"; print_r($where); echo "<pre>";exit; */
 
-$rastreio = rastreio::getRastreiosInner($where);
-//echo "<pre>"; print_r($rastreio); echo "<pre>";exit;
+
+
 
 
 
