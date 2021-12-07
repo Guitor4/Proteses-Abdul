@@ -26,7 +26,11 @@ if ($ConsultaInnerJoin->statusConsulta == 'Finalizada') {
 
         if ($tratamento->nomeProcedimento == 'Protese') {
             $resultados .= '<tr>
-                        <td><a style="display:block;text-decoration:none;color:red" href="pesquisarProtese.php?pagina=1&idConsulta=' . $_GET["id"] . '&idProcedimento=' . $tratamento->idProcedimento . '&prontuario=' . $ConsultaInnerJoin->prontuario . '">' . $tratamento->nomeProcedimento . '</a></td>
+                        <td><a style="display:block;text-decoration:none;color:red" href="pesquisarProtese.php?pagina=1&idConsulta=' . $_GET["id"] . '&idProcedimento=' . $tratamento->idProcedimento . '&prontuario=' . $ConsultaInnerJoin->prontuario . '&number=1">' . $tratamento->nomeProcedimento . '</a></td>
+                        </tr>';
+        }else if($tratamento->nomeProcedimento == 'Protese 2'){
+            $resultados .= '<tr>
+                        <td><a style="display:block;text-decoration:none;color:red" href="pesquisarProtese.php?pagina=1&idConsulta=' . $_GET["id"] . '&idProcedimento=' . $tratamento->idProcedimento . '&prontuario=' . $ConsultaInnerJoin->prontuario . '&number=2">' . $tratamento->nomeProcedimento . '</a></td>
                         </tr>';
         } else {
             $resultados .= '<tr>
@@ -89,10 +93,8 @@ if (isset($_POST['Finalizar'])) {
                 $objTratamento->fkProcedimento = $_POST['procedimento'][$i];
                 $objTratamento->fkConsulta = $ConsultaInnerJoin->idConsulta;
 
-
-                $teste = $objTratamento->cadastrarTratamento();
-                echo "<pre>"; print_r($teste); echo "<pre>";exit;
-                if (gettype($teste[0]) == 'object') {
+                /* echo "<pre>"; print_r($teste); echo "<pre>";exit; */
+                if (gettype($objTratamento->cadastrarTratamento()[0]) == 'object') {
                     if (isset($_POST['finalizarConsulta']) && $_POST['finalizarConsulta'] == 'on') {
                         $objTratamento->atualizarStatusConsulta($_GET['id'], 'Finalizada');
                     } else {
@@ -110,10 +112,7 @@ if (isset($_POST['Finalizar'])) {
             $objTratamento->fkProcedimento = $_POST['procedimento'][0];
             $objTratamento->fkConsulta = $ConsultaInnerJoin->idConsulta;
 
-
-            $teste = $objTratamento->cadastrarTratamento();
-
-            if (gettype($teste[0]) == 'object') {
+            if (gettype($objTratamento->cadastrarTratamento()[0])) {
                 if (isset($_POST['finalizarConsulta']) && $_POST['finalizarConsulta'] == 'on') {
                     $objTratamento->atualizarStatusConsulta($_GET['id'], 'Finalizada');
                 }

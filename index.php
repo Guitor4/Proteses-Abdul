@@ -11,4 +11,5 @@ define('IDENTIFICACAO', 0);
 //echo "<pre>"; print_r($_SESSION); echo "<pre>";exit; 
 include __DIR__.'/includes/header.php';
 include __DIR__.'/includes/home.php';
+include __DIR__.'/includes/mensagensCRUD.php';
 include __DIR__.'/includes/footer.php';

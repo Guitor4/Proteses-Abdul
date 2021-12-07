@@ -44,6 +44,7 @@
                             <th></th>
                             <th>Terceiro</th>
                             <th>Servico</th>
+                            <th>Status</th>
                             <th>Ação</th>
                         </tr>
 

@@ -6,17 +6,13 @@
         </a>
     </section>
 
-<input type="text" hidden value="<?=IDENTIFICACAO?>"/>
+    <input type="text" hidden value="<?= IDENTIFICACAO ?>" />
     <div class="row">
 
-        <div class="col-4 mt-2 <?=(isset($_GET['rProtese']) ? 'offset-3' : 'offset-4')?> p-3 bg-dark " style="border-radius:25px 30px 25px 30px">
+        <div class="col-4 mt-2 <?= (isset($_GET['rProtese']) ? 'offset-3' : 'offset-4') ?> p-3 bg-dark " style="border-radius:25px 30px 25px 30px">
             <div class="border border-white rounded p-2">
                 <h3 style="text-align: center; color: white"><?= TITLE ?></h3>
                 <form class="p-2" method="post" style="color: white">
-                    <div class="form-group">
-                        <label>Código</label>
-                        <input type="text" class="form-control" name="idRastreio" readonly placeholder="Número" value=" <?= $rastreio->idRastreio ?>">
-                    </div>
 
                     <div class="form-group">
                         <label>Data de Envio</label>
@@ -32,13 +28,6 @@
                         <label>Observação</label>
                         <input type="text" class="form-control" name="obs" value="<?= $rastreio->obs ?>">
                     </div>
-
-                    <div class="form-group">
-                        <label>Valor</label>
-                        <input type="text" class="form-control" name="vlrCobrado" value="<?= $rastreio->vlrCobrado ?>">
-                    </div>
-
-
                     <div class="form-group " hidden="">
                         <label>Prótese</label>
                         <input type="text" class="form-control" name="fkProtese" value="<?= $rastreio->fkProtese ?>">

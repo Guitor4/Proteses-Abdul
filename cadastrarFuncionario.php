@@ -2,6 +2,7 @@
 
 require __DIR__ . '/vendor/autoload.php';
 include __DIR__ . './includes/sessionStart.php';
+include __DIR__ . './includes/nivelAcesso.php';
 
 use \Classes\Entity\funcionario;
 
@@ -19,7 +20,7 @@ if (isset($_POST[BTN])) {
     $objFuncionario->perfil = $_POST['perfil'];
     $objFuncionario->login = $_POST['login'];
     $objFuncionario->senha = $_POST['senha'];
-    $objFuncionario->statusFuncionario = $_POST['status'];
+    $objFuncionario->statusFuncionario = ($_POST['status'] == 'on' ? 'Ativo' : 'Inativo');
     /* echo '<pre>';print_r($objFuncionario);echo '<pre>';exit; */
 
     $objFuncionario->cadastrar();

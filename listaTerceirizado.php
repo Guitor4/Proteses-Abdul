@@ -6,7 +6,7 @@ include __DIR__ . './includes/sessionStart.php';
 use Classes\Entity\Terceirizado;
 
 define("IDENTIFICACAO", 9);
-define("NAME", 'Serviço Prestado');
+define("NAME", 'Serviço registrado para o Terceiro');
 define("LINK", 'listaTerceirizado.php?pagina=1');
 
 if (!isset($_GET['pagina'])) {
@@ -40,15 +40,15 @@ $itens_por_pagina = 6;
 
 $inicio = ($itens_por_pagina * $pagina_atual) - $itens_por_pagina;
 
-$Terceirizado = $registros_totais = $objTerceirizado->getTerceirizadoInnerJoin('terceiro,servicoterceiro', $where, 'fkterceiro,idTerceiro,fkServicoTerceiro,idServico');
-
-$Terceirizado = $registros_filtrados = $objTerceirizado->getTerceirizadoInnerJoin('terceiro,servicoterceiro', $where, 'fkterceiro,idTerceiro,fkServicoTerceiro,idServico', null, 'nomeTerceiro asc', $inicio . ',' . $itens_por_pagina);
+$Terceirizado = $registros_totais = $objTerceirizado->getTerceirizadosInnerJoin('terceiro,servicoterceiro', $where, 'fkterceiro,idTerceiro,fkServicoTerceiro,idServico');
+/* echo "<pre>"; print_r($Terceirizado); echo "<pre>";exit; */
+$Terceirizado = $registros_filtrados = $objTerceirizado->getTerceirizadosInnerJoin('terceiro,servicoterceiro', $where, 'fkterceiro,idTerceiro,fkServicoTerceiro,idServico', null, 'nomeTerceiro asc', $inicio . ',' . $itens_por_pagina);
 
 $num_registros_totais = count($registros_totais);
 
 $num_pagina = ceil($num_registros_totais / $itens_por_pagina);
 
-$objTerceirizado = Terceirizado::getTerceirizadoInnerJoin('terceiro,servicoterceiro', null, 'fkterceiro,idTerceiro,fkServicoTerceiro,idServico');
+$objTerceirizado = Terceirizado::getTerceirizadosInnerJoin('terceiro,servicoterceiro', null, 'fkterceiro,idTerceiro,fkServicoTerceiro,idServico');
 /* echo '<pre>';print_r($objTerceirizado);echo '<pre>';exit; */
 
 $resultados = '';
@@ -58,8 +58,9 @@ foreach ($Terceirizado as $Terceirizado) {
     <td></td>
     <td>' . $Terceirizado->nomeTerceiro . '</td>
     <td>' . $Terceirizado->nomeServico . '</td>
+    <td>' . $Terceirizado->statusTerceirizado . '</td>
     <td>
-    <a href = editaFuncionario.php?id=' . $Terceirizado->fkTerceiro . '>
+    <a href = editaTerceirizado.php?idTerceiro=' . $Terceirizado->idTerceiro . '&idServico='.$Terceirizado->idServico.'>
     <button type="button" class="btn btn-info">Editar</button>
     </a>
     </td>

@@ -1,4 +1,11 @@
 
+td {
+max-width:200px;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+}
+
 div#to_do_list::-webkit-scrollbar { 
 	display: none !important;
 }

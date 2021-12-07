@@ -42,20 +42,14 @@ $inicio = ($itens_por_pagina * $pagina_atual) - $itens_por_pagina;
 
 $registros_totais = $objServicoTerceiro->getServicoTerceiros();
 
-$registros_filtrados = $objServicoTerceiro->getServicoTerceiros( $where,null, 'nomeServico asc', $inicio . ',' . $itens_por_pagina);
+$registros_filtrados = $servico =  $objServicoTerceiro->getServicoTerceiros( $where,null, 'nomeServico asc', $inicio . ',' . $itens_por_pagina);
 
 $num_registros_totais = count($registros_totais);
 
 $num_pagina = ceil($num_registros_totais / $itens_por_pagina);
 
-
-$rastreio = ServicoTerceiro::getServicoTerceiros($where);
-
-
-$objServicoTerceiro = $rastreio;
-
 $resultados = '';
-foreach ($objServicoTerceiro as $objServicoTerceiro) {
+foreach ($servico as $objServicoTerceiro) {
     $resultados .= '<tr>
                         <td>' . $objServicoTerceiro->idServico . '</td>
                         <td>' . $objServicoTerceiro->nomeServico . '</td>

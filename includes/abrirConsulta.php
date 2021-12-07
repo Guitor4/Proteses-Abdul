@@ -44,7 +44,7 @@
                 <form <?= $visibilidadiv ?> method="post" class="mt-4">
                     <div class="col-10 offset-1 form-group p-4">
                         <label for="procedimento[]">Procedimentos</label>
-                        <select name="procedimento[]" class="selectpicker form-control" multiple="multiple" data-live-search="true">
+                        <select name="procedimento[]" class="selectpicker form-control" multiple="multiple" data-live-search="true" data-size=5>
                             
                             <?php
                             foreach ($objProcedimento as $procedimento) {

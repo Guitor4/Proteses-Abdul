@@ -12,7 +12,7 @@
                     </div>
                     <div class="form-group">
                         <label for="relatorio">Descrição (opcional)</label>
-                        <textarea name="descricao" style="opacity:80%;resize:none" class="text-black form-control" rows="5"><?= $marca->descricao ?></textarea>
+                        <textarea name="descricao" style="resize:none" class="text-black form-control" rows="5"><?= $marca->descricao ?></textarea>
                     </div>
                     <div class="d-flex justify-content-center p-2">
 

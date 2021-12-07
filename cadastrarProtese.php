@@ -60,7 +60,13 @@ if (isset($_POST[BTN])) {
     //Caso a função cadastrar rode sem problemas, obrigatóriamente o valor do $objProtese->id será preenchido
     //Assim fazendo uma validação por meio dessa variável, e passando isso pro url da página.
     if ($objProtese->idProtese > 0) {
-        header('Location: pesquisarProtese.php?pagina=1&status=success1&id=' . $objProtese->idProtese);
+        if (isset($_GET['number']) && $_GET['number'] == 1) {
+            header('location: pesquisarProtese.php?pagina=1&idConsulta=' . $_GET["idConsulta"] . '&idProcedimento=' . $_GET["idProcedimento"] . '&prontuario=' . $_GET["prontuario"] . '&number=2');
+        } else if (isset($_GET['number']) && $_GET['number'] == 2) {
+            header('Location: pesquisarProtese.php?pagina=1&status=success1&id=' . $objProtese->idProtese.'&idConsulta='.$_GET["idConsulta"]);
+        } else {
+            header('Location: pesquisarProtese.php?pagina=1&status=success1&id=' . $objProtese->idProtese);
+        }
     } else {
         header('Location: pesquisarProtese.php?pagina=1&status=error1');
     }

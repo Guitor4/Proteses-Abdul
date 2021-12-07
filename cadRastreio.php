@@ -53,8 +53,7 @@ if (isset($_POST['cadastrarRastreio'])) {
 
     $rastreio->dtEntrega = ($_POST['dtEntrega']);
     $rastreio->dtRetorno = $_POST['dtRetorno'];
-    $rastreio->obs = $_POST['obs'];
-    $rastreio->vlrCobrado = $_POST['vlrCobrado'];
+    $rastreio->obs = strlen($_POST['obs']) ? $_POST['obs'] : 'Sem Observações';
     $rastreio->statusRastreio = $_POST['status'];
     $rastreio->RFKTerceiro = $_POST['RFKTerceiro'];
     $rastreio->RFKServico = $_POST['RFKServico'];
@@ -74,9 +73,9 @@ if (isset($_POST['cadastrarRastreio'])) {
     $lembrete->cadastrarLembrete();
 
     if ($rastreio->idRastreio > 0) {
-        header('Location: listaRastreio.php?status=success1&id=' . $rastreio->idRastreio);
+        header('Location: listaRastreio.php?pagina=1&status=success1&id=' . $rastreio->idRastreio);
     } else {
-        header('Location: listaRastreio.php?status=error1');
+        header('Location: listaRastreio.php?pagina=1&status=error1');
     }
     //echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"3;
     //URL='cadastroDentista.php'\">";

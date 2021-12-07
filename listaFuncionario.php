@@ -2,6 +2,7 @@
 
 require 'vendor/autoload.php';
 include __DIR__ . './includes/sessionStart.php';
+include __DIR__ . './includes/nivelAcesso.php';
 
 use Classes\Entity\Funcionario;
 
