@@ -64,7 +64,7 @@
               $estilo = "active";
             }
           ?>
-            <li class="page-item <?= $estilo ?>"><a class="page-link" href="pesquisarConsulta.php?pagina=<?= $i; ?><?=isset($_GET['search']) ? '&search='.$_GET['search'] : ''?>"><?= $i; ?></a></li>
+            <li class="page-item <?= $estilo ?>"><a class="page-link" href="pesquisarProtese.php?pagina=<?= $i; ?><?=isset($_GET['search']) ? '&search='.$_GET['search'] : ''?>"><?= $i; ?></a></li>
           <?php
           }
           ?>

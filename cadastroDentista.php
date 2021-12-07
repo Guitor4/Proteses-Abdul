@@ -22,7 +22,7 @@ if (isset($_POST[BTN])) {
 
         $dentista->cadastrarDentista();
         if ($dentista->idDentista > 0) {
-            header('Location: listaDentista.php?pagina=1&status=success1&id=' . $dentista->idDentista[1]);
+            header('Location: listaDentista.php?pagina=1&status=success1&id=' . $dentista->idDentista);
         } else {
             header('Location: listaDentista.php?pagina=1&status=error1');
         }

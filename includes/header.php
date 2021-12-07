@@ -144,7 +144,7 @@
                 <div class="border border-dark text-center">
                     <li class="nav-item dropdown" style="list-style:none">
                         <a class="nav-link dropdown-toggle" style="text-decoration:none;color:black" href="#" id="perfil" role="button" data-bs-toggle="dropdown" aria-expanded="true">
-                            <img src="<?= ($_SESSION['perfil'] == 'Administrador' ? './includes/img/usuario.png' : './includes/img/abc.png') ?>" width="40" height="40" style="border-radius: 20px;" alt="sair" /><strong>Usuário: <?= $_SESSION['nome'] ?></strong>
+                            <img src="<?= ($_SESSION['perfil'] == 'Administrador' ? './includes/img/usuario.png' : './includes/img/funcionario.png') ?>" width="40" height="40" style="border-radius: 20px;" alt="sair" /><strong>Usuário: <?= $_SESSION['nome'] ?></strong>
                             <br><label><?= $_SESSION['perfil'] ?></label>
                         </a>
                         <ul class="dropdown-menu text-center" style="width:100%" aria-labelledby="perfil">

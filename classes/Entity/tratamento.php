@@ -42,8 +42,9 @@ class Tratamento
                 ->fetchObject(self::class);
     }
 
-    public static function getTratamentosInner($pesq) {
-
+    public static function getTratamentosInner($where,$order=null,$limit=null) {
+       strlen($order) ? $order = ' ORDER BY '.$order : '';
+       strlen($limit) ? $limit = ' LIMIT ' . $limit : '';
 
         return $db = (new db)->executeSQL('SELECT * FROM rastreio '
                 . 'RIGHT JOIN protese on idProtese=fkProtese '
@@ -53,7 +54,7 @@ class Tratamento
                 . 'inner JOIN dentista on CFKDentista=idDentista '
                 . 'inner JOIN clinica on CFKClinica=idClinica '
                 . 'inner JOIN paciente on fkProntuario=prontuario '
-                . 'where idProtese not in (select fkProtese from rastreio) '. $pesq)
+                . 'where idProtese not in (select fkProtese from rastreio) '. $where.$order.$limit)
                 ->fetchAll(PDO::FETCH_CLASS, self::class);
     }
 
@@ -74,7 +75,7 @@ class Tratamento
 
     public function atualizarStatusConsulta($id,$status){
         $db = new db('consulta');
-        $this->idConsulta = $db->updateSQL('idConsulta = '.$id,[
+        return $db->updateSQL('idConsulta = '.$id,[
             'statusConsulta' => $status
         ]);
     }

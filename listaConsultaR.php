@@ -7,6 +7,10 @@ use Classes\Entity\tratamento;
 
 define('IDENTIFICACAO',1);
 
+if(!isset($_GET['pagina'])){
+    header('location: ?pagina=1');
+}
+
 //busca
 $busca = filter_input(INPUT_POST, 'busca', FILTER_SANITIZE_STRING);
 
@@ -17,11 +21,24 @@ $condicoes = [
 ];//echo "<pre>"; print_r($condicoes); echo "<pre>";exit;
 
 $where = implode(' AND ', $condicoes);
+
+$objTratamento = new tratamento;
+
+
+$pagina_atual = intval($_GET['pagina']);
+
+$itens_por_pagina = 6;
+
+$inicio = ($itens_por_pagina * $pagina_atual) - $itens_por_pagina;
+
+$registros_totais = $objTratamento->getTratamentosInner($where);
+
+$innerTratamentos = $registros_filtrados = $objTratamento->getTratamentosInner($where,'nomeDentista asc', $inicio . ',' . $itens_por_pagina);
+
+$num_registros_totais = count($registros_totais);
+
+$num_pagina = ceil($num_registros_totais / $itens_por_pagina);
  
-//echo "<pre>"; print_r($condicoes); echo "<pre>";exit;
-
-$innerTratamentos = tratamento::getTratamentosInner($where); //  tentando implementar consulta 
-
 
 if (isset($_GET['rastreio']) == "check") {
     $disabledRastreio = 'class = "btn btn-secondary"';

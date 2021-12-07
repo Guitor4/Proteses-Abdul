@@ -16,7 +16,6 @@ class Rastreio {
     public $dtEntrega;
     public $dtRetorno;
     public $obs;
-    public $vlrCobrado;
     public $statusRastreio;
     public $RFKTerceiro;
     public $RFKServico;
@@ -32,18 +31,12 @@ class Rastreio {
             'dtEntrega' => $this->dtEntrega,
             'dtRetorno' => $this->dtRetorno,
             'obs' => $this->obs,
-            'vlrCobrado' => $this->vlrCobrado,
             'statusRastreio' => $this->statusRastreio,
             'RFKTerceiro' => $this->RFKTerceiro,
             'RFKServico' => $this->RFKServico,
             'fkProtese' => $this->fkProtese,
             
         ])[1]; //echo'<pre>';print_r($this);echo'</pre>';exit;
-        if ($this->idRastreio > 0) {
-            header('Location: listaRastreio.php?status=success&id='.$this->idRastreio);
-        } else {
-            header('Location: listaRastreio.php?status=error');
-        }
     }
 
     public function editarRastreio() {
@@ -58,7 +51,7 @@ class Rastreio {
                             'RFKServico' => $this->RFKServico,
                             'fkProtese' => $this->fkProtese,
                             
-        ])[1];
+        ]);
     }
 
    
@@ -75,8 +68,8 @@ class Rastreio {
     
     public static function getRastreiosInner($where,$order=null,$limit=null) {
         /* echo "<pre>"; print_r($limit); echo "<pre>";exit; */
-        $order  = " ORDER BY ".$order;
-        $limit  = " LIMIT ".$limit;
+        strlen($order) ? $order  = " ORDER BY ".$order : '';
+        strlen($limit) ? $limit  = " LIMIT ".$limit : '';
 
         return $db = (new db)->executeSQL('SELECT * FROM rastreio '
                         . 'inner JOIN protese on fkProtese=idProtese '

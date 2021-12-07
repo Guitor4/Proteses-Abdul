@@ -64,7 +64,7 @@ class ServicoTerceiro
             '  nomeServico ' => $this->nomeServico,
             'descricao' => $this->descricao,
             'statusServicoTerceiro' => $this->statusServicoTerceiro
-        ])[1];
+        ]);
     }
 }
 

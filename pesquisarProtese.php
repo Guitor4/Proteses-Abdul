@@ -42,14 +42,31 @@ if (
     isset($_GET['idConsulta'], $_GET['idProcedimento'], $_GET['prontuario']) && is_numeric($_GET['idConsulta']) &&
     is_numeric($_GET['idProcedimento']) && is_numeric($_GET['prontuario']) && $_GET['idConsulta'] > 0 && $_GET['idProcedimento'] > 0 && $_GET['prontuario'] > 0
 ) {
-
-    $registros_totais = $objProtese->getProtesesPaciente('fkConsultaT =' . $_GET['idConsulta'], '
- dataRegistro desc');
-    $registros_filtrados = $proteses = $objProtese->getProtesesPaciente('fkConsultaT =' . $_GET['idConsulta'], '
- dataRegistro desc');
-    /*     echo "<pre>"; print_r($protese); echo "<pre>";exit; */
-    if ($registros_totais == null) {
-        header('location:cadastrarProtese.php?idConsulta=' . $_GET['idConsulta'] . '&idProcedimento=' . $_GET['idProcedimento'] . '&prontuario=' . $_GET['prontuario']);
+    if (isset($_GET['number']) && $_GET['number'] == 1) {
+        $registros_totais = $objProtese->getProtesesPaciente('fkConsultaT =' . $_GET['idConsulta'], '
+        dataRegistro desc');
+        $registros_filtrados = $proteses = $objProtese->getProtesesPaciente('fkConsultaT =' . $_GET['idConsulta'], '
+        dataRegistro desc');
+        /*     echo "<pre>"; print_r($protese); echo "<pre>";exit; */
+        if ($registros_totais == null) {
+            header('location:cadastrarProtese.php?idConsulta=' . $_GET['idConsulta'] . '&idProcedimento=' . $_GET['idProcedimento'] . '&prontuario=' . $_GET['prontuario']);
+        }
+    } else if (isset($_GET['number']) && $_GET['number'] == 2) {
+        $registros_totais = $objProtese->getProtesesPaciente('fkConsultaT =' . $_GET['idConsulta'], '
+        dataRegistro desc');
+        $registros_filtrados = $proteses = $objProtese->getProtesesPaciente('fkConsultaT =' . $_GET['idConsulta'], '
+        dataRegistro desc');
+        /* echo "<pre>"; print_r(count($registros_filtrados)); echo "<pre>";exit; */
+        if (count($registros_filtrados) == 0) {
+            header('location:cadastrarProtese.php?idConsulta=' . $_GET['idConsulta'] . '&idProcedimento=' . $_GET['idProcedimento'] . '&prontuario=' . $_GET['prontuario'] . '&number=1');
+        } else if (count($registros_filtrados)  < 2) {
+            header('location:cadastrarProtese.php?idConsulta=' . $_GET['idConsulta'] . '&idProcedimento=' . $_GET['idProcedimento'] . '&prontuario=' . $_GET['prontuario'] . '&number=2');
+        }
+    } else {
+        $registros_totais = $objProtese->getProtesesPaciente('fkConsultaT =' . $_GET['idConsulta'], '
+        dataRegistro desc');
+        $registros_filtrados = $proteses = $objProtese->getProtesesPaciente('fkConsultaT =' . $_GET['idConsulta'], '
+        dataRegistro desc');
     }
 } else {
     $registros_totais = $objProtese->getProtesesPaciente($where, '

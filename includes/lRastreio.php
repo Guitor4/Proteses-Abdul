@@ -19,7 +19,7 @@
                         <a href="listaRastreio.php"> <input type="submit" value="Limpar Pesquisa" class="btn btn-danger w-100" /> </a>
                     </div>
                     <div class="col-6 p-2">
-                        <a href="listaConsultaR.php"> <input type="submit" value="Cadastrar rastreio" class="btn btn-success w-100" /> </a>
+                        <a href="listaConsultaR.php?pagina=1"> <input type="submit" value="Cadastrar rastreio" class="btn btn-success w-100" /> </a>
                     </div>
                 </div>
             </div>

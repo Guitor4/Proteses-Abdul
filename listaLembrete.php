@@ -70,9 +70,8 @@ if (isset($_POST['excluirLembrete'])) {
 foreach ($lembretes as $l) {
   $resultados .= '<tr> '
     . '<td> ' . $l->idLembrete . '</td>'
-    . '<td> ' . $l->titulo . '</td>'
-    . '<td style = "max-width:200px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;
-      "> ' . $l->descricao . '</td>'
+    . '<td class = "text-overflow"> ' . $l->titulo . '</td>'
+    . '<td class = "text-overflow"> ' . $l->descricao . '</td>'
     . '<td> ' . $l->dataLembrete . '</td>'
     . '<td> 
           <a href="editaLembrete.php?id=' . $l->idLembrete . '" 

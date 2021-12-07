@@ -40,16 +40,15 @@ $inicio = ($itens_por_pagina * $pagina_atual) - $itens_por_pagina;
 
 $registros_totais = $objTerceiro->getTerceiros();
 
-$registros_filtrados = $objTerceiro->getTerceiros($where, null, 'nomeTerceiro asc', $inicio . ',' . $itens_por_pagina);
+ $registros_filtrados = $Terceiro = $objTerceiro->getTerceiros($where, null, 'nomeTerceiro asc', $inicio . ',' . $itens_por_pagina);
 
 $num_registros_totais = count($registros_totais);
 
 $num_pagina = ceil($num_registros_totais / $itens_por_pagina);
 
-$objTerceiro = Terceiro::getTerceiros($where);
 
 $resultados = '';
-foreach ($objTerceiro as $objTerceiro) {
+foreach ($Terceiro as $objTerceiro) {
     $resultados .= '<tr>
                         <td>' . $objTerceiro->idTerceiro . '</td>
                         <td>' . $objTerceiro->nomeTerceiro . '</td>

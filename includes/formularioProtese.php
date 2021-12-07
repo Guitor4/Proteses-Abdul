@@ -15,7 +15,7 @@
 
         <div class="p-3 bg-dark" style="border-radius:25px">
             <div class="border border-white rounded p-3">
-                <h3 style="text-align: center; color: white"><?= TITLE ?></h3>
+                <h3 style="text-align: center; color: white"><?= TITLE . (isset($_GET['number']) ? ' '.$_GET['number'] : '') ?></h3>
                 <form method="post" style="color: white">
                     <div class="d-flex">
                         <div class="col-6 p-2">

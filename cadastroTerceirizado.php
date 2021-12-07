@@ -8,25 +8,33 @@ use \Classes\Entity\terceiro;
 use \Classes\Entity\ServicoTerceiro;
 
 
-define('BTN', 'Salvar');
+define('BTN', 'cadastrarTerceirizado');
 define('TITLE', 'Cadastrar Terceirizado');
-$objterceirizado = new terceirizado;
+$terceirizado = new terceirizado;
+
 $objTerceiro = terceiro::getTerceiros();
+$selectTerceiro = '';
+
+foreach ($objTerceiro as $terceiro) {
+    $selectTerceiro .= '<option  value ="' .  $terceiro->idTerceiro . '">' . $terceiro->nomeTerceiro . '</option>';
+}
+
+$selectServico = '';
 $objServicoTerceiro = ServicoTerceiro::getServicoTerceiros();
+foreach ($objServicoTerceiro as $servico) {
+    $selectServico .= '<option  value ="' .  $servico->idServico . '">' . $servico->nomeServico . '</option>';
+}
 
-if (isset($_POST['Salvar'])) {
+if (isset($_POST[BTN])) {
     /*echo '<pre>';print_r($_POST);echo'<pre>';exit; */
-    $objterceirizado->fkTerceiro = $_POST['Terceiro'];
-    $objterceirizado->fkServicoTerceiro = $_POST['ServicoTerceiro'];
+    $terceirizado->fkTerceiro = $_POST['Terceiro'];
+    $terceirizado->fkServicoTerceiro = $_POST['ServicoTerceiro'];
 
 
-
-    $objterceirizado->cadastoTerceirizado();
-
-    if ($objterceirizado->idterceirizado > 0) {
-        header('Location: listaterceirizado.php?status=success1&id=' . $objterceirizado->idterceirizado);
+    if (gettype($terceirizado->cadastroTerceirizado()[0]) == 'object') {
+        header('Location: listaterceirizado.php?pagina=1&status=success1&id=' . $terceirizado->fkTerceiro);
     } else {
-        header('Location: listaterceirizado.php?status=error1');
+        header('Location: listaterceirizado.php?pagina=1&status=error1');
     }
 }
 

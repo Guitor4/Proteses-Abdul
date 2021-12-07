@@ -61,7 +61,7 @@
                     <nav class="" aria-label="...">
                         <ul class="pagination">
                             <li class="page-item">
-                                <a class="page-link" href="listaTerceiro.php?pagina=<?= $num_pagina ?><?= isset($_GET['search']) ? '&search=' . $_GET['search'] : '' ?>"><<</a>
+                                <a class="page-link" href="listaTerceiro.php?pagina=1"><<</a>
                             </li>
                             <li class="page-item">
                                 <a class="page-link" href="listaTerceiro.php?pagina=<?= ($pagina_atual > 1 ? $pagina_atual - 1 : $pagina_atual) ?><?= isset($_GET['search']) ? '&search=' . $_GET['search'] : '' ?>" tabindex="-1">Anterior</a>

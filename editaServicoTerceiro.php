@@ -29,9 +29,13 @@ if (isset($_POST['nomeServico'], $_POST['statusServicoTerceiro'])) {
     $objServicoTerceiro->statusServicoTerceiro = $_POST['statusServicoTerceiro'];
     //echo '<pre>';print_r($objServicoTerceiro);echo '<pre>';exit;
 
-    $objServicoTerceiro->AtualizarServicoTerceiro();
+    if($objServicoTerceiro->AtualizarServicoTerceiro()){
+        header('Location: listaServicoTerceiro.php?pagina=1&status=success2&id='.$objServicoTerceiro->idServico);
+    }else{
+        header('Location: listaServicoTerceiro.php?pagina=1&status=error2');
+    }
 
-    header('Location: index.php?status=success');
+    
 
     /*     if ($objServicoTerceiro->id > 0){
         header ('Location: index.php?status=success');

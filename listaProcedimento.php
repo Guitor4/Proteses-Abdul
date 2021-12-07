@@ -42,7 +42,7 @@ $inicio = ($itens_por_pagina * $pagina_atual) - $itens_por_pagina;
 
 $registros_totais = $objProcedimento = Procedimento::getProcedimentos($where);
 
-$registros_filtrados = $objProcedimento = Procedimento::getProcedimentos($where, null, null, $inicio . ',' . $itens_por_pagina);
+$registros_filtrados = $objProcedimento = Procedimento::getProcedimentos($where, null, 'nomeProcedimento', $inicio . ',' . $itens_por_pagina);
 
 $num_registros_totais = count($registros_totais);
 

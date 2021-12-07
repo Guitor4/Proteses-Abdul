@@ -1,4 +1,4 @@
-<div class="container-fluid" style="background-image: url(./includes/img/bg.jpg); height:793px;background-repeat: no-repeat; background-size: 100%">
+<div class="container-fluid">
     <main>
         <a href="index.php">
             <button class="btn btn-success mt-4">Menu</button>
@@ -13,31 +13,43 @@
                 <div class="col-8">
                     <div class="form-group">
                         <label> Terceiro: </label>
-                        <select class="form-control" name="Terceiro" value="">
-                            <option selected="selected">[---SELECIONE---]</option>
+                        <select <?= (TITLE == 'Cadastrar Terceirizado' ? '' : 'disabled') ?> class="form-control" name="Terceiro" value="">
+                            <option hidden selected value='0'>[---SELECIONE---]</option>
 
                             <?php
-                            foreach ($objTerceiro as  $terceiro) {
+                            echo $selectTerceiro
 
-                                echo "<option value =" .  $terceiro->idTerceiro . ">" . $terceiro->nomeTerceiro . "</option>";
-                            }
                             ?>
 
                         </select>
+                        <?php (TITLE == 'Cadastrar Terceirizado' ? '' : print('<select name = "terceiro2" hidden >' . $selectTerceiro . '</select>')) ?>
                     </div>
                     <div class="form-group">
                         <label> Serviço Terceiro: </label>
-                        <select class="form-control" name="ServicoTerceiro" value="">
-                            <option>[---SELECIONE---]</option>
+                        <select <?= (TITLE == 'Cadastrar Terceirizado' ? '' : 'disabled') ?> class="form-control" name="ServicoTerceiro" value="">
+                            <option selected hidden value='0'>[---SELECIONE---]</option>
 
                             <?php
-                            foreach ($objServicoTerceiro as  $ServicoTerceiro) {
-
-                                echo "<option value =" .  $ServicoTerceiro->idServico . ">" . $ServicoTerceiro->nomeServico . "</option>";
-                            }
+                            echo $selectServico;
                             ?>
 
                         </select>
+                        <?php (TITLE == 'Cadastrar Terceirizado' ? '' : print('<select name = "servico2" hidden > ' . $selectServico . '</select>')) ?>
+                    </div>
+                    <div class="form-group">
+                        <label>Status: </label>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="status" id="exampleRadios1" value="ativo" checked="">
+                            <label class="form-check-label" for="exampleRadios1">
+                                Ativo
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="status" id="exampleRadios2" value="inativo" <?= $terceirizado->statusTerceirizado == 'inativo' ? 'checked' : '' ?>>
+                            <label class="form-check-label" for="exampleRadios2">
+                                Inativo
+                            </label>
+                        </div>
                     </div>
                     <div class="d-flex justify-content-center p-2">
 

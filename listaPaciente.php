@@ -50,12 +50,12 @@ $num_pagina = ceil($num_registros_totais / $itens_por_pagina);
 $resultados = '';
 foreach ($pacientes as $p) {
     $resultados .= '<tr> '
-        . '<td> ' . $p->prontuario . '</td>'
-        . '<td> ' . $p->nomePaciente . '</td>'
-        . '<td> ' . $p->sexo . '</td>'
-        . '<td> ' . $p->telefone . '</td>'
-        . '<td> ' . $p->email . '</td>'
-        . '<td> 
+        . '<td class = "text-overflow"> ' . $p->prontuario . '</td>'
+        . '<td class = "text-overflow"> ' . $p->nomePaciente . '</td>'
+        . '<td class = "text-overflow"> ' . $p->sexo . '</td>'
+        . '<td class = "text-overflow"> ' . $p->telefone . '</td>'
+        . '<td class = "text-overflow"> ' . $p->email . '</td>'
+        . '<td class = "text-overflow"> 
           <a href="editaPaciente.php?prontuario=' . $p->prontuario . '" 
               class="btn btn-info" >Editar</a>
               

@@ -116,4 +116,19 @@ if (isset($_GET, $_GET['status'], $_GET['id']) && is_string($_GET['status']) && 
             })
             </script>";
     }
+    if (isset($_GET, $_GET['status']) && is_string($_GET['status']) && $_GET['status'] == 'error3') {
+      echo "<script>
+            Swal.fire({
+              title: 'Área restrita !!',
+              text: \"Você não possui permissão para acessar essa área do sistema, contate o administrador\",
+              icon: 'error',
+              confirmButtonColor: '#3085d6',
+              confirmButtonText: 'Ok'
+            }).then((result) => {
+              if (result.isConfirmed) {
+                window.location.href = \"index.php\"
+            }
+            })
+            </script>";
+    }
 ?>
