@@ -10,7 +10,7 @@ use Dompdf\Options;
 
 if (isset($_GET['idProcedimento'])){ //cuidado com o id da protese
     
-    $tratamento = Prontuario::getTratamentoInner($_GET['idProcedimento'],$_GET['nomeProcedimento'],$_GET['consulta'],$_GET['prontuario']);
+    $tratamento = Prontuario::getTratamentoInner($_GET['idProcedimento'],$_GET['consulta'],$_GET['prontuario']);
     /* echo '<pre>';print_r($tratamento); echo '<pre>';exit; */
      
 } 
@@ -25,7 +25,7 @@ if (isset($_GET['idProcedimento'])){ //cuidado com o id da protese
 $options = new Options();
 $options->setChroot(__DIR__);
 
-if ($tratamento->nomeProcedimento=="Protese"){//se igual a protese
+if ($tratamento->idProcedimento==5){//se igual a protese
     $t='
         <h3>'.$tratamento->nomeProcedimento.'</h3>
         <label>Código: '.$tratamento->idProtese.'</label><br>

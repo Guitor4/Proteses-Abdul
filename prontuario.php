@@ -75,7 +75,7 @@ if (isset($_POST['edFotoPerfil'])) {
     
     $objImagem->idImagem = $iId;
     $objImagem->titulo = $titulo;
-    $objImagem->url = $imagem;
+    $objImagem->img = $imagem;
     $objImagem->fkProntuario = $pac;
     $objImagem->EditarImagem();
     unset($_POST['edFotoPerfil']);
@@ -107,7 +107,7 @@ if (isset($_POST['delFotoPerfil'])){
     
     $objImagem->idImagem = $iId;
     $objImagem->titulo = "perfil_";
-    $objImagem->url = "./Imagens/usuario.png";
+    $objImagem->img = "./Imagens/usuario.png";
     $objImagem->fkProntuario = $pac;
     $objImagem->EditarImagem();
     unset($_POST['delFotoPerfil']);

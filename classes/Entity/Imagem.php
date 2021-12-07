@@ -13,16 +13,16 @@ use \PDO;
 class Imagem {
     public $idImagem;
     public $titulo;
-    public $url;
+    public $img;
     public $fkProntuario;
     
     
-    public function CadastrarImagem() {
+    public function CadastrarImagem($pac) {
         
         $db = new db('imagem');
         $this->idImagem = $db->insertSQL([
             'titulo' => $this->titulo,
-            'img' => $this->url,
+            'img' => $this->img,
             'fkProntuario' => $this->fkProntuario,
             
             
@@ -39,7 +39,7 @@ class Imagem {
         return (new db('imagem'))->
                         updateSQL('idImagem='. $this->idImagem, [
                             'titulo' => $this->titulo,
-                            'img' => $this->url,
+                            'img' => $this->img,
                             'fkProntuario' => $this->fkProntuario,
         ]);
     }

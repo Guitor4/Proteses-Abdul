@@ -17,7 +17,9 @@
 
                         <input  hidden="" value="<?= $paciente ?>" id="aux"> <!--input usado para pegar o prontuario.-->
                         <input  hidden="" value="<?= $paciente ?>" id="iclick"> <!--input usado para iniciar variavel de controle de clique-->
-
+                        <!--<input  hidden="" value=" $iurl ?>" id="iUrl"> <!--input usado para mostrar imagem perfil-->
+                        <!--<input  hidden="" value=" //$fotoCadastrada ?>" id="fotoCadastrada"> <!--input usado para mostrar imagem perfil-->
+                        
 
                         <div id="passar_mouse">
                             <a class="nav-link" role="button" onclick="Dados_Cadastrais()">
@@ -64,15 +66,15 @@
 
 
                                 </div>
-
+                                
                             </div>
-
+                            
                             <div class="container-fluid row-cols-auto bg-gradient overflow-auto mb-2"  style=" background-color: whitesmoke;opacity: 100%;max-height: 300px">
+                                
+                                 
+                                    <h6 class="text-dark mt-3" id="mostraTitulo" style="text-align: center"></h6>
 
-
-                                <h6 class="text-dark mt-3" id="mostraTitulo" style="text-align: center"></h6>
-
-
+                                  
                                 <table class="table table-hover bg-white collapse" id="apresenta_Tratamentos">
 
                                     <thead>
@@ -82,7 +84,7 @@
 
                                     </tbody>
                                 </table>
-
+                                    
                             </div>
                         </div>
                     </div>
