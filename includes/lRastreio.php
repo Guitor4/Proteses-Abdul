@@ -49,17 +49,13 @@
                             <td>' . $ras->idProtese . '</td>
                             <td>' . $ras->tipo . '</td>
                             <td>' . $ras->posicao . '</td>
-                           <!-- <td>' . $ras->obs . '</td>
-                            <td>' . $ras->vlrCobrado . '</td>-->
                             <td>' . $ras->nomePaciente . '</td>
                             <td>' . $ras->prontuario . '</td>
                             <td>' . $ras->idConsulta . '</td>
-                            <!--<td>' . $ras->nomeProcedimento . '</td>-->
+                            <td>' . $ras->nomeProcedimento . '</td>
                             <td>' . $ras->nomeTerceiro . '</td>
                             <td>' . $ras->nomeServico . '</td>
                             <td>' . $ras->statusRastreio . '</td>
-                            
-                           
                             <td>
                             <a href = detalhaRastreio.php?id=' . $ras->idRastreio . '& pagina=>
                             <button class = "btn btn-primary">Detalhes</button>
