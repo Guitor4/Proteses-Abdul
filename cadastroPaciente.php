@@ -18,7 +18,7 @@ if (isset($_POST['cadastrarPaciente'])) {
 
         $paciente->nomePaciente = trim($_POST['nomePaciente']);
         $paciente->sexo = $_POST['sexo'];
-        $paciente->tel = $_POST['tel'];
+        $paciente->telefone = $_POST['tel'];
         $paciente->email = $_POST['email'];
 
         $paciente->cadastrarPaciente();

@@ -5,6 +5,7 @@ include __DIR__ . './includes/sessionStart.php';
 define('TITLE', 'Rastreio');
 define('BTN', 'eRastreio');
 define('BTN2', 'okRastreio');
+define('IDENTIFICACAO', 0);
 
 use Classes\Entity\rastreio;
 use Classes\Entity\terceiro;

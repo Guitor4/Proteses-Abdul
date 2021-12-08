@@ -5,7 +5,7 @@ include __DIR__ . './includes/sessionStart.php';
 
 use Classes\Entity\Imagem;
 
-
+define('IDENTIFICACAO', 0);
 if (isset($_GET['paciente'])) {
 
     $paciente = ($_GET['paciente']);

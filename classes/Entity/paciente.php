@@ -28,7 +28,7 @@ class Paciente {
         $this->prontuario = $db->insertSQL([
             'nomePaciente' => $this->nomePaciente,
             'sexo' => $this->sexo,
-            'telefone' => $this->tel,
+            'telefone' => $this->telefone,
             'email' => $this->email,
         ])[1];
         if ($this->prontuario > 0) {
@@ -55,7 +55,7 @@ class Paciente {
                         updateSQL('prontuario= ' . $this->prontuario, [
                             'nomePaciente' => $this->nomePaciente,
                             'sexo' => $this->sexo,
-                            'tel' => $this->tel,
+                            'telefone' => $this->telefone,
                             'email' => $this->email
         ]);
     }

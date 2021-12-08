@@ -27,9 +27,6 @@ if ($prontuario != null) {
             $array[] = array(
            'nomeT' => $row_prontuario1['nomeProcedimento'],
            'idC' => $row_prontuario1['idConsulta'],
-           //'dataC' => date('d/m/y', strtotime($row_prontuario1['dataConsulta'])),
-           //'horaC' => $row_prontuario1['horaConsulta'],
-           //'reg'=>date('d/m/y h:i:s', strtotime($row_prontuario1['dataRegistro'])),
            'prontuario' => $row_prontuario1['fkProntuario'],
            'idProcedimento' => $row_prontuario1['fkProcedimento'],
             
