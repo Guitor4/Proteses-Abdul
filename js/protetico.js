@@ -465,7 +465,7 @@ function Tratamentos(id) {
                                 <td class "table-success">' +
               dados[i].nomeT +
               '</td>\n\
-                                <td class "table-success"><a class="btn btn-outline-primary" href="tratamentoPDF.php?idProcedimento=' +
+                                <td class "table-success"><a class="btn btn-outline-primary" target="_blank" href="tratamentoPDF.php?idProcedimento=' +
               dados[i].idProcedimento +
               "&consulta=" +
               dados[i].idC +

@@ -27,7 +27,7 @@ if (isset($_POST[BTN])) {
         $paciente->prontuario = $_GET['prontuario'];
         $paciente->nome = trim($_POST['nomePaciente']);
         $paciente->sexo = $_POST['sexo'];
-        $paciente->tel = $_POST['tel'];
+        $paciente->telefone = $_POST['tel'];
         $paciente->email = $_POST['email'];
 
 

@@ -10,7 +10,7 @@ Class Prontuario {
     
     public static function getTratamentoInner($proc,$c,$pron) {
         $comProtese="";
-        if ($proc==5){
+        if ($proc==5||$proc==11){
             $comProtese='inner join protese on fkConsultaT=fkConsulta and fkProcedimentoT=fkProcedimento';
         } 
 

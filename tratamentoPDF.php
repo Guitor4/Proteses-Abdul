@@ -25,7 +25,7 @@ if (isset($_GET['idProcedimento'])){ //cuidado com o id da protese
 $options = new Options();
 $options->setChroot(__DIR__);
 
-if ($tratamento->idProcedimento==5){//se igual a protese
+if ($tratamento->idProcedimento==5||$tratamento->idProcedimento==11){//se igual a protese
     $t='
         <h3>'.$tratamento->nomeProcedimento.'</h3>
         <label>Código: '.$tratamento->idProtese.'</label><br>
@@ -44,7 +44,7 @@ if ($tratamento->idProcedimento==5){//se igual a protese
 } else {
     $t='<div>
         <h3>'.$tratamento->nomeProcedimento.'</h3>
-        <label>Observação:<textarea style="height: auto"> '.$tratamento->observacoes.'</textarea></label><br>
+        <label>Observação:<textarea style="height: auto"> '.$tratamento->observacao.'</textarea></label><br>
     </div>';
 }
 
@@ -60,7 +60,7 @@ $dompdf->loadHtml('
 <html lang="pt-br">
     <head>
         <title>'.$tratamento->nomePaciente.'-Consulta'.$tratamento->idConsulta.'</title>
-        <meta charset="UTF-8">
+        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <style>
@@ -107,7 +107,7 @@ $dompdf->loadHtml('
             <label>Data: '.date('d/m/y', strtotime($tratamento->dataConsulta)).'</label><br>
             <label>Hora: '.$tratamento->horaConsulta.'</label><br>
             <label>Status: '.$tratamento->statusConsulta.'</label><br>
-            <label>Clinica: '.$tratamento->nomeClinica.'</label><br>
+            <label>Clínica: '.$tratamento->nomeClinica.'</label><br>
             <label>Dentista: '.$tratamento->nomeDentista.'</label><br>
             Relatório:<textarea style="height: auto"> '.$tratamento->relatorio.'</textarea><br>
             </div>
@@ -119,7 +119,7 @@ $dompdf->loadHtml('
         <span>Denture Logic - Customised Denture Care</span><br>
         <span>Telefone:(61)9999-0000</span><br>
         <span>Protético:Abdul Abdul</span><br>
-        <span>'. date('d/m/Y H:i:s').'</span><br>
+        <span>'. date('d/m/Y H:i:s') .'</span><br>
         <span class="page">Página<span>
         
     </footer>

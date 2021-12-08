@@ -27,7 +27,7 @@
 
                  <div class="form-group">
                      <label>Telefone</label>
-                     <input type="tel" class="form-control" name="tel" value="<?= $paciente->telefone ?>" onkeypress="mascara(this, '#-#####-####')" maxlength="15">
+                     <input type="tel" class="form-control" name="tel" value="<?= $paciente->telefone ?>" onkeypress="mascara(this, '##-####-####')" maxlength="12">
                  </div>
 
                  <div class="form-group">

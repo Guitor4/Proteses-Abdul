@@ -52,7 +52,6 @@
                             <td>' . $ras->nomePaciente . '</td>
                             <td>' . $ras->prontuario . '</td>
                             <td>' . $ras->idConsulta . '</td>
-                            <td>' . $ras->nomeProcedimento . '</td>
                             <td>' . $ras->nomeTerceiro . '</td>
                             <td>' . $ras->nomeServico . '</td>
                             <td>' . $ras->statusRastreio . '</td>
@@ -82,16 +81,12 @@
                         <th>Prótese</th>
                         <th>Tipo</th>
                         <th>Posição</th>
-                        <!--<th>obs</th> colocar no formulario de apresentação -->
-                        <!--<th>valor</th>-->
                         <th>Paciente</th>
                         <th>Prontuário</th>
                         <th>Consulta</th>
-                        <!--<th>Procedimento</th>-->
                         <th>Terceirizado</th>
                         <th>Serviço</th>
                         <th>Status</th>
-
                         <th></th>
                         <th></th>
 

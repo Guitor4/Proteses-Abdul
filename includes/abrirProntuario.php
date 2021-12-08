@@ -1,6 +1,6 @@
 
 
-<div class="container-fluid mt-2 col-12">
+<div class="container-fluid mt-2 col-10">
     <div class="row">
         <div class="row-cols-auto">
             <div class=" bg-gradient rounded-3" style=" background-color: black;opacity:100%">
@@ -98,9 +98,9 @@
 
 <script src="js/JQuery2.min.js"></script>
 <script>
-                                $(document).ready(function () {
-                                    loadDados();
-                                });
+ $(document).ready(function () {
+    loadDados();
+    });
 </script>
 
 

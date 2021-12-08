@@ -4,7 +4,7 @@ require 'vendor/autoload.php';
 include __DIR__ . './includes/sessionStart.php';
 
 use Classes\Entity\Protese;
-
+define('IDENTIFICACAO', 1);
 $objProtese = Protese::getProtesePaciente($_GET['idProtese']);
 /* echo "<pre>"; print_r($objProtese); echo "<pre>";exit; */
 

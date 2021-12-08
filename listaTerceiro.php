@@ -4,7 +4,7 @@ require 'vendor/autoload.php';
 include __DIR__ . './includes/sessionStart.php';
 define('NAME', 'Terceiro');
 define('LINK', 'listaTerceiro.php?pagina=1');
-
+define('IDENTIFICACAO', 1);
 use Classes\Entity\Terceiro;
 
 if (!isset($_GET['pagina'])) {
