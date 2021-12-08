@@ -4,13 +4,13 @@ require __DIR__ . '/vendor/autoload.php';
 include __DIR__ . './includes/sessionStart.php';
 
 use Classes\Entity\Imagem;
+use Classes\Entity\Foto;
 
 define('IDENTIFICACAO', 0);
 if (isset($_GET['paciente'])) {
 
     $paciente = ($_GET['paciente']);
     $pac = $paciente;
-    
 }
 
 if (isset($_POST['edFotoPerfil'])) {
@@ -61,50 +61,46 @@ if (isset($_POST['edFotoPerfil'])) {
         // Check if $uploadOk is set to 0 by an error
         if ($uploadOk == 1) {
             move_uploaded_file($_FILES["imagem"]["tmp_name"], $target_file);
-            
+
             //$msg->setMsg("A imagem não foi gravada.");
             // if everything is ok, try to upload file
 //        }else{
 //           $imagem = "./imagens/usuario.png";
 //        }if ($msgBool == false) {
-
             //echo $msg->getMsg();
         }
-    
-    $objImagem = new Imagem();
-    
-    $objImagem->idImagem = $iId;
-    $objImagem->titulo = $titulo;
-    $objImagem->img = $imagem;
-    $objImagem->fkProntuario = $pac;
-    $objImagem->EditarImagem();
-    unset($_POST['edFotoPerfil']);
-    echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"0;
+
+        $objImagem = new Imagem();
+
+        $objImagem->idImagem = $iId;
+        $objImagem->titulo = $titulo;
+        $objImagem->img = $imagem;
+        $objImagem->fkProntuario = $pac;
+        $objImagem->EditarImagem();
+        unset($_POST['edFotoPerfil']);
+        echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"0;
         \">";
+    }
 }
 
+if (isset($_POST['delFotoPerfil'])) {
 
-}
+    $target_dir = "./Imagens/";
+    $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING);
 
-if (isset($_POST['delFotoPerfil'])){
-    
-        $target_dir = "./Imagens/";
-        $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING);
-        
-        $target_file = $target_dir . $nome;
+    $target_file = $target_dir . $nome;
+    $imagem = $target_file;
+    $iId = filter_input(INPUT_POST, 'idImg', FILTER_SANITIZE_STRING);
+
+    //echo'<pre>';print_r($iId);echo'</pre>';exit;
+    // Check if file already exists
+    if (file_exists($target_file)) {
         $imagem = $target_file;
-        $iId = filter_input(INPUT_POST, 'idImg', FILTER_SANITIZE_STRING);
-        
-        //echo'<pre>';print_r($iId);echo'</pre>';exit;
-        // Check if file already exists
-        if (file_exists($target_file)) {
-            $imagem = $target_file;
-            unlink($imagem);
-            
-        }
+        unlink($imagem);
+    }
 
     $objImagem = new Imagem();
-    
+
     $objImagem->idImagem = $iId;
     $objImagem->titulo = "perfil_";
     $objImagem->img = "./Imagens/usuario.png";
@@ -113,9 +109,67 @@ if (isset($_POST['delFotoPerfil'])){
     unset($_POST['delFotoPerfil']);
     echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"0;
         \">";
-    
 }
 
+if (isset($_POST['cadFoto'])) {
+
+    if (isset($_FILES['imagem']) && basename($_FILES["imagem"]["name"]) != "") {
+        $target_dir = "fotos/";
+        $target_file = $target_dir . basename($_FILES["imagem"]["name"]);
+        $imagem = $target_file;
+        $uploadOk = 1;
+        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+        // Check if image file is a actual image or fake image
+        $check = getimagesize($_FILES["imagem"]["tmp_name"]);
+        if ($check !== false) {
+            $uploadOk = 1;
+        } else {
+            $msg->setMsg("File is not an image.");
+            $uploadOk = 0;
+        }
+
+        // Check if file already exists
+        if (file_exists($target_file)) {
+            $imagem = $target_file;
+            $uploadOk = 0;
+        }
+
+        // Check file size
+        if ($_FILES["imagem"]["size"] > 500000) {
+            $msg->setMsg("O arquivo excedeu o limite do tamanho permitido (500KB).");
+            $uploadOk = 0;
+        }
+
+        // Allow certain file formats
+        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "jfif" && $imageFileType != "gif") {
+            $msg->setMsg("A extensão da imagem deve ser JPG, JPEG, PNG & "
+                    . "GIF.");
+            $uploadOk = 0;
+        }
+
+        // Check if $uploadOk is set to 0 by an error
+        if ($uploadOk == 0) {
+            $msg->setMsg("A imagem não foi gravada.");
+            // if everything is ok, try to upload file
+        } else {
+            move_uploaded_file($_FILES["imagem"]["tmp_name"], $target_file);
+        }
+    } else {
+        
+    }
+
+    $objFoto = new Foto();
+
+    $objFoto->idFoto = $fId;
+    $objFoto->titulo = $titulo;
+    $objFoto->img = $foto;
+    $objFoto->fkProntuario = $pac;
+    $objFoto->CadastrarFoto();
+    unset($_POST['cadFoto']);
+    echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"0;
+        \">";
+}
 
 
 include __DIR__ . '/includes/header.php';

@@ -36,12 +36,12 @@
                         </div>
 
 
-                        <!-- <div id="passar_mouse">
-                             <a class="nav-link" role="button" onclick="Tratamentos()">
-                                 <h5 style="color: white; text-align: left">Tratamentos</h5>
+                        <div id="passar_mouse">
+                             <a class="nav-link" role="button" onclick="Fotos()">
+                                 <h5 style="color: white; text-align: left">Fotos</h5>
                              </a>
  
-                         </div>-->
+                        </div>
 
 
                     </div>
@@ -52,6 +52,7 @@
                             <div class="row-cols-auto bg-gradient overflow-auto"  style=" background-color: whitesmoke;opacity: 100%;">
 
                                 <div class="container-fluid mb-2 overflow-auto" id="apresenta_DadosCadastrais" style="margin-left: 10px;max-height: 400px;">  </div>
+                                <div class="container-fluid mb-2 overflow-auto" id="apresenta_Fotos" style="margin-left: 10px;max-height: 400px;">  </div>
 
                                 <div class="container-fluid overflow-auto" style="max-height: 200px;">
                                     <table class="table table-hover bg-white " id="apresenta_Consultas" >

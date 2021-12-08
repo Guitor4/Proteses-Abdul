@@ -491,3 +491,59 @@ function Tratamentos(id) {
     //document.getElementById("click").value=id;
   }
 }
+
+
+function Fotos() {
+  document.getElementById("apresenta_Consultas").innerHTML = "";
+  document.getElementById("apresenta_Tratamentos").innerHTML = "";
+  document.getElementById("mostraTitulo").innerHTML = "";
+  var valorAjax = document.getElementById("aux").value;
+
+  $("#apresenta_Fotos").html("<p>Aguardando...</p>");
+  $.ajax({
+    type: "POST",
+    dataType: "json",
+    url: "fotoAbrirProntuario.php?prontuario=" + valorAjax,
+    success: function (dados) {
+      if (dados !== null) {
+        var urli, id, p;
+        for (var i = 0; i < dados.length; i++) {
+          p = dados[i].prontuario;
+          urli = dados[i].img;
+          id = dados[i].idImagem;
+        }
+        var nome = urli.substring(10);
+        if (urli !== "") {
+          var at = "hidden";
+          var del = "";
+          var cad = "";
+        } else {
+          at = "";
+          var cad = "";
+          del = "hidden";
+        }
+        var labels =
+          '<div class="row">\n\
+\n\<img src="' +urli +'" alt="" width="150" height="100">\n\
+                                <div class="col-12">\n\
+                                 <form method="post" action="prontuario.php?paciente=' + p +'" enctype="multipart/form-data">\n\
+                                  <input hidden type="text" name="titulo" value="perfil_' +p +'">\n\
+                                  <input hidden type="text" name="idImg" value="' +id +'">\n\
+                                  <input hidden type="text" name="nome" value="' +nome +'">\n\
+                                  <input ' +at +' type="file" name="foto"><br>\n\
+\n                                <input ' +cad +' type="submit" name="delFotoPerfil" value="Deletar">\n\
+\n                                <input ' +del +' type="submit" name="delFotoPerfil" value="Deletar">\n\
+                                  <input ' +at +' type="submit" name="edFotoPerfil" value="Atualizar"><br>\n\
+                                 </form>\n\
+                                </div>\n\
+                              </div>';
+
+        $("#apresenta_DadosCadastrais").html(labels).show();
+
+        /*if (valorAjax !== 0) {
+                    $('#apresentaProntuario').html(tabela).show();
+                }*/
+      }
+    },
+  });
+}
