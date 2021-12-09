@@ -37,8 +37,8 @@ if (isset($_POST[BTN])) {
         $objFuncionario->perfil = $_POST['perfil'];
         $objFuncionario->login = $_POST['login'];
         $objFuncionario->senha = $_POST['senha'];
-        $objFuncionario->statusFuncionario = ($_POST['status'] == 'on' ? 'Ativo' : 'Inativo');
-        //echo '<pre>';print_r($objFuncionario);echo '<pre>';exit;
+        $objFuncionario->statusFuncionario = ($_POST['status'] == 'Ativo' ? 'Ativo' : 'Inativo');
+        /* echo '<pre>';print_r($objFuncionario);echo '<pre>';exit; */
 
         if ($objFuncionario->AtualizarFuncionario()) {
             header('Location: listaFuncionario.php?pagina=1&status=success2&id=' . $objFuncionario->idFuncionario);

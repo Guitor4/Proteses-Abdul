@@ -45,7 +45,6 @@ class Rastreio {
                             'dtEntrega' => $this->dtEntrega,
                             'dtRetorno' => $this->dtRetorno,
                             'obs' => $this->obs,
-                            'vlrCobrado' => $this->vlrCobrado,
                             'statusRastreio' => $this->statusRastreio,
                             'RFKTerceiro' => $this->RFKTerceiro,
                             'RFKServico' => $this->RFKServico,

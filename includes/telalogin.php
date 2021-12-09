@@ -41,11 +41,6 @@
         <label for="floatingPassword"><span> <img src="includes/img/senha.png" width="30" height="30" alt="senha" /></span></label>
       </div>
 
-      <div class="checkbox mb-3">
-        <label style="color: white">
-          <input type="checkbox" value="lembre-me"> Lembre-me
-        </label>
-      </div>
         <input type="submit" name = "Entrar" class="w-100 btn btn-lg" style="background-color: #007979; opacity: 90%"  >
       <p class="mt-5 mb-3 text-muted">&copy; 2021</p>
     </form>

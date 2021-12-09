@@ -30,7 +30,7 @@ class db
      * Senha do banco de dados
      * @var string
      */
-    const PASS = 'senac';
+    const PASS = '';
 
 
     /**
@@ -82,7 +82,7 @@ class db
      */
     public function executeSQL($query, $params = [])
     {
-        /* echo "<pre>"; print_r($query); echo "<pre>";exit; */
+       /*  echo "<pre>"; print_r($query); echo "<pre>";exit; */
         try {
             $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $statement = $this->connection->prepare($query);

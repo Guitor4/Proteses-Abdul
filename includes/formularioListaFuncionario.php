@@ -79,7 +79,7 @@
                         <a class="page-link " href="listaFuncionario.php?pagina=<?= ($pagina_atual < $num_pagina ? $pagina_atual + 1 : $pagina_atual) ?><?= isset($_GET['search']) ? '&search=' . $_GET['search'] : '' ?>">Próximo</a>
                     </li>
                     <li class="page-item">
-            <a class="page-link" href="listaDentista.php?pagina=<?= $num_pagina?><?= isset($_GET['search']) ? '&search=' . $_GET['search'] : '' ?>">>></a>
+            <a class="page-link" href="listaFuncionario.php?pagina=<?= $num_pagina?><?= isset($_GET['search']) ? '&search=' . $_GET['search'] : '' ?>">>></a>
           </li>
                 </ul>
             </nav>

@@ -531,7 +531,7 @@ function FotoAntes() {
                     }else{
                         semFoto="";
                         semFotoB="btn btn-warning";
-                        semFotoT='width="100" height="100"';
+                        semFotoT='width="200" height="200"';
                     }
             var nome = dados[i].img.substring(8);
           tabela +='<div class="row">\n\
@@ -591,7 +591,7 @@ function FotoDepois() {
                     }else{
                         semFoto="";
                         semFotoB="btn btn-warning";
-                        semFotoT='width="300" height="250"';
+                        semFotoT='width="100" height="100"';
                     }
             var nome = dados[i].img.substring(8);
           tabela +='<div class="row">\n\

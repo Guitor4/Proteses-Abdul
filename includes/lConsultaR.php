@@ -1,4 +1,4 @@
-<div class="container-fluid" style=" height:793px;background-repeat: no-repeat; background-size: 100%">
+<div class="container-fluid">
     <main>
     <section class="d-flex justify-content-center mt-2">
       <div class="col-4">

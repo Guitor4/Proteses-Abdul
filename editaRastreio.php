@@ -31,11 +31,10 @@ $rastreioEdit = new rastreio();
 if (isset($_POST['editarRastreio'])) {
 
         
-        $rastreioEdit->idRastreio = ($_POST['idRastreio']);
+        $rastreioEdit->idRastreio = ($_GET['id']);
         $rastreioEdit->dtEntrega = ($_POST['dtEntrega']);
         $rastreioEdit->dtRetorno = $_POST['dtRetorno'];
         $rastreioEdit->obs = $_POST['obs'];
-        $rastreioEdit->vlrCobrado = $_POST['vlrCobrado'];
         $rastreioEdit->statusRastreio = $_POST['status'];
         $rastreioEdit->RFKTerceiro = $_POST['RFKTerceiro'];
         $rastreioEdit->RFKServico = $_POST['RFKServico'];
