@@ -55,8 +55,6 @@
                             <td>' . $ras->nomeTerceiro . '</td>
                             <td>' . $ras->nomeServico . '</td>
                             <td>' . $ras->statusRastreio . '</td>
-                            
-                           
                             <td>
                             <a href = detalhaRastreio.php?id=' . $ras->idRastreio . '& pagina=>
                             <button class = "btn btn-primary">Detalhes</button>
