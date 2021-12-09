@@ -35,14 +35,18 @@
 
                         </div>
 
-
-                        <div id="passar_mouse">
-                             <a class="nav-link" role="button" onclick="Fotos()">
+                        
+                        <div id="passar_mouse" class="nav-item dropdown">
+                             <a class="nav-link " href="#" id="navbarDropdown"  data-bs-toggle="dropdown" aria-expanded="false">
                                  <h5 style="color: white; text-align: left">Fotos</h5>
                              </a>
- 
+                                 <ul class="dropdown-menu">
+                                     <li><a class="dropdown-item" role="button" onclick="FotoAntes()">Antes</a></li>
+                                <li><a class="dropdown-item" role="button" onclick="FotoDepois()">Depois</a></li>
+                                
+                                </ul>
                         </div>
-
+                       
 
                     </div>
 
@@ -53,7 +57,7 @@
 
                                 <div class="container-fluid mb-2 overflow-auto" id="apresenta_DadosCadastrais" style="margin-left: 10px;max-height: 400px;">  </div>
                                 <div class="container-fluid mb-2 overflow-auto" id="apresenta_Fotos" style="margin-left: 10px;max-height: 400px;">  </div>
-
+                                        
                                 <div class="container-fluid overflow-auto" style="max-height: 200px;">
                                     <table class="table table-hover bg-white " id="apresenta_Consultas" >
                                         <thead>

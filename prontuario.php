@@ -12,6 +12,11 @@ if (isset($_GET['paciente'])) {
     $paciente = ($_GET['paciente']);
     $pac = $paciente;
 }
+if (isset($_GET['del'])) {
+
+    $idFoto = ($_GET['del']);
+}
+
 
 if (isset($_POST['edFotoPerfil'])) {
     $msgBool = false;
@@ -111,49 +116,75 @@ if (isset($_POST['delFotoPerfil'])) {
         \">";
 }
 
-if (isset($_POST['cadFoto'])) {
+if (isset($_POST['delFoto'])) {
 
-    if (isset($_FILES['imagem']) && basename($_FILES["imagem"]["name"]) != "") {
-        $target_dir = "fotos/";
-        $target_file = $target_dir . basename($_FILES["imagem"]["name"]);
+    $target_dir = "./Fotos/";
+    $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING);
+
+    $target_file = $target_dir . $nome;
+    $imagem = $target_file;
+    $iId = filter_input(INPUT_POST, 'idImg', FILTER_SANITIZE_STRING);
+    
+    //echo'<pre>';print_r($nome);echo'</pre>';exit;
+    // Check if file already exists
+    if (file_exists($target_file)) {
         $imagem = $target_file;
+        unlink($imagem);
+    }
+
+    $objFoto = new Foto();
+
+    $objFoto->DeletarFoto($iId);
+    unset($_POST['delFoto']);
+    echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"0;
+        \">";
+}
+
+if (isset($_POST['cadFoto'])) {
+    
+    if (isset($_FILES['foto']) && basename($_FILES["foto"]["name"]) != "") {
+        $target_dir = "./Fotos/";
+        $target_file = $target_dir . basename($_FILES["foto"]["name"]);
+        $foto = $target_file;
+        $titulo = filter_input(INPUT_POST, 'titulo', FILTER_SANITIZE_STRING);
+        $iId = filter_input(INPUT_POST, 'idImg', FILTER_SANITIZE_STRING);
         $uploadOk = 1;
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
         // Check if image file is a actual image or fake image
-        $check = getimagesize($_FILES["imagem"]["tmp_name"]);
+        $check = getimagesize($_FILES["foto"]["tmp_name"]);
         if ($check !== false) {
             $uploadOk = 1;
         } else {
-            $msg->setMsg("File is not an image.");
+           // $msg->setMsg("File is not an image.");
             $uploadOk = 0;
         }
 
         // Check if file already exists
         if (file_exists($target_file)) {
-            $imagem = $target_file;
+            $foto = $target_file;
             $uploadOk = 0;
         }
 
         // Check file size
-        if ($_FILES["imagem"]["size"] > 500000) {
-            $msg->setMsg("O arquivo excedeu o limite do tamanho permitido (500KB).");
+        if ($_FILES["foto"]["size"] > 500000) {
+            //$msg->setMsg("O arquivo excedeu o limite do tamanho permitido (500KB).");
             $uploadOk = 0;
         }
 
         // Allow certain file formats
         if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "jfif" && $imageFileType != "gif") {
-            $msg->setMsg("A extensão da imagem deve ser JPG, JPEG, PNG & "
-                    . "GIF.");
+            //$msg->setMsg("A extensão da imagem deve ser JPG, JPEG, PNG & "
+                   // . "GIF.");
             $uploadOk = 0;
         }
 
         // Check if $uploadOk is set to 0 by an error
         if ($uploadOk == 0) {
-            $msg->setMsg("A imagem não foi gravada.");
+            //$msg->setMsg("A imagem não foi gravada.");
             // if everything is ok, try to upload file
         } else {
-            move_uploaded_file($_FILES["imagem"]["tmp_name"], $target_file);
+            move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file);
         }
     } else {
         
@@ -165,7 +196,7 @@ if (isset($_POST['cadFoto'])) {
     $objFoto->titulo = $titulo;
     $objFoto->img = $foto;
     $objFoto->fkProntuario = $pac;
-    $objFoto->CadastrarFoto();
+    $objFoto->CadastrarFoto($pac);
     unset($_POST['cadFoto']);
     echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"0;
         \">";

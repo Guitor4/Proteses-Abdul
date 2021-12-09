@@ -9,6 +9,7 @@
 namespace Classes\Entity;
 
 use Classes\Entity\Imagem;
+use Classes\Entity\Foto;
 use Classes\Dao\db;
 use \PDO;
 
@@ -40,8 +41,19 @@ class Paciente {
             $img->titulo = "perfil_";
             $img->img = "./Imagens/usuario.png";
             $img->fkProntuario = $this->prontuario;
-            
             $img->CadastrarImagem($this->prontuario);
+            
+            $foto = new Foto();
+            $foto->titulo = "antes_";
+            $foto->img = "semImagem";
+            $foto->fkProntuario = $this->prontuario;
+            $foto->CadastrarFoto($this->prontuario);
+            
+            $foto = new Foto();
+            $foto->titulo = "depois_";
+            $foto->img = "semImagem";
+            $foto->fkProntuario = $this->prontuario;
+            $foto->CadastrarFoto($this->prontuario);
            
         } 
     }

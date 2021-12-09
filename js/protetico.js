@@ -281,6 +281,8 @@ function Dados_Cadastrais() {
   document.getElementById("apresenta_Consultas").innerHTML = "";
   document.getElementById("apresenta_Tratamentos").innerHTML = "";
   document.getElementById("mostraTitulo").innerHTML = "";
+  document.getElementById("apresenta_Fotos").innerHTML = "";
+  
   var valorAjax = document.getElementById("aux").value;
 
   $("#apresenta_DadosCadastrais").html("<p>Aguardando...</p>");
@@ -370,6 +372,7 @@ function Consultas() {
   document.getElementById("apresenta_DadosCadastrais").innerHTML = "";
   document.getElementById("apresenta_Tratamentos").innerHTML = "";
   document.getElementById("mostraTitulo").innerHTML = "";
+  document.getElementById("apresenta_Fotos").innerHTML = "";
   var valorAjax = document.getElementById("aux").value;
 
   $("#apresenta_Consultas").html("<p>Aguardando...</p>");
@@ -493,57 +496,119 @@ function Tratamentos(id) {
 }
 
 
-function Fotos() {
+function FotoAntes() {
   document.getElementById("apresenta_Consultas").innerHTML = "";
+  document.getElementById("apresenta_DadosCadastrais").innerHTML = "";
   document.getElementById("apresenta_Tratamentos").innerHTML = "";
   document.getElementById("mostraTitulo").innerHTML = "";
   var valorAjax = document.getElementById("aux").value;
-
+  
   $("#apresenta_Fotos").html("<p>Aguardando...</p>");
   $.ajax({
     type: "POST",
     dataType: "json",
-    url: "fotoAbrirProntuario.php?prontuario=" + valorAjax,
+    url: "fotoAbrirProntuario.php?prontuario=" + valorAjax + "&antesDepois=1",
     success: function (dados) {
       if (dados !== null) {
-        var urli, id, p;
+          var p = valorAjax;
+          var agora= new Date();
+          var ano= agora.getFullYear();
+          var h= agora.getHours();
+          var m= agora.getMinutes();
+          var s= agora.getMilliseconds();
+          
+      var tabela = '<div><form method="post" action="prontuario.php?paciente=' + p +'" enctype="multipart/form-data">\n\
+                                  <input class="btn btn-dark" type="file" name="foto"><br><br>\n\
+                                  <input hidden type="text" name="titulo" value="antes_' + p +'_'+ano+''+h+''+m+''+s+'">\n\
+                                  <input class="btn btn-success" type="submit" name="cadFoto" value="Enviar Foto">\n\
+                                 </form><hr></div>';
+          
         for (var i = 0; i < dados.length; i++) {
-          p = dados[i].prontuario;
-          urli = dados[i].img;
-          id = dados[i].idImagem;
-        }
-        var nome = urli.substring(10);
-        if (urli !== "") {
-          var at = "hidden";
-          var del = "";
-          var cad = "";
-        } else {
-          at = "";
-          var cad = "";
-          del = "hidden";
-        }
-        var labels =
-          '<div class="row">\n\
-\n\<img src="' +urli +'" alt="" width="150" height="100">\n\
-                                <div class="col-12">\n\
-                                 <form method="post" action="prontuario.php?paciente=' + p +'" enctype="multipart/form-data">\n\
-                                  <input hidden type="text" name="titulo" value="perfil_' +p +'">\n\
-                                  <input hidden type="text" name="idImg" value="' +id +'">\n\
-                                  <input hidden type="text" name="nome" value="' +nome +'">\n\
-                                  <input ' +at +' type="file" name="foto"><br>\n\
-\n                                <input ' +cad +' type="submit" name="delFotoPerfil" value="Deletar">\n\
-\n                                <input ' +del +' type="submit" name="delFotoPerfil" value="Deletar">\n\
-                                  <input ' +at +' type="submit" name="edFotoPerfil" value="Atualizar"><br>\n\
-                                 </form>\n\
-                                </div>\n\
-                              </div>';
-
-        $("#apresenta_DadosCadastrais").html(labels).show();
-
-        /*if (valorAjax !== 0) {
-                    $('#apresentaProntuario').html(tabela).show();
-                }*/
+            if (dados[i].img=="semFoto"){
+                        var semFoto="hidden";
+                        var semFotoB="";
+                        var semFotoT='';
+                    }else{
+                        semFoto="";
+                        semFotoB="btn btn-warning";
+                        semFotoT='width="300" height="250"';
+                    }
+            var nome = dados[i].img.substring(8);
+          tabela +='<div class="row">\n\
+                        <div class="col-5" >\n\
+                            <img '+semFoto+' src="' +dados[i].img +'" alt="" '+semFotoT+'>\n\
+                     </div>\n\
+                     <div class="col-4">\n\
+                            <form method="post" action="prontuario.php?paciente=' + p +'" enctype="multipart/form-data">\n\
+                                  <input  hidden type="text" name="idImg" value="'+dados[i].idFoto+'">\n\
+                                  <input hidden type="text" name="nome" value="'+nome+'">\n\
+                                  <input'+semFoto+' class="'+semFotoB+'" type="submit" name="delFoto" value="Excluir Foto">\n\
+                            </form>\n\
+                        </div>\n\
+                    </div><hr>';
+      
       }
-    },
-  });
+      $("#apresenta_Fotos").html(tabela).show();
+    }
+  }
+});
+}
+
+function FotoDepois() {
+  document.getElementById("apresenta_Consultas").innerHTML = "";
+  document.getElementById("apresenta_DadosCadastrais").innerHTML = "";
+  document.getElementById("apresenta_Tratamentos").innerHTML = "";
+  document.getElementById("mostraTitulo").innerHTML = "";
+  var valorAjax = document.getElementById("aux").value;
+  
+  $("#apresenta_Fotos").html("<p>Aguardando...</p>");
+  
+  $.ajax({
+    type: "POST",
+    dataType: "json",
+    url: "fotoAbrirProntuario.php?prontuario=" + valorAjax + "&antesDepois=2",
+    success: function (dados) {
+      if (dados !== null) {
+          var p = valorAjax;
+          var agora= new Date();
+          var ano= agora.getFullYear();
+          var h= agora.getHours();
+          var m= agora.getMinutes();
+          var s= agora.getMilliseconds();
+          
+      var tabela = '<div><form method="post" action="prontuario.php?paciente=' + p +'" enctype="multipart/form-data">\n\
+                                  <input class="btn btn-dark" type="file" name="foto"><br><br>\n\
+                                  <input hidden type="text" name="titulo" value="depois_' + p +'_'+ano+''+h+''+m+''+s+'">\n\
+                                  <input class="btn btn-success" type="submit" name="cadFoto" value="Enviar Foto">\n\
+                                 </form><hr></div>';
+          
+        for (var i = 0; i < dados.length; i++) {
+                    if (dados[i].img=="semFoto"){
+                        var semFoto="hidden";
+                        var semFotoB="";
+                        var semFotoT='';
+                    }else{
+                        semFoto="";
+                        semFotoB="btn btn-warning";
+                        semFotoT='width="300" height="250"';
+                    }
+            var nome = dados[i].img.substring(8);
+          tabela +='<div class="row">\n\
+                        <div class="col-5" >\n\
+                            <img '+semFoto+' src="' +dados[i].img +'" alt="" '+semFotoT+'>\n\
+                     </div>\n\
+                     <div class="col-4">\n\
+                            <form method="post" action="prontuario.php?paciente=' + p +'" enctype="multipart/form-data">\n\
+                                  <input  hidden type="text" name="idImg" value="'+dados[i].idFoto+'">\n\
+                                  <input hidden type="text" name="nome" value="'+nome+'">\n\
+                                  <input'+semFoto+' class="'+semFotoB+'" type="submit" name="delFoto" value="Excluir Foto">\n\
+                            </form>\n\
+                        </div>\n\
+                    </div><hr>';
+                        
+      }
+      $("#apresenta_Fotos").html(tabela).show();
+    }
+  }
+});
 }

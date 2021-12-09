@@ -35,13 +35,9 @@ class Foto {
         }
     }
     
-    public function EditarImagem() {
-        return (new db('imagem'))->
-                        updateSQL('idImagem='. $this->idImagem, [
-                            'titulo' => $this->titulo,
-                            'img' => $this->img,
-                            'fkProntuario' => $this->fkProntuario,
-        ]);
+    public function DeletarFoto($id){
+        $query = 'delete from foto where idFoto ='.$id;
+        (new db('foto'))->executeSQL($query);
     }
     
 //    public static function getImagem($pesq) {
