@@ -518,7 +518,7 @@ function FotoAntes() {
           var s= agora.getMilliseconds();
           
       var tabela = '<div><form method="post" action="prontuario.php?paciente=' + p +'" enctype="multipart/form-data">\n\
-                                  <input class="btn btn-dark" type="file" name="foto"><br><br>\n\
+                                  <input required class="btn btn-dark" type="file" name="foto"><br><br>\n\
                                   <input hidden type="text" name="titulo" value="antes_' + p +'_'+ano+''+h+''+m+''+s+'">\n\
                                   <input class="btn btn-success" type="submit" name="cadFoto" value="Enviar Foto">\n\
                                  </form><hr></div>';
@@ -551,6 +551,7 @@ function FotoAntes() {
       $("#apresenta_Fotos").html(tabela).show();
     }
   }
+
 });
 }
 
@@ -577,7 +578,7 @@ function FotoDepois() {
           var s= agora.getMilliseconds();
           
       var tabela = '<div><form method="post" action="prontuario.php?paciente=' + p +'" enctype="multipart/form-data">\n\
-                                  <input class="btn btn-dark" type="file" name="foto"><br><br>\n\
+                                  <input required class="btn btn-dark" type="file" name="foto"><br><br>\n\
                                   <input hidden type="text" name="titulo" value="depois_' + p +'_'+ano+''+h+''+m+''+s+'">\n\
                                   <input class="btn btn-success" type="submit" name="cadFoto" value="Enviar Foto">\n\
                                  </form><hr></div>';

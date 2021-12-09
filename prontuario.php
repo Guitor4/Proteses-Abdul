@@ -7,6 +7,8 @@ use Classes\Entity\Imagem;
 use Classes\Entity\Foto;
 
 define('IDENTIFICACAO', 0);
+define('NAME', 'IMAGEM');
+define('LINK', 'prontuario.php?paciente='.$_GET['paciente']);
 if (isset($_GET['paciente'])) {
 
     $paciente = ($_GET['paciente']);
@@ -139,7 +141,7 @@ if (isset($_POST['delFoto'])) {
     echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"0;
         \">";
 }
-
+$alerta = ''; 
 if (isset($_POST['cadFoto'])) {
     
     if (isset($_FILES['foto']) && basename($_FILES["foto"]["name"]) != "") {
@@ -192,18 +194,20 @@ if (isset($_POST['cadFoto'])) {
 
     $objFoto = new Foto();
 
-    $objFoto->idFoto = $fId;
+    /* $objFoto->idFoto = $fId; */
     $objFoto->titulo = $titulo;
     $objFoto->img = $foto;
     $objFoto->fkProntuario = $pac;
     $objFoto->CadastrarFoto($pac);
+
     unset($_POST['cadFoto']);
-    echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"0;
-        \">";
+/*     echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"0;
+        \">"; */
 }
 
 
 include __DIR__ . '/includes/header.php';
 include __DIR__ . '/includes/abrirProntuario.php';
+include __DIR__ . '/includes/mensagensCRUD.php';
 include __DIR__ . '/includes/footer.php';
 

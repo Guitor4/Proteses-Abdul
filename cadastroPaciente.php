@@ -22,7 +22,7 @@ if (isset($_POST['cadastrarPaciente'])) {
         $paciente->email = $_POST['email'];
 
         $paciente->cadastrarPaciente();
-        echo "<pre>"; print_r($paciente); echo "</pre>";exit;
+        /* echo "<pre>"; print_r($paciente); echo "</pre>";exit; */
         $img= new Imagem();
        $img->titulo ="perfil_";
         $img->img ="./Imagens/usuario.png";
@@ -31,7 +31,7 @@ if (isset($_POST['cadastrarPaciente'])) {
         header ('Location: listaPaciente.php?status=success');
 
         if ($paciente->prontuario > 0) {
-            header('Location: listaPaciente.php?pagina=1&status=success1&id=' . $paciente->prontuario[1]);
+            header('Location: listaPaciente.php?pagina=1&status=success1&id=' . $paciente->prontuario);
         } else {
             header('Location: listaPaciente.php?pagina=1&status=error1');
         }

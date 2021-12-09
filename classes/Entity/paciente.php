@@ -43,7 +43,7 @@ class Paciente {
             $img->fkProntuario = $this->prontuario;
             $img->CadastrarImagem($this->prontuario);
             
-            $foto = new Foto();
+/*             $foto = new Foto();
             $foto->titulo = "antes_";
             $foto->img = "semImagem";
             $foto->fkProntuario = $this->prontuario;
@@ -53,7 +53,7 @@ class Paciente {
             $foto->titulo = "depois_";
             $foto->img = "semImagem";
             $foto->fkProntuario = $this->prontuario;
-            $foto->CadastrarFoto($this->prontuario);
+            $foto->CadastrarFoto($this->prontuario); */
            
         } 
     }
