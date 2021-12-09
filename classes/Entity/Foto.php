@@ -35,8 +35,8 @@ class Foto {
         }
     }
     
-    public function DeletarFoto($id){
-        $query = 'delete from foto where idFoto ='.$id;
+    public function DeletarFoto($id,$img){
+        $query = 'delete from foto where img = "'.$img.'"';
         (new db('foto'))->executeSQL($query);
     }
     

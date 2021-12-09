@@ -8,7 +8,7 @@ use Classes\Entity\Foto;
 
 define('IDENTIFICACAO', 0);
 define('NAME', 'IMAGEM');
-define('LINK', 'prontuario.php?paciente='.$_GET['paciente']);
+define('LINK', 'prontuario.php?paciente=' . $_GET['paciente']);
 if (isset($_GET['paciente'])) {
 
     $paciente = ($_GET['paciente']);
@@ -71,9 +71,9 @@ if (isset($_POST['edFotoPerfil'])) {
 
             //$msg->setMsg("A imagem não foi gravada.");
             // if everything is ok, try to upload file
-//        }else{
-//           $imagem = "./imagens/usuario.png";
-//        }if ($msgBool == false) {
+            //        }else{
+            //           $imagem = "./imagens/usuario.png";
+            //        }if ($msgBool == false) {
             //echo $msg->getMsg();
         }
 
@@ -122,11 +122,11 @@ if (isset($_POST['delFoto'])) {
 
     $target_dir = "./Fotos/";
     $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING);
-
+    $iImg = $target_dir . $nome;
     $target_file = $target_dir . $nome;
     $imagem = $target_file;
     $iId = filter_input(INPUT_POST, 'idImg', FILTER_SANITIZE_STRING);
-    
+
     //echo'<pre>';print_r($nome);echo'</pre>';exit;
     // Check if file already exists
     if (file_exists($target_file)) {
@@ -136,14 +136,14 @@ if (isset($_POST['delFoto'])) {
 
     $objFoto = new Foto();
 
-    $objFoto->DeletarFoto($iId);
+    $objFoto->DeletarFoto($iId, $iImg);
     unset($_POST['delFoto']);
     echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"0;
         \">";
 }
-$alerta = ''; 
+$alerta = 'teste';
 if (isset($_POST['cadFoto'])) {
-    
+
     if (isset($_FILES['foto']) && basename($_FILES["foto"]["name"]) != "") {
         $target_dir = "./Fotos/";
         $target_file = $target_dir . basename($_FILES["foto"]["name"]);
@@ -158,13 +158,16 @@ if (isset($_POST['cadFoto'])) {
         if ($check !== false) {
             $uploadOk = 1;
         } else {
-           // $msg->setMsg("File is not an image.");
+            // $msg->setMsg("File is not an image.");
             $uploadOk = 0;
         }
-
+        /*         echo "<pre>";
+        print_r($target_file);
+        echo "<pre>"; */
         // Check if file already exists
         if (file_exists($target_file)) {
             $foto = $target_file;
+            /* echo "<pre>"; print_r(2); echo "<pre>";exit; */
             $uploadOk = 0;
         }
 
@@ -177,7 +180,7 @@ if (isset($_POST['cadFoto'])) {
         // Allow certain file formats
         if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "jfif" && $imageFileType != "gif") {
             //$msg->setMsg("A extensão da imagem deve ser JPG, JPEG, PNG & "
-                   // . "GIF.");
+            // . "GIF.");
             $uploadOk = 0;
         }
 
@@ -189,25 +192,52 @@ if (isset($_POST['cadFoto'])) {
             move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file);
         }
     } else {
-        
     }
+    if ($uploadOk == 1) {
 
-    $objFoto = new Foto();
+        $objFoto = new Foto();
 
-    /* $objFoto->idFoto = $fId; */
-    $objFoto->titulo = $titulo;
-    $objFoto->img = $foto;
-    $objFoto->fkProntuario = $pac;
-    $objFoto->CadastrarFoto($pac);
+        $objFoto->idFoto = $fId;
+        $objFoto->titulo = $titulo;
+        $objFoto->img = $foto;
+        $objFoto->fkProntuario = $pac;
+        $objFoto->CadastrarFoto($pac);
 
-    unset($_POST['cadFoto']);
-/*     echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"0;
-        \">"; */
+        if ($objFoto->idFoto > 0) {
+            $alerta = "<script>
+            Swal.fire({
+              title: 'Imagem cadastrada com sucesso!!',
+              text: \"Confira na aba Fotos\",
+              icon: 'success',
+              confirmButtonColor: '#3085d6',
+              confirmButtonText: 'Ok'
+            }).then((result) => {
+          if (result.isConfirmed) {
+            redirecionamento()
+        }
+        })
+        function redirecionamento(){
+          window.location.href = \"paciente='" . $_GET['paciente'] . "\"
+        }
+            </script>";
+        }
+        /* unset($_POST['cadFoto']); */
+    } else {
+        header('location:prontuario.php?paciente=' . $_GET['paciente'] . '&status=error1');
+    }
 }
-
+if (isset($_GET['status']) && $_GET['status'] == 'error1') {
+    $alerta = "<script>
+    Swal.fire({
+      title: 'Imagem não cadastrada',
+      text: \"Já existe uma imagem com o mesmo nome cadastrada, por favor altere o nome da imagem antes de cadastrá-la\",
+      icon: 'error',
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'Ok'
+    })
+    </script>";
+}
 
 include __DIR__ . '/includes/header.php';
 include __DIR__ . '/includes/abrirProntuario.php';
-include __DIR__ . '/includes/mensagensCRUD.php';
 include __DIR__ . '/includes/footer.php';
-

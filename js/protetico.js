@@ -531,7 +531,7 @@ function FotoAntes() {
                     }else{
                         semFoto="";
                         semFotoB="btn btn-warning";
-                        semFotoT='width="300" height="250"';
+                        semFotoT='width="100" height="100"';
                     }
             var nome = dados[i].img.substring(8);
           tabela +='<div class="row">\n\
@@ -577,7 +577,7 @@ function FotoDepois() {
           var m= agora.getMinutes();
           var s= agora.getMilliseconds();
           
-      var tabela = '<div><form method="post" action="prontuario.php?paciente=' + p +'" enctype="multipart/form-data">\n\
+      var tabela = '<div><form method="post" action="" enctype="multipart/form-data">\n\
                                   <input required class="btn btn-dark" type="file" name="foto"><br><br>\n\
                                   <input hidden type="text" name="titulo" value="depois_' + p +'_'+ano+''+h+''+m+''+s+'">\n\
                                   <input class="btn btn-success" type="submit" name="cadFoto" value="Enviar Foto">\n\
