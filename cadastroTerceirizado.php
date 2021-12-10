@@ -29,6 +29,7 @@ if (isset($_POST[BTN])) {
     /*echo '<pre>';print_r($_POST);echo'<pre>';exit; */
     $terceirizado->fkTerceiro = $_POST['Terceiro'];
     $terceirizado->fkServicoTerceiro = $_POST['ServicoTerceiro'];
+    $terceirizado->statusTerceirizado = $_POST['status'];
 
 
     if (gettype($terceirizado->cadastroTerceirizado()[0]) == 'object') {

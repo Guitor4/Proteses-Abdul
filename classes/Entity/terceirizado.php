@@ -19,6 +19,7 @@ class Terceirizado
         $terceiro = (new db('terceirizado'))->insertSQL([
             'fkTerceiro' => $this->fkTerceiro,
             'fkServicoTerceiro' => $this->fkServicoTerceiro,
+            'statusTerceirizado' => $this->statusTerceirizado
 
         ]);
         //echo'<pre>';print_r($terceiro);echo'</pre>';exit;

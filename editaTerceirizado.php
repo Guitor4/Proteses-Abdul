@@ -17,7 +17,8 @@ if (!isset($_GET['idTerceiro'], $_GET['idServico'])) {
 }
 
 $objTerceirizado = new terceirizado;
-$terceirizado = $objTerceirizado->getTerceirizado($_GET['idTerceiro'], $_GET['idServico']);
+$terceirizado = $objTerceirizado->getTerceirizado($_GET['idServico'],$_GET['idTerceiro']);
+/* echo "<pre>"; print_r($terceirizado); echo "<pre>";exit; */
 $terceiro = terceiro::getTerceiro($terceirizado->fkTerceiro);
 $selectTerceiro = '<option selected value ="' .  $terceiro->idTerceiro . '">' . $terceiro->nomeTerceiro . '</option>';
 $servico = ServicoTerceiro::getServicoTerceiro($terceirizado->fkServicoTerceiro);

@@ -28,11 +28,11 @@ class Foto {
             
             
         ])[1]; //echo'<pre>';print_r($this);echo'</pre>';exit;
-        if ($this->idFoto > 0) {
+/*         if ($this->idFoto > 0) {
             header('Location: prontuario.php?paciente='.$pac.'&status=success1&id='.$this->idFoto);
         } else {
             header('Location: prontuario.php?paciente='.$pac.'&status=error');
-        }
+        } */
     }
     
     public function DeletarFoto($id,$img){

@@ -59,14 +59,14 @@
                         <div class="form-group mt-3">
                             <label>Status do Funcionário: </label>
                             <div class="form-check form-check-inline">
-                                <input type="radio" class="btn-check" name="status" id="success-outlined" autocomplete="off" <?= $objFuncionario->statusFuncionario == 'Inativo' ? '' : 'checked' ?>>
+                                <input type="radio" class="btn-check" name="status" value = "Ativo" id="success-outlined" autocomplete="off" <?= $objFuncionario->statusFuncionario == 'Inativo' ? '' : 'checked' ?>>
                                 <label class="btn btn-outline-success" for="success-outlined">Ativo</label>
 
 
                             </div>
                             <div class="form-check form-check-inline">
-                                <input type="radio" class="btn-check" name="status" id="danger-outlined" autocomplete="off" <?= $objFuncionario->statusFuncionario == 'Inativo' ? 'checked' : '' ?>>
-                                <label class="btn btn-outline-danger" for="danger-outlined">Inativo</label>
+                                <input type="radio" class="btn-check" value = "Inativo" name="status" id="danger-outlined" autocomplete="off" <?= $objFuncionario->statusFuncionario == 'Inativo' ? 'checked' : '' ?>>
+                                <label class="btn btn-outline-danger" for="danger-outlined" value = >Inativo</label>
                             </div>
                         </div>
                         <div class="form-group">
