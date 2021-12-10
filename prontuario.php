@@ -141,7 +141,7 @@ if (isset($_POST['delFoto'])) {
     echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"0;
         \">";
 }
-$alerta = 'teste';
+//$alerta = 'teste';
 if (isset($_POST['cadFoto'])) {
 
     if (isset($_FILES['foto']) && basename($_FILES["foto"]["name"]) != "") {
@@ -197,12 +197,12 @@ if (isset($_POST['cadFoto'])) {
 
         $objFoto = new Foto();
 
-        $objFoto->idFoto = $fId;
+        //$objFoto->idFoto = $fId;
         $objFoto->titulo = $titulo;
         $objFoto->img = $foto;
         $objFoto->fkProntuario = $pac;
-        $objFoto->CadastrarFoto($pac);
-        echo "<pre>"; print_r($objFoto->idFoto); echo "<pre>";exit;
+        $objFoto->CadastrarFoto();
+        //echo "<pre>"; print_r($objFoto->idFoto); echo "<pre>";exit;
         if ($objFoto->idFoto > 0) {
             $alerta = "<script>
             Swal.fire({

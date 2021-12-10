@@ -260,13 +260,13 @@ function loadDados() {
           '">\n\
                                         <input ' +
           at +
-          ' type="file" name="imagem"><br>\n\
+          ' type="file" name="imagem" class="btn btn-dark"><br>\n\
 \n                                     <input ' +
           del +
-          ' type="submit" name="delFotoPerfil" value="Deletar">\n\
+          ' type="submit" class="btn btn-warning" name="delFotoPerfil" value="Deletar">\n\
                                         <input ' +
           at +
-          ' type="submit" name="edFotoPerfil" value="Atualizar"><br>\n\
+          ' type="submit" class="btn btn-success p-1" name="edFotoPerfil" value="Atualizar"><br>\n\
                                  </form>\n\
                                 </div>\n\
                               </div>';
@@ -347,13 +347,13 @@ function Dados_Cadastrais() {
           '">\n\
                                         <input ' +
           at +
-          ' type="file" name="imagem"><br>\n\
+          ' type="file" name="imagem" class="btn btn-dark"><br>\n\
 \n                                     <input ' +
           del +
-          ' type="submit" name="delFotoPerfil" value="Deletar">\n\
+          ' type="submit" class="btn btn-warning" name="delFotoPerfil" value="Deletar">\n\
                                         <input ' +
           at +
-          ' type="submit" name="edFotoPerfil" value="Atualizar"><br>\n\
+          ' type="submit" class="btn btn-success p-1" name="edFotoPerfil" value="Atualizar"><br>\n\
                                  </form>\n\
                                 </div>\n\
                               </div>';
@@ -591,7 +591,7 @@ function FotoDepois() {
                     }else{
                         semFoto="";
                         semFotoB="btn btn-warning";
-                        semFotoT='width="100" height="100"';
+                        semFotoT='width="200" height="200"';
                     }
             var nome = dados[i].img.substring(8);
           tabela +='<div class="row">\n\
