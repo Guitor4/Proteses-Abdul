@@ -30,7 +30,27 @@ $marcas = MarcaDente::getMarcas();
 /**
  * Validação do POST, ainda incompleta pois não possui todos os campos necessários
  */
-if (isset($_POST['tipo'], $_POST['qtdDentes'], $_POST['paciente'])) {
+if (
+    //Checa se existem
+    isset(
+        $_POST['tipo'],
+        $_POST['extensao'],
+        $_POST['posicao'],
+        $_POST['marca'],
+        $_POST['qtdDentes'],
+        $_POST['paciente'],
+        $_POST['status'],
+        $_POST['observacao']
+    )
+    //Checa se são diferentes de vazio
+    && $_POST['tipo'] != ""
+    && $_POST['extensao'] != ""
+    && $_POST['posicao'] != ""
+    && $_POST['marca'] != ""
+    && $_POST['qtdDentes'] != ""
+    && $_POST['paciente'] != ""
+    && $_POST['status'] != ""
+  ) {
     /**
      * Aqui a classe Protese é instanciada e tem todos as sua variáveis preenchidas pelos valores recebidos do POST, exceto a dataRegistro
      * e a variável ID que são preenchidas automaticamente posteriormente.

@@ -15,12 +15,14 @@
         <div class="p-3 bg-dark" style="border-radius:25px">
             <div class="border border-white rounded p-2">
                 <h3 style="text-align: center; color: white"><?= TITLE ?></h3>
-                <form method="post" style="color: white">
+                <div id = "alerta" class="bg-danger text-white text-center" role="alert" style = "display:none;max-height:30px">
+                    </div>
+                <form name="formConsulta" method="post" action = "" style="color: white">
                     <div class="d-flex">
                         <div class="form-group col-6 p-1">
                             <label>Paciente Atendido</label>
-                            <select name="paciente" class="selectpicker form-control" data-live-search="true" data-size=5>
-                                <option selected hidden="">[SELECIONE]</option>
+                            <select id="paciente" name="paciente" required class="selectpicker form-control" data-live-search="true" data-size=5>
+                                <option value=" " selected hidden="">[SELECIONE]</option>
                                 <?php
 
                                 foreach ($objPaciente as $paciente) {
@@ -37,7 +39,7 @@
                                 <input type="text" hidden name="horarioAUX" id="horarioAUX" value="">
                                 <label>Hora da Consulta</label>
                                 <select readonly class="selectpicker form-control" name="horarios" id="horarios" data-live-search="true" data-size=5>
-                                    <option>---[SELECIONE UMA DATA]---</option>
+                                    <option value=" ">---[SELECIONE UMA DATA]---</option>
                                     <option <?= (TITLE != "Cadastrar Nova Consulta" ? 'selected = selected' : '') ?> hidden="hidden"><?= $objConsulta->horaConsulta ?></option>
                                 </select>
                             </div>
@@ -45,7 +47,7 @@
                         <div class="form-group col-6 p-1">
                             <label>Quem indicou</label>
                             <select name="dentista" class="selectpicker form-control" data-live-search="true" data-size=5>
-                                <option hidden="">[SELECIONE]</option>
+                                <option value=" " hidden="">[SELECIONE]</option>
                                 <?php
                                 foreach ($objDentista as $dentista) {
                                     $selected = ($objConsulta->CFKDentista == $dentista->idDentista ? 'selected = selected' : '');
@@ -56,7 +58,7 @@
                             <div class="form-group">
                                 <label>Clínica</label>
                                 <select name="clinica" class="selectpicker form-control" data-live-search="true" data-size=5>
-                                    <option hidden="">[SELECIONE]</option>
+                                    <option value=" " hidden="">[SELECIONE]</option>
                                     <?php
                                     foreach ($objClinica as $clinica) {
                                         $selected = ($objConsulta->CFKClinica == $clinica->idClinica ? 'selected = selected' : '');
@@ -84,8 +86,8 @@
                     <textarea name="relatorio" class="form-control" rows="3"><?= (TITLE != 'Cadastrar Nova Consulta'  ? $objConsulta->relatorio : '') ?></textarea>
                     <div class="d-flex justify-content-center p-2">
 
-                        <input type="submit" name="<?= BTN ?>" class="  btn btn-lg btn-success btInput" style="width:20%" value="<?= (TITLE == "Cadastrar Nova Consulta" ? 'Cadastrar' : 'Editar') ?>" <?php //if ($btEnviar == TRUE) echo "disabled";
-                                                                                                                                                                                                        ?>>
+                        <input type="button" onclick="validaConsulta()" name="<?= BTN ?>" id="<?= BTN ?>"class="  btn btn-lg btn-success btInput" style="width:20%" value="<?= (TITLE == "Cadastrar Nova Consulta" ? 'Cadastrar' : 'Editar') ?>">
+                        
 
                     </div>
                 </form>

@@ -1,10 +1,4 @@
-<div class="container-fluid">
-
-    <section>
-        <a href="listaRastreio.php">
-            <button class="btn btn-success mt-4">Retornar</button>
-        </a>
-    </section>
+<div class="container-fluid mt-5">
 
     <input type="text" hidden value="<?= IDENTIFICACAO ?>" />
     <div class="row">
@@ -12,21 +6,23 @@
         <div class="col-4 mt-2 <?= (isset($_GET['rProtese']) ? 'offset-3' : 'offset-4') ?> p-3 bg-dark " style="border-radius:25px 30px 25px 30px">
             <div class="border border-white rounded p-2">
                 <h3 style="text-align: center; color: white"><?= TITLE ?></h3>
-                <form class="p-2" method="post" style="color: white">
+                <div id = "alerta" class="bg-danger text-white text-center" role="alert" style = "display:none;max-height:30px">
+                    </div>
+                <form name = "formRastreio" class="p-2" method="post" style="color: white">
 
                     <div class="form-group">
                         <label>Data de Envio</label>
-                        <input type="date" class="form-control" name="dtEntrega" value="<?= $rastreio->dtEntrega ?>">
+                        <input type="date" class="form-control" min="<?= date('Y-m-d')?>" name="dtEntrega" value="<?= $rastreio->dtEntrega ?>">
                     </div>
 
                     <div class="form-group">
                         <label>Data de Retorno</label>
-                        <input type="date" class="form-control" name="dtRetorno" value="<?= $rastreio->dtRetorno ?>">
+                        <input type="date" class="form-control" min="<?= date('Y-m-d')?>" name="dtRetorno" value="<?= $rastreio->dtRetorno ?>">
                     </div>
 
                     <div class="form-group">
                         <label>Observação</label>
-                        <input type="text" class="form-control" name="obs" value="<?= $rastreio->obs ?>">
+                        <input type="text" placeholder="Opcional" class="form-control" name="obs" value="<?= $rastreio->obs ?>">
                     </div>
                     <div class="form-group " hidden="">
                         <label>Prótese</label>
@@ -38,7 +34,7 @@
                     <div class="form-group">
                         <label>Terceirizado</label>
                         <select type="text" class="form-control" name="RFKTerceiro" id="id_terceiro" onchange="getServicoTerceiro(this.value)">
-                            <option hidden="" value="0">[SELECIONE]</option>
+                            <option hidden="" value="">[SELECIONE]</option>
 
                             <?php
                             if (TITLE == "Editar Rastreio") { //executado quando na pág editar
@@ -98,7 +94,7 @@
                     </div>
                     <div class="d-flex justify-content-center p-2">
 
-                        <input type="submit" name="<?= BTN ?>" class="  btn btn-lg btn-success btInput" value="<?= (TITLE == "Cadastrar Rastreio" ? 'Cadastrar' : 'Editar') ?>" <?php //if ($btEnviar == TRUE) echo "disabled";
+                        <input type="submit" onclick="validaRastreio()" name="<?= BTN ?>" class="  btn btn-lg btn-success btInput" value="<?= (TITLE == "Cadastrar Rastreio" ? 'Cadastrar' : 'Editar') ?>" <?php //if ($btEnviar == TRUE) echo "disabled";
                                                                                                                                                                                 ?>>
 
                     </div>

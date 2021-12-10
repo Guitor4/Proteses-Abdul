@@ -8,7 +8,7 @@
                 <div class="col-8">
                     <div class="form-group">
                         <label>Nome</label>
-                        <input type="text" class="form-control" name="nomeDentista" required="" value="<?= $dentista->nomeDentista ?>">
+                        <input type="text" onblur="validaNome(this)" class="form-control" maxlength="30" name="nomeDentista" required value = "<?=$dentista->nomeDentista?>">
                     </div>
 
                     <div class="form-group">

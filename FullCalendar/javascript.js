@@ -93,7 +93,7 @@ function Calendario() {
         if (info.view.type == "dayGridMonth" && info.dateStr != null) {
           var a;
           var parseDataShort =
-            Date.parse(data) - data.getHours() * 1400 * 60 * 60;
+            Date.parse(data) - data.getHours() * 1000 * 60 * 60 * data.getHours();
           var parseDataShort2 = Date.parse(info.dateStr);
 
           if (parseDataShort2 >= parseDataShort) {

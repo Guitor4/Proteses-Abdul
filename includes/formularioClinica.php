@@ -4,14 +4,10 @@
             <h3 style="text-align: center; color: white"><?= TITLE ?></h3>
             <form class="d-flex justify-content-center" method="post" style="color: white">
                 <div class="col-8">
-                    <div class="form-group">
-                        <label>Código</label>
-                        <input type="text" class="form-control" name="idClinica" readonly placeholder="Número" value=" <?= $clinica->idClinica ?>">
-                    </div>
 
                     <div class="form-group">
                         <label>Nome</label>
-                        <input type="text" class="form-control" name="nomeClinica" required="" value="<?= $clinica->nomeClinica ?>">
+                        <input type="text" onblur = "validaNome(this)" class="form-control" name="nomeClinica" required="" value="<?= $clinica->nomeClinica ?>">
                     </div>
 
                     <div class="form-group">

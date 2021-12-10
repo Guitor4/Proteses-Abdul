@@ -6,7 +6,7 @@
 
                  <div class="form-group">
                      <label>Nome</label>
-                     <input type="text" class="form-control" name="nomePaciente" required="" value="<?= $paciente->nomePaciente ?>">
+                     <input type="text" onblur = "validaNome(this)" class="form-control" name="nomePaciente" required="" value="<?= $paciente->nomePaciente ?>">
                  </div>
 
                  <div class="form-group">
@@ -27,12 +27,12 @@
 
                  <div class="form-group">
                      <label>Telefone</label>
-                     <input type="tel" class="form-control" name="tel" value="<?= $paciente->telefone ?>" onkeypress="mascara(this, '##-####-####')" maxlength="12">
+                     <input type="tel" class="form-control" minlength="9" required onblur="validaTelefone(this)" name="tel" value="<?= $paciente->telefone ?>" onkeypress="mascara(this, '##-####-####')" maxlength="12">
                  </div>
 
                  <div class="form-group">
                      <label>E-mail</label>
-                     <input type="email" class="form-control" name="email" value="<?= $paciente->email ?>">
+                     <input type="email" onblur = "validaEmail(this)" class="form-control" required name="email" value="<?= $paciente->email ?>">
                  </div>
                  <br>
                  <div class="d-flex justify-content-center p-2">

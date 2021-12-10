@@ -34,9 +34,9 @@
 
     <div class="row">
 
-        <div class="col-12 mt-2">
+        <div class="col-12 ">
 
-            <table class="table bg-light table-striped table-hover mt-1 table-responsive">
+            <table class="table bg-light table-striped table-hover  table-responsive">
                 <thead class="table-dark">
                     <tr>
                         <th>Prontuário</th>

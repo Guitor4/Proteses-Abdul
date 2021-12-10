@@ -6,16 +6,16 @@
                 <div class="col-8">
                     <div class="form-group">
                         <label>Título</label>
-                        <input type="text" class="form-control" name="titulo" placeholder="Regar as plantas" value=" <?= $lembretes->titulo ?>">
+                        <input type="text" class="form-control" required name="titulo" placeholder="Regar as plantas" value=" <?= $lembretes->titulo ?>">
                     </div>
 
                     <div class="form-group">
                         <label>Descrição</label>
-                        <textarea type="text" class="form-control" name="descricao" required=""><?= $lembretes->descricao ?></textarea>
+                        <textarea type="text" class="form-control" name="descricao" placeholder="Opcional"><?= $lembretes->descricao ?></textarea>
                     </div>
                     <div class="form-group">
                         <label>Data do Lembrete</label>
-                        <input class="form-control" placeholder="YYYY- MM - DD" onkeypress="mascara(this, '####-##-##')" type="text" id="datepicker" name="dataLembrete" value="<?= $lembretes->dataLembrete ?>">
+                        <input class="form-control" required placeholder="YYYY- MM - DD" onkeypress="mascara(this, '####-##-##')" type="text" id="datepicker" name="dataLembrete" value="<?= $lembretes->dataLembrete ?>">
                     </div>
                     <div class="d-flex justify-content-center p-2">
 

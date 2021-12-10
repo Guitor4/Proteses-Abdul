@@ -48,7 +48,23 @@ $lembrete = new Lembrete();
 
 $terceirizado = new terceirizado();
 
-if (isset($_POST['cadastrarRastreio'])) {
+if (
+    //Checa se existem
+    isset(
+        $_POST['dtEntrega'],
+        $_POST['dtRetorno'],
+        $_POST['obs'],
+        $_POST['RFKTerceiro'],
+        $_POST['RFKServico'],
+        $_POST['status']
+    )
+    //Checa se são diferentes de vazio
+    && $_POST['dtEntrega'] != ""
+    && $_POST['dtRetorno'] != ""
+    && $_POST['RFKTerceiro'] != ""
+    && $_POST['RFKServico'] != ""
+    && $_POST['status'] != ""
+) {
 
 
     $rastreio->dtEntrega = ($_POST['dtEntrega']);
@@ -62,13 +78,13 @@ if (isset($_POST['cadastrarRastreio'])) {
     //$terceirizado->fkServicoTerceiro = $rastreio->RFKServico;
     /* echo'<pre>';print_r($rastreio);echo'</pre>';exit; */
     unset($_POST['cadastrarRastreio']);
-
-
+/* echo "<pre>"; print_r($_POST); echo "<pre>";exit; */
     $rastreio->cadastrarRastreio();
     $lembrete->titulo = 'Retorno de Prótese';
     $lembrete->dataLembrete = $_POST['dtRetorno'];
     $lembrete->descricao = 'Data de retorno da Prótese nº' . $_POST['fkProtese'];
     $lembrete->Funcionario = $_SESSION['idFuncionario'];
+
 
     $lembrete->cadastrarLembrete();
 

@@ -17,7 +17,7 @@ if (!$ConsultaInnerJoin instanceof consulta) {
 /* echo "<pre>"; print_r($ConsultaInnerJoin); echo "<pre>";exit; */
 $objProcedimento = Procedimento::getProcedimentos('idProcedimento not in (select fkProcedimento from tratamento where fkConsulta =' . $_GET['id'] . ')');
 /* echo "<pre>"; print_r($objProcedimento); echo "<pre>";exit; */
-if ($ConsultaInnerJoin->statusConsulta == 'Finalizada') {
+if ($ConsultaInnerJoin->statusConsulta == 'Finalizada' || $ConsultaInnerJoin->statusConsulta == 'Cancelada') {
     $tratamentos = tratamento::getTratamentos('procedimento', 'fkConsulta =' . $_GET['id'], 'fkProcedimento,idProcedimento');
     /*  echo "<pre>"; print_r($tratamentos); echo "<pre>";exit; */
     $resultados = '';
@@ -38,7 +38,13 @@ if ($ConsultaInnerJoin->statusConsulta == 'Finalizada') {
             </tr>';
         }
     }
+    $resultados = strlen($resultados) ? $resultados :
+  '<tr>'
+  . '<td colspan = "12" class = "text-center"> Nenhum Procedimento foi realizado nesta consulta</td>'
+  . '</tr>';
 }
+
+
 /* echo "<pre>"; print_r($_POST); echo "<pre>";exit; */
 define('TITLE', 'Dados da consulta de ' . $ConsultaInnerJoin->nomePaciente);
 define('NAME', 'Consulta ');
@@ -46,7 +52,7 @@ define('LINK', '');
 define('IDENTIFICACAO', '0');
 
 $visibilidadiv = '';
-if ($ConsultaInnerJoin->statusConsulta == 'Finalizada') {
+if ($ConsultaInnerJoin->statusConsulta == 'Finalizada' || $ConsultaInnerJoin->statusConsulta == 'Cancelada') {
     $visibilidadiv = "style = display:none;";
 }
 //Validação do GET

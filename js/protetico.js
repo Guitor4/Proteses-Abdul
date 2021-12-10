@@ -4,10 +4,10 @@ function getServicoTerceiro(valor) {
   $.ajax({
     type: "POST",
     dataType: "json",
-    url: "TerceiroServico.php?id_terceiro=" + valorAjax,
+    url: "TerceiroServico.php?id_terceiro=" + valorAjax+"&term=1",
     success: function (dados) {
       if (dados != null) {
-        var options = "<option value='' hidden>Escolher Servico</option>";
+        var options = '<option value = " " hidden>Escolher Servico</option>';
         for (var i = 0; i < dados.length; i++) {
           options +=
             '<option value="' +
@@ -18,6 +18,32 @@ function getServicoTerceiro(valor) {
         }
         if (valorAjax != 0) {
           $("#servico_terceiro").html(options).show();
+        }
+      }
+    },
+  });
+}
+function getServicoTerceiro2(valor) {
+  var valorAjax = valor;
+  $("#servico_terceiro").html("<option value = 0>Aguardando...</option");
+  $.ajax({
+    type: "POST",
+    dataType: "json",
+    url: "TerceiroServico.php?id_terceiro=" + valorAjax+"&term=2",
+    success: function (dados) {
+      if (dados != null) {
+        var options = '<option value = " " hidden>Escolher Servico</option>';
+        for (var i = 0; i < dados.length; i++) {
+          options +=
+            '<option value="' +
+            dados[i].id +
+            '">' +
+            dados[i].nomeServico +
+            "</option>";
+        }
+        if (valorAjax != 0) {
+          $("#servico_terceiro").html(options).show();
+          $(".selectpicker").selectpicker("refresh");
         }
       }
     },
@@ -282,7 +308,7 @@ function Dados_Cadastrais() {
   document.getElementById("apresenta_Tratamentos").innerHTML = "";
   document.getElementById("mostraTitulo").innerHTML = "";
   document.getElementById("apresenta_Fotos").innerHTML = "";
-  
+
   var valorAjax = document.getElementById("aux").value;
 
   $("#apresenta_DadosCadastrais").html("<p>Aguardando...</p>");
@@ -292,7 +318,7 @@ function Dados_Cadastrais() {
     url: "prontuarioAbrirProntuario.php?prontuario=" + valorAjax,
     success: function (dados) {
       if (dados !== null) {
-        var p, n, s, t, e,urli, id;
+        var p, n, s, t, e, urli, id;
         for (var i = 0; i < dados.length; i++) {
           p = dados[i].prontuario;
           n = dados[i].nomePaciente;
@@ -495,14 +521,13 @@ function Tratamentos(id) {
   }
 }
 
-
 function FotoAntes() {
   document.getElementById("apresenta_Consultas").innerHTML = "";
   document.getElementById("apresenta_DadosCadastrais").innerHTML = "";
   document.getElementById("apresenta_Tratamentos").innerHTML = "";
   document.getElementById("mostraTitulo").innerHTML = "";
   var valorAjax = document.getElementById("aux").value;
-  
+
   $("#apresenta_Fotos").html("<p>Aguardando...</p>");
   $.ajax({
     type: "POST",
@@ -510,49 +535,77 @@ function FotoAntes() {
     url: "fotoAbrirProntuario.php?prontuario=" + valorAjax + "&antesDepois=1",
     success: function (dados) {
       if (dados !== null) {
-          var p = valorAjax;
-          var agora= new Date();
-          var ano= agora.getFullYear();
-          var h= agora.getHours();
-          var m= agora.getMinutes();
-          var s= agora.getMilliseconds();
-          
-      var tabela = '<div><form method="post" action="prontuario.php?paciente=' + p +'" enctype="multipart/form-data">\n\
+        var p = valorAjax;
+        var agora = new Date();
+        var ano = agora.getFullYear();
+        var h = agora.getHours();
+        var m = agora.getMinutes();
+        var s = agora.getMilliseconds();
+
+        var tabela =
+          '<div><form method="post" action="prontuario.php?paciente=' +
+          p +
+          '" enctype="multipart/form-data">\n\
                                   <input required class="btn btn-dark" type="file" name="foto"><br><br>\n\
-                                  <input hidden type="text" name="titulo" value="antes_' + p +'_'+ano+''+h+''+m+''+s+'">\n\
+                                  <input hidden type="text" name="titulo" value="antes_' +
+          p +
+          "_" +
+          ano +
+          "" +
+          h +
+          "" +
+          m +
+          "" +
+          s +
+          '">\n\
                                   <input class="btn btn-success" type="submit" name="cadFoto" value="Enviar Foto">\n\
                                  </form><hr></div>';
-          
+
         for (var i = 0; i < dados.length; i++) {
-            if (dados[i].img=="semFoto"){
-                        var semFoto="hidden";
-                        var semFotoB="";
-                        var semFotoT='';
-                    }else{
-                        semFoto="";
-                        semFotoB="btn btn-warning";
-                        semFotoT='width="200" height="200"';
-                    }
-            var nome = dados[i].img.substring(8);
-          tabela +='<div class="row">\n\
+          if (dados[i].img == "semFoto") {
+            var semFoto = "hidden";
+            var semFotoB = "";
+            var semFotoT = "";
+          } else {
+            semFoto = "";
+            semFotoB = "btn btn-warning";
+            semFotoT = 'width="200" height="200"';
+          }
+          var nome = dados[i].img.substring(8);
+          tabela +=
+            '<div class="row">\n\
                         <div class="col-5" >\n\
-                            <img '+semFoto+' src="' +dados[i].img +'" alt="" '+semFotoT+'>\n\
+                            <img ' +
+            semFoto +
+            ' src="' +
+            dados[i].img +
+            '" alt="" ' +
+            semFotoT +
+            '>\n\
                      </div>\n\
                      <div class="col-4">\n\
-                            <form method="post" action="prontuario.php?paciente=' + p +'" enctype="multipart/form-data">\n\
-                                  <input  hidden type="text" name="idImg" value="'+dados[i].idFoto+'">\n\
-                                  <input hidden type="text" name="nome" value="'+nome+'">\n\
-                                  <input'+semFoto+' class="'+semFotoB+'" type="submit" name="delFoto" value="Excluir Foto">\n\
+                            <form method="post" action="prontuario.php?paciente=' +
+            p +
+            '" enctype="multipart/form-data">\n\
+                                  <input  hidden type="text" name="idImg" value="' +
+            dados[i].idFoto +
+            '">\n\
+                                  <input hidden type="text" name="nome" value="' +
+            nome +
+            '">\n\
+                                  <input' +
+            semFoto +
+            ' class="' +
+            semFotoB +
+            '" type="submit" name="delFoto" value="Excluir Foto">\n\
                             </form>\n\
                         </div>\n\
                     </div><hr>';
-      
+        }
+        $("#apresenta_Fotos").html(tabela).show();
       }
-      $("#apresenta_Fotos").html(tabela).show();
-    }
-  }
-
-});
+    },
+  });
 }
 
 function FotoDepois() {
@@ -561,55 +614,290 @@ function FotoDepois() {
   document.getElementById("apresenta_Tratamentos").innerHTML = "";
   document.getElementById("mostraTitulo").innerHTML = "";
   var valorAjax = document.getElementById("aux").value;
-  
+
   $("#apresenta_Fotos").html("<p>Aguardando...</p>");
-  
+
   $.ajax({
     type: "POST",
     dataType: "json",
     url: "fotoAbrirProntuario.php?prontuario=" + valorAjax + "&antesDepois=2",
     success: function (dados) {
       if (dados !== null) {
-          var p = valorAjax;
-          var agora= new Date();
-          var ano= agora.getFullYear();
-          var h= agora.getHours();
-          var m= agora.getMinutes();
-          var s= agora.getMilliseconds();
-          
-      var tabela = '<div><form method="post" action="" enctype="multipart/form-data">\n\
+        var p = valorAjax;
+        var agora = new Date();
+        var ano = agora.getFullYear();
+        var h = agora.getHours();
+        var m = agora.getMinutes();
+        var s = agora.getMilliseconds();
+
+        var tabela =
+          '<div><form method="post" action="" enctype="multipart/form-data">\n\
                                   <input required class="btn btn-dark" type="file" name="foto"><br><br>\n\
-                                  <input hidden type="text" name="titulo" value="depois_' + p +'_'+ano+''+h+''+m+''+s+'">\n\
+                                  <input hidden type="text" name="titulo" value="depois_' +
+          p +
+          "_" +
+          ano +
+          "" +
+          h +
+          "" +
+          m +
+          "" +
+          s +
+          '">\n\
                                   <input class="btn btn-success" type="submit" name="cadFoto" value="Enviar Foto">\n\
                                  </form><hr></div>';
-          
+
         for (var i = 0; i < dados.length; i++) {
-                    if (dados[i].img=="semFoto"){
-                        var semFoto="hidden";
-                        var semFotoB="";
-                        var semFotoT='';
-                    }else{
-                        semFoto="";
-                        semFotoB="btn btn-warning";
-                        semFotoT='width="100" height="100"';
-                    }
-            var nome = dados[i].img.substring(8);
-          tabela +='<div class="row">\n\
+          if (dados[i].img == "semFoto") {
+            var semFoto = "hidden";
+            var semFotoB = "";
+            var semFotoT = "";
+          } else {
+            semFoto = "";
+            semFotoB = "btn btn-warning";
+            semFotoT = 'width="100" height="100"';
+          }
+          var nome = dados[i].img.substring(8);
+          tabela +=
+            '<div class="row">\n\
                         <div class="col-5" >\n\
-                            <img '+semFoto+' src="' +dados[i].img +'" alt="" '+semFotoT+'>\n\
+                            <img ' +
+            semFoto +
+            ' src="' +
+            dados[i].img +
+            '" alt="" ' +
+            semFotoT +
+            '>\n\
                      </div>\n\
                      <div class="col-4">\n\
-                            <form method="post" action="prontuario.php?paciente=' + p +'" enctype="multipart/form-data">\n\
-                                  <input  hidden type="text" name="idImg" value="'+dados[i].idFoto+'">\n\
-                                  <input hidden type="text" name="nome" value="'+nome+'">\n\
-                                  <input'+semFoto+' class="'+semFotoB+'" type="submit" name="delFoto" value="Excluir Foto">\n\
+                            <form method="post" action="prontuario.php?paciente=' +
+            p +
+            '" enctype="multipart/form-data">\n\
+                                  <input  hidden type="text" name="idImg" value="' +
+            dados[i].idFoto +
+            '">\n\
+                                  <input hidden type="text" name="nome" value="' +
+            nome +
+            '">\n\
+                                  <input' +
+            semFoto +
+            ' class="' +
+            semFotoB +
+            '" type="submit" name="delFoto" value="Excluir Foto">\n\
                             </form>\n\
                         </div>\n\
                     </div><hr>';
-                        
+        }
+        $("#apresenta_Fotos").html(tabela).show();
       }
-      $("#apresenta_Fotos").html(tabela).show();
+    },
+  });
+}
+
+//Validação de consulta
+function validaConsulta() {
+  var paciente = document.formConsulta.paciente;
+  var horarios = document.formConsulta.horarios;
+  var clinica = document.formConsulta.clinica;
+  var dentista = document.formConsulta.dentista;
+  console.log(paciente);
+  if (paciente.value == " ") {
+    setTimeout(function (self) {
+      $("#alerta").hide();
+    }, 3000);
+    $("#alerta").html("Selecione o Paciente atendido!!").show();
+    document.formConsulta.paciente.focus();
+    return;
+  }
+
+  if (horarios.value == " ") {
+    setTimeout(function (self) {
+      $("#alerta").hide();
+    }, 3000);
+    $("#alerta").html("Selecione o horario do atendimento!!").show();
+    document.formConsulta.horarios.focus();
+    return;
+  }
+  if (dentista.value == " ") {
+    setTimeout(function (self) {
+      $("#alerta").hide();
+    }, 3000);
+    $("#alerta").html("Selecione o dentista que indicou!!").show();
+    document.formConsulta.dentista.focus();
+    return;
+  }
+  if (clinica.value == " ") {
+    setTimeout(function (self) {
+      $("#alerta").hide();
+    }, 3000);
+    $("#alerta").html("Selecione a clínica filiada!!").show();
+    document.formConsulta.clinica.focus();
+    return;
+  }
+
+  document.formConsulta.submit();
+}
+
+function validaNome(nome) {
+  var msgNome = '';
+  var name = nome.value;
+  var expNome = /^([^0-9]){3,50}$/g;
+  var nomeVerificado = expNome.exec(name);
+  console.log(nomeVerificado);
+  if(!nomeVerificado){
+    msgNome = 'Tamanho mínimo de 3 caractéres. Sem números';
+  }
+  nome.setCustomValidity(msgNome);
+  }
+  function validaTelefone(telefone) {
+    var msgNome = '';
+    var tel = telefone.value;
+    var expNome = /^([^a-z]){9,12}$/gi;
+    var nomeVerificado = expNome.exec(tel);
+    if(!nomeVerificado){
+      msgNome = 'Tamanho mínimo de 9 caractéres. Máximo de 11';
+    }
+    telefone.setCustomValidity(msgNome);
+    }
+  function validaEmail(email) {
+    var msgNome = '';
+    var email2 = email.value;
+    var expNome = /^([\w_.]*)@([\w-.]*)\.?([a-z.]){3,6}$/gi;
+    var nomeVerificado = expNome.exec(email2);
+    if(!nomeVerificado){
+      msgNome = 'Escreva um email válido. Exemplo: paulo2@gmail.com';
+    }
+    email.setCustomValidity(msgNome);
+    }
+  
+  function validaRastreio(){
+    var terceiro = document.formRastreio.RFKTerceiro;
+    var servico = document.formRastreio.RFKServico;
+    var dtEntrega = document.formRastreio.dtEntrega;
+    var dtRetorno = document.formRastreio.dtRetorno;
+    if(dtEntrega.value == ""){
+      setTimeout(function (self) {
+        $("#alerta").hide();
+      }, 3000);
+      $("#alerta").html("Selecione a data de Entrega da prótese!!").show();
+      document.formRastreio.RFKTerceiro.focus();
+      return;
+    }
+    if(dtRetorno.value == ""){
+      setTimeout(function (self) {
+        $("#alerta").hide();
+      }, 3000);
+      $("#alerta").html("Selecione a data de Retorno da prótese!!").show();
+      document.formRastreio.RFKTerceiro.focus();
+      return;
+    }
+    if(terceiro.value == ""){
+      setTimeout(function (self) {
+        $("#alerta").hide();
+      }, 3000);
+      $("#alerta").html("Selecione o terceiro!!").show();
+      document.formRastreio.RFKTerceiro.focus();
+      return;
+    }
+    if(servico.value == " "){
+      setTimeout(function (self) {
+        $("#alerta").hide();
+      }, 3000);
+      $("#alerta").html("Selecione o Serviço!!").show();
+      document.formRastreio.RFKServico.focus();
+      return;
+    }
+    document.formRastreio.submit();
+  }
+
+function validaProtese(){
+  var tipo = document.formProtese.tipo;
+  var extensao = document.formProtese.extensao;
+  var posicao = document.formProtese.posicao;
+  var marca = document.formProtese.marca;
+  var qtdDentes = document.formProtese.qtdDentes;
+  var paciente = document.formProtese.paciente;
+  var ouroDente = document.formProtese.ouroDente;
+  var qtdOuro = document.formProtese.qtdOuro;
+  if(tipo.value == ""){
+    setTimeout(function (self) {
+      $("#alerta").hide();
+    }, 3000);
+    $("#alerta").html("Selecione o tipo da prótese!!").show();
+    document.formProtese.tipo.focus();
+    return;
+  }
+  if(extensao.value == ""){
+    setTimeout(function (self) {
+      $("#alerta").hide();
+    }, 3000);
+    $("#alerta").html("Selecione a extensão da prótese!!").show();
+    document.formProtese.tipo.focus();
+    return;
+  }
+  if(posicao.value == ""){
+    setTimeout(function (self) {
+      $("#alerta").hide();
+    }, 3000);
+    $("#alerta").html("Selecione a posição da prótese!!").show();
+    document.formProtese.tipo.focus();
+    return;
+  }
+  if(marca.value == ""){
+    setTimeout(function (self) {
+      $("#alerta").hide();
+    }, 3000);
+    $("#alerta").html("Selecione a marca da prótese!!").show();
+    document.formProtese.tipo.focus();
+    return;
+  }
+  if(qtdDentes.value == ""){
+    setTimeout(function (self) {
+      $("#alerta").hide();
+    }, 3000);
+    $("#alerta").html("Insira a quantos dentes a prótese irá ter!!").show();
+    document.formProtese.tipo.focus();
+    return;
+  }
+  if(paciente.value == ""){
+    setTimeout(function (self) {
+      $("#alerta").hide();
+    }, 3000);
+    $("#alerta").html("Houve um erro com o paciente no cadastro de prótese, contate o suporte!!").show();
+    document.formProtese.tipo.focus();
+    return;
+  }
+  if(ouroDente.checked){
+    if(qtdOuro.value == ""){
+      setTimeout(function (self) {
+        $("#alerta").hide();
+      }, 3000);
+      $("#alerta").html("Insira quantos dentes de ouro a prótese terá!!").show();
+      document.formProtese.tipo.focus();
+      return;
     }
   }
-});
+  document.formProtese.submit();
+}
+
+function validaTerceirizado(){
+  var terceiro = document.formTerceirizado.Terceiro;
+  var servico = document.formTerceirizado.ServicoTerceiro;
+  if(terceiro.value == ""){
+    setTimeout(function (self) {
+      $("#alerta").hide();
+    }, 3000);
+    $("#alerta").html("Selecione o Terceiro!!").show();
+    document.formTerceirizado.Terceiro.focus();
+    return;
+  }
+  if(servico.value == ""){
+    setTimeout(function (self) {
+      $("#alerta").hide();
+    }, 3000);
+    $("#alerta").html("Selecione o Servico!!").show();
+    document.formTerceirizado.ServicoTerceiro.focus();
+    return;
+  }
+  document.formTerceirizado.submit();
 }

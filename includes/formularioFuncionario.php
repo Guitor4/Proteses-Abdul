@@ -7,7 +7,7 @@
                     <div class="col-11">
                         <div class="form-group">
                             <label>Nome: </label>
-                            <input type="text" class="form-control" name="nomeFuncionario" placeholder="Nome Completo" required="" value="<?= $objFuncionario->nomeFuncionario ?>">
+                            <input type="text" class="form-control" onblur = "validaNome(this)" name="nomeFuncionario" placeholder="Nome Completo" required="" value="<?= $objFuncionario->nomeFuncionario ?>">
                         </div>
                         <div class="form-group">
                             <label>Sexo: </label>
@@ -29,7 +29,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Telefone:</label>
-                                <input type="tel" class="form-control" name="telefone" onkeypress="mascara(this, '#-#####-####')" maxlength="15" placeholder="61 9 91919191" required="" value="<?= $objFuncionario->telefone ?>">
+                                <input type="tel" class="form-control" onblur="validaTelefone()" minlength="9" name="telefone" onkeypress="mascara(this, '##-#####-####')" maxlength="13" placeholder="61 9 91919191" required="" value="<?= $objFuncionario->telefone ?>">
                             </div>
                             <div class="form-group">
                                 <label>Perfil: </label>
@@ -71,7 +71,7 @@
                         </div>
                         <div class="form-group">
                             <label>Data de Contrato:</label>
-                            <input type="date" class="form-control" name="dtContrato" value="<?= $objFuncionario->dtContrato ?>">
+                            <input type="date" class="form-control" required name="dtContrato" value="<?= $objFuncionario->dtContrato ?>">
                         </div>
                         <div class="d-flex justify-content-center p-2">
 

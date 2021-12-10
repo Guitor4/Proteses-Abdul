@@ -54,9 +54,26 @@ $objPaciente = paciente::getPacientes();
 $objFuncionario = funcionario::getFuncionarios();
 /* echo "<pre>"; print_r($objFuncionario); echo "<pre>";exit; */
 /* echo "<pre>"; print_r($_POST); echo "<pre>";exit; */
-if (isset($_POST['botao'])) {
 
-  if (isset($_POST['paciente'], $_POST['horarios'], $_POST['dentista'], $_POST['clinica'])) {
+if (
+  //Checa se existem
+  isset(
+      $_POST['paciente'],
+      $_POST['data'],
+      $_POST['horarios'],
+      $_POST['dentista'],
+      $_POST['clinica'],
+      $_POST['status'],
+      $_POST['relatorio']
+  )
+  //Checa se são diferentes de vazio
+  && $_POST['paciente'] != ""
+  && $_POST['data'] != ""
+  && $_POST['horarios'] != ""
+  && $_POST['dentista'] != ""
+  && $_POST['clinica'] != ""
+  && $_POST['status'] != ""
+) {
 
     $objConsulta->dataConsulta = $_POST['data'];
     $objConsulta->horaConsulta = $_POST['horarios'];
@@ -66,7 +83,7 @@ if (isset($_POST['botao'])) {
     $objConsulta->fkFuncionario = $_SESSION['idFuncionario'];
     $objConsulta->CFKClinica = $_POST['clinica'];
     $objConsulta->CFKDentista = $_POST['dentista'];
-    /*     echo "<pre>"; print_r($objConsulta); echo "<pre>";exit; */
+        /* echo "<pre>"; print_r($_POST); echo "<pre>";exit; */
 
     //echo '<pre>';print_r($objConsulta);echo'<pre>';exit;
     $objConsulta->cadastrarConsulta();
@@ -89,8 +106,17 @@ if (isset($_POST['botao'])) {
         }
         </script>";
     }
+  }else{
+    "<script>
+        Swal.fire({
+          title: 'Ocorreu um erro!!',
+          text: \"Contate o suporte\",
+          icon: 'err',
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'Ok'
+        })";
   }
-}
+
 
 $calendario =
   "<script>

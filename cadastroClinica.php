@@ -23,7 +23,7 @@ if (isset($_POST['cadastrarClinica'])) {
         $clinica->cadastrarClinica();
 
         if ($clinica->idClinica > 0) {
-            header('Location: listaClinica.php?pagina=1&status=success1&id=' . $clinica->idClinica[1]);
+            header('Location: listaClinica.php?pagina=1&status=success1&id=' . $clinica->idClinica);
         } else {
             header('Location: listaClinica.php?pagina=1&status=error1');
         }

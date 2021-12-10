@@ -99,7 +99,25 @@ if (!$objFuncionario instanceof funcionario){
  * e a variável ID que são preenchidas automaticamente posteriormente.
  * Pode-se notar alguns tratamentos com operadores ternários para dureza, ouro, e quantidade
  */
-if (isset($_POST['paciente'])) {
+if (
+    //Checa se existem
+    isset(
+        $_POST['paciente'],
+        $_POST['data'],
+        $_POST['horarios'],
+        $_POST['dentista'],
+        $_POST['clinica'],
+        $_POST['status'],
+        $_POST['relatorio']
+    )
+    //Checa se são diferentes de vazio
+    && $_POST['paciente'] != ""
+    && $_POST['data'] != ""
+    && $_POST['horarios'] != ""
+    && $_POST['dentista'] != ""
+    && $_POST['clinica'] != ""
+    && $_POST['status'] != ""
+  ) {
     $objConsulta = new consulta;
     $objConsulta->idConsulta = $_GET['id'];
     $objConsulta->fkProntuario = $_POST['paciente'];

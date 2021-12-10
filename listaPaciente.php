@@ -33,7 +33,7 @@ $where = implode(' AND ', $condicoes);
 
 $pagina_atual = intval($_GET['pagina']);
 
-$itens_por_pagina = 5;
+$itens_por_pagina = 6;
 
 $inicio = ($itens_por_pagina * $pagina_atual) - $itens_por_pagina;
 

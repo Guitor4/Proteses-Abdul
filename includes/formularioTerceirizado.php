@@ -9,12 +9,14 @@
     <div class="col-4 mt-4 offset-4 p-3 bg-dark " style="border-radius:25px 30px 25px 30px">
         <div class="border border-white rounded p-2">
             <h3 style="text-align: center; color: white"><?= TITLE ?></h3>
-            <form class="d-flex justify-content-center" method="post" style="color: white">
+            <div id = "alerta" class="bg-danger text-white text-center" role="alert" style = "display:none;max-height:30px">
+                    </div>
+            <form name = "formTerceirizado" class="d-flex justify-content-center" method="post" style="color: white">
                 <div class="col-8">
                     <div class="form-group">
                         <label> Terceiro: </label>
-                        <select <?= (TITLE == 'Cadastrar Terceirizado' ? '' : 'disabled') ?> class="form-control" name="Terceiro" value="">
-                            <option hidden selected value='0'>[---SELECIONE---]</option>
+                        <select onchange="getServicoTerceiro2(this.value)" <?= (TITLE == 'Cadastrar Terceirizado' ? '' : 'disabled') ?> class="selectpicker form-control" data-live-search="true" data-size=5 name="Terceiro" value="">
+                            <option hidden selected value=''>[---SELECIONE---]</option>
 
                             <?php
                             echo $selectTerceiro
@@ -26,8 +28,8 @@
                     </div>
                     <div class="form-group">
                         <label> Serviço Terceiro: </label>
-                        <select <?= (TITLE == 'Cadastrar Terceirizado' ? '' : 'disabled') ?> class="form-control" name="ServicoTerceiro" value="">
-                            <option selected hidden value='0'>[---SELECIONE---]</option>
+                        <select <?= (TITLE == 'Cadastrar Terceirizado' ? '' : 'disabled') ?> class="selectpicker form-control" data-live-search="true" data-size=5 name="ServicoTerceiro" id = "servico_terceiro" value="">
+                            <option selected hidden value=''>[---SELECIONE---]</option>
 
                             <?php
                             echo $selectServico;
@@ -53,7 +55,7 @@
                     </div>
                     <div class="d-flex justify-content-center p-2">
 
-                        <input type="submit" name="<?= BTN ?>" class="  btn btn-lg btn-success btInput" value="<?= (TITLE == "Cadastrar Terceirizado" ? 'Cadastrar' : 'Editar') ?>">
+                        <input type="button" onclick="validaTerceirizado()" name="<?= BTN ?>" class="  btn btn-lg btn-success btInput" value="<?= (TITLE == "Cadastrar Terceirizado" ? 'Cadastrar' : 'Editar') ?>">
 
                     </div>
                 </div>

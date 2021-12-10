@@ -12,7 +12,7 @@ $objServicoTerceiro = new ServicoTerceiro;
 if (isset($_POST['Salvar'])) {
 
     $objServicoTerceiro->nomeServico = $_POST['nomeServico'];
-    $objServicoTerceiro->descricao = $_POST['descricao'];
+    $objServicoTerceiro->descricao = ($_POST['descricao'] != null ? $_POST['descricao'] : 'Sem comentários');
     $objServicoTerceiro->statusServicoTerceiro = $_POST['statusServicoTerceiro'];
     /* echo '<pre>';print_r($objServicoTerceiro);echo '<pre>';exit; */
 

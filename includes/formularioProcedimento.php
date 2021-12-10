@@ -17,7 +17,7 @@
                     <div class="col-8">
                         <div class="form-group">
                             <label>Nome do Procedimento: </label>
-                            <input type="text" class="form-control" name="nomeProcedimento" placeholder="Procedimento" value="<?= $objProcedimento->nomeProcedimento ?>">
+                            <input type="text" class="form-control" required name="nomeProcedimento" placeholder="Procedimento" value="<?= $objProcedimento->nomeProcedimento ?>">
                         </div>
                         <label>Status do Procedimento: </label>
                         <div class="form-group">

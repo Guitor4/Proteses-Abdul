@@ -10,8 +10,31 @@ define('BTN', 'Salvar');
 define('TITLE', 'Cadastrar Funcionário');
 define('IDENTIFICACAO', '0');
 $objFuncionario = new Funcionario;
-if (isset($_POST[BTN])) {
-    /* echo '<pre>';print_r($_POST);echo'<pre>';exit; */
+if (
+    //Checa se existem
+    isset(
+        $_POST['nomeFuncionario'],
+        $_POST['sexo'],
+        $_POST['email'],
+        $_POST['telefone'],
+        $_POST['perfil'],
+        $_POST['login'],
+        $_POST['senha'],
+        $_POST['status'],
+        $_POST['dtContrato'],
+    )
+    //Checa se são diferentes de vazio
+    && $_POST['nomeFuncionario'] != ""
+    && $_POST['sexo'] != ""
+    && $_POST['email'] != ""
+    && $_POST['telefone'] != ""
+    && $_POST['perfil'] != ""
+    && $_POST['login'] != ""
+    && $_POST['senha'] != ""
+    && $_POST['status'] != ""
+    && $_POST['dtContrato'] != ""
+  ) {
+/*     echo '<pre>';print_r($_POST);echo'<pre>';exit; */
     $objFuncionario->nomeFuncionario = $_POST['nomeFuncionario'];
     $objFuncionario->dtContrato = $_POST['dtContrato'];
     $objFuncionario->sexo = $_POST['sexo'];

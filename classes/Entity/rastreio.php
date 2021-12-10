@@ -40,7 +40,7 @@ class Rastreio {
     }
 
     public function editarRastreio() {
-        return (new db('rastreio'))->
+        return  (new db('rastreio'))->
                         updateSQL('idRastreio= ' . $this->idRastreio, [
                             'dtEntrega' => $this->dtEntrega,
                             'dtRetorno' => $this->dtRetorno,

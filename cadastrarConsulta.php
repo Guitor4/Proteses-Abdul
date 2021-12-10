@@ -58,9 +58,28 @@ if (count($objPaciente) < 1){
 /* echo '<pre>';print_r($objPaciente);echo'<pre>';exit; */
 $objFuncionario = funcionario::getFuncionarios();
 /* echo "<pre>"; print_r($objFuncionario); echo "<pre>";exit; */
-
+/* echo "<pre>"; print_r($_POST); echo "<pre>";exit; */
 $objConsulta = new consulta;
-if (isset($_POST['paciente'], $_POST['horarios'], $_POST['dentista'], $_POST['clinica'])) {
+if (
+    //Checa se existem
+    isset(
+        $_POST['paciente'],
+        $_POST['data'],
+        $_POST['horarios'],
+        $_POST['dentista'],
+        $_POST['clinica'],
+        $_POST['status'],
+        $_POST['relatorio']
+    )
+    //Checa se são diferentes de vazio
+    && $_POST['paciente'] != ""
+    && $_POST['data'] != ""
+    && $_POST['horarios'] != ""
+    && $_POST['dentista'] != ""
+    && $_POST['clinica'] != ""
+    && $_POST['status'] != ""
+  ) {
+    /* echo "<pre>"; print_r($_POST); echo "<pre>";exit; */
     $objConsulta->dataConsulta = date('Y-m-d',strtotime($_POST['data']));
     $objConsulta->horaConsulta = $_POST['horarios'];
     $objConsulta->statusConsulta = ($_POST['status'] != '' ? $_POST['status'] : 'Agendada');
@@ -80,7 +99,7 @@ if (isset($_POST['paciente'], $_POST['horarios'], $_POST['dentista'], $_POST['cl
 
 
 
-    //echo '<pre>';print_r($objConsulta);echo'<pre>';exit;
+    /* echo '<pre>';print_r($_POST);echo'<pre>';exit; */
     $objConsulta->cadastrarConsulta();
 
     if ($objConsulta->idConsulta > 0) {

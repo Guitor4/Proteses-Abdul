@@ -29,12 +29,14 @@ if (isset($_POST['editarTerceiro'])) {
         $objTerceiro->idTerceiro = $_GET['id'];
         $objTerceiro->nomeTerceiro = $_POST['nomeTerceiro'];
         $objTerceiro->telefone = ($_POST['telefone']);
-        $objTerceiro->statusTerceiro = $_POST['statusTerceiro'];
+        $objTerceiro->statusTerceiro = ($_POST['statusTerceiro'] == 'on' ? 'Ativo' : 'Inativo');
         //echo '<pre>';print_r($objTerceiro);echo '<pre>';exit;
 
-        $objTerceiro->AtualizarTerceiro();
+        if($objTerceiro->AtualizarTerceiro()){
+            header('Location: listaTerceiro.php?pagina=1&status=success2&id='.$_GET['id']);
+        }
 
-        header('Location: index.php?status=success');
+        
 
         /*     if ($objTerceiro->id > 0){
         header ('Location: index.php?status=success');

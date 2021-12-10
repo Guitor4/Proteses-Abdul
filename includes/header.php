@@ -46,6 +46,11 @@
             $("#exampleModalLabel").html('Cadastro Consulta Teste')
             $('.selectpicker').selectpicker();
         }
+        function click2(id) {
+            var btn = document.getElementById(id);
+            btn.click();
+
+        }
     </script>
 </head>
 

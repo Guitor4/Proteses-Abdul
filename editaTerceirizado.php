@@ -29,7 +29,19 @@ if (!$objTerceirizado instanceof terceirizado) {
     header('Location: listaTerceirizado.php?status=error');
 }
 
-if (isset($_POST[BTN])) {
+if (
+    //Checa se existem
+    isset(
+        $_POST['Terceiro'],
+        $_POST['ServicoTerceiro'],
+        $_POST['status']
+
+    )
+    //Checa se são diferentes de vazio
+    && $_POST['Terceiro'] != ""
+    && $_POST['ServicoTerceiro'] != ""
+    && $_POST['status'] != ""
+  ) {
     /* echo "<pre>"; print_r($_POST); echo "<pre>";exit; */
     if (isset($_POST['terceiro2'], $_POST['servico2'], $_POST['status'])) {
 

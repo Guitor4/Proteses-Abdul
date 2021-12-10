@@ -141,7 +141,7 @@ if (isset($_POST['delFoto'])) {
     echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"0;
         \">";
 }
-$alerta = 'teste';
+$alerta = '';
 if (isset($_POST['cadFoto'])) {
 
     if (isset($_FILES['foto']) && basename($_FILES["foto"]["name"]) != "") {

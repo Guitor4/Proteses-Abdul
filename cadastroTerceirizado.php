@@ -19,14 +19,21 @@ foreach ($objTerceiro as $terceiro) {
     $selectTerceiro .= '<option  value ="' .  $terceiro->idTerceiro . '">' . $terceiro->nomeTerceiro . '</option>';
 }
 
-$selectServico = '';
-$objServicoTerceiro = ServicoTerceiro::getServicoTerceiros();
-foreach ($objServicoTerceiro as $servico) {
-    $selectServico .= '<option  value ="' .  $servico->idServico . '">' . $servico->nomeServico . '</option>';
-}
 
-if (isset($_POST[BTN])) {
-    /*echo '<pre>';print_r($_POST);echo'<pre>';exit; */
+if (
+    //Checa se existem
+    isset(
+        $_POST['Terceiro'],
+        $_POST['ServicoTerceiro'],
+        $_POST['status']
+
+    )
+    //Checa se são diferentes de vazio
+    && $_POST['Terceiro'] != ""
+    && $_POST['ServicoTerceiro'] != ""
+    && $_POST['status'] != ""
+  ) {
+    /* echo '<pre>';print_r($_POST);echo'<pre>';exit; */
     $terceirizado->fkTerceiro = $_POST['Terceiro'];
     $terceirizado->fkServicoTerceiro = $_POST['ServicoTerceiro'];
     $terceirizado->statusTerceirizado = $_POST['status'];

@@ -28,8 +28,24 @@ if (isset($_GET['id'])) {
 $rastreioEdit = new rastreio();
 
 
-if (isset($_POST['editarRastreio'])) {
-
+if (
+  //Checa se existem
+  isset(
+      $_POST['dtEntrega'],
+      $_POST['dtRetorno'],
+      $_POST['obs'],
+      $_POST['RFKTerceiro'],
+      $_POST['RFKServico'],
+      $_POST['status']
+  )
+  //Checa se são diferentes de vazio
+  && $_POST['dtEntrega'] != ""
+  && $_POST['dtRetorno'] != ""
+  && $_POST['RFKTerceiro'] != ""
+  && $_POST['RFKServico'] != ""
+  && $_POST['status'] != ""
+) {
+/*   echo'<pre>';print_r($_POST);echo'</pre>';exit; */
         
         $rastreioEdit->idRastreio = ($_GET['id']);
         $rastreioEdit->dtEntrega = ($_POST['dtEntrega']);
@@ -40,13 +56,13 @@ if (isset($_POST['editarRastreio'])) {
         $rastreioEdit->RFKServico = $_POST['RFKServico'];
         $rastreioEdit->fkProtese = $_POST['fkProtese'];
         
-       /* echo'<pre>';print_r($rastreioEdit);echo'</pre>';exit; */
-        unset($_POST['editarRastreio']);
-        
-        $rastreioEdit->editarRastreio();
+              
+        if($rastreioEdit->editarRastreio()){
+          header ('Location: listaRastreio.php?pagina=1&status=success2&id='.$_GET['id']);
+        }
        
         
-        header ('Location: listaRastreio.php?status=success');
+        
 
         //echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"3;
         //URL='cadastroDentista.php'\">";

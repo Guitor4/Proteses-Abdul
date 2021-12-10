@@ -91,12 +91,6 @@ if (isset($_GET['rProtese'])) {
                     </div>
 
                     <div class="col-5 offset-1">
-                       <div class="form-group">
-                            <label><strong>Custo:</strong> <?= $detalhaRastreio->vlrCobrado ?></label>
-
-                        </div>
-
-
 
                         <div class="form-group">
                             <label><strong>Paciente:</strong> <?= $detalhaRastreio->nomePaciente ?></label>
