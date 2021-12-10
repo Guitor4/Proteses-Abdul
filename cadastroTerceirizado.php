@@ -10,6 +10,7 @@ use \Classes\Entity\ServicoTerceiro;
 
 define('BTN', 'cadastrarTerceirizado');
 define('TITLE', 'Cadastrar Terceirizado');
+define('IDENTIFICACAO', '0');
 $terceirizado = new terceirizado;
 
 $objTerceiro = terceiro::getTerceiros();

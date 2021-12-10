@@ -23,7 +23,7 @@
 
                         <div class="form-group">
                             <label>Descrição:</label>
-                            <input type="tel" class="form-control" name="descricao" placeholder="Relato sobre" required="" value="<?= $objServicoTerceiro->descricao ?>">
+                            <input type="tel" class="form-control" name="descricao" placeholder="Relato sobre" required="" value="<?= $objServicoTerceiro->descricao ?>" onkeypress="mascara(this, '##-#####-####')" maxlength="13">
                         </div>
                         <label>Status do Serviço Terceiro: </label>
                         <div class="form-check form-check-inline">

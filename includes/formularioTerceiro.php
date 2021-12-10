@@ -22,7 +22,7 @@
 
                         <div class="form-group">
                             <label>Celular:</label>
-                            <input type="tel" class="form-control" name="telefone" placeholder="+55(DD)00000-0000" required="" value="<?= $objTerceiro->telefone ?>">
+                            <input type="tel" class="form-control" name="telefone" required="" value="<?= $objTerceiro->telefone ?>" onkeypress="mascara(this, '##-#####-####')" maxlength="13">
                         </div>
                         <div class="form-group mt-3">
                             <label>Status do Funcionário: </label>
