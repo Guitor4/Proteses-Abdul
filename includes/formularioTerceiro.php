@@ -27,13 +27,13 @@
                         <div class="form-group mt-3">
                             <label>Status do Funcionário: </label>
                             <div class="form-check form-check-inline">
-                                <input type="radio" class="btn-check" name="statusTerceiro" id="success-outlined" autocomplete="off" <?= $objTerceiro->statusTerceiro == 'Inativo' ? '' : 'checked' ?>>
+                                <input type="radio" class="btn-check" name="statusTerceiro" id="success-outlined" value = "Ativo" autocomplete="off" <?= $objTerceiro->statusTerceiro == 'Inativo' ? '' : 'checked' ?>>
                                 <label class="btn btn-outline-success" for="success-outlined">Ativo</label>
 
 
                             </div>
                             <div class="form-check form-check-inline">
-                                <input type="radio" class="btn-check" name="statusTerceiro" id="danger-outlined" autocomplete="off" <?= $objTerceiro->statusTerceiro == 'Inativo' ? 'checked' : '' ?>>
+                                <input type="radio" class="btn-check" name="statusTerceiro" id="danger-outlined" value = "Inativo" autocomplete="off" <?= $objTerceiro->statusTerceiro == 'Inativo' ? 'checked' : '' ?>>
                                 <label class="btn btn-outline-danger" for="danger-outlined">Inativo</label>
                             </div>
                         </div>
