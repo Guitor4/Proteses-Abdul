@@ -17,7 +17,7 @@ class Foto {
     public $fkProntuario;
     
     
-    public function CadastrarFoto($pac) {
+    public function CadastrarFoto() {
         
         $db = new db('foto');
         $this->idFoto = $db->insertSQL([

@@ -197,12 +197,12 @@ if (isset($_POST['cadFoto'])) {
 
         $objFoto = new Foto();
 
-        $objFoto->idFoto = $fId;
+        //$objFoto->idFoto = $fId;
         $objFoto->titulo = $titulo;
         $objFoto->img = $foto;
         $objFoto->fkProntuario = $pac;
-        $objFoto->CadastrarFoto($pac);
-        echo "<pre>"; print_r($objFoto->idFoto); echo "<pre>";exit;
+        $objFoto->CadastrarFoto();
+        //echo "<pre>"; print_r($objFoto->idFoto); echo "<pre>";exit;
         if ($objFoto->idFoto > 0) {
             $alerta = "<script>
             Swal.fire({

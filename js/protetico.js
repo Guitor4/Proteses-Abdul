@@ -286,13 +286,13 @@ function loadDados() {
           '">\n\
                                         <input ' +
           at +
-          ' type="file" name="imagem"><br>\n\
+          ' type="file" name="imagem" class="btn btn-dark"><br>\n\
 \n                                     <input ' +
           del +
-          ' type="submit" name="delFotoPerfil" value="Deletar">\n\
+          ' type="submit" class="btn btn-warning" name="delFotoPerfil" value="Deletar">\n\
                                         <input ' +
           at +
-          ' type="submit" name="edFotoPerfil" value="Atualizar"><br>\n\
+          ' type="submit" class="btn btn-success p-1" name="edFotoPerfil" value="Atualizar"><br>\n\
                                  </form>\n\
                                 </div>\n\
                               </div>';
@@ -373,13 +373,13 @@ function Dados_Cadastrais() {
           '">\n\
                                         <input ' +
           at +
-          ' type="file" name="imagem"><br>\n\
+          ' type="file" name="imagem" class="btn btn-dark"><br>\n\
 \n                                     <input ' +
           del +
-          ' type="submit" name="delFotoPerfil" value="Deletar">\n\
+          ' type="submit" class="btn btn-warning" name="delFotoPerfil" value="Deletar">\n\
                                         <input ' +
           at +
-          ' type="submit" name="edFotoPerfil" value="Atualizar"><br>\n\
+          ' type="submit" class="btn btn-success p-1" name="edFotoPerfil" value="Atualizar"><br>\n\
                                  </form>\n\
                                 </div>\n\
                               </div>';
@@ -648,6 +648,7 @@ function FotoDepois() {
                                  </form><hr></div>';
 
         for (var i = 0; i < dados.length; i++) {
+<<<<<<< HEAD
           if (dados[i].img == "semFoto") {
             var semFoto = "hidden";
             var semFotoB = "";
@@ -660,6 +661,19 @@ function FotoDepois() {
           var nome = dados[i].img.substring(8);
           tabela +=
             '<div class="row">\n\
+=======
+                    if (dados[i].img=="semFoto"){
+                        var semFoto="hidden";
+                        var semFotoB="";
+                        var semFotoT='';
+                    }else{
+                        semFoto="";
+                        semFotoB="btn btn-warning";
+                        semFotoT='width="200" height="200"';
+                    }
+            var nome = dados[i].img.substring(8);
+          tabela +='<div class="row">\n\
+>>>>>>> 8be98eb77980fcb566180a6d47a9ae59648d4f78
                         <div class="col-5" >\n\
                             <img ' +
             semFoto +
