@@ -45,9 +45,9 @@ $alerta = '';
 $objConsulta = new consulta;
 
 
-$objClinica = clinica::getClinicas('statusClinica != "inativo"');
+$objClinica = clinica::getClinicas('statusClinica != "Inactive"');
 /* echo '<pre>';print_r($objClinica);echo'<pre>';exit; */
-$objDentista = dentista::getDentistas('statusDentista != "inativo"');
+$objDentista = dentista::getDentistas('statusDentista != "Inactive"');
 /* echo '<pre>';print_r($objDentista);echo'<pre>';exit; */
 $objPaciente = paciente::getPacientes();
 /* echo '<pre>';print_r($objPaciente);echo'<pre>';exit; */

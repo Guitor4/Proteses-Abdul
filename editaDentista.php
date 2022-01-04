@@ -3,7 +3,7 @@
 require 'vendor/autoload.php';
 include __DIR__ . './includes/sessionStart.php';
 define('TITLE', 'Editar Dentista');
-define('BTN', 'editarDentista');
+define('BTN', 'editDentista');
 define('IDENTIFICACAO', '0');
 
 use \Classes\Entity\dentista;

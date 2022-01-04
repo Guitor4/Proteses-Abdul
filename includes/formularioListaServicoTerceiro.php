@@ -3,23 +3,23 @@
     <section class="d-flex justify-content-center mt-2">
         <div class="col-4">
             <div class="bg-dark rounded p-2">
-                <h5 style="color: white; text-align: center ">Serviços</h5>
+                <h5 style="color: white; text-align: center ">Services</h5>
                 <form method="post" action="">
                     <div class="col-10 form-group p-2" style="margin:auto">
                         <input hidden name="tabela" value="servicoTerceiro"></input>
                         <input type="text" class="form-control p-1" id="busca" name="busca" required="" value="<?= $busca ?>">
                     </div>
-                    <input type="submit" name="pesquisarServicoTerceiro" class="btn btn-secondary btInput p- d-flex " style="margin:auto" value="Pesquisar">
+                    <input type="submit" name="pesquisarServicoTerceiro" class="btn btn-secondary btInput p- d-flex " style="margin:auto" value="Search">
 
                 </form>
 
             </div>
             <div class="row">
                 <div class="col-6 p-2">
-                    <a href="listaServicoTerceiro.php?pagina=1"> <input type="submit" value="Limpar Pesquisa" class="btn btn-danger w-100" /> </a>
+                    <a href="listaServicoTerceiro.php?pagina=1"> <input type="submit" value="Clear search" class="btn btn-danger w-100" /> </a>
                 </div>
                 <div class="col-6 p-2">
-                    <a href="cadastroServicoTerceiro.php"> <input type="submit" value="Cadastrar Serviço prestado" class="btn btn-success w-100" /> </a>
+                    <a href="cadastroServicoTerceiro.php"> <input type="submit" value="Register a Service" class="btn btn-success w-100" /> </a>
                 </div>
             </div>
         </div>
@@ -34,11 +34,11 @@
                 <table class="table bg-light table-striped table-hover mt-1 table-responsive">
                     <thead class="table-dark">
                         <tr>
-                            <th>Número do ID</th>
-                            <th>Nome Serviço Terceiro</th>
-                            <th>Descrição</th>
-                            <th>Status Serviço Terceiro</th>
-                            <th>Ações</th>
+                            <th>Service ID</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Status</th>
+                            <th>Actions</th>
                         </tr>
 
                     </thead>
@@ -58,7 +58,7 @@
                                 <a class="page-link" href="listaServicoTerceiro.php?pagina=1<?= isset($_GET['search']) ? '&search=' . $_GET['search'] : '' ?>"><<</a>
                             </li>
                             <li class="page-item">
-                                <a class="page-link" href="listaServicoTerceiro.php?pagina=<?= ($pagina_atual > 1 ? $pagina_atual - 1 : $pagina_atual) ?><?= isset($_GET['search']) ? '&search=' . $_GET['search'] : '' ?>" tabindex="-1">Anterior</a>
+                                <a class="page-link" href="listaServicoTerceiro.php?pagina=<?= ($pagina_atual > 1 ? $pagina_atual - 1 : $pagina_atual) ?><?= isset($_GET['search']) ? '&search=' . $_GET['search'] : '' ?>" tabindex="-1">Previous</a>
                             </li>
                             <?php
                             $limite_paginacao = ceil(($num_pagina + $pagina_atual) / 2);
@@ -76,7 +76,7 @@
                             }
                             ?>
                             <li class="page-item">
-                                <a class="page-link" href="listaServicoTerceiro.php?pagina=<?= ($pagina_atual < $num_pagina ? $pagina_atual + 1 : $pagina_atual) ?><?= isset($_GET['search']) ? '&search=' . $_GET['search'] : '' ?>">Próximo</a>
+                                <a class="page-link" href="listaServicoTerceiro.php?pagina=<?= ($pagina_atual < $num_pagina ? $pagina_atual + 1 : $pagina_atual) ?><?= isset($_GET['search']) ? '&search=' . $_GET['search'] : '' ?>">Next</a>
                             </li>
                             <li class="page-item">
                                 <a class="page-link" href="listaServicoTerceiro.php?pagina=<?= $num_pagina ?><?= isset($_GET['search']) ? '&search=' . $_GET['search'] : '' ?>">>></a>

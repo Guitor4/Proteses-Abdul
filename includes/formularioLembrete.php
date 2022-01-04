@@ -5,21 +5,21 @@
             <form class="d-flex justify-content-center" method="post" style="color: white">
                 <div class="col-8">
                     <div class="form-group">
-                        <label>Título</label>
+                        <label>Title</label>
                         <input type="text" class="form-control" required name="titulo" placeholder="Regar as plantas" value=" <?= $lembretes->titulo ?>">
                     </div>
 
                     <div class="form-group">
-                        <label>Descrição</label>
+                        <label>Description</label>
                         <textarea type="text" class="form-control" name="descricao" placeholder="Opcional"><?= $lembretes->descricao ?></textarea>
                     </div>
                     <div class="form-group">
-                        <label>Data do Lembrete</label>
+                        <label>Reminder's date</label>
                         <input class="form-control" required placeholder="YYYY- MM - DD" onkeypress="mascara(this, '####-##-##')" type="text" id="datepicker" name="dataLembrete" value="<?= $lembretes->dataLembrete ?>">
                     </div>
                     <div class="d-flex justify-content-center p-2">
 
-                        <input type="submit" name="<?= BTN ?>" class="  btn btn-lg btn-success btInput" value="<?= (TITLE == "Cadastrar Lembrete" ? 'Cadastrar' : 'Editar') ?>">
+                        <input type="submit" name="<?= BTN ?>" class="  btn btn-lg btn-success btInput" value="<?= (TITLE == "Register Reminder" ? 'Register' : 'Edit') ?>">
 
                     </div>
                 </div>

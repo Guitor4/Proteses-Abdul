@@ -7,7 +7,7 @@ include __DIR__ . './includes/nivelAcesso.php';
 use \Classes\Entity\funcionario;
 
 define('BTN', 'Salvar');
-define('TITLE', 'Cadastrar Funcionário');
+define('TITLE', 'Register Employee');
 define('IDENTIFICACAO', '0');
 $objFuncionario = new Funcionario;
 if (
@@ -21,7 +21,6 @@ if (
         $_POST['login'],
         $_POST['senha'],
         $_POST['status'],
-        $_POST['dtContrato'],
     )
     //Checa se são diferentes de vazio
     && $_POST['nomeFuncionario'] != ""
@@ -32,18 +31,16 @@ if (
     && $_POST['login'] != ""
     && $_POST['senha'] != ""
     && $_POST['status'] != ""
-    && $_POST['dtContrato'] != ""
   ) {
 /*     echo '<pre>';print_r($_POST);echo'<pre>';exit; */
     $objFuncionario->nomeFuncionario = $_POST['nomeFuncionario'];
-    $objFuncionario->dtContrato = $_POST['dtContrato'];
     $objFuncionario->sexo = $_POST['sexo'];
     $objFuncionario->telefone = $_POST['telefone'];
     $objFuncionario->email = $_POST['email'];
     $objFuncionario->perfil = $_POST['perfil'];
     $objFuncionario->login = $_POST['login'];
     $objFuncionario->senha = $_POST['senha'];
-    $objFuncionario->statusFuncionario = ($_POST['status'] == 'on' ? 'Ativo' : 'Inativo');
+    $objFuncionario->statusFuncionario = ($_POST['status'] == 'on' ? 'Active' : 'Inactive');
     /* echo '<pre>';print_r($objFuncionario);echo '<pre>';exit; */
 
     $objFuncionario->cadastrar();

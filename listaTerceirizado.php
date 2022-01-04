@@ -6,7 +6,7 @@ include __DIR__ . './includes/sessionStart.php';
 use Classes\Entity\Terceirizado;
 
 define("IDENTIFICACAO", 9);
-define("NAME", 'Serviço registrado para o Terceiro');
+define("NAME", 'Service linked to the Provider');
 define("LINK", 'listaTerceirizado.php?pagina=1');
 
 if (!isset($_GET['pagina'])) {
@@ -61,7 +61,7 @@ foreach ($Terceirizado as $Terceirizado) {
     <td>' . $Terceirizado->statusTerceirizado . '</td>
     <td>
     <a href = editaTerceirizado.php?idTerceiro=' . $Terceirizado->idTerceiro . '&idServico='.$Terceirizado->idServico.'>
-    <button type="button" class="btn btn-info">Editar</button>
+    <button type="button" class="btn btn-info">Edit</button>
     </a>
     </td>
     </tr>';

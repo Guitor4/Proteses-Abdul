@@ -6,7 +6,11 @@ include __DIR__ . './includes/sessionStart.php';
 use Classes\Entity\Protese;
 define('IDENTIFICACAO', 1);
 $objProtese = Protese::getProtesePaciente($_GET['idProtese']);
-/* echo "<pre>"; print_r($objProtese); echo "<pre>";exit; */
+
+$term = 'pesquisarProtese.php?pagina=1';
+if(isset($_GET['term']) && $_GET['term'] == 1 ){
+    $term='listaConsultaR.php?pagina=1';
+}
 
 
 define('TITLE', $objProtese->nomePaciente);

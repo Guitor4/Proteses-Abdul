@@ -7,16 +7,16 @@
             <form class="d-flex justify-content-center" method="post" style="color: white">
                 <div class="col-8">
                     <div class="form-group">
-                        <label>Nome</label>
+                        <label>Name</label>
                         <input type="text" class="form-control" name="nomeMarca" required="" value="<?= $marca->nomeMarca ?>">
                     </div>
                     <div class="form-group">
-                        <label for="relatorio">Descrição (opcional)</label>
+                        <label for="relatorio">Description (optional)</label>
                         <textarea name="descricao" style="resize:none" class="text-black form-control" rows="5"><?= $marca->descricao ?></textarea>
                     </div>
                     <div class="d-flex justify-content-center p-2">
 
-                        <input type="submit" name="<?= BTN?>" class="  btn btn-lg btn-success btInput" value="<?= (TITLE == "Cadastrar Marca de Dente" ? 'Cadastrar' : 'Editar') ?>">
+                        <input type="submit" name="<?= BTN?>" class="  btn btn-lg btn-success btInput" value="<?= (TITLE == "Register Tooth Brand" ? 'Register' : 'Edit') ?>">
 
                     </div>
                 </div>

@@ -50,17 +50,17 @@ if (isset($_GET['rastreio']) == "check") {
     $disabled1 = '';
 }
 $resultados = '';
-
+/* echo "<pre>"; print_r($innerTratamentos); echo "<pre>";exit; */
 foreach ($innerTratamentos as $dados) {
     //foreach($rastreio as $r){ ***comentário inserido: Fernando
-    $disabled = ($dados->idProtese==$dados->fkProtese ? 'class = "btn btn-secondary" disabled = disabled' : 'class = "btn btn-primary"');
+    $disabled = 'class = "btn-primary btn"';
     //$disabled = ($disabled2 == 'ok' ? 'hidden=""' : $disabled);
 
     $resultados .= '<tr ">
-                    <td class "table-success >' . $dados->prontuario . '</td>
+                    <td class "table-success >' . $dados->idProtese . '</td>
                         <td>' . $dados->nomePaciente . '</td>
                         <td>' . $dados->idConsulta . '</td>
-                    <td>' . date('d/m/Y', strtotime($dados->dataConsulta)) . '</td>
+                    <td>' . date('m-d-Y', strtotime($dados->dataConsulta)) . '</td>
                     <td>' . date(' H:i', strtotime($dados->horaConsulta)) . '</td>
                     <td>' . $dados->statusConsulta . '</td>
                     <td>' . $dados->nomeDentista . '</td>
@@ -69,7 +69,8 @@ foreach ($innerTratamentos as $dados) {
                     
                     <td>
                     
-                    <a ' . $disabled . 'href = cadRastreio.php?rProtese='.$dados->idProtese .'>Confirmar</a>
+                    <a class = "btn btn-success" href = cadRastreio.php?rProtese='.$dados->idProtese .'>Selecionar</a>
+                    <a ' . $disabled . 'href = protese.php?idProtese='.$dados->idProtese .'&term=1 >Detail</a>
                     </td>
                     </tr>';
     //}***comentário inserido: Fernando

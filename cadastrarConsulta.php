@@ -17,7 +17,7 @@ define('IDENTIFICACAO', '0');
 define('BTN', 'cadastrarConsulta');
 $erro = "";
 $select = "";
-$objClinica = clinica::getClinicas('statusClinica != "inativo"');
+$objClinica = clinica::getClinicas('statusClinica != "Inactive"');
 if (count($objClinica) < 1){
     $erro = ("<script>
     Swal.fire({
@@ -30,7 +30,7 @@ if (count($objClinica) < 1){
     </script>"."<meta http-equiv=\"refresh\" content=\"5;url=listaClinica.php\" />");
 }
 /* echo '<pre>';print_r($objClinica);echo'<pre>';exit; */
-$objDentista = dentista::getDentistas('statusDentista != "inativo"');
+$objDentista = dentista::getDentistas('statusDentista != "Inactive"');
 if (count($objDentista) < 1){
     $erro = ("<script>
     Swal.fire({

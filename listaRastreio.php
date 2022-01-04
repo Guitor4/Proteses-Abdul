@@ -5,7 +5,7 @@ include __DIR__ . './includes/sessionStart.php';
 
 use Classes\Entity\rastreio;
 
-define('NAME', 'Rastreio');
+define('NAME', 'Tracking');
 define('LINK', 'listaRastreio.php');
 define('IDENTIFICACAO', 1);
 

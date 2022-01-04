@@ -59,7 +59,7 @@ $dompdf->loadHtml('
     <hr><br>
     
     <div>
-        <label>Data: '.date('d/m/y', strtotime($consulta->dataConsulta)).'</label><br>
+        <label>Data: '.date('m-d-Y', strtotime($consulta->dataConsulta)).'</label><br>
         <label>Hora: '.$consulta->horaConsulta.'</label><br>
         <label>Status: '.$consulta->statusConsulta.'</label><br>
         <label>Clinica: '.$consulta->nomeClinica.'</label><br>

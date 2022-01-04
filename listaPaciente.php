@@ -5,7 +5,7 @@ include __DIR__ . './includes/sessionStart.php';
 
 use Classes\Entity\paciente;
 
-define('NAME', 'Paciente');
+define('NAME', 'Patient');
 define('LINK', 'listaPaciente.php');
 define('IDENTIFICACAO', 1);
 if (!isset($_GET['pagina'])) {
@@ -57,17 +57,17 @@ foreach ($pacientes as $p) {
         . '<td class = "text-overflow"> ' . $p->email . '</td>'
         . '<td class = "text-overflow"> 
           <a href="editaPaciente.php?prontuario=' . $p->prontuario . '" 
-              class="btn btn-info" >Editar</a>
+              class="btn btn-info" >Edit</a>
               
             <a href="prontuario.php?paciente=' . $p->prontuario . '"
-                class="btn btn-primary" >Abrir prontuário</a>
+                class="btn btn-primary" >Open Medical Record</a>
          </td>
          </tr>';
 }
 
 $resultados = strlen($resultados) ? $resultados :
     '<tr>'
-    . '<td colspan = "6" class = "text-center"> Nenhum paciente encontrado</td>'
+    . '<td colspan = "6" class = "text-center"> There are no registered patients </td>'
     . '</tr>';
 
 include __DIR__ . '/includes/header.php';

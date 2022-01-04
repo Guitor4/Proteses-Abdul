@@ -9,14 +9,14 @@
 
               <input type="text" class="form-control p-1" name="busca" id="busca" required="" value="<?= $busca ?>">
             </div>
-            <input type="submit" name="pesquisarPron" class="btn btn-secondary btInput p- d-flex " style="margin:auto" value="Pesquisar">
+            <input type="submit" name="pesquisarPron" class="btn btn-secondary btInput p- d-flex " style="margin:auto" value="Search">
 
           </form>
 
         </div>
         <div class="d-flex justify-content-center">
           <div class="col-6 p-2">
-            <a href="listaConsultaR.php"> <input type="submit" value="Limpar Pesquisa" class="btn btn-danger w-100" /> </a>
+            <a href="listaConsultaR.php"> <input type="submit" value="Clear search" class="btn btn-danger w-100" /> </a>
           </div>
         </div>
       </div>
@@ -30,15 +30,15 @@
             <table class="table bg-light bg-gradient mt-3">
                 <thead class="bg-dark text-light">
                     <tr>
-                        <th>Prontuário</th>
-                        <th>Paciente</th>
-                        <th>Consulta</th>
-                        <th>Data</th>
-                        <th>Hora</th>
-                        <th>status</th>
-                        <th>Dentista</th>
-                        <th>Clínica</th>
-                        <th>Procedimento</th>
+                        <th>Denture ID</th>
+                        <th>Patient</th>
+                        <th>Appointment</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Status</th>
+                        <th>Dentist</th>
+                        <th>Clinic</th>
+                        <th>Proceeding</th>
 
                         <th></th>
 
@@ -59,7 +59,7 @@
                                 <a class="page-link" href="listaConsultaR.php?pagina=1"><<</a>
                             </li>
                             <li class="page-item">
-                                <a class="page-link" href="listaConsultaR.php?pagina=<?= ($pagina_atual > 1 ? $pagina_atual - 1 : $pagina_atual) ?><?= isset($_GET['search']) ? '&search=' . $_GET['search'] : '' ?>" tabindex="-1">Anterior</a>
+                                <a class="page-link" href="listaConsultaR.php?pagina=<?= ($pagina_atual > 1 ? $pagina_atual - 1 : $pagina_atual) ?><?= isset($_GET['search']) ? '&search=' . $_GET['search'] : '' ?>" tabindex="-1">Previous</a>
                             </li>
                             <?php
                             $limite_paginacao = ceil(($num_pagina + $pagina_atual) / 2);
@@ -77,7 +77,7 @@
                             }
                             ?>
                             <li class="page-item">
-                                <a class="page-link" href="listaConsultaR.php?pagina=<?= ($pagina_atual < $num_pagina ? $pagina_atual + 1 : $pagina_atual) ?><?= isset($_GET['search']) ? '&search=' . $_GET['search'] : '' ?>">Próximo</a>
+                                <a class="page-link" href="listaConsultaR.php?pagina=<?= ($pagina_atual < $num_pagina ? $pagina_atual + 1 : $pagina_atual) ?><?= isset($_GET['search']) ? '&search=' . $_GET['search'] : '' ?>">Next</a>
                             </li>
                             <li class="page-item">
                                 <a class="page-link" href="listaConsultaR.php?pagina=<?= $num_pagina ?><?= isset($_GET['search']) ? '&search=' . $_GET['search'] : '' ?>">>></a>

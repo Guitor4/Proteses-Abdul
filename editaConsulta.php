@@ -20,7 +20,7 @@ $select = "<script src=\"js/JQuery2.min.js\"></script>
     $( document ).ready(function() {
     preencherListaHome();
 });";
-$objClinica = clinica::getClinicas('statusClinica != "inativo"');
+$objClinica = clinica::getClinicas('statusClinica != "Inactive"');
 if (count($objClinica) < 1) {
     $erro = ("<script>
     Swal.fire({
@@ -33,7 +33,7 @@ if (count($objClinica) < 1) {
     </script>" . "<meta http-equiv=\"refresh\" content=\"5;url=listaClinica.php\" />");
 }
 /* echo '<pre>';print_r($objClinica);echo'<pre>';exit; */
-$objDentista = dentista::getDentistas('statusDentista != "inativo"');
+$objDentista = dentista::getDentistas('statusDentista != "Inactive"');
 if (count($objDentista) < 1) {
     $erro = ("<script>
     Swal.fire({

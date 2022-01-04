@@ -6,8 +6,8 @@ include __DIR__ . './includes/nivelAcesso.php';
 
 use \Classes\Entity\Funcionario;
 
-define('TITLE', 'Editar Funcionário');
-define('BTN', 'editarFuncionario');
+define('TITLE', 'Edit Employee');
+define('BTN', 'editFuncionario');
 define('IDENTIFICACAO', '0');
 
 
@@ -37,7 +37,7 @@ if (isset($_POST[BTN])) {
         $objFuncionario->perfil = $_POST['perfil'];
         $objFuncionario->login = $_POST['login'];
         $objFuncionario->senha = $_POST['senha'];
-        $objFuncionario->statusFuncionario = ($_POST['status'] == 'Ativo' ? 'Ativo' : 'Inativo');
+        $objFuncionario->statusFuncionario = ($_POST['status'] == 'Active' ? 'Active' : 'Inactive');
         /* echo '<pre>';print_r($objFuncionario);echo '<pre>';exit; */
 
         if ($objFuncionario->AtualizarFuncionario()) {

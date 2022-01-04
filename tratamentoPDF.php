@@ -10,8 +10,10 @@ use Dompdf\Options;
 
 if (isset($_GET['idProcedimento'])){ //cuidado com o id da protese
     
-    $tratamento = Prontuario::getTratamentoInner($_GET['idProcedimento'],$_GET['consulta'],$_GET['prontuario']);
-    /* echo '<pre>';print_r($tratamento); echo '<pre>';exit; */
+    $tratamento = Prontuario::getTratamentoInner($_GET['idProcedimento'],$_GET['nomeProcedimento'],$_GET['consulta'],$_GET['prontuario']);
+    if(!$tratamento){
+        header('location:prontuario.php?paciente='.$_GET['prontuario'].'&status=error2');
+    }
      
 } 
 /*foreach ($tratamentos as $tratamento) {
@@ -25,26 +27,26 @@ if (isset($_GET['idProcedimento'])){ //cuidado com o id da protese
 $options = new Options();
 $options->setChroot(__DIR__);
 
-if ($tratamento->idProcedimento==5||$tratamento->idProcedimento==11){//se igual a protese
+if ($tratamento->nomeProcedimento=='Protese'||$tratamento->nomeProcedimento=='Protese 2'){//se igual a protese
     $t='
         <h3>'.$tratamento->nomeProcedimento.'</h3>
-        <label>Código: '.$tratamento->idProtese.'</label><br>
-        <label>Tipo: '.$tratamento->tipo.'</label><br>
-        <label>Posição: '.$tratamento->posicao.'</label><br>
-        <label>Marca Dente: '.$tratamento->marcaDente.'</label><br>
-        <label>Extensão: '.$tratamento->extensao.'</label><br>
-        <label>Qtd. de Dente: '.$tratamento->qtdDente.'</label><br>
-        <label>Ouro?: '.$tratamento->ouro.'</label><br>
-        <label>Qtd. Ouro: '.$tratamento->qtdOuro.'</label><br>
-        <label>Data de Registro: '.date('d/m/y h:i:s', strtotime($tratamento->dataRegistro)).'</label><br>
+        <label>Denture ID: '.$tratamento->idProtese.'</label><br>
+        <label>Denture option: '.$tratamento->tipo.'</label><br>
+        <label>Position: '.$tratamento->posicao.'</label><br>
+        <label>Tooth Brand: '.$tratamento->marcaDente.'</label><br>
+        <label>Extension: '.$tratamento->extensao.'</label><br>
+        <label>N° of Teeths: '.$tratamento->qtdDente.'</label><br>
+        <label>Golden tooth: '.$tratamento->ouro.'</label><br>
+        <label>N° of golden tooths: '.$tratamento->qtdOuro.'</label><br>
+        <label>Registration date: '.date('m-d-Y h:i:s', strtotime($tratamento->dataRegistro)).'</label><br>
         <label>Status: '.$tratamento->status.'</label><br>
-        <label>Observação:<textarea style="height: auto"> '.$tratamento->observacao.'</textarea></label><br>
+        <label>Observation:<textarea style="height: auto"> '.$tratamento->observacao.'</textarea></label><br>
         ';
     
 } else {
     $t='<div>
         <h3>'.$tratamento->nomeProcedimento.'</h3>
-        <label>Observação:<textarea style="height: auto"> '.$tratamento->observacao.'</textarea></label><br>
+        <label>Observation:<textarea style="height: auto"> '.$tratamento->observacao.'</textarea></label><br>
     </div>';
 }
 
@@ -92,24 +94,24 @@ $dompdf->loadHtml('
         <p style="text-align:center;"> <img src="'.__DIR__.$logo.'"width="200" height="100" > </p>
             
    <div>
-        <label>Prontuário: '.$tratamento->prontuario.'</label><br>
-        <label>Paciente: '.$tratamento->nomePaciente.'</label><br>
-        <label>Sexo: '.$tratamento->sexo.'</label><br>
-        <label>Telefone: '.$tratamento->telefone.'</label><br>
+        <label>Medical Record: '.$tratamento->prontuario.'</label><br>
+        <label>Patient: '.$tratamento->nomePaciente.'</label><br>
+        <label>Gender: '.$tratamento->sexo.'</label><br>
+        <label>Phone: '.$tratamento->telefone.'</label><br>
         <label>E-mail: '.$tratamento->email.'</label>  
     </div>
     
     <hr>
     
     
-        <h1 style="text-align:center" >Consulta '.$tratamento->idConsulta.'</h1>
+        <h1 style="text-align:center" >Appointment '.$tratamento->idConsulta.'</h1>
             <div>
-            <label>Data: '.date('d/m/y', strtotime($tratamento->dataConsulta)).'</label><br>
-            <label>Hora: '.$tratamento->horaConsulta.'</label><br>
+            <label>Date: '.date('m-d-Y', strtotime($tratamento->dataConsulta)).'</label><br>
+            <label>Hour: '.$tratamento->horaConsulta.'</label><br>
             <label>Status: '.$tratamento->statusConsulta.'</label><br>
-            <label>Clínica: '.$tratamento->nomeClinica.'</label><br>
-            <label>Dentista: '.$tratamento->nomeDentista.'</label><br>
-            Relatório:<textarea style="height: auto"> '.$tratamento->relatorio.'</textarea><br>
+            <label>Clinic: '.$tratamento->nomeClinica.'</label><br>
+            <label>Dentist: '.$tratamento->nomeDentista.'</label><br>
+            Comments:<textarea style="height: auto"> '.$tratamento->relatorio.'</textarea><br>
             </div>
     
     <hr>
@@ -117,14 +119,14 @@ $dompdf->loadHtml('
     <footer style="position: fixed; bottom:0; width: 100%; border-top: 1px solid gray;">
     
         <span>Denture Logic - Customised Denture Care</span><br>
-        <span>Telefone:(61)9999-0000</span><br>
-        <span>Protético:Abdul Abdul</span><br>
-        <span>'. date('d/m/Y H:i:s') .'</span><br>
-        <span class="page">Página<span>
+        <span>Phone:(61)9999-0000</span><br>
+        <span>Abdul denture logic</span><br>
+        <span>'. date('m-d-Y H:i:s') .'</span><br>
+        <span class="page">Page<span>
         
     </footer>
     
-        <h1 style="text-align:center" >Tratamento</h1>
+        <h1 style="text-align:center" >Treatment</h1>
         
         <div id="tratamento">'.$t.'</div>
             

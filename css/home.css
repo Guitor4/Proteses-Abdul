@@ -4,6 +4,7 @@ max-width:300px;
 overflow: hidden;
 text-overflow: ellipsis;  
 white-space: nowrap;
+text-align: center;
 }
 
 div#to_do_list::-webkit-scrollbar { 
@@ -19,6 +20,57 @@ background-position: auto;
 .dropdown-content {
   max-height: 200px !important;
 }
+@media(min-width: 300px){
+  .iconesAcessoRapido{
+    display: flex;
+    
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+    }
+    .iconeAcessoRapido{
+      width: 100%;
+      height: 150px;
+    }
+ }
+ @media(min-width: 600px){
+  .iconesAcessoRapido{
+    display: flex;
+    
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+    }
+    .iconeAcessoRapido{
+      width: 50%;
+      height: 150px;
+    }
+ }
+ @media(min-width: 800px){
+  .iconesAcessoRapido{
+    display: flex;
+    
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+    }
+    .iconeAcessoRapido{
+      width: 33%;
+      height: 150px;
+    }
+ }
+/* .iconesAcessoRapido{
+display: flex;
+
+flex-direction: row;
+flex-wrap: wrap;
+
+justify-content: space-around;
+}
+.iconeAcessoRapido{
+  width: 33%;
+  height: 150px;
+} */
 
 /* cor base pesquisada no site paletton 00CCCC */
 

@@ -5,7 +5,7 @@ include __DIR__ . './includes/sessionStart.php';
 
 use Classes\Entity\Procedimento;
 
-define('NAME', 'Procedimento');
+define('NAME', 'Proceeding');
 define('LINK', 'listaProcedimento.php');
 define('IDENTIFICACAO', 2);
 

@@ -3,7 +3,7 @@
 require 'vendor/autoload.php';
 include __DIR__ . './includes/sessionStart.php';
 define('TITLE', 'Editar Lembrete');
-define('BTN', 'editarLembrete');
+define('BTN', 'editLembrete');
 define('IDENTIFICACAO', '0');
 
 use Classes\Entity\Lembrete;

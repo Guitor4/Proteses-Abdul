@@ -2,7 +2,7 @@
 
 require 'vendor/autoload.php';
 include __DIR__ . './includes/sessionStart.php';
-define('TITLE', 'Cadastrar Paciente');
+define('TITLE', 'Register Patient');
 define('BTN', 'cadastrarPaciente');
 define('IDENTIFICACAO', '0');
 

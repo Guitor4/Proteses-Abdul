@@ -5,7 +5,7 @@ include __DIR__ . './includes/sessionStart.php';
 
 use Classes\Entity\dentista;
 
-define('NAME', 'Dentista');
+define('NAME', 'Dentist');
 define('LINK', 'listaDentista.php');
 define('IDENTIFICACAO', 6);
 if (!isset($_GET['pagina'])) {
@@ -55,7 +55,7 @@ foreach ($dentista as $d) {
     . '<td> ' . $d->statusDentista . '</td>'
     . '<td> 
           <a href="editaDentista.php?idDentista=' . $d->idDentista . '" 
-              class="btn btn-info" >Editar</a>
+              class="btn btn-info" >Edit</a>
            
          </td>
          </tr>';

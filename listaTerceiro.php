@@ -2,7 +2,7 @@
 
 require 'vendor/autoload.php';
 include __DIR__ . './includes/sessionStart.php';
-define('NAME', 'Terceiro');
+define('NAME', 'Provider');
 define('LINK', 'listaTerceiro.php?pagina=1');
 define('IDENTIFICACAO', 1);
 use Classes\Entity\Terceiro;
@@ -58,7 +58,7 @@ foreach ($Terceiro as $objTerceiro) {
                         
                         <td>
                         <a href = editaTerceiro.php?id=' . $objTerceiro->idTerceiro . '>
-                        <button type="button" class="btn btn-info">Editar</button>
+                        <button type="button" class="btn btn-info">Edit</button>
                         </a>
                         </td>
                         </tr>';

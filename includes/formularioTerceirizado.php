@@ -14,9 +14,9 @@
             <form name = "formTerceirizado" class="d-flex justify-content-center" method="post" style="color: white">
                 <div class="col-8">
                     <div class="form-group">
-                        <label> Terceiro: </label>
+                        <label> Provider: </label>
                         <select onchange="getServicoTerceiro2(this.value)" <?= (TITLE == 'Cadastrar Terceirizado' ? '' : 'disabled') ?> class="selectpicker form-control" data-live-search="true" data-size=5 name="Terceiro" value="">
-                            <option hidden selected value=''>[---SELECIONE---]</option>
+                            <option hidden selected value=''>[---Select---]</option>
 
                             <?php
                             echo $selectTerceiro
@@ -24,38 +24,38 @@
                             ?>
 
                         </select>
-                        <?php (TITLE == 'Cadastrar Terceirizado' ? '' : print('<select name = "terceiro2" hidden >' . $selectTerceiro . '</select>')) ?>
+                        <?php (TITLE == 'Register Service Provider' ? '' : print('<select name = "terceiro2" hidden >' . $selectTerceiro . '</select>')) ?>
                     </div>
                     <div class="form-group">
-                        <label> Serviço Terceiro: </label>
-                        <select <?= (TITLE == 'Cadastrar Terceirizado' ? '' : 'disabled') ?> class="selectpicker form-control" data-live-search="true" data-size=5 name="ServicoTerceiro" id = "servico_terceiro" value="">
-                            <option selected hidden value=''>[---SELECIONE---]</option>
+                        <label> Service: </label>
+                        <select <?= (TITLE == 'Register Service Provider' ? '' : 'disabled') ?> class="selectpicker form-control" data-live-search="true" data-size=5 name="ServicoTerceiro" id = "servico_terceiro" value="">
+                            <option selected hidden value=''>[---Select---]</option>
 
                             <?php
                             echo $selectServico;
                             ?>
 
                         </select>
-                        <?php (TITLE == 'Cadastrar Terceirizado' ? '' : print('<select name = "servico2" hidden > ' . $selectServico . '</select>')) ?>
+                        <?php (TITLE == 'Register Service Provider' ? '' : print('<select name = "servico2" hidden > ' . $selectServico . '</select>')) ?>
                     </div>
                     <div class="form-group">
                         <label>Status: </label>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="status" id="exampleRadios1" value="ativo" checked="">
+                            <input class="form-check-input" type="radio" name="status" id="exampleRadios1" value="Active" checked="">
                             <label class="form-check-label" for="exampleRadios1">
-                                Ativo
+                                Active
                             </label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="status" id="exampleRadios2" value="inativo" <?= $terceirizado->statusTerceirizado == 'inativo' ? 'checked' : '' ?>>
+                            <input class="form-check-input" type="radio" name="status" id="exampleRadios2" value="Inactive" <?= $terceirizado->statusTerceirizado == 'Inactive' ? 'checked' : '' ?>>
                             <label class="form-check-label" for="exampleRadios2">
-                                Inativo
+                                Inactive
                             </label>
                         </div>
                     </div>
                     <div class="d-flex justify-content-center p-2">
 
-                        <input type="button" onclick="validaTerceirizado()" name="<?= BTN ?>" class="  btn btn-lg btn-success btInput" value="<?= (TITLE == "Cadastrar Terceirizado" ? 'Cadastrar' : 'Editar') ?>">
+                        <input type="button" onclick="validaTerceirizado()" name="<?= BTN ?>" class="  btn btn-lg btn-success btInput" value="<?= (TITLE == "Register Service Provider" ? 'Register' : 'Edit') ?>">
 
                     </div>
                 </div>

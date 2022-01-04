@@ -5,7 +5,7 @@ include __DIR__.'./includes/sessionStart.php';
 use \Classes\Entity\Terceiro;
 
 define('TITLE', 'Editar Terceiro');
-define('BTN', 'editarTerceiro');
+define('BTN', 'editTerceiro');
 define('IDENTIFICACAO', '0');
 
 if (!isset($_GET['id']) or !is_numeric($_GET['id'])) {
@@ -29,7 +29,7 @@ if (isset($_POST['editarTerceiro'])) {
         $objTerceiro->idTerceiro = $_GET['id'];
         $objTerceiro->nomeTerceiro = $_POST['nomeTerceiro'];
         $objTerceiro->telefone = ($_POST['telefone']);
-        $objTerceiro->statusTerceiro = ($_POST['statusTerceiro'] == 'Ativo' ? 'Ativo' : 'Inativo');
+        $objTerceiro->statusTerceiro = ($_POST['statusTerceiro'] == 'Active' ? 'Active' : 'Inactive');
         //echo '<pre>';print_r($objTerceiro);echo '<pre>';exit;
 
         if($objTerceiro->AtualizarTerceiro()){

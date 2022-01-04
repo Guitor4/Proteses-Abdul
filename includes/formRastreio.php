@@ -11,30 +11,30 @@
                 <form name = "formRastreio" class="p-2" method="post" style="color: white">
 
                     <div class="form-group">
-                        <label>Data de Envio</label>
+                        <label>Send date</label>
                         <input type="date" class="form-control" min="<?= date('Y-m-d')?>" name="dtEntrega" value="<?= $rastreio->dtEntrega ?>">
                     </div>
 
                     <div class="form-group">
-                        <label>Data de Retorno</label>
+                        <label>Return date</label>
                         <input type="date" class="form-control" min="<?= date('Y-m-d')?>" name="dtRetorno" value="<?= $rastreio->dtRetorno ?>">
                     </div>
 
                     <div class="form-group">
-                        <label>Observação</label>
+                        <label>Observation</label>
                         <input type="text" placeholder="Opcional" class="form-control" name="obs" value="<?= $rastreio->obs ?>">
                     </div>
                     <div class="form-group " hidden="">
-                        <label>Prótese</label>
+                        <label>Denture</label>
                         <input type="text" class="form-control" name="fkProtese" value="<?= $rastreio->fkProtese ?>">
                     </div>
 
 
 
                     <div class="form-group">
-                        <label>Terceirizado</label>
+                        <label>Provider</label>
                         <select type="text" class="form-control" name="RFKTerceiro" id="id_terceiro" onchange="getServicoTerceiro(this.value)">
-                            <option hidden="" value="">[SELECIONE]</option>
+                            <option hidden="" value="">[Select]</option>
 
                             <?php
                             if (TITLE == "Editar Rastreio") { //executado quando na pág editar
@@ -55,7 +55,7 @@
 
 
                     <div class="form-group">
-                        <label>Serviço Terceirizado</label>
+                        <label>Service</label>
                         <select id="servico_terceiro" class="form-control" name="RFKServico">
                             <option value="" hidden>Escolher Servico</option>
 
@@ -75,17 +75,17 @@
                     <div class="form-group">
                         <label>Status</label>
                         <select class="form-control" name="status">
-                            <option hidden="">[SELECIONE]</option>
+                            <option hidden="">[Select]</option>
 
                             <?php
-                            if (TITLE == "Editar Rastreio") { //executado quando na pág editar
+                            if (TITLE == "Edit Tracking") { //executado quando na pág editar
                             ?>
-                                <option value="aberto" <?= 'aberto' == $rastreio->statusRastreio ? 'selected = selected' : '' ?>>Aberto</option>
-                                <option value="finalizado" <?= 'finalizado' == $rastreio->statusRastreio ? 'selected = selected' : '' ?>>Finalizado</option>
-                                <option value="cancelado" <?= 'cancelado' == $rastreio->statusRastreio ? 'selected = selected' : '' ?>>Cancelado</option>
+                                <option value="Open" <?= 'Open' == $rastreio->statusRastreio ? 'selected = selected' : '' ?>>Open</option>
+                                <option value="Finished" <?= 'Finished' == $rastreio->statusRastreio ? 'selected = selected' : '' ?>>Finished</option>
+                                <option value="Canceled" <?= 'Canceled' == $rastreio->statusRastreio ? 'selected = selected' : '' ?>>Canceled</option>
                             <?php
                             } else {
-                                echo "<option hidden value='aberto' selected=''>Aberto</option>";
+                                echo "<option hidden value='Open' selected=''>Open</option>";
                             }
 
                             ?>
@@ -94,8 +94,7 @@
                     </div>
                     <div class="d-flex justify-content-center p-2">
 
-                        <input type="submit" onclick="validaRastreio()" name="<?= BTN ?>" class="  btn btn-lg btn-success btInput" value="<?= (TITLE == "Cadastrar Rastreio" ? 'Cadastrar' : 'Editar') ?>" <?php //if ($btEnviar == TRUE) echo "disabled";
-                                                                                                                                                                                ?>>
+                        <input type="submit" onclick="validaRastreio()" name="<?= BTN ?>" class="  btn btn-lg btn-success btInput" value="<?= (TITLE == "Register Tracking" ? 'Register' : 'Edit') ?>">
 
                     </div>
             </div>
@@ -109,15 +108,15 @@
             <div class="col-4 mt-2">
 
                 <div class="rounded-3" style=" background-color: black; opacity: 80%; text-align: left; line-height: 3 ; padding-left: 10px;  ">
-                    <h4 class="text-white">Dados do paciente Selecionado</h4>
+                    <h4 class="text-white">Selected patient data</h4>
                     <label style="color: orange">
                         <?php
                         if ($innerTratamento != null) {
-                            echo 'PRONTUÁRIO: <b>' . $innerTratamento->prontuario . ' </b> || PACIENTE: <b>' . $innerTratamento->nomePaciente .
-                                '</b><br>CONSULTA: <b>' . $innerTratamento->idConsulta . '</b> || DATA: <b>' . date('d/m/Y', strtotime($innerTratamento->dataConsulta)) .
-                                '</b><br>DENTISTA: <b>' . $innerTratamento->nomeDentista . '</b> || CLÍNICA: <b>' . $innerTratamento->nomeClinica . '<hr>' .
-                                '</b>IDPRÓTESE: <b>' . $innerTratamento->idProtese . '</b> || TIPO: <b>' . $innerTratamento->tipo .
-                                '</b><br>POSIÇÂO: <b>' . $innerTratamento->posicao . '</b> <br> DATA-REGISTRO: <b>' . date('d/m/Y', strtotime($innerTratamento->dataRegistro));
+                            echo 'Medical Record: <b>' . $innerTratamento->prontuario . ' </b> || Patient: <b>' . $innerTratamento->nomePaciente .
+                                '</b><br>Appointment: <b>' . $innerTratamento->idConsulta . '</b> || Date: <b>' . date('m-d-Y', strtotime($innerTratamento->dataConsulta)) .
+                                '</b><br>Dentist: <b>' . $innerTratamento->nomeDentista . '</b> || Clinic: <b>' . $innerTratamento->nomeClinica . '<hr>' .
+                                '</b>Denture ID: <b>' . $innerTratamento->idProtese . '</b> || Denture Option: <b>' . $innerTratamento->tipo .
+                                '</b><br>Position: <b>' . $innerTratamento->posicao . '</b> <br> Registration Date: <b>' . date('m-d-Y', strtotime($innerTratamento->dataRegistro));
                         }
                         ?>
 

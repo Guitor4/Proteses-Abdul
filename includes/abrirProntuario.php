@@ -23,14 +23,14 @@
 
                         <div id="passar_mouse">
                             <a class="nav-link" role="button" onclick="Dados_Cadastrais()">
-                                <h5 style="color: white; text-align: left">Dados Cadastrais</h5>
+                                <h5 style="color: white; text-align: left">Registration data</h5>
                             </a>
                         </div>
 
 
                         <div id="passar_mouse">
                             <a class="nav-link"  role="button" onclick="Consultas()">
-                                <h5 style="color: white; text-align: left">Consultas</h5>
+                                <h5 style="color: white; text-align: left">Consultation</h5>
                             </a>
 
                         </div>
@@ -38,11 +38,11 @@
                         
                         <div id="passar_mouse" class="nav-item dropdown">
                              <a class="nav-link " href="#" id="navbarDropdown"  data-bs-toggle="dropdown" aria-expanded="false">
-                                 <h5 style="color: white; text-align: left">Fotos</h5>
+                                 <h5 style="color: white; text-align: left">Images</h5>
                              </a>
                                  <ul class="dropdown-menu">
-                                     <li><a class="dropdown-item" role="button" onclick="FotoAntes()">Antes</a></li>
-                                <li><a class="dropdown-item" role="button" onclick="FotoDepois()">Depois</a></li>
+                                     <li><a class="dropdown-item" role="button" onclick="FotoAntes()">Before</a></li>
+                                <li><a class="dropdown-item" role="button" onclick="FotoDepois()">After</a></li>
                                 
                                 </ul>
                         </div>
@@ -59,6 +59,7 @@
                                 <div class="container-fluid mb-2 overflow-auto" id="apresenta_Fotos" style="margin-left: 10px;max-height: 400px;">  </div>
                                         
                                 <div class="container-fluid overflow-auto" style="max-height: 200px;">
+                                <h6 class="text-dark mt-3" id="mostraTitulo" style="text-align: center"></h6>
                                     <table class="table table-hover bg-white " id="apresenta_Consultas" >
                                         <thead>
 
@@ -77,9 +78,9 @@
                             <div class="container-fluid row-cols-auto bg-gradient overflow-auto mb-2"  style=" background-color: whitesmoke;opacity: 100%;max-height: 300px">
                                 
                                  
-                                    <h6 class="text-dark mt-3" id="mostraTitulo" style="text-align: center"></h6>
+                                    
 
-                                  
+                                    
                                 <table class="table table-hover bg-white collapse" id="apresenta_Tratamentos">
 
                                     <thead>
@@ -104,10 +105,10 @@
 <script src="js/JQuery2.min.js"></script>
 <script>
  $(document).ready(function () {
-    loadDados();
+    Dados_Cadastrais();
     });
 </script>
 
-<!--<//?=$alerta?>-->
+<?=$alerta?>
 
 

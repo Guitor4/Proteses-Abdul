@@ -3,7 +3,7 @@
 include __DIR__ . '   .\vendor\autoload.php';
 include __DIR__ . './includes/sessionStart.php';
 
-define('NAME', 'Lembrete');
+define('NAME', 'Reminder');
 define('LINK', 'listaLembrete.php?pagina=1');
 
 use Classes\Entity\Lembrete;
@@ -75,7 +75,7 @@ foreach ($lembretes as $l) {
     . '<td> ' . $l->dataLembrete . '</td>'
     . '<td> 
           <a href="editaLembrete.php?id=' . $l->idLembrete . '" 
-              class="btn btn-info" >Editar</a>
+              class="btn btn-info" >Edit</a>
               <button ' . $l->idLembrete . '" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal' . $l->idLembrete . '" >Excluir</button>
          </td>
          

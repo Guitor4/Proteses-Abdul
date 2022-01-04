@@ -16,29 +16,28 @@
                 <form class="d-flex justify-content-center" method="post" style="color: white">
                     <div class="col-8">
                         <div class="form-group">
-                            <label>Nome do Procedimento: </label>
+                            <label>Name: </label>
                             <input type="text" class="form-control" required name="nomeProcedimento" placeholder="Procedimento" value="<?= $objProcedimento->nomeProcedimento ?>">
                         </div>
-                        <label>Status do Procedimento: </label>
+                        <label>Status: </label>
                         <div class="form-group">
 
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="statusProcedimento" value="Ativo" checked="">
+                                <input class="form-check-input" type="radio" name="statusProcedimento" value="Active" checked="">
                                 <label class="form-check-label">
-                                    Ativo
+                                    Active
                                 </label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="statusProcedimento" value="Inativo" <?= $objProcedimento->statusProcedimento == 'Inativo' ? 'checked' : '' ?>>
+                                <input class="form-check-input" type="radio" name="statusProcedimento" value="Inactive" <?= $objProcedimento->statusProcedimento == 'Inactive' ? 'checked' : '' ?>>
                                 <label class="form-check-label">
-                                    Inativo
+                                    Inactive
                                 </label>
                             </div>
                         </div>
                         <div class="d-flex justify-content-center p-2">
 
-                            <input type="submit" name="<?= BTN ?>" class="  btn btn-lg btn-success btInput" value="<?= (TITLE == "Cadastrar Procedimento" ? 'Cadastrar' : 'Editar') ?>" <?php //if ($btEnviar == TRUE) echo "disabled";
-                                                                                                                                                                                            ?>>
+                            <input type="submit" name="<?= BTN ?>" class="  btn btn-lg btn-success btInput" value="<?= (TITLE == "Register Proceeding" ? 'Register' : 'Edit') ?>">
 
                         </div>
                     </div>

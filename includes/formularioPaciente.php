@@ -5,28 +5,28 @@
              <form class="p-2" method="post" style="color: white">
 
                  <div class="form-group">
-                     <label>Nome</label>
+                     <label>Name</label>
                      <input type="text" onblur = "validaNome(this)" class="form-control" name="nomePaciente" required="" value="<?= $paciente->nomePaciente ?>">
                  </div>
 
                  <div class="form-group">
-                     <label>Sexo: </label>
+                     <label>Gender: </label>
                      <div class="form-check form-check-inline">
-                         <input class="form-check-input" type="radio" name="sexo" id="exampleRadios1" value="masculino" checked="">
+                         <input class="form-check-input" type="radio" name="sexo" id="exampleRadios1" value="Masculine" checked="">
                          <label class="form-check-label" for="exampleRadios1">
-                             Masculino
+                             Masculine
                          </label>
                      </div>
                      <div class="form-check form-check-inline">
-                         <input class="form-check-input" type="radio" name="sexo" id="exampleRadios2" value="feminino" <?= $paciente->sexo == 'feminino' ? 'checked' : '' ?>>
+                         <input class="form-check-input" type="radio" name="sexo" id="exampleRadios2" value="Feminine" <?= $paciente->sexo == 'Feminine' ? 'checked' : '' ?>>
                          <label class="form-check-label" for="exampleRadios2">
-                             Feminino
+                             Feminine
                          </label>
                      </div>
                  </div>
 
                  <div class="form-group">
-                     <label>Telefone</label>
+                     <label>Phone</label>
                      <input type="tel" class="form-control" minlength="9" required onblur="validaTelefone(this)" name="tel" value="<?= $paciente->telefone ?>" onkeypress="mascara(this, '##-####-####')" maxlength="12">
                  </div>
 
@@ -37,7 +37,7 @@
                  <br>
                  <div class="d-flex justify-content-center p-2">
 
-                     <input type="submit" name="<?= BTN ?>" class="  btn btn-lg btn-success btInput" value="<?= (TITLE == "Cadastrar Paciente" ? 'Cadastrar' : 'Editar') ?>" <?php //if ($btEnviar == TRUE) echo "disabled";
+                     <input type="submit" name="<?= BTN ?>" class="  btn btn-lg btn-success btInput" value="<?= (TITLE == "Register Patient" ? 'Register' : 'Edit') ?>" <?php //if ($btEnviar == TRUE) echo "disabled";
                                                                                                                                                                             ?>>
 
                  </div>

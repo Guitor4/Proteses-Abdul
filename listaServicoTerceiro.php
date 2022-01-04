@@ -6,7 +6,7 @@ include __DIR__ . './includes/sessionStart.php';
 use Classes\Entity\ServicoTerceiro;
 
 define('IDENTIFICACAO',8);
-define('NAME','Servico Terceiro');
+define('NAME','Services Providers');
 define('LINK','listaServicoTerceiro.php?pagina=1');
 
 if (!isset($_GET['pagina'])) {
@@ -59,7 +59,7 @@ foreach ($servico as $objServicoTerceiro) {
                         
                         <td>
                         <a href = editaServicoTerceiro.php?id=' . $objServicoTerceiro->idServico . '>
-                        <button type="button" class="btn btn-info">Editar</button>
+                        <button type="button" class="btn btn-info">Edit</button>
                         </a>
                         </td>
                         </tr>';

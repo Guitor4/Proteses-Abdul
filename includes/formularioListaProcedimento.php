@@ -4,23 +4,23 @@
     <section class="d-flex justify-content-center mt-2">
       <div class="col-4">
         <div class="bg-dark rounded p-2">
-          <h5 style="color: white; text-align: center ">Procedimentos</h5>
+          <h5 style="color: white; text-align: center ">Proceedings</h5>
           <form method="post" action="">
             <div class="col-10 form-group p-2" style="margin:auto">
               <input hidden name="tabela" value="procedimento"></input>
               <input type="text" class="form-control p-1" id="busca" name="busca" required="" value="<?= $busca ?>">
             </div>
-            <input type="submit" name="pesquisarProcedimento" class="btn btn-secondary btInput p- d-flex " style="margin:auto" value="Pesquisar">
+            <input type="submit" name="pesquisarProcedimento" class="btn btn-secondary btInput p- d-flex " style="margin:auto" value="Search">
 
           </form>
 
         </div>
         <div class="row">
           <div class="col-6 p-2">
-            <a href="listaProcedimento.php"> <input type="submit" value="Limpar Pesquisa" class="btn btn-danger w-100" /> </a>
+            <a href="listaProcedimento.php"> <input type="submit" value="Clear search" class="btn btn-danger w-100" /> </a>
           </div>
           <div class="col-6 p-2">
-            <a href="cadastroProcedimento.php"> <input type="submit" value="Cadastrar Procedimento" class="btn btn-success w-100" /> </a>
+            <a href="cadastroProcedimento.php"> <input type="submit" value="Register Proceeding" class="btn btn-success w-100" /> </a>
           </div>
         </div>
       </div>
@@ -37,14 +37,14 @@
                             
                           
                             <a href = editaProcedimento.php?id=' . $objProcedimento->idProcedimento . '>
-                            <button type="button" class="btn btn-info">Editar</button>
+                            <button type="button" class="btn btn-info">Edit</button>
                             </a>
                             </td>
                             </tr>';
     }
     $resultados = strlen($resultados) ? $resultados :
       '<tr>'
-      . '<td colspan = "12" class = "text-center"> Nenhum Procedimento foi registrado por enquanto...</td>'
+      . '<td colspan = "12" class = "text-center"> No Procedures have been registered yet...</td>'
       . '</tr>';
 
     ?>
@@ -53,10 +53,10 @@
       <table class="table bg-light table-striped table-hover mt-1 table-responsive">
         <thead class="bg-dark text-light">
           <tr>
-            <th>Número do ID</th>
-            <th>Nome do Procedimento</th>
-            <th>Status do Procedimento</th>
-            <th>Ações</th>
+            <th>Proceeding ID</th>
+            <th>Name</th>
+            <th>Status</th>
+            <th>Actions</th>
             <th></th>
           </tr>
 
@@ -74,7 +74,7 @@
               <a class="page-link" href="listaProcedimento.php?pagina=1<?= isset($_GET['search']) ? '&search=' . $_GET['search'] : '' ?>"><<</a>
             </li>
             <li class="page-item">
-              <a class="page-link" href="listaProcedimento.php?pagina=<?= ($pagina_atual > 1 ? $pagina_atual - 1 : $pagina_atual) ?><?= isset($_GET['search']) ? '&search=' . $_GET['search'] : '' ?>" tabindex="-1">Anterior</a>
+              <a class="page-link" href="listaProcedimento.php?pagina=<?= ($pagina_atual > 1 ? $pagina_atual - 1 : $pagina_atual) ?><?= isset($_GET['search']) ? '&search=' . $_GET['search'] : '' ?>" tabindex="-1">Previous</a>
             </li>
             <?php
             $limite_paginacao = ceil(($num_pagina + $pagina_atual) / 2);
@@ -92,7 +92,7 @@
             }
             ?>
             <li class="page-item">
-              <a class="page-link " href="listaProcedimento.php?pagina=<?= ($pagina_atual < $num_pagina ? $pagina_atual + 1 : $pagina_atual) ?><?= isset($_GET['search']) ? '&search=' . $_GET['search'] : '' ?>">Próximo</a>
+              <a class="page-link " href="listaProcedimento.php?pagina=<?= ($pagina_atual < $num_pagina ? $pagina_atual + 1 : $pagina_atual) ?><?= isset($_GET['search']) ? '&search=' . $_GET['search'] : '' ?>">Next</a>
             </li>
             <li class="page-item">
             <a class="page-link" href="listaProcedimento.php?pagina=<?= $num_pagina?><?= isset($_GET['search']) ? '&search=' . $_GET['search'] : '' ?>">>></a>

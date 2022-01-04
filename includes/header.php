@@ -80,7 +80,7 @@
                         <a class="nav-link" href="./listaPaciente.php?pagina=1">
                             <div id="passar_mouse">
                                 <img src="./includes/img/user.png" width="30" height="30" alt="carteira id" />
-                                <div id="mostrar">Paciente</div>
+                                <div id="mostrar">Patient</div>
                             </div>
                         </a>
                     </li>
@@ -90,7 +90,7 @@
                         <a class="nav-link active" aria-current="page" href="agendamento.php?pagina=1">
                             <div id="passar_mouse">
                                 <img src="./includes/img/miniAgenda.png" width="30" height="30" alt="home" />
-                                <div id="mostrar">Agenda</div>
+                                <div id="mostrar">Schedule</div>
                             </div>
                         </a>
 
@@ -100,7 +100,7 @@
                         <a class="nav-link" href="pesquisarConsulta.php?pagina=1">
                             <div id="passar_mouse">
                                 <img src="./includes/img/consulta.png" width="30" height="30" alt="consulta" />
-                                <div id="mostrar">Consulta</div>
+                                <div id="mostrar">Consultations</div>
                             </div>
                         </a>
                     </li>
@@ -109,7 +109,7 @@
                         <a class="nav-link" href="pesquisarProtese.php?pagina=1">
                             <div id="passar_mouse">
                                 <img src="./includes/img/dentadura.png" width="30" height="30" alt="dentadura" />
-                                <div id="mostrar">Dentadura</div>
+                                <div id="mostrar">Dentures</div>
                             </div>
                         </a>
                     </li>
@@ -117,7 +117,7 @@
                         <a class="nav-link" href="listaFuncionario.php?pagina=1">
                             <div id="passar_mouse">
                                 <img src="./includes/img/carteira-de-identidade.png" width="30" height="30" alt="dentadura" />
-                                <div id="mostrar">Funcionario</div>
+                                <div id="mostrar">Employees</div>
                             </div>
                         </a>
                     </li>
@@ -129,18 +129,18 @@
                             </a>
 
                             <ul class="dropdown-menu offset-3" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="./listaDentista.php?pagina=1">Dentista</a></li>
-                                <li><a class="dropdown-item" href="./listaClinica.php?pagina=1">Clinica</a></li>
+                                <li><a class="dropdown-item" href="./listaDentista.php?pagina=1">Dentists</a></li>
+                                <li><a class="dropdown-item" href="./listaClinica.php?pagina=1">Clinics</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="./listaRastreio.php?pagina=1">Rastreio</a></li>
+                                <li><a class="dropdown-item" href="./listaRastreio.php?pagina=1">Tracking</a></li>
 
-                                <li><a class="dropdown-item" href="./listaProcedimento.php?pagina=1">Procedimento</a></li>
+                                <li><a class="dropdown-item" href="./listaProcedimento.php?pagina=1">Proceedings</a></li>
 
-                                <li><a class="dropdown-item" href="./listaTerceiro.php?pagina=1">Terceiro</a></li>
-                                <li><a class="dropdown-item" href="./listaServicoTerceiro.php?pagina=1">ServiçoTerceirizado</a></li>
-                                <li><a class="dropdown-item" href="./listaTerceirizado.php?pagina=1">Terceirizado</a></li>
+                                <li><a class="dropdown-item" href="./listaTerceiro.php?pagina=1">Providers</a></li>
+                                <li><a class="dropdown-item" href="./listaServicoTerceiro.php?pagina=1">Services</a></li>
+                                <li><a class="dropdown-item" href="./listaTerceirizado.php?pagina=1">Services & Providers </a></li>
                             </ul>
                     </li>
                     <div>
@@ -149,23 +149,24 @@
                 <div class="border border-dark text-center">
                     <li class="nav-item dropdown" style="list-style:none">
                         <a class="nav-link dropdown-toggle" style="text-decoration:none;color:black" href="#" id="perfil" role="button" data-bs-toggle="dropdown" aria-expanded="true">
-                            <img src="<?= ($_SESSION['perfil'] == 'Administrador' ? './includes/img/usuario.png' : './includes/img/funcionario.png') ?>" width="40" height="40" style="border-radius: 20px;" alt="sair" /><strong>Usuário: <?= $_SESSION['nome'] ?></strong>
+                            <img src="<?= ($_SESSION['perfil'] == 'Administrador' ? './includes/img/usuario.png' : './includes/img/funcionario.png') ?>" width="40" height="40" style="border-radius: 20px;" alt="sair" /><strong>User: <?= $_SESSION['nome'] ?></strong>
                             <br><label><?= $_SESSION['perfil'] ?></label>
                         </a>
                         <ul class="dropdown-menu text-center" style="width:100%" aria-labelledby="perfil">
 
-                            <li><a class="dropdown-item" href="./listaDentista.php">Dentista</a></li>
-                            <li><a class="dropdown-item" href="./listaClinica.php">Clinica</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="./listaRastreio.php">Rastreio</a></li>
+                        <li><a class="dropdown-item" href="./listaDentista.php?pagina=1">Dentists</a></li>
+                                <li><a class="dropdown-item" href="./listaClinica.php?pagina=1">Clinics</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="./listaRastreio.php?pagina=1">Tracking</a></li>
 
-                            <li><a class="dropdown-item" href="./listaProcedimento.php">Procedimento</a></li>
+                                <li><a class="dropdown-item" href="./listaProcedimento.php?pagina=1">Proceedings</a></li>
 
-                            <li><a class="dropdown-item" href="./listaTerceiro.php">Terceirizado</a></li>
-                            <li><a class="dropdown-item" href="./listaServicoTerceiro.php">ServiçoTerceirizado</a></li>
-                            <li><a class="dropdown-item" href="./config.php">Configurações</a></li>
+                                <li><a class="dropdown-item" href="./listaTerceiro.php?pagina=1">Providers</a></li>
+                                <li><a class="dropdown-item" href="./listaServicoTerceiro.php?pagina=1">Services</a></li>
+                                <li><a class="dropdown-item" href="./listaTerceirizado.php?pagina=1">Services Providers </a></li>
+                            <li><a class="dropdown-item" href="./config.php">Settings</a></li>
                         </ul>
                     </li>
                 </div>

@@ -107,13 +107,13 @@ foreach ($proteses as $protese) {
                             <td>' . $protese->qtdDente . '</td>
                             <td>' . ($protese->ouro == 'sim' ? 'Sim' : 'Não') . '</td>
                             <td>' . $protese->qtdOuro . '</td>
-                            <td>' . date('d/m/Y à\s H:i', strtotime($protese->dataRegistro)) . '</td>
+                            <td>' . date('m-d-Y à\s H:i', strtotime($protese->dataRegistro)) . '</td>
                             <td>
                             <a href = "editaProtese.php?id=' . $protese->idProtese . '">
-                            <button class = "btn btn-primary">Editar</button>
+                            <button class = "btn btn-primary">Edit</button>
                             </a>
                             <a href = "protese.php?idProtese=' . $protese->idProtese . '">
-                            <button class = "btn btn-primary">Detalhes</button>
+                            <button class = "btn btn-primary">Detail</button>
                             </a>
                             </td>
 

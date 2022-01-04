@@ -5,8 +5,8 @@
 if (isset($_GET, $_GET['status'], $_GET['id']) && is_string($_GET['status']) && is_numeric($_GET['id']) && $_GET['status'] == 'success1') {
       echo "<script>
             Swal.fire({
-              title: '".NAME ." n° " .$_GET['id']. " cadastrada com sucesso!!',
-              text: \"Caso haja alguma alteração a ser feita, utilize o botão editar/corrigir/atualizar\",
+              title: '".NAME ." n° " .$_GET['id']. " Succesfully registered!!',
+              text: \"If there are any changes to be made, use the edit/correct/update buttons\",
               icon: 'success',
               confirmButtonColor: '#3085d6',
               confirmButtonText: 'Ok'
@@ -23,8 +23,8 @@ if (isset($_GET, $_GET['status'], $_GET['id']) && is_string($_GET['status']) && 
     if (isset($_GET, $_GET['status'], $_GET['id']) && is_string($_GET['status']) && is_numeric($_GET['id']) && $_GET['status'] == 'success2') {
       echo "<script>
             Swal.fire({
-              title: '".NAME ." n° " .$_GET['id']. " editada com sucesso!!',
-              text: \"Caso haja alguma alteração a ser feita, utilize o botão editar/corrigir\",
+              title: '".NAME ." n° " .$_GET['id']. " Successfully edited!!',
+              text: \"If there are any changes to be made, use the edit/correct/update buttons\",
               icon: 'success',
               confirmButtonColor: '#3085d6',
               confirmButtonText: 'Ok'
@@ -45,8 +45,8 @@ if (isset($_GET, $_GET['status'], $_GET['id']) && is_string($_GET['status']) && 
 
       print("<script>
               Swal.fire({
-                title: 'Houve um erro ao cadastrar a ".NAME."!!',
-                text: \"Algo ocorreu, tente novamente!!\",
+                title: 'There was an error registering the  ".NAME."!!',
+                text: \"Something happened, try again!!\",
                 icon: 'error',
                 confirmButtonColor: '#3085d6',
                 confirmButtonText: 'Ok'
@@ -65,8 +65,8 @@ if (isset($_GET, $_GET['status'], $_GET['id']) && is_string($_GET['status']) && 
 
       print("<script>
               Swal.fire({
-                title: 'Houve um erro ao editar a ".NAME."!!',
-                text: \"Algo ocorreu, tente novamente!!\",
+                title: 'There was an error editing the ".NAME."!!',
+                text: \"Something happened, try again!!\",
                 icon: 'error',
                 confirmButtonColor: '#3085d6',
                 confirmButtonText: 'Ok'
@@ -90,7 +90,7 @@ if (isset($_GET, $_GET['status'], $_GET['id']) && is_string($_GET['status']) && 
 
       print("<script>
               Swal.fire({
-                title: 'Houve um erro ao finalizar a ".NAME."!!',
+                title: 'There was an error finishing the ".NAME."!!',
                 text: \"Algo ocorreu, tente novamente!!\",
                 icon: 'error',
                 confirmButtonColor: '#3085d6',
@@ -104,8 +104,8 @@ if (isset($_GET, $_GET['status'], $_GET['id']) && is_string($_GET['status']) && 
     if (isset($_GET, $_GET['status']) && is_string($_GET['status']) && $_GET['status'] == 'success3') {
       echo "<script>
             Swal.fire({
-              title: '".NAME ." editadas com sucesso!!',
-              text: \"Sinta-se livre para fazer quantas alterações quiser!!\",
+              title: '".NAME ." Successfuly edited!!',
+              text: \"Feel free to make as many changes as you like!!\",
               icon: 'success',
               confirmButtonColor: '#3085d6',
               confirmButtonText: 'Ok'
@@ -119,8 +119,8 @@ if (isset($_GET, $_GET['status'], $_GET['id']) && is_string($_GET['status']) && 
     if (isset($_GET, $_GET['status']) && is_string($_GET['status']) && $_GET['status'] == 'error3') {
       echo "<script>
             Swal.fire({
-              title: 'Área restrita !!',
-              text: \"Você não possui permissão para acessar essa área do sistema, contate o administrador\",
+              title: 'Restricted Area !!',
+              text: \"You do not have permission to access this area of ​​the system, contact the administrator\",
               icon: 'error',
               confirmButtonColor: '#3085d6',
               confirmButtonText: 'Ok'

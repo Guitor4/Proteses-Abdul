@@ -13,7 +13,7 @@ if (isset($_POST['Salvar'])) {
 
     $objTerceiro->nomeTerceiro = $_POST['nomeTerceiro'];
     $objTerceiro->telefone = $_POST['telefone'];
-    $objTerceiro->statusTerceiro = $_POST['statusTerceiro'] == 'on' ? 'Ativo' : 'Inativo';
+    $objTerceiro->statusTerceiro = $_POST['statusTerceiro'] == 'on' ? 'Active' : 'Inactive';
     /* echo '<pre>';print_r($objTerceiro);echo '<pre>';exit; */
 
     $objTerceiro->cadastro();

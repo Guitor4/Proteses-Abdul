@@ -1,13 +1,13 @@
 function getServicoTerceiro(valor) {
   var valorAjax = valor;
-  $("#servico_terceiro").html("<option value = 0>Aguardando...</option");
+  $("#servico_terceiro").html("<option value = 0>Waiting...</option");
   $.ajax({
     type: "POST",
     dataType: "json",
     url: "TerceiroServico.php?id_terceiro=" + valorAjax+"&term=1",
     success: function (dados) {
       if (dados != null) {
-        var options = '<option value = " " hidden>Escolher Servico</option>';
+        var options = '<option value = " " hidden>Choose the service</option>';
         for (var i = 0; i < dados.length; i++) {
           options +=
             '<option value="' +
@@ -25,14 +25,14 @@ function getServicoTerceiro(valor) {
 }
 function getServicoTerceiro2(valor) {
   var valorAjax = valor;
-  $("#servico_terceiro").html("<option value = 0>Aguardando...</option");
+  $("#servico_terceiro").html("<option value = 0>Waiting...</option");
   $.ajax({
     type: "POST",
     dataType: "json",
     url: "TerceiroServico.php?id_terceiro=" + valorAjax+"&term=2",
     success: function (dados) {
       if (dados != null) {
-        var options = '<option value = " " hidden>Escolher Servico</option>';
+        var options = '<option value = " " hidden>Choose the service</option>';
         for (var i = 0; i < dados.length; i++) {
           options +=
             '<option value="' +
@@ -52,7 +52,7 @@ function getServicoTerceiro2(valor) {
 
 function getHorarios(valor) {
   var valorAjax = valor;
-  $("#horarios").html("<option value = 0>Aguardando...</option");
+  $("#horarios").html("<option value = 0>Waiting...</option");
   $.ajax({
     type: "POST",
     dataType: "json",
@@ -64,7 +64,7 @@ function getHorarios(valor) {
         for (var i = 0; i < dados.length; i++) {
           options += "<option>" + dados[i].horario + "</option>";
         }
-        options += "<option value='' hidden >Sem horários disponíveis</option>";
+        options += "<option value='' hidden >All times for this day already filled</option>";
         $("#horarios").html(options);
         $(".selectpicker").selectpicker("refresh");
       }
@@ -123,8 +123,8 @@ function preencherListaHome(x = 1, lista = "") {
         if (lista === undefined) {
           var lista =
             '<a href="#" class="list-group-item list-group-item-action " aria-current="true"><div class="d-flex w-100 justify-content-between">' +
-            '<h5 class="mb-1">Sem Consultas para hoje por enquanto</h5><small>Today</small></div><p class="mb-1">' +
-            "Caso ainda não tenha feito, alimente o banco </p><small>Em caso de erro gritar é contra indicado.</small></a>";
+            '<h5 class="mb-1">No appointments for today</h5><small>Today</small></div><p class="mb-1">' +
+            "If you haven't already done so, feed the system</p></a>";
           $("#to_do_list").html(lista);
         }
       },
@@ -168,8 +168,8 @@ function preencherListaHome(x = 1, lista = "") {
       error: function () {
         var lista =
           '<a href="#" class="list-group-item list-group-item-action " aria-current="true"><div class="d-flex w-100 justify-content-between">' +
-          '<h5 class="mb-1">Sem Lembretes para hoje por enquanto</h5><small>Today</small></div><p class="mb-1">' +
-          "Caso ainda não tenha feito, alimente o banco </p><small>Em caso de erro gritar é contra indicado.</small></a>";
+          '<h5 class="mb-1">No reminders for today</h5><small>Today</small></div><p class="mb-1">' +
+          "If you haven't already done so, feed the system</p></a>";
         $("#to_do_list").html(lista);
       },
     });
@@ -208,99 +208,12 @@ function preencherListaHome(x = 1, lista = "") {
       error: function () {
         var lista =
           '<a href="#" class="list-group-item list-group-item-action " aria-current="true"><div class="d-flex w-100 justify-content-between">' +
-          '<h5 class="mb-1">Sem Tarefas para hoje por enquanto</h5><small>Today</small></div><p class="mb-1">' +
-          "Caso ainda não tenha feito, alimente o banco </p><small>Em caso de erro gritar é contra indicado.</small></a>";
+          '<h5 class="mb-1">No tasks for today</h5><small>Today</small></div><p class="mb-1">' +
+          "If you haven't already done so, feed the system</p></a>";
         $("#to_do_list").html(lista);
       },
     });
   }
-}
-
-//apresenta dados cadastrais ao carregar a página.
-//$(window).on("load",
-function loadDados() {
-  var valorAjax = document.getElementById("aux").value;
-  //var urlImagem = document.getElementById('iUrl').value;
-  //var verificaFoto = document.getElementById('fotoCadastrada').value;
-  //console.log(verificaFoto);
-
-  $("#apresenta_DadosCadastrais").html("<p>Aguardando...</p>");
-  $.ajax({
-    type: "POST",
-    dataType: "json",
-    url: "prontuarioAbrirProntuario.php?prontuario=" + valorAjax,
-    success: function (dados) {
-      if (dados !== null) {
-        var p, n, s, t, e, urli, id;
-        for (var i = 0; i < dados.length; i++) {
-          p = dados[i].prontuario;
-          n = dados[i].nomePaciente;
-          s = dados[i].sexo;
-          t = dados[i].telefone;
-          e = dados[i].email;
-          urli = dados[i].img;
-          id = dados[i].idImagem;
-        }
-        var nome = urli.substring(10);
-        if (urli !== "./Imagens/usuario.png") {
-          var at = "hidden";
-          var del = "";
-        } else {
-          at = "";
-          del = "hidden";
-        }
-        var labels =
-          '<div class="row">\n\
-                                <div class="col-8 mt-2">\n\
-                                    <label>Prontuário: </label><input readonly type="text" class="form-control"  value="' +
-          p +
-          '">\n\
-                                    <label>Paciente: </label><input readonly type="text" class="form-control"  value="' +
-          n +
-          '">\n\
-                                    <label>Sexo: </label><input readonly type="text" class="form-control"  value="' +
-          s +
-          '">\n\
-                                    <label>Telefone: </label><input readonly type="text" class="form-control"  value="' +
-          t +
-          '">\n\
-                                    <label>E-mail: </label><input readonly type="text" class="form-control"  value="' +
-          e +
-          '">\n\
-                                </div>\n\
-                                <div class="col-2 mt-5" >\n\
-                                <img src="' +
-          urli +
-          '" alt="" width="150" height="100">\n\
-                                 <form method="post" action="prontuario.php?paciente=' +
-          p +
-          '" enctype="multipart/form-data">\n\
-                                        <input hidden type="text" name="titulo" value="perfil_' +
-          p +
-          '">\n\
-                                        <input hidden type="text" name="idImg" value="' +
-          id +
-          '">\n\
-                                        <input hidden type="text" name="nome" value="' +
-          nome +
-          '">\n\
-                                        <input ' +
-          at +
-          ' type="file" name="imagem" class="btn btn-dark"><br>\n\
-\n                                     <input ' +
-          del +
-          ' type="submit" class="btn btn-warning" name="delFotoPerfil" value="Deletar">\n\
-                                        <input ' +
-          at +
-          ' type="submit" class="btn btn-success p-1" name="edFotoPerfil" value="Atualizar"><br>\n\
-                                 </form>\n\
-                                </div>\n\
-                              </div>';
-
-        $("#apresenta_DadosCadastrais").html(labels).show();
-      }
-    },
-  });
 }
 
 function Dados_Cadastrais() {
@@ -311,7 +224,7 @@ function Dados_Cadastrais() {
 
   var valorAjax = document.getElementById("aux").value;
 
-  $("#apresenta_DadosCadastrais").html("<p>Aguardando...</p>");
+  $("#apresenta_DadosCadastrais").html("<p>Waiting...</p>");
   $.ajax({
     type: "POST",
     dataType: "json",
@@ -337,18 +250,18 @@ function Dados_Cadastrais() {
           del = "hidden";
         }
         var labels =
-          '<div class="row">\n\
+          '<h3>Registration Data</h3><div class="row">\n\
                                 <div class="col-8 mt-2">\n\
-                                    <label>Prontuário: </label><input readonly type="text" class="form-control"  value="' +
+                                    <label>Medical Record: </label><input readonly type="text" class="form-control"  value="' +
           p +
           '">\n\
-                                    <label>Paciente: </label><input readonly type="text" class="form-control"  value="' +
+                                    <label>Patient: </label><input readonly type="text" class="form-control"  value="' +
           n +
           '">\n\
-                                    <label>Sexo: </label><input readonly type="text" class="form-control"  value="' +
+                                    <label>Gender: </label><input readonly type="text" class="form-control"  value="' +
           s +
           '">\n\
-                                    <label>Telefone: </label><input readonly type="text" class="form-control"  value="' +
+                                    <label>Phone: </label><input readonly type="text" class="form-control"  value="' +
           t +
           '">\n\
                                     <label>E-mail: </label><input readonly type="text" class="form-control"  value="' +
@@ -376,10 +289,10 @@ function Dados_Cadastrais() {
           ' type="file" name="imagem" class="btn btn-dark"><br>\n\
 \n                                     <input ' +
           del +
-          ' type="submit" class="btn btn-warning" name="delFotoPerfil" value="Deletar">\n\
+          ' type="submit" class="btn btn-warning" name="delFotoPerfil" value="Delete">\n\
                                         <input ' +
           at +
-          ' type="submit" class="btn btn-success p-1" name="edFotoPerfil" value="Atualizar"><br>\n\
+          ' type="submit" class="btn btn-success p-1" name="edFotoPerfil" value="Update"><br>\n\
                                  </form>\n\
                                 </div>\n\
                               </div>';
@@ -395,13 +308,13 @@ function Dados_Cadastrais() {
 }
 
 function Consultas() {
-  document.getElementById("apresenta_DadosCadastrais").innerHTML = "";
+/*   document.getElementById("apresenta_DadosCadastrais").innerHTML = "";
   document.getElementById("apresenta_Tratamentos").innerHTML = "";
   document.getElementById("mostraTitulo").innerHTML = "";
-  document.getElementById("apresenta_Fotos").innerHTML = "";
+  document.getElementById("apresenta_Fotos").innerHTML = ""; */
   var valorAjax = document.getElementById("aux").value;
 
-  $("#apresenta_Consultas").html("<p>Aguardando...</p>");
+  $("#apresenta_Consultas").html("<p>Waiting...</p>");
   $.ajax({
     type: "POST",
     dataType: "json",
@@ -409,13 +322,13 @@ function Consultas() {
     success: function (dados) {
       if (dados !== null && dados !== "Sem resultados") {
         var tabela =
-          "<thead><tr><th>Consulta</th>\n\
-                                    <th>Data</th>\n\
-                                    <th>Hora</th>\n\
+          "<thead><tr><th>Consultation ID</th>\n\
+                                    <th>Date</th>\n\
+                                    <th>Hour</th>\n\
                                     <th>Status</th>\n\
-                                    <th>Clínica</th>\n\
-                                    <th>Dentista</th>\n\
-                                    <th>Ação</th>\n\
+                                    <th>Clinic</th>\n\
+                                    <th>Dentist</th>\n\
+                                    <th>Action</th>\n\
                                     </tr>\n\
                               </thead>";
         for (var i = 0; i < dados.length; i++) {
@@ -441,19 +354,19 @@ function Consultas() {
             '</td>\n\
                                 <td class "table-success"><a class="btn btn-outline-primary" data-toggle="collapse"  onclick="Tratamentos(' +
             dados[i].id +
-            ')" role="button" aria-expanded="false" aria-controls="apresenta_Tratamentos" > Abrir </a></td>\n\
+            ')" role="button" aria-expanded="false" aria-controls="apresenta_Tratamentos" > Open </a></td>\n\
                                 </tr></tbody>';
           //$('#apresentaProntuario').append('<tbody><tr><td class "table-success">' + dados[i].prontuario + '</td></tr></tbody>');
         }
         $("#apresenta_Consultas").html(tabela).show();
-        document.getElementById("mostraTitulo").innerHTML = "";
+        document.getElementById("mostraTitulo").innerHTML = "<h3>Consultations</h3>";
 
         /*if (valorAjax !== 0) {
                     $('#apresentaProntuario').html(tabela).show();
                 }*/
       } else {
         $("#apresenta_Consultas")
-          .html('<p class="text-danger">Nenhuma consulta cadastrada</p>')
+          .html('<p class="text-danger">Not found any registered consultation for this patient</p>')
           .show();
         document.getElementById("mostraTitulo").innerHTML = "";
       }
@@ -463,7 +376,7 @@ function Consultas() {
 
 function Tratamentos(id) {
   //document.getElementById("apresenta_Tratamentos").innerHTML ="";
-  document.getElementById("apresenta_DadosCadastrais").innerHTML = "";
+ /*  document.getElementById("apresenta_DadosCadastrais").innerHTML = ""; */
 
   var click = id;
 
@@ -472,7 +385,7 @@ function Tratamentos(id) {
 
     var valorAjax = document.getElementById("aux").value;
 
-    $("#apresenta_Tratamentos").html("<p>Aguardando...</p>");
+    $("#apresenta_Tratamentos").html("<p>Waiting...</p>");
     $.ajax({
       type: "POST",
       dataType: "json",
@@ -498,16 +411,19 @@ function Tratamentos(id) {
               dados[i].idProcedimento +
               "&consulta=" +
               dados[i].idC +
+              "&nomeProcedimento=" +
+              dados[i].nomeT +
               "&prontuario=" +
               dados[i].prontuario +
               '" ><img src="./includes/img/pdf.2.png" width="35" height="40"></a></td>\n\
                                 </tr></tbody>';
+                                console.log(dados[i].nomeT);
           }
           $("#apresenta_Tratamentos").html(tabela).show();
           $("#mostraTitulo").html("TRATAMENTOS").show();
         } else {
           $("#apresenta_Tratamentos")
-            .html('<p class="text-danger">Nenhum tratamento cadastrado<p>')
+            .html('<p class="text-danger">No proceedings registered yet for this consultation<p>')
             .show();
           document.getElementById("mostraTitulo").innerHTML = "";
         }
@@ -522,13 +438,13 @@ function Tratamentos(id) {
 }
 
 function FotoAntes() {
-  document.getElementById("apresenta_Consultas").innerHTML = "";
+/*   document.getElementById("apresenta_Consultas").innerHTML = "";
   document.getElementById("apresenta_DadosCadastrais").innerHTML = "";
   document.getElementById("apresenta_Tratamentos").innerHTML = "";
-  document.getElementById("mostraTitulo").innerHTML = "";
+  document.getElementById("mostraTitulo").innerHTML = ""; */
   var valorAjax = document.getElementById("aux").value;
 
-  $("#apresenta_Fotos").html("<p>Aguardando...</p>");
+  $("#apresenta_Fotos").html("<p>Waiting...</p>");
   $.ajax({
     type: "POST",
     dataType: "json",
@@ -543,7 +459,7 @@ function FotoAntes() {
         var s = agora.getMilliseconds();
 
         var tabela =
-          '<div><form method="post" action="prontuario.php?paciente=' +
+          '<div><h3>Pre-treatment photos</h3><form method="post" action="prontuario.php?paciente=' +
           p +
           '" enctype="multipart/form-data">\n\
                                   <input required class="btn btn-dark" type="file" name="foto"><br><br>\n\
@@ -558,7 +474,7 @@ function FotoAntes() {
           "" +
           s +
           '">\n\
-                                  <input class="btn btn-success" type="submit" name="cadFoto" value="Enviar Foto">\n\
+                                  <input class="btn btn-success" type="submit" name="cadFoto" value="Add image">\n\
                                  </form><hr></div>';
 
         for (var i = 0; i < dados.length; i++) {
@@ -597,7 +513,7 @@ function FotoAntes() {
             semFoto +
             ' class="' +
             semFotoB +
-            '" type="submit" name="delFoto" value="Excluir Foto">\n\
+            '" type="submit" name="delFoto" value="Delete image">\n\
                             </form>\n\
                         </div>\n\
                     </div><hr>';
@@ -609,13 +525,13 @@ function FotoAntes() {
 }
 
 function FotoDepois() {
-  document.getElementById("apresenta_Consultas").innerHTML = "";
+/*   document.getElementById("apresenta_Consultas").innerHTML = "";
   document.getElementById("apresenta_DadosCadastrais").innerHTML = "";
   document.getElementById("apresenta_Tratamentos").innerHTML = "";
-  document.getElementById("mostraTitulo").innerHTML = "";
+  document.getElementById("mostraTitulo").innerHTML = ""; */
   var valorAjax = document.getElementById("aux").value;
 
-  $("#apresenta_Fotos").html("<p>Aguardando...</p>");
+  $("#apresenta_Fotos").html("<p>Waiting...</p>");
 
   $.ajax({
     type: "POST",
@@ -631,7 +547,7 @@ function FotoDepois() {
         var s = agora.getMilliseconds();
 
         var tabela =
-          '<div><form method="post" action="" enctype="multipart/form-data">\n\
+          '<div><h3>Post-treatment photos</h3><form method="post" action="" enctype="multipart/form-data">\n\
                                   <input required class="btn btn-dark" type="file" name="foto"><br><br>\n\
                                   <input hidden type="text" name="titulo" value="depois_' +
           p +
@@ -644,24 +560,10 @@ function FotoDepois() {
           "" +
           s +
           '">\n\
-                                  <input class="btn btn-success" type="submit" name="cadFoto" value="Enviar Foto">\n\
+                                  <input class="btn btn-success" type="submit" name="cadFoto" value="Add image">\n\
                                  </form><hr></div>';
 
         for (var i = 0; i < dados.length; i++) {
-<<<<<<< HEAD
-          if (dados[i].img == "semFoto") {
-            var semFoto = "hidden";
-            var semFotoB = "";
-            var semFotoT = "";
-          } else {
-            semFoto = "";
-            semFotoB = "btn btn-warning";
-            semFotoT = 'width="100" height="100"';
-          }
-          var nome = dados[i].img.substring(8);
-          tabela +=
-            '<div class="row">\n\
-=======
                     if (dados[i].img=="semFoto"){
                         var semFoto="hidden";
                         var semFotoB="";
@@ -673,7 +575,6 @@ function FotoDepois() {
                     }
             var nome = dados[i].img.substring(8);
           tabela +='<div class="row">\n\
->>>>>>> 8be98eb77980fcb566180a6d47a9ae59648d4f78
                         <div class="col-5" >\n\
                             <img ' +
             semFoto +
@@ -697,7 +598,7 @@ function FotoDepois() {
             semFoto +
             ' class="' +
             semFotoB +
-            '" type="submit" name="delFoto" value="Excluir Foto">\n\
+            '" type="submit" name="delFoto" value="Delete image">\n\
                             </form>\n\
                         </div>\n\
                     </div><hr>';
@@ -719,7 +620,7 @@ function validaConsulta() {
     setTimeout(function (self) {
       $("#alerta").hide();
     }, 3000);
-    $("#alerta").html("Selecione o Paciente atendido!!").show();
+    $("#alerta").html("Select the patient!!").show();
     document.formConsulta.paciente.focus();
     return;
   }
@@ -728,7 +629,7 @@ function validaConsulta() {
     setTimeout(function (self) {
       $("#alerta").hide();
     }, 3000);
-    $("#alerta").html("Selecione o horario do atendimento!!").show();
+    $("#alerta").html("Select the consultation time!!").show();
     document.formConsulta.horarios.focus();
     return;
   }
@@ -736,7 +637,7 @@ function validaConsulta() {
     setTimeout(function (self) {
       $("#alerta").hide();
     }, 3000);
-    $("#alerta").html("Selecione o dentista que indicou!!").show();
+    $("#alerta").html("Select the dentist!!").show();
     document.formConsulta.dentista.focus();
     return;
   }
@@ -744,7 +645,7 @@ function validaConsulta() {
     setTimeout(function (self) {
       $("#alerta").hide();
     }, 3000);
-    $("#alerta").html("Selecione a clínica filiada!!").show();
+    $("#alerta").html("Select the clinic!!").show();
     document.formConsulta.clinica.focus();
     return;
   }
@@ -759,7 +660,7 @@ function validaNome(nome) {
   var nomeVerificado = expNome.exec(name);
   console.log(nomeVerificado);
   if(!nomeVerificado){
-    msgNome = 'Tamanho mínimo de 3 caractéres. Sem números';
+    msgNome = 'Minimum size 3 caracters. No numbers allowed';
   }
   nome.setCustomValidity(msgNome);
   }
@@ -769,7 +670,7 @@ function validaNome(nome) {
     var expNome = /^([^a-z]){9,12}$/gi;
     var nomeVerificado = expNome.exec(tel);
     if(!nomeVerificado){
-      msgNome = 'Tamanho mínimo de 9 caractéres. Máximo de 11';
+      msgNome = 'Minimum size 9 caracters. Max 11';
     }
     telefone.setCustomValidity(msgNome);
     }
@@ -779,7 +680,7 @@ function validaNome(nome) {
     var expNome = /^([\w_.]*)@([\w-.]*)\.?([a-z.]){3,6}$/gi;
     var nomeVerificado = expNome.exec(email2);
     if(!nomeVerificado){
-      msgNome = 'Escreva um email válido. Exemplo: paulo2@gmail.com';
+      msgNome = 'Please enter a valid email. Example: paulo2@gmail.com';
     }
     email.setCustomValidity(msgNome);
     }
@@ -793,7 +694,7 @@ function validaNome(nome) {
       setTimeout(function (self) {
         $("#alerta").hide();
       }, 3000);
-      $("#alerta").html("Selecione a data de Entrega da prótese!!").show();
+      $("#alerta").html("Select the send date").show();
       document.formRastreio.RFKTerceiro.focus();
       return;
     }
@@ -801,7 +702,7 @@ function validaNome(nome) {
       setTimeout(function (self) {
         $("#alerta").hide();
       }, 3000);
-      $("#alerta").html("Selecione a data de Retorno da prótese!!").show();
+      $("#alerta").html("Select the return date!!").show();
       document.formRastreio.RFKTerceiro.focus();
       return;
     }
@@ -809,7 +710,7 @@ function validaNome(nome) {
       setTimeout(function (self) {
         $("#alerta").hide();
       }, 3000);
-      $("#alerta").html("Selecione o terceiro!!").show();
+      $("#alerta").html("Select the provider!!").show();
       document.formRastreio.RFKTerceiro.focus();
       return;
     }
@@ -817,7 +718,7 @@ function validaNome(nome) {
       setTimeout(function (self) {
         $("#alerta").hide();
       }, 3000);
-      $("#alerta").html("Selecione o Serviço!!").show();
+      $("#alerta").html("Select the service!!").show();
       document.formRastreio.RFKServico.focus();
       return;
     }
@@ -837,7 +738,7 @@ function validaProtese(){
     setTimeout(function (self) {
       $("#alerta").hide();
     }, 3000);
-    $("#alerta").html("Selecione o tipo da prótese!!").show();
+    $("#alerta").html("Select the denture option!!").show();
     document.formProtese.tipo.focus();
     return;
   }
@@ -845,7 +746,7 @@ function validaProtese(){
     setTimeout(function (self) {
       $("#alerta").hide();
     }, 3000);
-    $("#alerta").html("Selecione a extensão da prótese!!").show();
+    $("#alerta").html("Select the extension").show();
     document.formProtese.tipo.focus();
     return;
   }
@@ -853,7 +754,7 @@ function validaProtese(){
     setTimeout(function (self) {
       $("#alerta").hide();
     }, 3000);
-    $("#alerta").html("Selecione a posição da prótese!!").show();
+    $("#alerta").html("Select the position!!").show();
     document.formProtese.tipo.focus();
     return;
   }
@@ -861,7 +762,7 @@ function validaProtese(){
     setTimeout(function (self) {
       $("#alerta").hide();
     }, 3000);
-    $("#alerta").html("Selecione a marca da prótese!!").show();
+    $("#alerta").html("Select the tooth brand!!").show();
     document.formProtese.tipo.focus();
     return;
   }
@@ -869,7 +770,7 @@ function validaProtese(){
     setTimeout(function (self) {
       $("#alerta").hide();
     }, 3000);
-    $("#alerta").html("Insira a quantos dentes a prótese irá ter!!").show();
+    $("#alerta").html("Insert how many teeth the denture have!!").show();
     document.formProtese.tipo.focus();
     return;
   }
@@ -877,7 +778,7 @@ function validaProtese(){
     setTimeout(function (self) {
       $("#alerta").hide();
     }, 3000);
-    $("#alerta").html("Houve um erro com o paciente no cadastro de prótese, contate o suporte!!").show();
+    $("#alerta").html("There's an error, contact the support!!").show();
     document.formProtese.tipo.focus();
     return;
   }
@@ -886,7 +787,7 @@ function validaProtese(){
       setTimeout(function (self) {
         $("#alerta").hide();
       }, 3000);
-      $("#alerta").html("Insira quantos dentes de ouro a prótese terá!!").show();
+      $("#alerta").html("Insert how many golden tooths the denture have!!").show();
       document.formProtese.tipo.focus();
       return;
     }
@@ -901,7 +802,7 @@ function validaTerceirizado(){
     setTimeout(function (self) {
       $("#alerta").hide();
     }, 3000);
-    $("#alerta").html("Selecione o Terceiro!!").show();
+    $("#alerta").html("Select the provider!!").show();
     document.formTerceirizado.Terceiro.focus();
     return;
   }
@@ -909,9 +810,10 @@ function validaTerceirizado(){
     setTimeout(function (self) {
       $("#alerta").hide();
     }, 3000);
-    $("#alerta").html("Selecione o Servico!!").show();
+    $("#alerta").html("Select the service!!").show();
     document.formTerceirizado.ServicoTerceiro.focus();
     return;
   }
   document.formTerceirizado.submit();
 }
+

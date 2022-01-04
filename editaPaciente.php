@@ -2,8 +2,8 @@
 
 require 'vendor/autoload.php';
 include __DIR__ . './includes/sessionStart.php';
-define('TITLE', 'Editar Paciente');
-define('BTN', 'editarPaciente');
+define('TITLE', 'Edit Patient');
+define('BTN', 'editPaciente');
 define('IDENTIFICACAO', '0');
 
 use \Classes\Entity\paciente;
@@ -30,7 +30,7 @@ if (isset($_POST[BTN])) {
         $paciente->telefone = $_POST['tel'];
         $paciente->email = $_POST['email'];
 
-
+        /* echo "<pre>"; print_r($_POST); echo "<pre>";exit; */
         $paciente->editarPaciente();
 
         if ($paciente->prontuario > 0) {

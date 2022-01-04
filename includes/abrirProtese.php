@@ -1,6 +1,6 @@
 <div class="container-fluid ">
     <section>
-        <a href="pesquisarProtese.php?pagina=1" .>
+        <a href="<?=(isset($_GET['term']) ? 'listaConsultaR.php?pagina=1': 'pesquisarProtese.php?pagina=1')?>" .>
             <button class="btn btn-success mt-4">Retornar</button>
         </a>
 
@@ -9,34 +9,34 @@
         <div class="col-8">
             <div class="text-white  bg-gradient border border-primary p-5 rounded-3" style="background-color:black;border-width: 10px;">
                 <div>
-                    <h3 style="text-align: center;">Prótese de <?= TITLE ?></h3>
+                    <h3 style="text-align: center;"><?= TITLE ?>'s Denture</h3>
                 </div>
 
                 <div class="row border p-3">
 
                     <div class="col-5 border border-success">
                         <div class="form-group">
-                            <label><strong class="text-info">Nome do paciente:</strong> <?= $objProtese->nomePaciente ?></label>
+                            <label><strong class="text-info">Patient's Name:</strong> <?= $objProtese->nomePaciente ?></label>
                         </div>
                         <div class="form-group">
-                            <label><strong class="text-info">Data da Consulta</strong> : <?= date('d/m/Y á\s H:i', strtotime($objProtese->dataRegistro)) ?></label>
+                            <label><strong class="text-info">Date of the Appointment</strong> : <?= date('m-d-Y \a\t H:i', strtotime($objProtese->dataRegistro)) ?></label>
                         </div>
                         <div class="form-group">
-                            <label><strong class="text-info">Tipo:</strong> <?= $objProtese->tipo ?></label>
+                            <label><strong class="text-info">Denture Option:</strong> <?= $objProtese->tipo ?></label>
                         </div>
                         <div class="form-group">
-                            <label><strong class="text-info">Posicao:</strong> <?= $objProtese->posicao ?></label>
+                            <label><strong class="text-info">Position:</strong> <?= $objProtese->posicao ?></label>
                         </div>
                         <div class="form-group">
-                            <label><strong class="text-info">Marca do Dente:</strong> <?= $objProtese->marcaDente ?></label>
+                            <label><strong class="text-info">Tooth Brand:</strong> <?= $objProtese->marcaDente ?></label>
                         </div>
                         <div class="form-group">
-                            <label><strong class="text-info">Extensão:</strong> <?= $objProtese->extensao ?></label>
+                            <label><strong class="text-info">Extension:</strong> <?= $objProtese->extensao ?></label>
                         </div>
                     </div>
                     <div class="col-5 offset-2 border border-success">
                         <div class="form-group">
-                            <label><strong class="text-info">Quantidade de dentes: </strong><?= $objProtese->qtdDente ?></label>
+                            <label><strong class="text-info">Number of Teeths: </strong><?= $objProtese->qtdDente ?></label>
                         </div>
                         <div class="form-group">
 
@@ -47,16 +47,16 @@
 
                         </div>
                         <div class="form-group">
-                            <label><strong class="text-info">Telefone do Paciente: </strong><?= $objProtese->telefone ?></label>
+                            <label><strong class="text-info">Phone for contact: </strong><?= $objProtese->telefone ?></label>
                         </div>
                         <div class="form-group">
-                            <label><strong class="text-info">Email do Paciente: </strong><?= $objProtese->email ?></label>
+                            <label><strong class="text-info">Patient's Email: </strong><?= $objProtese->email ?></label>
                         </div>
                     </div>
-                    <label class="mt-3 text-info" for="relatorio"><strong>Observações pré-Consulta:</strong></label>
+                    <label class="mt-3 text-info" for="relatorio"><strong>Pré-appointment Observations:</strong></label>
                     <textarea readonly name="relatorio" style=" background-color: black;opacity:80%;resize:none" class="text-white" rows="3">Relatório da prótese: <?= $objProtese->observacao . "\n Observações do tratamento: " . $objProtese->relatorio ?></textarea>
                     <div class="row d-flex justify-content-center text-center mt-3">
-                        <a class="btn btn-success" href="pesquisarProtese.php">OK</a>
+                        <a class="btn btn-success" href="<?=$term?>">OK</a>
                     </div>
 
                 </div>

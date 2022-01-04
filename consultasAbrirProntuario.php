@@ -27,7 +27,7 @@ if ($prontuario != null) {
             if (!in_array($row_prontuario1['idConsulta'], $array)) {
                 $array[] = array(
                     'id' => $row_prontuario1['idConsulta'],
-           'data' => date('d/m/y', strtotime($row_prontuario1['dataConsulta'])),
+           'data' => date('m-d-Y', strtotime($row_prontuario1['dataConsulta'])),
            'hora' => $row_prontuario1['horaConsulta'],
            'status' => $row_prontuario1['statusConsulta'],
            'clinica' => $row_prontuario1['nomeClinica'],

@@ -4,23 +4,23 @@
         <div class="col-4">
             <input hidden id="identificacao" value="<?= IDENTIFICACAO ?>"></input>
             <div class="bg-dark rounded p-2">
-                <h5 style="color: white; text-align: center ">Pacientes</h5>
+                <h5 style="color: white; text-align: center ">Patients</h5>
                 <form method="post" action="">
                     <div class="col-10 form-group p-2" style="margin:auto">
 
                         <input type="text" class="form-control p-1" name="busca" id="busca" required="" value="<?= isset($_GET['search']) ? $_GET['search'] : '' ?>">
                     </div>
-                    <input type="submit" name="listaPaciente" class="btn btn-secondary btInput p- d-flex " style="margin:auto" value="Pesquisar">
+                    <input type="submit" name="listaPaciente" class="btn btn-secondary btInput p- d-flex " style="margin:auto" value="Search">
 
                 </form>
 
             </div>
             <div class="row">
                 <div class="col-6 p-2">
-                    <a href="listaPaciente.php"> <input type="submit" value="Limpar Pesquisa" class="btn btn-danger w-100" /> </a>
+                    <a href="listaPaciente.php"> <input type="submit" value="Clear search" class="btn btn-danger w-100" /> </a>
                 </div>
                 <div class="col-6 p-2">
-                    <a href="cadastroPaciente.php"> <input type="submit" value="Cadastrar Paciente" class="btn btn-success w-100" /> </a>
+                    <a href="cadastroPaciente.php"> <input type="submit" value="Add new Patient" class="btn btn-success w-100" /> </a>
                 </div>
             </div>
         </div>
@@ -39,12 +39,12 @@
             <table class="table bg-light table-striped table-hover  table-responsive">
                 <thead class="table-dark">
                     <tr>
-                        <th>Prontuário</th>
-                        <th>Nome</th>
-                        <th>Sexo</th>
-                        <th>Telefone</th>
+                        <th>Medical record</th>
+                        <th>Name</th>
+                        <th>Gender</th>
+                        <th>Phone</th>
                         <th>E-mail</th>
-                        <th>Ações</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
 
@@ -63,7 +63,7 @@
                             <a class="page-link" href="listaPaciente.php?pagina=1<?= isset($_GET['search']) ? '&search=' . $_GET['search'] : '' ?>"><<</a>
                         </li>
                         <li class="page-item">
-                            <a class="page-link" href="listaPaciente.php?pagina=<?= ($pagina_atual > 1 ? $pagina_atual - 1 : $pagina_atual) ?><?= isset($_GET['search']) ? '&search=' . $_GET['search'] : '' ?>" tabindex="-1">Anterior</a>
+                            <a class="page-link" href="listaPaciente.php?pagina=<?= ($pagina_atual > 1 ? $pagina_atual - 1 : $pagina_atual) ?><?= isset($_GET['search']) ? '&search=' . $_GET['search'] : '' ?>" tabindex="-1">Previous</a>
                         </li>
                         <?php
                         $limite_paginacao = ceil(($num_pagina + $pagina_atual) / 2);
@@ -81,7 +81,7 @@
                         }
                         ?>
                         <li class="page-item">
-                            <a class="page-link " href="listaPaciente.php?pagina=<?= ($pagina_atual < $num_pagina ? $pagina_atual + 1 : $pagina_atual) ?><?= isset($_GET['search']) ? '&search=' . $_GET['search'] : '' ?>">Próximo</a>
+                            <a class="page-link " href="listaPaciente.php?pagina=<?= ($pagina_atual < $num_pagina ? $pagina_atual + 1 : $pagina_atual) ?><?= isset($_GET['search']) ? '&search=' . $_GET['search'] : '' ?>">Next</a>
                         </li>
                         <li class="page-item">
                             <a class="page-link" href="listaPaciente.php?pagina=<?= $num_pagina ?><?= isset($_GET['search']) ? '&search=' . $_GET['search'] : '' ?>">>></a>

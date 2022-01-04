@@ -5,7 +5,7 @@ include __DIR__.'./includes/sessionStart.php';
 
 use Classes\Entity\MarcaDente;
 
-define('NAME', 'Marca de Dente');
+define('NAME', 'Tooth Brand');
 define('LINK', 'listaMarcaDente.php?pagina=1');
 define('IDENTIFICACAO', 0);
 if (!isset($_GET['pagina'])) {
@@ -55,7 +55,7 @@ foreach ($marcas as $m) {
         . '<td style = "max-width:200px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;"> ' . $m->descricao . '</td>'
         . '<td> 
           <a href="editaMarcaDente.php?prontuario=' . $m->idMarcaDente . '" 
-              class="btn btn-info" >Editar</a>
+              class="btn btn-info" >Edit</a>
          </td>
          </tr>';
 }

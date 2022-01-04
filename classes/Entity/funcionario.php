@@ -10,7 +10,6 @@ class Funcionario
 
     public $idFuncionario;
     public $nomeFuncionario;
-    public $dtContrato;
     public $sexo;
     public $telefone;
     public $email;
@@ -27,7 +26,6 @@ class Funcionario
         $db = new db('funcionario');
         $this->idFuncionario = $db->insertSQL([
             'nomeFuncionario' => $this->nomeFuncionario,
-            'dtContrato' => $this->dtContrato,
             'sexo' => $this->sexo,
             'telefone' => $this->telefone,
             'email' => $this->email,
@@ -71,7 +69,6 @@ class Funcionario
     {
         return (new db('funcionario'))->updateSQL('idFuncionario= ' . $this->idFuncionario, [
             'nomeFuncionario' => $this->nomeFuncionario,
-            'dtContrato' => $this->dtContrato,
             'sexo' => $this->sexo,
             'telefone' => $this->telefone,
             'email' => $this->email,

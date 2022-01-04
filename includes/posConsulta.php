@@ -19,7 +19,7 @@
                             <label><strong class="text-info">Nome do paciente:</strong> <?= $ConsultaInnerJoin->nome ?></label>
                         </div>
                         <div class="form-group">
-                            <label><strong class="text-info">Data da Consulta</strong> : <?= date('d/m/Y', strtotime($ConsultaInnerJoin->dataConsulta)) ?></label>
+                            <label><strong class="text-info">Data da Consulta</strong> : <?= date('m-d-Y', strtotime($ConsultaInnerJoin->dataConsulta)) ?></label>
                         </div>
                         <div class="form-group">
                             <label><strong class="text-info">Hora da Consulta:</strong> <?= date('H:i', strtotime($ConsultaInnerJoin->horaConsulta)) ?></label>

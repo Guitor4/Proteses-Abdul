@@ -4,7 +4,7 @@ require __DIR__.'/vendor/autoload.php';
 include __DIR__.'./includes/sessionStart.php';
 
 define('TITLE', 'Editar Rastreio');
-define('BTN', 'editarRastreio');
+define('BTN', 'editRastreio');
 define('IDENTIFICACAO', '0');
 
 

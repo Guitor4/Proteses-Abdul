@@ -6,7 +6,7 @@ include __DIR__ . './includes/nivelAcesso.php';
 
 use Classes\Entity\Funcionario;
 
-define('NAME', 'Funcionário');
+define('NAME', 'Employee');
 define('LINK', 'listaFuncionario.php');
 define('IDENTIFICACAO', 3);
 if (!isset($_GET['pagina'])) {
@@ -61,17 +61,16 @@ foreach ($funcionario as $objFuncionario) {
                         <td>' . $objFuncionario->perfil . '</td>
                         <td>' . $objFuncionario->login . '</td>
                         <td>' . $objFuncionario->statusFuncionario . '</td>
-                        <td>' . $objFuncionario->dtContrato  . '</td>
                         <td>
                         <a href = editaFuncionario.php?id=' . $objFuncionario->idFuncionario . '>
-                        <button type="button" class="btn btn-info">Editar</button>
+                        <button type="button" class="btn btn-info">Edit</button>
                         </a>
                         </td>
                         </tr>';
 }
 $resultados = strlen($resultados) ? $resultados :
   '<tr>'
-  . '<td colspan = "12" class = "text-center"> Nenhum Funcionário foi encontrada no histórico</td>'
+  . '<td colspan = "12" class = "text-center">No Registered Employees</td>'
   . '</tr>';
 
 

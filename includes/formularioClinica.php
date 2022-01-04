@@ -6,27 +6,27 @@
                 <div class="col-8">
 
                     <div class="form-group">
-                        <label>Nome</label>
+                        <label>Name</label>
                         <input type="text" onblur = "validaNome(this)" class="form-control" name="nomeClinica" required="" value="<?= $clinica->nomeClinica ?>">
                     </div>
 
                     <div class="form-group">
                         <label>Status: </label>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="status" id="exampleRadios1" value="ativo" checked="">
+                            <input class="form-check-input" type="radio" name="status" id="exampleRadios1" value="Active" checked="">
                             <label class="form-check-label" for="exampleRadios1">
-                                Ativo
+                                Active
                             </label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="status" id="exampleRadios2" value="inativo" <?= $clinica->statusClinica == 'inativo' ? 'checked' : '' ?>>
+                            <input class="form-check-input" type="radio" name="status" id="exampleRadios2" value="Inactive" <?= $clinica->statusClinica == 'Inactive' ? 'checked' : '' ?>>
                             <label class="form-check-label" for="exampleRadios2">
-                                Inativo
+                                Inactive
                             </label>
                         </div>
                         <div class="d-flex justify-content-center p-2">
 
-                            <input type="submit" name="<?= BTN ?>" class="  btn btn-lg btn-success btInput" value="<?= (TITLE == "Cadastrar Clinica" ? 'Cadastrar' : 'Editar') ?>">
+                            <input type="submit" name="<?= BTN ?>" class="  btn btn-lg btn-success btInput" value="<?= (TITLE == "Register Clinic" ? 'Register' : 'Edit') ?>">
 
                         </div>
                     </div>

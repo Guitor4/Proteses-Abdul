@@ -10,7 +10,7 @@ function Calendario() {
   function getHorarios(valor) {
     var valorAjax = valor;
     /* teste = false; */
-    $("#horarios").html("<option value = 0>Aguardando...</option");
+    $("#horarios").html("<option value = 0>Waiting...</option");
 
     var boolean = false;
 
@@ -113,17 +113,16 @@ function Calendario() {
         },
       },
       buttonText: {
-        today: "Hoje",
-        month: "Mês",
-        week: "Semana",
-        day: "Dia",
-        listWeek: "Lista Semanal",
-        listMonth: "Lista Mensal",
+        today: "Today",
+        month: "Month",
+        week: "Week",
+        day: "Day",
+        listWeek: "Weekly List",
+        listMonth: "Monthly list",
       },
       events: {
         url: "preencherAgenda.php",
       },
-      locale: "pt-br",
     });
     calendar.render();
   })(window, document);

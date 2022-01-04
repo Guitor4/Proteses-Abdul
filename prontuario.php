@@ -211,14 +211,7 @@ if (isset($_POST['cadFoto'])) {
               icon: 'success',
               confirmButtonColor: '#3085d6',
               confirmButtonText: 'Ok'
-            }).then((result) => {
-          if (result.isConfirmed) {
-            redirecionamento()
-        }
-        })
-        function redirecionamento(){
-          window.location.href = \"paciente='" . $_GET['paciente'] . "\"
-        }
+            })
             </script>";
         }
         /* unset($_POST['cadFoto']); */
@@ -231,6 +224,17 @@ if (isset($_GET['status']) && $_GET['status'] == 'error1') {
     Swal.fire({
       title: 'Imagem não cadastrada',
       text: \"Já existe uma imagem com o mesmo nome cadastrada, por favor altere o nome da imagem antes de cadastrá-la\",
+      icon: 'error',
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'Ok'
+    })
+    </script>";
+}
+if (isset($_GET['status']) && $_GET['status'] == 'error2') {
+    $alerta = "<script>
+    Swal.fire({
+      title: 'Protese não cadastrada',
+      text: \"Não foi cadastrada uma prótese para esta consulta apesar do procedimento ter sido registrado, por favor cadastre-a e só depois retorne para ver o pdf\",
       icon: 'error',
       confirmButtonColor: '#3085d6',
       confirmButtonText: 'Ok'

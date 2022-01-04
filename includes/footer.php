@@ -25,6 +25,14 @@
             document.getElementById('qtdOuro').setAttribute("disabled", "disabled");
         }
     }
+
+    function extension(valor) {
+        if (valor === "Full") {
+            document.getElementById('qtdDentes').value="14"
+        }else{
+            document.getElementById('qtdDentes').value=""
+        }
+    }
 </script>
 <?php
 if (isset($calendario)) {
