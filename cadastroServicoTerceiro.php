@@ -5,7 +5,7 @@ include __DIR__ . './includes/sessionStart.php';
 
 use \Classes\Entity\ServicoTerceiro;
 
-define('TITLE', 'Cadastrar Serviço Terceiro');
+define('TITLE', 'Register Service');
 define('BTN', 'Salvar');
 define('IDENTIFICACAO', '0');
 $objServicoTerceiro = new ServicoTerceiro;

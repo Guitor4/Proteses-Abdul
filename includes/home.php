@@ -97,7 +97,7 @@
                 <div class="d-flex justify-content-start bg-dark text-white" >
                     <h4 class="text-center text-white bg-dark p-1">Filters: </h4>
                     <div class="p-2">
-                        <label for="Filtro1">Consultations</label>
+                        <label for="Filtro1">Appointments</label>
                         <input name="Filtro1" onchange="preencherListaHome(1)" checked type="radio" value="Teste"></input>
                     </div>
                     <div class="p-2">

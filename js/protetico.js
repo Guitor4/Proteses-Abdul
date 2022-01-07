@@ -320,7 +320,8 @@ function Consultas() {
     dataType: "json",
     url: "consultasAbrirProntuario.php?prontuario=" + valorAjax,
     success: function (dados) {
-      if (dados !== null && dados !== "Sem resultados") {
+      console.log(dados);
+      if (dados !== null && dados !== "No results") {
         var tabela =
           "<thead><tr><th>Consultation ID</th>\n\
                                     <th>Date</th>\n\

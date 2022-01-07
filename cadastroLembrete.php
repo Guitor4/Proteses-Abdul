@@ -2,7 +2,7 @@
 
 require 'vendor/autoload.php';
 include __DIR__ . './includes/sessionStart.php';
-define('TITLE', 'Cadastrar Lembrete');
+define('TITLE', 'Register reminder');
 define('BTN', 'cadastrarLembrete');
 define('IDENTIFICACAO', '0');
 

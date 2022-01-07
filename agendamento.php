@@ -1,8 +1,8 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
 include __DIR__ . './includes/sessionStart.php';
-define('TITLE', 'Cadastrar Nova Consulta');
-define('NAME', 'Consulta');
+define('TITLE', 'Register Appointment');
+define('NAME', 'Appointment');
 define('IDENTIFICACAO', 'Agendamento');
 
 
@@ -91,8 +91,8 @@ if (
     if ($objConsulta->idConsulta > 0) {
       $alerta = "<script>
         Swal.fire({
-          title: '" . NAME . " n° " . $objConsulta->idConsulta . " cadastrada com sucesso!!',
-          text: \"Caso haja alguma alteração a ser feita, utilize a lista de consultas fora da agenda\",
+          title: '" . NAME . " n° " . $objConsulta->idConsulta . " succesfully registered!!',
+          text: \"If there are any changes to be made, use the list of appointments outside the agenda\",
           icon: 'success',
           confirmButtonColor: '#3085d6',
           confirmButtonText: 'Ok'
@@ -109,8 +109,8 @@ if (
   }else{
     "<script>
         Swal.fire({
-          title: 'Ocorreu um erro!!',
-          text: \"Contate o suporte\",
+          title: 'There's an error!!',
+          text: \"Contact the support\",
           icon: 'err',
           confirmButtonColor: '#3085d6',
           confirmButtonText: 'Ok'

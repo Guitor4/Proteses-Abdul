@@ -5,7 +5,7 @@ include __DIR__ . './includes/sessionStart.php';
 
 use \Classes\Entity\procedimento;
 
-define('TITLE', 'Cadastrar Procedimento');
+define('TITLE', 'Register Proceeding');
 define('IDENTIFICACAO', '0');
 $objProcedimento = new Procedimento;
 if (isset($_POST['nomeProcedimento'])) {

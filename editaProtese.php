@@ -7,7 +7,7 @@ include __DIR__ . './includes/sessionStart.php';
 use \Classes\Entity\Protese;
 use Classes\Entity\MarcaDente;
 
-define('TITLE', 'Editar Protese');
+define('TITLE', 'Edit Denture');
 define('IDENTIFICACAO', '0');
 
 //Validação do GET

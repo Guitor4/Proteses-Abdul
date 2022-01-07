@@ -27,7 +27,7 @@ if (isset($_GET['idProcedimento'])){ //cuidado com o id da protese
 $options = new Options();
 $options->setChroot(__DIR__);
 
-if ($tratamento->nomeProcedimento=='Protese'||$tratamento->nomeProcedimento=='Protese 2'){//se igual a protese
+if ($tratamento->nomeProcedimento=='Denture'||$tratamento->nomeProcedimento=='Denture 2'){//se igual a protese
     $t='
         <h3>'.$tratamento->nomeProcedimento.'</h3>
         <label>Denture ID: '.$tratamento->idProtese.'</label><br>

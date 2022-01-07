@@ -206,8 +206,8 @@ if (isset($_POST['cadFoto'])) {
         if ($objFoto->idFoto > 0) {
             $alerta = "<script>
             Swal.fire({
-              title: 'Imagem cadastrada com sucesso!!',
-              text: \"Confira na aba Fotos\",
+              title: 'Image registered successfully!!',
+              text: \"Check it out on the Photos tab\",
               icon: 'success',
               confirmButtonColor: '#3085d6',
               confirmButtonText: 'Ok'
@@ -222,8 +222,8 @@ if (isset($_POST['cadFoto'])) {
 if (isset($_GET['status']) && $_GET['status'] == 'error1') {
     $alerta = "<script>
     Swal.fire({
-      title: 'Imagem não cadastrada',
-      text: \"Já existe uma imagem com o mesmo nome cadastrada, por favor altere o nome da imagem antes de cadastrá-la\",
+      title: 'Image couldn't be registered',
+      text: \"There is already an image with the same name registered, please change the image name before registering it\",
       icon: 'error',
       confirmButtonColor: '#3085d6',
       confirmButtonText: 'Ok'
@@ -233,8 +233,8 @@ if (isset($_GET['status']) && $_GET['status'] == 'error1') {
 if (isset($_GET['status']) && $_GET['status'] == 'error2') {
     $alerta = "<script>
     Swal.fire({
-      title: 'Protese não cadastrada',
-      text: \"Não foi cadastrada uma prótese para esta consulta apesar do procedimento ter sido registrado, por favor cadastre-a e só depois retorne para ver o pdf\",
+      title: 'there are no registered dentures',
+      text: \"A Denture was not registered for this appointment despite the procedure having been registered, please register it and only then return to view the PDF\",
       icon: 'error',
       confirmButtonColor: '#3085d6',
       confirmButtonText: 'Ok'

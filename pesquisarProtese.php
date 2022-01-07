@@ -122,7 +122,7 @@ foreach ($proteses as $protese) {
 }
 $resultados = strlen($resultados) ? $resultados :
     '<tr>'
-    . '<td colspan = "12" class = "text-center"> Nenhuma Prótese foi encontrada no histórico</td>'
+    . '<td colspan = "12" class = "text-center"> No Dentures were found in history</td>'
     . '</tr>';
 
 

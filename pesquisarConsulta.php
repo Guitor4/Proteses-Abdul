@@ -7,10 +7,8 @@ include __DIR__ . './includes/sessionStart.php';
 use \Classes\Entity\Consulta;
 use \Classes\Entity\paciente;
 
-define('NAME', 'Consulta');
+define('NAME', 'Appointment');
 define('LINK', 'pesquisarConsulta.php?pagina=1');
-define('CAMPO', 'nomePaciente,idConsulta,dataConsulta,prontuario');
-define('TABELA', 'consulta');
 define('IDENTIFICACAO', 7);
 $objConsulta = new Consulta;
 $objPaciente = new paciente;
@@ -47,9 +45,9 @@ $itens_por_pagina = 6;
 
 $inicio = ($itens_por_pagina * $pagina_atual) - $itens_por_pagina;
 
-$registros_totais = $consultas = $objConsulta->getConsultasInnerJoin('paciente,clinica,dentista,funcionario', $where, 'fkProntuario,prontuario,CFKClinica,idClinica,CFKDentista,idDentista,fkFuncionario,idFuncionario', null, 'statusConsulta,dataConsulta  desc ');
+$registros_totais = $consultas = $objConsulta->getConsultasInnerJoin('paciente,clinica,dentista,funcionario', $where, 'fkProntuario,prontuario,CFKClinica,idClinica,CFKDentista,idDentista,fkFuncionario,idFuncionario', null, 'statusConsulta  desc ');
 
-$registros_filtrados = $consultas = $objConsulta->getConsultasInnerJoin('paciente,clinica,dentista,funcionario', $where, 'fkProntuario,prontuario,CFKClinica,idClinica,CFKDentista,idDentista,fkFuncionario,idFuncionario', null, 'statusConsulta,dataConsulta  desc ', $inicio . ',' . $itens_por_pagina);
+$registros_filtrados = $consultas = $objConsulta->getConsultasInnerJoin('paciente,clinica,dentista,funcionario', $where, 'fkProntuario,prontuario,CFKClinica,idClinica,CFKDentista,idDentista,fkFuncionario,idFuncionario', null, 'statusConsulta  desc ', $inicio . ',' . $itens_por_pagina);
 
 $num_registros_totais = count($registros_totais);
 
@@ -80,7 +78,7 @@ if (isset($_GET['rastreio']) == "check") {
 }
 $resultados = '';
 foreach ($consultas as $consulta) {
-  $disabled = ($consulta->statusConsulta == 'Finalizada' ? 'class = "btn btn-secondary" disabled = disabled' : 'class = "btn btn-info"');
+  $disabled = ($consulta->statusConsulta == 'Finished' ? 'class = "btn btn-secondary" disabled = disabled' : 'class = "btn btn-info"');
   $disabled = ($disabled2 == 'ok' ? 'hidden=""' : $disabled);
 
   $resultados .= '<tr class = "text-center" >
@@ -98,7 +96,7 @@ foreach ($consultas as $consulta) {
 }
 $resultados = strlen($resultados) ? $resultados :
   '<tr>'
-  . '<td colspan = "12" class = "text-center"> Nenhuma Consulta foi encontrada no histórico</td>'
+  . '<td colspan = "12" class = "text-center"> No appointmnets were found in history</td>'
   . '</tr>';
 
 

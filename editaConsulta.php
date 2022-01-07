@@ -10,7 +10,7 @@ use \Classes\Entity\dentista;
 use \Classes\Entity\paciente;
 use \Classes\Entity\funcionario;
 
-define('TITLE', 'Editar Consulta');
+define('TITLE', 'Edit Appointment');
 define('IDENTIFICACAO', '0');
 $objConsulta = consulta::getConsulta($_GET['id']);
 /* echo "<pre>"; print_r($objConsulta); echo "<pre>";exit; */
@@ -24,8 +24,8 @@ $objClinica = clinica::getClinicas('statusClinica != "Inactive"');
 if (count($objClinica) < 1) {
     $erro = ("<script>
     Swal.fire({
-      title: 'Sem clínicas!!',
-      text: \"Não foram encontradas clínicas registradas ou ativas, por favor registre ao menos uma antes de cadastrar a consulta\",
+      title: 'No clinics!!',
+      text: \"No registered or active clinics were found, please register at least one before registering the Appointment\",
       icon: 'error',
       confirmButtonColor: '#3085d6',
       confirmButtonText: 'Ok'
@@ -37,8 +37,8 @@ $objDentista = dentista::getDentistas('statusDentista != "Inactive"');
 if (count($objDentista) < 1) {
     $erro = ("<script>
     Swal.fire({
-      title: 'Sem Dentistas!!',
-      text: \"Não foram encontrados dentistas registrados ou ativas, por favor registre ao menos uma antes de cadastrar a consulta\",
+      title: 'No Dentists!!',
+      text: \"No registered or active dentists were found, please register at least one before registering the consultation\",
       icon: 'error',
       confirmButtonColor: '#3085d6',
       confirmButtonText: 'Ok'
@@ -50,8 +50,8 @@ $objPaciente = paciente::getPacientes();
 if (count($objPaciente) < 1) {
     $erro = ("<script>
     Swal.fire({
-      title: 'Sem Pacientes!!',
-      text: \"Não foram encontrados pacientes registrados, por favor registre ao menos uma antes de cadastrar a consulta\",
+      title: 'No Patients!!',
+      text: \"No registered or active patients were found, please register at least one before registering the consultation\",
       icon: 'error',
       confirmButtonColor: '#3085d6',
       confirmButtonText: 'Ok'

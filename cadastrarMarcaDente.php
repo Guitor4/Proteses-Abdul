@@ -3,7 +3,7 @@
 include __DIR__ . './vendor/autoload.php';
 include __DIR__ . './includes/sessionStart.php';
 
-define('TITLE', 'Cadastrar Marca de Dente');
+define('TITLE', 'Register Tooth Brand');
 define('BTN', 'cadastrarMarcaDente');
 
 use Classes\Entity\MarcaDente;

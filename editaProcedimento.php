@@ -5,7 +5,7 @@ include __DIR__ . './includes/sessionStart.php';
 
 use \Classes\Entity\Procedimento;
 
-define('TITLE', 'Editar Procedimento');
+define('TITLE', 'Edit Proceeding');
 define('BTN', 'editProcedimento');
 define('IDENTIFICACAO', '0');
 if (!isset($_GET['id']) or !is_numeric($_GET['id'])) {

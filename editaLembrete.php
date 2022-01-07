@@ -2,7 +2,7 @@
 
 require 'vendor/autoload.php';
 include __DIR__ . './includes/sessionStart.php';
-define('TITLE', 'Editar Lembrete');
+define('TITLE', 'Edit Reminder');
 define('BTN', 'editLembrete');
 define('IDENTIFICACAO', '0');
 

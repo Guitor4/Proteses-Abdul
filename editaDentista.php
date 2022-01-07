@@ -2,7 +2,7 @@
 
 require 'vendor/autoload.php';
 include __DIR__ . './includes/sessionStart.php';
-define('TITLE', 'Editar Dentista');
+define('TITLE', 'Edit Dentist');
 define('BTN', 'editDentista');
 define('IDENTIFICACAO', '0');
 

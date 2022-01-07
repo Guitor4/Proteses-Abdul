@@ -8,7 +8,7 @@ use \Classes\Entity\Protese;
 use \Classes\Entity\Paciente;
 use Classes\Entity\MarcaDente;
 
-define('TITLE', 'Cadastrar Prótese');
+define('TITLE', 'Register Denture');
 define('BTN', 'cadastrarProtese');
 define('IDENTIFICACAO', '0');
 

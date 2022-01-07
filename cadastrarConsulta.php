@@ -12,7 +12,7 @@ use \Classes\Entity\paciente;
 use \Classes\Entity\funcionario;
 
 
-define('TITLE', 'Cadastrar Nova Consulta');
+define('TITLE', 'Register Appointment');
 define('IDENTIFICACAO', '0');
 define('BTN', 'cadastrarConsulta');
 $erro = "";

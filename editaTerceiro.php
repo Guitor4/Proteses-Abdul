@@ -4,7 +4,7 @@ require __DIR__ . '/vendor/autoload.php';
 include __DIR__.'./includes/sessionStart.php';
 use \Classes\Entity\Terceiro;
 
-define('TITLE', 'Editar Terceiro');
+define('TITLE', 'Edit Provider');
 define('BTN', 'editTerceiro');
 define('IDENTIFICACAO', '0');
 

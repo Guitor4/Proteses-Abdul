@@ -20,7 +20,7 @@
             <a href="pesquisarConsulta.php"> <input type="submit" value="Clear search" class="btn btn-danger w-100" /> </a>
           </div>
           <div class="col-6 p-2">
-            <a href="CadastrarConsulta.php"> <input type="submit" value="Cadastrar Consulta" class="btn btn-success w-100" /> </a>
+            <a href="CadastrarConsulta.php"> <input type="submit" value="Register Appointment" class="btn btn-success w-100" /> </a>
           </div>
         </div>
       </div>

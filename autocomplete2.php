@@ -96,7 +96,7 @@ while ($row_msg_count = $resultado_msg_cont->fetch(PDO::FETCH_ASSOC)) {
         }
     }
     if ($data == null) {
-        $data = ['Sem Resultados'];
+        $data = ['No Results'];
     }
 }
 /* $data = ['Sem resultados 1','Sem resultados 2']; */

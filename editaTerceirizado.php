@@ -7,7 +7,7 @@ use \Classes\Entity\terceirizado;
 use \Classes\Entity\Terceiro;
 use \Classes\Entity\ServicoTerceiro;
 
-define('TITLE', 'Editar Terceirizado');
+define('TITLE', 'Edit Service Provider');
 define('BTN', 'editTerceirizado');
 define('IDENTIFICACAO', 0);
 

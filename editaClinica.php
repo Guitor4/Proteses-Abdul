@@ -2,7 +2,7 @@
 
 require 'vendor/autoload.php';
 include __DIR__ . './includes/sessionStart.php';
-define('TITLE', 'Editar Clinica');
+define('TITLE', 'Edit Clinic');
 define('BTN', 'editClinica');
 define('IDENTIFICACAO', '0');
 

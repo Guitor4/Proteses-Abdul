@@ -8,6 +8,7 @@ date_default_timezone_set('America/Sao_Paulo');
 $json = json_decode(file_get_contents('config.json'));
 $start = new \DateTime('08:00');
 $interval = $json->conf->intervaloHorarioConsulta;
+/* echo "<pre>"; print_r($interval); echo "<pre>";exit; */
 switch ($interval) {
     case 'PT15M':
         $times = 40;

@@ -3,7 +3,7 @@
 include __DIR__.'./vendor/autoload.php';
 include __DIR__.'./includes/sessionStart.php';
 
-define('NAME', 'Configurações');
+define('NAME', 'Settings');
 
 $json = json_decode(file_get_contents('config.json'));
 $intervalo = $json->conf->intervaloHorarioConsulta;

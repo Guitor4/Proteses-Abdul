@@ -15,7 +15,7 @@
                     <h3 style="text-align: center;"><?= TITLE ?></h3>
                 </div>
                 <div class="row border p-3">
-                    <div class="col-4 offset-1 border border-success">
+                    <div class="col-5 border border-success">
                         <div class="form-group">
                             <label><strong class="text-info">Patient's name:</strong> <?= $ConsultaInnerJoin->nomePaciente ?></label>
                         </div>
@@ -26,7 +26,7 @@
                             <label><strong class="text-info">Hour:</strong> <?= date('H:i', strtotime($ConsultaInnerJoin->horaConsulta)) ?></label>
                         </div>
                     </div>
-                    <div class="col-4 offset-2 border border-success">
+                    <div class="col-5 offset-2 border border-success">
                         <div class="form-group">
                             <label><strong class="text-info">Dentist: </strong><?= $ConsultaInnerJoin->nomeDentista ?></label>
                         </div>
@@ -55,7 +55,7 @@
                     </div>
                     <div class="d-flex justify-content-center">
                         <input type="checkbox" name = "finalizarConsulta" class="btn-check" id="btn-check-2-outlined" autocomplete="off">
-                        <label class="btn btn-outline-primary" for="btn-check-2-outlined">End Appointment ?</label><br>
+                        <label class="btn btn-outline-primary" for="btn-check-2-outlined">End Appointment</label><br>
                     </div>
                     <div class="row">
                         <label class="mt-3 text-info" for="relatorio"><strong>Post-Appointment observations:</strong></label>

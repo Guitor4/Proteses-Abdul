@@ -9,7 +9,7 @@ use \Classes\Entity\ServicoTerceiro;
 
 
 define('BTN', 'cadastrarTerceirizado');
-define('TITLE', 'Cadastrar Terceirizado');
+define('TITLE', 'Register Service Provider');
 define('IDENTIFICACAO', '0');
 $terceirizado = new terceirizado;
 

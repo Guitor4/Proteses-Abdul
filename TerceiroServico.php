@@ -34,5 +34,5 @@ if ($idTerceiro != null) {
         echo json_encode($array);
     }
 } else {
-    echo json_encode('Sem resultados');
+    echo json_encode('No results');
 }

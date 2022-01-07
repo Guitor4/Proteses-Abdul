@@ -4,7 +4,7 @@ require __DIR__ . '/vendor/autoload.php';
 include __DIR__.'./includes/sessionStart.php';
 use \Classes\Entity\ServicoTerceiro;
 
-define('TITLE', 'Editar Serviço Terceiro');
+define('TITLE', 'Edit Service');
 define('IDENTIFICACAO', '0');
 
 if (!isset($_GET['id']) or !is_numeric($_GET['id'])) {
