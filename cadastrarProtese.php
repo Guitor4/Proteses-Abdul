@@ -66,7 +66,7 @@ if (
     $objProtese->extensao = $_POST['extensao'];
     $objProtese->marcaDente = $_POST['marca'];
     $objProtese->qtdDente = $_POST['qtdDentes'];
-    $objProtese->ouro = (isset($_POST['ouroDente']) == "on" ? "Sim" : "Nao");
+    $objProtese->ouro = (isset($_POST['ouroDente']) == "on" ? "Yes" : "No");
     $objProtese->qtdOuro = (isset($_POST['qtdOuro']) ? $_POST['qtdOuro'] : 0);
     $objProtese->paciente = $_POST['paciente'];
     $objProtese->status = 'Cadastrada';
@@ -80,13 +80,7 @@ if (
     //Caso a função cadastrar rode sem problemas, obrigatóriamente o valor do $objProtese->id será preenchido
     //Assim fazendo uma validação por meio dessa variável, e passando isso pro url da página.
     if ($objProtese->idProtese > 0) {
-        if (isset($_GET['number']) && $_GET['number'] == 1) {
-            header('location: pesquisarProtese.php?pagina=1&idConsulta=' . $_GET["idConsulta"] . '&idProcedimento=' . $_GET["idProcedimento"] . '&prontuario=' . $_GET["prontuario"] . '&number=2');
-        } else if (isset($_GET['number']) && $_GET['number'] == 2) {
-            header('Location: pesquisarProtese.php?pagina=1&status=success1&id=' . $objProtese->idProtese.'&idConsulta='.$_GET["idConsulta"]);
-        } else {
-            header('Location: pesquisarProtese.php?pagina=1&status=success1&id=' . $objProtese->idProtese);
-        }
+        header('location: pesquisarProtese.php?pagina=1&idConsulta=' . $_GET["idConsulta"] . '&idProcedimento=' . $_GET["idProcedimento"] . '&prontuario=' . $_GET["prontuario"].'&status=success1&id='.$objProtese->idProtese);
     } else {
         header('Location: pesquisarProtese.php?pagina=1&status=error1');
     }

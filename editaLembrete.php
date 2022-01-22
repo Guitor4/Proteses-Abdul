@@ -24,7 +24,7 @@ if (isset($_POST[BTN])) {
     $objLembrete->editarLembrete();
 
     if ($objLembrete->idLembrete > 0) {
-        header('location: listaLembrete.php?pagina=1&status=success&id=' . $objLembrete->idLembrete);
+        header('location: listaLembrete.php?pagina=1&status=success2&id=' . $objLembrete->idLembrete);
     } else {
         header('location: listaLembrete.php?pagina=1&status=error');
     }

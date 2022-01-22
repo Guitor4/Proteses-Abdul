@@ -12,7 +12,7 @@ $lembretes = new Lembrete;
 
 if (isset($_POST[BTN])) {
     $lembretes->titulo = $_POST['titulo'];
-    $lembretes->descricao = ($_POST['descricao'] != null ? $_POST['descricao'] : 'Sem comentários');
+    $lembretes->descricao = ($_POST['descricao'] != null ? $_POST['descricao'] : 'No Observations');
     $lembretes->dataLembrete = $_POST['dataLembrete'];
     $lembretes->Funcionario = $_SESSION['idFuncionario'];
     /* echo "<pre>"; print_r($lembretes); echo "<pre>";exit; */

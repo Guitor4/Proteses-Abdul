@@ -11,7 +11,7 @@ $term = $_GET['id'];
 
 
 
-$query1 = 'select idConsulta,nomePaciente,dataConsulta,horaConsulta,statusConsulta,relatorio from consulta inner join paciente on prontuario = fkProntuario where statusConsulta != "Finalizada" and dataConsulta = "' . $data . '" ORDER BY horaConsulta,dataConsulta,nomePaciente desc';
+$query1 = 'select idConsulta,nomePaciente,dataConsulta,horaConsulta,statusConsulta,relatorio from consulta inner join paciente on prontuario = fkProntuario where statusConsulta != "Finished" and dataConsulta = "' . $data . '" ORDER BY horaConsulta,dataConsulta,nomePaciente desc';
 
 $query2 = 'select idLembrete,titulo,descricao,dataLembrete,fkFuncionario,nomeFuncionario from lembrete inner join funcionario on fkFuncionario = idFuncionario where dataLembrete = "'.$data.'"';
 
@@ -38,7 +38,7 @@ if (isset($eventoConsultas)) {
 
             $array[] = array(
                 'id' => $row_eventoConsultas['idConsulta'],
-                'title' => "Consulta de " . $row_eventoConsultas['nomePaciente'],
+                'title' => $row_eventoConsultas['nomePaciente']."'s Appointment",
                 'start' => $row_eventoConsultas['dataConsulta'],
                 'horaConsulta' => date('H:i', strtotime($row_eventoConsultas['horaConsulta'])),
                 'statusConsulta' => $row_eventoConsultas['statusConsulta'],

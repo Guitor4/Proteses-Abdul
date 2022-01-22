@@ -11,6 +11,7 @@ use Dompdf\Options;
 if (isset($_GET['idProcedimento'])){ //cuidado com o id da protese
     
     $tratamento = Prontuario::getTratamentoInner($_GET['idProcedimento'],$_GET['nomeProcedimento'],$_GET['consulta'],$_GET['prontuario']);
+    /* echo "<pre>"; print_r($tratamento); echo "<pre>";exit; */
     if(!$tratamento){
         header('location:prontuario.php?paciente='.$_GET['prontuario'].'&status=error2');
     }
@@ -36,8 +37,8 @@ if ($tratamento->nomeProcedimento=='Denture'||$tratamento->nomeProcedimento=='De
         <label>Tooth Brand: '.$tratamento->marcaDente.'</label><br>
         <label>Extension: '.$tratamento->extensao.'</label><br>
         <label>N° of Teeths: '.$tratamento->qtdDente.'</label><br>
-        <label>Golden tooth: '.$tratamento->ouro.'</label><br>
-        <label>N° of golden tooths: '.$tratamento->qtdOuro.'</label><br>
+        <label>Has golden tooth: '.$tratamento->ouro.'</label><br>
+        <label>N° of golden teeth: '.$tratamento->qtdOuro.'</label><br>
         <label>Registration date: '.date('m-d-Y h:i:s', strtotime($tratamento->dataRegistro)).'</label><br>
         <label>Status: '.$tratamento->status.'</label><br>
         <label>Observation:<textarea style="height: auto"> '.$tratamento->observacao.'</textarea></label><br>

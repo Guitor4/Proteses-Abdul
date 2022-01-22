@@ -18,42 +18,42 @@ define('BTN', 'cadastrarConsulta');
 $erro = "";
 $select = "";
 $objClinica = clinica::getClinicas('statusClinica != "Inactive"');
-if (count($objClinica) < 1){
-    $erro = ("<script>
-    Swal.fire({
-      title: 'Sem clínicas!!',
-      text: \"Não foram encontradas clínicas registradas ou ativas, por favor registre ao menos uma antes de cadastrar a consulta\",
-      icon: 'error',
-      confirmButtonColor: '#3085d6',
-      confirmButtonText: 'Ok'
-    })
-    </script>"."<meta http-equiv=\"refresh\" content=\"5;url=listaClinica.php\" />");
+if (count($objClinica) < 1) {
+  $erro = ("<script>
+  Swal.fire({
+    title: 'No clinics!!',
+    text: \"No registered or active clinics were found, please register at least one before registering the Appointment\",
+    icon: 'error',
+    confirmButtonColor: '#3085d6',
+    confirmButtonText: 'Ok'
+  })
+  </script>" . "<meta http-equiv=\"refresh\" content=\"5;url=listaClinica.php\" />");
 }
 /* echo '<pre>';print_r($objClinica);echo'<pre>';exit; */
 $objDentista = dentista::getDentistas('statusDentista != "Inactive"');
-if (count($objDentista) < 1){
-    $erro = ("<script>
-    Swal.fire({
-      title: 'Sem Dentistas!!',
-      text: \"Não foram encontrados dentistas registrados ou ativas, por favor registre ao menos uma antes de cadastrar a consulta\",
-      icon: 'error',
-      confirmButtonColor: '#3085d6',
-      confirmButtonText: 'Ok'
-    })
-    </script>"."<meta http-equiv=\"refresh\" content=\"5;url=listaDentista.php\" />");
+if (count($objDentista) < 1) {
+  $erro = ("<script>
+  Swal.fire({
+    title: 'No Dentists!!',
+    text: \"No registered or active dentists were found, please register at least one before registering the consultation\",
+    icon: 'error',
+    confirmButtonColor: '#3085d6',
+    confirmButtonText: 'Ok'
+  })
+  </script>" . "<meta http-equiv=\"refresh\" content=\"5;url=listaDentista.php\" />");
 }
 /* echo '<pre>';print_r($objDentista);echo'<pre>';exit; */
 $objPaciente = paciente::getPacientes();
-if (count($objPaciente) < 1){
-    $erro = ("<script>
-    Swal.fire({
-      title: 'Sem Pacientes!!',
-      text: \"Não foram encontrados pacientes registrados, por favor registre ao menos uma antes de cadastrar a consulta\",
-      icon: 'error',
-      confirmButtonColor: '#3085d6',
-      confirmButtonText: 'Ok'
-    })
-    </script>"."<meta http-equiv=\"refresh\" content=\"5;url=listaPaciente.php\" />");
+if (count($objPaciente) < 1) {
+  $erro = ("<script>
+  Swal.fire({
+    title: 'No Patients!!',
+    text: \"No registered or active patients were found, please register at least one before registering the consultation\",
+    icon: 'error',
+    confirmButtonColor: '#3085d6',
+    confirmButtonText: 'Ok'
+  })
+  </script>" . "<meta http-equiv=\"refresh\" content=\"5;url=listaPaciente.php\" />");
 }
 /* echo '<pre>';print_r($objPaciente);echo'<pre>';exit; */
 $objFuncionario = funcionario::getFuncionarios();
@@ -82,8 +82,8 @@ if (
     /* echo "<pre>"; print_r($_POST); echo "<pre>";exit; */
     $objConsulta->dataConsulta = date('Y-m-d',strtotime($_POST['data']));
     $objConsulta->horaConsulta = $_POST['horarios'];
-    $objConsulta->statusConsulta = ($_POST['status'] != '' ? $_POST['status'] : 'Agendada');
-    $objConsulta->relatorio = ($_POST['relatorio'] != null ? $_POST['relatorio'] : 'Sem observações');
+    $objConsulta->statusConsulta = ($_POST['status'] != '' ? $_POST['status'] : 'Scheduled');
+    $objConsulta->relatorio = ($_POST['relatorio'] != null ? $_POST['relatorio'] : 'No Observations');
     $objConsulta->fkProntuario = $_POST['paciente'];
     $objConsulta->fkFuncionario = $_SESSION['idFuncionario'];
     $objConsulta->CFKClinica = $_POST['clinica'];

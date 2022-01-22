@@ -20,7 +20,7 @@ if (!$objProcedimento instanceof Procedimento) {
     exit;
 }
 
-if (isset($_POST['editarProcedimento'])) {
+if (isset($_POST['editProcedimento'])) {
     if (isset($_POST['nomeProcedimento'], $_POST['statusProcedimento'])) {
 
         $objProcedimento = new Procedimento;

@@ -78,7 +78,7 @@ foreach ($innerTratamentos as $dados) {
 
 $resultados = strlen($resultados) ? $resultados :
         '<tr>'
-        . '<td colspan = "12" class = "text-center"> Nenhuma Consulta foi encontrada no histórico</td>'
+        . '<td colspan = "12" class = "text-center"> No Appointments found in the history</td>'
         . '</tr>';
 
 //$rastreio = Rastreio::getRastreios(null,null,null,null,'fkProtese');

@@ -90,14 +90,15 @@ function Calendario() {
         omitCommas: true,
       },
       dateClick: function (info) {
+        console.log(info.dateStr);
         if (info.view.type == "dayGridMonth" && info.dateStr != null) {
-          var a;
+          
           var parseDataShort =
             Date.parse(data) - data.getHours() * 1000 * 60 * 60 * data.getHours();
           var parseDataShort2 = Date.parse(info.dateStr);
-
+          console.log(a);
           if (parseDataShort2 >= parseDataShort) {
-            a = getHorarios(info.dateStr);
+            var a = getHorarios(info.dateStr);
             document.getElementById("datepicker").value = info.dateStr;
 
             if (a) {

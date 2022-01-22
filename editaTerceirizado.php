@@ -24,25 +24,27 @@ $selectTerceiro = '<option selected value ="' .  $terceiro->idTerceiro . '">' . 
 $servico = ServicoTerceiro::getServicoTerceiro($terceirizado->fkServicoTerceiro);
 $selectServico = '<option selected value ="' .  $servico->idServico . '">' . $servico->nomeServico . '</option>';
 
-
 if (!$objTerceirizado instanceof terceirizado) {
     header('Location: listaTerceirizado.php?status=error');
 }
+/* if (isset($_POST[BTN])){
+    echo "<pre>"; print_r($_POST); echo "<pre>";exit;
+} */
 
 if (
     //Checa se existem
     isset(
-        $_POST['Terceiro'],
-        $_POST['ServicoTerceiro'],
+        $_POST['terceiro2'],
+        $_POST['servico2'],
         $_POST['status']
 
     )
     //Checa se são diferentes de vazio
-    && $_POST['Terceiro'] != ""
-    && $_POST['ServicoTerceiro'] != ""
+    && $_POST['terceiro2'] != ""
+    && $_POST['servico2'] != ""
     && $_POST['status'] != ""
   ) {
-    /* echo "<pre>"; print_r($_POST); echo "<pre>";exit; */
+    
     if (isset($_POST['terceiro2'], $_POST['servico2'], $_POST['status'])) {
 
 

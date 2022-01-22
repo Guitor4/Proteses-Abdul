@@ -69,7 +69,7 @@ if (
 
     $rastreio->dtEntrega = ($_POST['dtEntrega']);
     $rastreio->dtRetorno = $_POST['dtRetorno'];
-    $rastreio->obs = strlen($_POST['obs']) ? $_POST['obs'] : 'Sem Observações';
+    $rastreio->obs = strlen($_POST['obs']) ? $_POST['obs'] : 'No Observations';
     $rastreio->statusRastreio = $_POST['status'];
     $rastreio->RFKTerceiro = $_POST['RFKTerceiro'];
     $rastreio->RFKServico = $_POST['RFKServico'];

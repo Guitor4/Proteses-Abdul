@@ -6,7 +6,7 @@ include __DIR__ . './includes/sessionStart.php';
 use Classes\Entity\Terceirizado;
 
 define("IDENTIFICACAO", 9);
-define("NAME", 'Service linked to the Provider');
+define("NAME", 'Service linked to the Provider ');
 define("LINK", 'listaTerceirizado.php?pagina=1');
 
 if (!isset($_GET['pagina'])) {
@@ -70,7 +70,7 @@ foreach ($Terceirizado as $Terceirizado) {
 
 $resultados = strlen($resultados) ? $resultados :
   '<tr>'
-  . '<td colspan = "12" class = "text-center"> Nenhum Terceirizado foi encontrada no histórico</td>'
+  . '<td colspan = "12" class = "text-center"> No Service Providers found in the history</td>'
   . '</tr>';
 
 

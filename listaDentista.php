@@ -63,7 +63,7 @@ foreach ($dentista as $d) {
 
 $resultados = strlen($resultados) ? $resultados :
   '<tr>'
-  . '<td colspan = "6" class = "text-center"> Nenhum dentista encontrado</td>'
+  . '<td colspan = "6" class = "text-center"> No Dentists found!!</td>'
   . '</tr>';
 
 include __DIR__ . '/includes/header.php';

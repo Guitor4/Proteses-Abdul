@@ -26,13 +26,14 @@ function getServicoTerceiro(valor) {
 function getServicoTerceiro2(valor) {
   var valorAjax = valor;
   $("#servico_terceiro").html("<option value = 0>Waiting...</option");
+  $(".selectpicker").selectpicker("refresh")
   $.ajax({
     type: "POST",
     dataType: "json",
     url: "TerceiroServico.php?id_terceiro=" + valorAjax+"&term=2",
     success: function (dados) {
       if (dados != null) {
-        var options = '<option value = " " hidden>Choose the service</option>';
+        var options = '<option selected value = "0">Choose the service</option>';
         for (var i = 0; i < dados.length; i++) {
           options +=
             '<option value="' +
@@ -46,6 +47,10 @@ function getServicoTerceiro2(valor) {
           $(".selectpicker").selectpicker("refresh");
         }
       }
+    },
+    error: function(){
+      $("#servico_terceiro").html('<option selected value = "1">Choose the service</option>').show();
+      $(".selectpicker").selectpicker("refresh")
     },
   });
 }
@@ -143,8 +148,8 @@ function preencherListaHome(x = 1, lista = "") {
             i = dados[x].idLembrete;
             t = dados[x].titulo;
             r = dados[x].descricao;
-            s = "Classe:Lembrete";
-            h = "Hoje";
+            s = "Reminder";
+            h = "Today";
 
             lista +=
               '<a href="listaLembrete.php?pagina=1&id=' +
@@ -396,7 +401,7 @@ function Tratamentos(id) {
         "&consulta=" +
         click,
       success: function (dados) {
-        if (dados !== null && dados !== "Sem resultados") {
+        if (dados !== null && dados !== "No Results") {
           var tabela =
             "<thead><tr><th>Procedimento</th>\n\
                                     <th>Ação</th>\n\
@@ -788,7 +793,7 @@ function validaProtese(){
       setTimeout(function (self) {
         $("#alerta").hide();
       }, 3000);
-      $("#alerta").html("Insert how many golden tooths the denture have!!").show();
+      $("#alerta").html("Insert how many golden tooths the denture will have!!").show();
       document.formProtese.tipo.focus();
       return;
     }
@@ -807,8 +812,10 @@ function validaTerceirizado(){
     document.formTerceirizado.Terceiro.focus();
     return;
   }
-  if(servico.value == ""){
+  teste = 0;
+  if(servico.value == "0" && teste == 0){
     setTimeout(function (self) {
+      teste = 1;
       $("#alerta").hide();
     }, 3000);
     $("#alerta").html("Select the service!!").show();

@@ -35,3 +35,6 @@ body{
     text-decoration: none !important;
     color: black;
 }
+.fc-list-event-title{
+    cursor: pointer;
+}

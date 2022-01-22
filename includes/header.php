@@ -43,7 +43,7 @@
         function click(id) {
             var btn = document.getElementById(id);
             btn.click();
-            $("#exampleModalLabel").html('Cadastro Consulta Teste')
+            $("#exampleModalLabel").html('Register Appointment Window')
             $('.selectpicker').selectpicker();
         }
         function click2(id) {
@@ -100,7 +100,7 @@
                         <a class="nav-link" href="pesquisarConsulta.php?pagina=1">
                             <div id="passar_mouse">
                                 <img src="./includes/img/consulta.png" width="30" height="30" alt="consulta" />
-                                <div id="mostrar">Consultations</div>
+                                <div id="mostrar">Appoitments</div>
                             </div>
                         </a>
                     </li>
@@ -149,7 +149,7 @@
                 <div class="border border-dark text-center">
                     <li class="nav-item dropdown" style="list-style:none">
                         <a class="nav-link dropdown-toggle" style="text-decoration:none;color:black" href="#" id="perfil" role="button" data-bs-toggle="dropdown" aria-expanded="true">
-                            <img src="<?= ($_SESSION['perfil'] == 'Administrador' ? './includes/img/usuario.png' : './includes/img/funcionario.png') ?>" width="40" height="40" style="border-radius: 20px;" alt="sair" /><strong>User: <?= $_SESSION['nome'] ?></strong>
+                            <img src="<?= ($_SESSION['perfil'] == 'Administrator' ? './includes/img/usuario.png' : './includes/img/funcionario.png') ?>" width="40" height="40" style="border-radius: 20px;" alt="sair" /><strong>User: <?= $_SESSION['nome'] ?></strong>
                             <br><label><?= $_SESSION['perfil'] ?></label>
                         </a>
                         <ul class="dropdown-menu text-center" style="width:100%" aria-labelledby="perfil">

@@ -40,7 +40,7 @@ if ($ConsultaInnerJoin->statusConsulta == 'Finished' || $ConsultaInnerJoin->stat
     }
     $resultados = strlen($resultados) ? $resultados :
   '<tr>'
-  . '<td colspan = "12" class = "text-center"> Nenhum Procedimento foi realizado nesta consulta</td>'
+  . '<td colspan = "12" class = "text-center"> No Proceedings performed in this appointment</td>'
   . '</tr>';
 }
 
@@ -81,7 +81,7 @@ if ($objProcedimento == null && $ConsultaInnerJoin->statusConsulta != "Finished"
     </script>
     <meta http-equiv=\"refresh\" content=\"5;url=Consulta.php?id=" . $_GET['id'] . "\" />
     ";
-    $objTratamento->atualizarStatusConsulta($_GET['id'], 'Finalizada');
+    $objTratamento->atualizarStatusConsulta($_GET['id'], 'Finished');
 }
 
 if (isset($_POST['Finalizar'])) {
@@ -89,20 +89,20 @@ if (isset($_POST['Finalizar'])) {
     print_r($_POST);
     echo '<pre>';
     exit; */
-    if (isset($_POST['observacoes'], $_POST['procedimento']) && $_POST['procedimento'] != '-[SELECIONE O PROCEDIMENTO A SER REALIZADO]-') {
+    if (isset($_POST['observacoes'], $_POST['procedimento']) && $_POST['procedimento'] != '-[Select the Proceeding]-') {
         $erro = 0;
 
         if (count($_POST['procedimento']) > 1) {
             /* echo '<pre>';print_r('teste');echo'<pre>';exit; */
             for ($i = 0; $i < count($_POST['procedimento']); $i++) {
-                $objTratamento->observacao = ($_POST['observacoes'] == '' ? 'Sem observações' : $_POST['observacoes']);
+                $objTratamento->observacao = ($_POST['observacoes'] == '' ? 'No Observations' : $_POST['observacoes']);
                 $objTratamento->fkProcedimento = $_POST['procedimento'][$i];
                 $objTratamento->fkConsulta = $ConsultaInnerJoin->idConsulta;
 
                 /* echo "<pre>"; print_r($teste); echo "<pre>";exit; */
                 if (gettype($objTratamento->cadastrarTratamento()[0]) == 'object') {
                     if (isset($_POST['finalizarConsulta']) && $_POST['finalizarConsulta'] == 'on') {
-                        $objTratamento->atualizarStatusConsulta($_GET['id'], 'Finalizada');
+                        $objTratamento->atualizarStatusConsulta($_GET['id'], 'Finished');
                     } else {
                         $erro = 0;
                     }
@@ -114,13 +114,13 @@ if (isset($_POST['Finalizar'])) {
                 header('location: Consulta.php?id=' . $ConsultaInnerJoin->idConsulta);
             }
         } else {
-            $objTratamento->observacao = ($_POST['observacoes'] == '' ? 'Sem observações' : $_POST['observacoes']);
+            $objTratamento->observacao = ($_POST['observacoes'] == '' ? 'No Observations' : $_POST['observacoes']);
             $objTratamento->fkProcedimento = $_POST['procedimento'][0];
             $objTratamento->fkConsulta = $ConsultaInnerJoin->idConsulta;
 
             if (gettype($objTratamento->cadastrarTratamento()[0])) {
                 if (isset($_POST['finalizarConsulta']) && $_POST['finalizarConsulta'] == 'on') {
-                    $objTratamento->atualizarStatusConsulta($_GET['id'], 'Finalizada');
+                    $objTratamento->atualizarStatusConsulta($_GET['id'], 'Finished');
                 }
                 $alerta = "<script>
                 Swal.fire({

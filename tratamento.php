@@ -1,7 +1,6 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
 include __DIR__.'./includes/sessionStart.php';
-use Classes\Entity\Consulta;
 use Classes\Entity\Tratamento;
 use Classes\Entity\Paciente;
 

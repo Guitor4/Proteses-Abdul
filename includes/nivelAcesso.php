@@ -1,5 +1,5 @@
 <?php
 
-if($_SESSION['perfil'] != 'Administrador'){
+if($_SESSION['perfil'] != 'Administrator'){
     header('location:index.php?status=error3');
 }

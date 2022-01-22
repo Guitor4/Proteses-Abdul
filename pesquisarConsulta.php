@@ -88,9 +88,9 @@ foreach ($consultas as $consulta) {
                           <td>' . $consulta->statusConsulta . '</td>
                           <td>' . $consulta->nomePaciente . '</td>
                           <td>
-                          <a ' . $disabled1 . 'class = "btn btn-primary" href = Consulta.php?id=' . $consulta->idConsulta . '>Abrir Consulta</a>
+                          <a ' . $disabled1 . 'class = "btn btn-primary" href = Consulta.php?id=' . $consulta->idConsulta . '>Open Appointment</a>
                           <a ' . $disabled . 'href = editaConsulta.php?id=' . $consulta->idConsulta . '>Edit</a>
-                          <a ' . $disabledRastreio . 'href = cadRastreio.php?rConsulta=' . $consulta->idConsulta . '>Confirmar rastreio</a>
+                          <a ' . $disabledRastreio . 'href = cadRastreio.php?rConsulta=' . $consulta->idConsulta . '>Confirm Tracking</a>
                           </td>
                           </tr>';
 }

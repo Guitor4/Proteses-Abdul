@@ -62,6 +62,6 @@ foreach ($horarios as $hu) {
 if (count($horariosDisponiveis) > 0) {
     echo json_encode($horariosDisponiveis);
 } else {
-    $horariosDisponiveis[] = array('horario' => 'Sem horários disponíveis');
+    $horariosDisponiveis[] = array('horario' => 'No time available');
     echo json_encode($horariosDisponiveis);
 }

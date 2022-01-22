@@ -14,7 +14,7 @@ switch ($term) {
         $query = "SELECT idServico,nomeServico from servicoterceiro inner join terceirizado where idServico = fkServicoTerceiro and fkTerceiro = " . $idTerceiro;
         break;
     case 2 : 
-        $query = "SELECT distinct idServico,nomeServico from servicoterceiro inner join terceirizado where idServico not in (select fkServicoTerceiro from terceirizado where fkTerceiro =".$idTerceiro." )";
+        $query = "SELECT distinct idServico,nomeServico from servicoterceiro left outer join terceirizado on idServico = fkServicoTerceiro where idServico not in (select fkServicoTerceiro from terceirizado where fkTerceiro =".$idTerceiro." )";
         break;
     }
 sleep(1);

@@ -6,7 +6,7 @@ include __DIR__ . './includes/sessionStart.php';
 
 use \Classes\Entity\Protese;
 
-define('NAME', 'Protese');
+define('NAME', 'Denture');
 define('LINK', 'pesquisarProtese.php');
 define('IDENTIFICACAO', 4);
 if (!isset($_GET['pagina'])) {
@@ -105,9 +105,9 @@ foreach ($proteses as $protese) {
                             <td>' . $protese->status . '</td>
                             <td>' . $protese->marcaDente . '</td>
                             <td>' . $protese->qtdDente . '</td>
-                            <td>' . ($protese->ouro == 'sim' ? 'Sim' : 'Não') . '</td>
+                            <td>' . ($protese->ouro == 'Yes' ? 'Yes' : 'No') . '</td>
                             <td>' . $protese->qtdOuro . '</td>
-                            <td>' . date('m-d-Y à\s H:i', strtotime($protese->dataRegistro)) . '</td>
+                            <td>' . date('m-d-Y \a\t  H:i a', strtotime($protese->dataRegistro)) . '</td>
                             <td>
                             <a href = "editaProtese.php?id=' . $protese->idProtese . '">
                             <button class = "btn btn-primary">Edit</button>

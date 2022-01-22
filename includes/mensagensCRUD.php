@@ -38,6 +38,24 @@ if (isset($_GET, $_GET['status'], $_GET['id']) && is_string($_GET['status']) && 
             }
             </script>";
     }
+    if (isset($_GET, $_GET['status']) && is_string($_GET['status']) && $_GET['status'] == 'success2') {
+      echo "<script>
+            Swal.fire({
+              title: '".NAME ."Successfully edited!!',
+              text: \"If there are any changes to be made, use the edit/correct/update buttons\",
+              icon: 'success',
+              confirmButtonColor: '#3085d6',
+              confirmButtonText: 'Ok'
+            }).then((result) => {
+              if (result.isConfirmed) {
+                redirecionamento()
+            }
+            })
+            function redirecionamento(){
+              window.location.href = \"".LINK."\"
+            }
+            </script>";
+    }
 /**
  * Mensagem caso o cadastro não seja  efetuado com sucesso
  */

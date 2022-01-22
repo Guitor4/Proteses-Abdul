@@ -72,10 +72,10 @@
                                 <label>Status</label>
                                 <select class="form-control" name="status">
                                     <option>Scheduled</option>
-                                    <option <?= (TITLE == 'Cadastrar Nova Consulta' ? print('hidden = hidden') : '') ?> <?= ($objConsulta->statusConsulta == 'Confirmed' ? print('selected = selected') : '') ?>>Confirmed</option>
-                                    <option <?= (TITLE == 'Cadastrar Nova Consulta' ? print('hidden = hidden') : '') ?> <?= ($objConsulta->statusConsulta == 'Canceled' ? print('selected = selected') : '') ?>>Canceled</option>
-                                    <option <?= (TITLE == 'Cadastrar Nova Consulta' ? print('hidden = hidden') : '') ?> <?= ($objConsulta->statusConsulta == 'In progress' ? print('selected = selected') : '') ?>>In progress</option>
-                                    <option <?= (TITLE == 'Cadastrar Nova Consulta' ? print('hidden = hidden') : '') ?> <?= ($objConsulta->statusConsulta == 'Finished' ? print('selected = selected') : '') ?>>Finished</option>
+                                    <option <?= (TITLE == 'Register Appointment' ? print('hidden = hidden') : '') ?> <?= ($objConsulta->statusConsulta == 'Confirmed' ? print('selected = selected') : '') ?>>Confirmed</option>
+                                    <option <?= (TITLE == 'Register Appointment' ? print('hidden = hidden') : '') ?> <?= ($objConsulta->statusConsulta == 'Canceled' ? print('selected = selected') : '') ?>>Canceled</option>
+                                    <option <?= (TITLE == 'Register Appointment' ? print('hidden = hidden') : '') ?> <?= ($objConsulta->statusConsulta == 'In progress' ? print('selected = selected') : '') ?>>In progress</option>
+                                    <option <?= (TITLE == 'Register Appointment' ? print('hidden = hidden') : '') ?> <?= ($objConsulta->statusConsulta == 'Finished' ? print('selected = selected') : '') ?>>Finished</option>
                                 </select>
                             </div>
                         </div>

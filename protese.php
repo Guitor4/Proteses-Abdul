@@ -16,16 +16,16 @@ if(isset($_GET['term']) && $_GET['term'] == 1 ){
 define('TITLE', $objProtese->nomePaciente);
 
 switch ($objProtese->status) {
-    case 'Cadastrada':
+    case 'Registered':
         $progresso = '25%';
         break;
-    case 'Em produção':
+    case 'In production':
         $progresso = "50%";
         break;
-    case 'Com terceiros':
+    case 'In third-party treatment':
         $progresso = "75%";
         break;
-    case 'Entregue':
+    case 'Delivered':
         $progresso = "100%";
         break;
 }

@@ -3,7 +3,7 @@
 include __DIR__ . '   .\vendor\autoload.php';
 include __DIR__ . './includes/sessionStart.php';
 
-define('NAME', 'Reminder');
+define('NAME', 'Reminder ');
 define('LINK', 'listaLembrete.php?pagina=1');
 
 use Classes\Entity\Lembrete;
@@ -56,8 +56,8 @@ if (isset($_POST['excluirLembrete'])) {
   $objLembrete->deletarLembrete($id);
   $status = "<script>
   Swal.fire({
-    title: 'Lembrete deletado com sucesso!!',
-    text: \"Tudo certo por aqui!!\",
+    title: 'Reminder Successfully deleted!!',
+    text: \"Everything's fine!!\",
     icon: 'success',
     confirmButtonColor: '#3085d6',
     confirmButtonText: 'Ok'
@@ -76,7 +76,7 @@ foreach ($lembretes as $l) {
     . '<td> 
           <a href="editaLembrete.php?id=' . $l->idLembrete . '" 
               class="btn btn-info" >Edit</a>
-              <button ' . $l->idLembrete . '" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal' . $l->idLembrete . '" >Excluir</button>
+              <button ' . $l->idLembrete . '" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal' . $l->idLembrete . '" >Delete</button>
          </td>
          
          </tr>
@@ -84,18 +84,18 @@ foreach ($lembretes as $l) {
          <div class="modal-dialog">
              <div class="modal-content bg-dark text-white" style = "margin-top:10rem;">
                  <div class="modal-header">
-                     <h5 class="modal-title" id="exampleModalLabel">Excluir Lembrete ?</h5>
+                     <h5 class="modal-title" id="exampleModalLabel">Delete Reminder ?</h5>
                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                  </div>
                  <div class="modal-body ">
                      <form method="post" action="">
-                         <label><strong>Deseja excluir o produto
+                         <label><strong> Do you want to delete the reminder
                                  ' . $l->titulo . '?</strong></label>
                          <input type="hidden" name="ide" value="' . $l->idLembrete . '">
                  </div>
                  <div class="modal-footer">
-                     <button type="submit" name="excluirLembrete" class="btn btn-success">Sim</button>
-                     <button type="reset" class="btn btn-danger" data-bs-dismiss="modal">Não</button>
+                     <button type="submit" name="excluirLembrete" class="btn btn-success">Yes</button>
+                     <button type="reset" class="btn btn-danger" data-bs-dismiss="modal">No</button>
                  </div>
                  </form>
              </div>
@@ -105,7 +105,7 @@ foreach ($lembretes as $l) {
 
 $resultados = strlen($resultados) ? $resultados :
   '<tr>'
-  . '<td colspan = "6" class = "text-center"> Nenhum Lembrete encontrado</td>'
+  . '<td colspan = "6" class = "text-center"> No reminders found</td>'
   . '</tr>';
 
 include './includes/header.php';

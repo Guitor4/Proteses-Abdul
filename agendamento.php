@@ -78,7 +78,7 @@ if (
     $objConsulta->dataConsulta = $_POST['data'];
     $objConsulta->horaConsulta = $_POST['horarios'];
     $objConsulta->statusConsulta = ($_POST['status'] != '' ? $_POST['status'] : 'Agendada');
-    $objConsulta->relatorio = ($_POST['relatorio'] != null ? $_POST['relatorio'] : 'Sem observações');
+    $objConsulta->relatorio = ($_POST['relatorio'] != null ? $_POST['relatorio'] : 'No Observations');
     $objConsulta->fkProntuario = $_POST['paciente'];
     $objConsulta->fkFuncionario = $_SESSION['idFuncionario'];
     $objConsulta->CFKClinica = $_POST['clinica'];

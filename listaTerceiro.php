@@ -65,7 +65,7 @@ foreach ($Terceiro as $objTerceiro) {
 }
 $resultados = strlen($resultados) ? $resultados :
     '<tr>'
-    . '<td colspan = "12" class = "text-center"> Nenhum Terceiro foi registrado por enquanto...</td>'
+    . '<td colspan = "12" class = "text-center"> No Providers registered yet...</td>'
     . '</tr>';
 
 

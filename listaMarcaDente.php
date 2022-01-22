@@ -62,7 +62,7 @@ foreach ($marcas as $m) {
 
 $resultados = strlen($resultados) ? $resultados :
     '<tr>'
-    . '<td colspan = "6" class = "text-center"> Nenhuma Marca de dente encontrada</td>'
+    . '<td colspan = "6" class = "text-center"> No Teeth Brands found</td>'
     . '</tr>';
 
 include __DIR__.'./includes/header.php';

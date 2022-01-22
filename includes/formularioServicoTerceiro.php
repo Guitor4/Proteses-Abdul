@@ -23,7 +23,7 @@
 
                         <div class="form-group">
                             <label>Description:</label>
-                            <input type="text" class="form-control" name="descricao" placeholder="Relato sobre"  value="<?= $objServicoTerceiro->descricao ?>">
+                            <input type="text" class="form-control" name="descricao" placeholder="..."  value="<?= $objServicoTerceiro->descricao ?>">
                         </div>
                         <label>Status: </label>
                         <div class="form-check form-check-inline">

@@ -8,6 +8,7 @@ use \Classes\Entity\Protese;
 use Classes\Entity\MarcaDente;
 
 define('TITLE', 'Edit Denture');
+define('BTN', 'EditDenture');
 define('IDENTIFICACAO', '0');
 
 //Validação do GET
@@ -30,6 +31,7 @@ $marcas = MarcaDente::getMarcas();
 /**
  * Validação do POST, ainda incompleta pois não possui todos os campos necessários
  */
+
 if (
     //Checa se existem
     isset(
@@ -62,12 +64,13 @@ if (
     $objProtese->extensao = $_POST['extensao'];
     $objProtese->qtdDente = $_POST['qtdDentes'];
     $objProtese->marcaDente = $_POST['marca'];
-    $objProtese->ouro = ($_POST['ouroDente'] == "on" ? "sim" : "nao");
+    $objProtese->ouro = ($_POST['ouroDente'] == "on" ? "Yes" : "No");
     $objProtese->qtdOuro = (isset($_POST['qtdOuro']) ? $_POST['qtdOuro'] : 0);
     $objProtese->paciente = $_POST['paciente'];
     $objProtese->status = $_POST['status'];
     $objProtese->observacao = $_POST['observacao'];
 
+    /* echo "<pre>"; print_r($objProtese); echo "<pre>";exit; */
     if ($objProtese->atualizarProtese('idProtese =' . $_GET['id'])) {
         header('Location: pesquisarProtese.php?pagina=1&status=success2&id=' . $_GET['id']);
     } else {

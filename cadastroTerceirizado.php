@@ -5,12 +5,12 @@ include __DIR__ . './includes/sessionStart.php';
 
 use \Classes\Entity\terceirizado;
 use \Classes\Entity\terceiro;
-use \Classes\Entity\ServicoTerceiro;
 
 
 define('BTN', 'cadastrarTerceirizado');
 define('TITLE', 'Register Service Provider');
 define('IDENTIFICACAO', '0');
+
 $terceirizado = new terceirizado;
 
 $objTerceiro = terceiro::getTerceiros();
@@ -19,8 +19,13 @@ $selectTerceiro = '';
 foreach ($objTerceiro as $terceiro) {
     $selectTerceiro .= '<option  value ="' .  $terceiro->idTerceiro . '">' . $terceiro->nomeTerceiro . '</option>';
 }
+$selectServico = '';
 
 
+
+/* if (isset($_POST[BTN])){
+    echo "<pre>"; print_r($_POST); echo "<pre>";exit;
+} */
 if (
     //Checa se existem
     isset(
@@ -31,10 +36,10 @@ if (
     )
     //Checa se são diferentes de vazio
     && $_POST['Terceiro'] != ""
-    && $_POST['ServicoTerceiro'] != ""
+    && $_POST['ServicoTerceiro'] != "0"
     && $_POST['status'] != ""
   ) {
-    /* echo '<pre>';print_r($_POST);echo'<pre>';exit; */
+    
     $terceirizado->fkTerceiro = $_POST['Terceiro'];
     $terceirizado->fkServicoTerceiro = $_POST['ServicoTerceiro'];
     $terceirizado->statusTerceirizado = $_POST['status'];

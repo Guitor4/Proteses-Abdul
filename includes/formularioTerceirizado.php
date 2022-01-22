@@ -15,7 +15,7 @@
                 <div class="col-8">
                     <div class="form-group">
                         <label> Provider: </label>
-                        <select onchange="getServicoTerceiro2(this.value)" <?= (TITLE == 'Cadastrar Terceirizado' ? '' : 'disabled') ?> class="selectpicker form-control" data-live-search="true" data-size=5 name="Terceiro" value="">
+                        <select onchange="getServicoTerceiro2(this.value)" <?= (TITLE == 'Register Service Provider' ? '' : 'disabled') ?> class="selectpicker form-control" data-live-search="true" data-size=5 name="Terceiro" value="">
                             <option hidden selected value=''>[---Select---]</option>
 
                             <?php
@@ -30,11 +30,10 @@
                         <label> Service: </label>
                         <select <?= (TITLE == 'Register Service Provider' ? '' : 'disabled') ?> class="selectpicker form-control" data-live-search="true" data-size=5 name="ServicoTerceiro" id = "servico_terceiro" value="">
                             <option selected hidden value=''>[---Select---]</option>
-
                             <?php
-                            echo $selectServico;
-                            ?>
+                            echo $selectServico
 
+                            ?>
                         </select>
                         <?php (TITLE == 'Register Service Provider' ? '' : print('<select name = "servico2" hidden > ' . $selectServico . '</select>')) ?>
                     </div>

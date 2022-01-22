@@ -26,16 +26,16 @@
                                     <label>Denture Options</label>
                                     <select class="form-control" name="tipo" value="">
                                         <option value="" hidden="">[Select]</option>
-                                        <option <?= ($objProtese->tipo == "Fixa" ? print('selected = "selected"') : '') ?>>Denture</option>
-                                        <option <?= ($objProtese->tipo == "Removível" ? print('selected = "selected"') : '') ?>>Implant</option>
+                                        <option <?= ($objProtese->tipo == "Implant" ? print('selected = "selected"') : '') ?>>Implant</option>
+                                        <option <?= ($objProtese->tipo == "Denture" ? print('selected = "selected"') : '') ?>>Denture</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-6 ">
                                     <label>Extension</label>
                                     <select class="form-control" name="extensao" onchange="extension(this.value)">
                                         <option value="" hidden="">[Select]</option>
-                                        <option <?= ($objProtese->extensao == "Total" ? print('selected = "selected"') : '') ?>>Full</option>
-                                        <option <?= ($objProtese->extensao == "Parcial" ? print('selected = "selected"') : '') ?>>Partial</option>
+                                        <option <?= ($objProtese->extensao == "Full" ? print('selected = "selected"') : '') ?>>Full</option>
+                                        <option <?= ($objProtese->extensao == "Partial" ? print('selected = "selected"') : '') ?>>Partial</option>
 
                                     </select>
                                 </div>
@@ -44,8 +44,8 @@
                                 <label>Position</label>
                                 <select class="form-control" name="posicao">
                                     <option value="" hidden="">[Select]</option>
-                                    <option <?= ($objProtese->posicao == "Superior" ? print('selected = "selected"') : '') ?>>Upper</option>
-                                    <option <?= ($objProtese->posicao == "Inferior" ? print('selected = "selected"') : '') ?>>Lower</option>
+                                    <option <?= ($objProtese->posicao == "Upper" ? print('selected = "selected"') : '') ?>>Upper</option>
+                                    <option <?= ($objProtese->posicao == "Lower" ? print('selected = "selected"') : '') ?>>Lower</option>
 
                                 </select>
                             </div>
@@ -56,7 +56,7 @@
                                     <option value="" hidden> [Select]</option>
                                     <?php
                                     foreach ($marcas as $m) {
-                                        echo "<option>" . $m->nomeMarca . "</option>";
+                                        echo "<option selected>" . $m->nomeMarca . "</option>";
                                     }
                                     ?>
                                 </select>
@@ -72,17 +72,17 @@
                             <div class="form-group">
                                 <div class="d-flex justify-content-evenly">
                                     <div class="col-6 mt-4">
-                                        <input class="form-check-input" onchange="habilitar()" type="checkbox" id="denteOuro" name="ouroDente" <?= (($objProtese->ouro) == "sim" ? 'checked = checked' : '') ?>>
+                                        <input class="form-check-input" onchange="habilitar()" type="checkbox" id="denteOuro" name="ouroDente" <?= (($objProtese->ouro) == "Yes" ? 'checked = checked' : '') ?>>
                                         <label class="form-check-label" for="defaultCheck1">
                                             Has golden Teeths
                                         </label>
                                     </div>
                                     <div class="col-6 mt-4">
-                                        <input name="qtdOuro" id="qtdOuro" min="0" type="number" <?= ($objProtese->ouro == 'sim' ? '' : 'disabled = disabled') ?> value="<?= ($objProtese->qtdOuro != '0' ? $objProtese->qtdOuro : '') ?>">
+                                        <input name="qtdOuro" id="qtdOuro" min="0" type="number" <?= ($objProtese->ouro == 'Yes' ? '' : 'disabled = disabled') ?> value="<?= ($objProtese->qtdOuro != '0' ? $objProtese->qtdOuro : '') ?>">
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group mt-2" <?= (TITLE != 'Cadastrar Prótese' ? 'hidden = hidden' : '') ?>>
+                            <div class="form-group mt-2" <?= (TITLE != 'Register Denture' ? 'hidden = hidden' : '') ?>>
                                 <label>Patient</label>
                                 <select <?= (isset($_GET['prontuario']) ? 'readonly' : '') ?> class="form-control" name="paciente">
                                     <option hidden>-----Select the patient------</option>
@@ -101,13 +101,13 @@
 
                                 </select>
                             </div>
-                            <div class="form-group mt-2" <?= (TITLE == 'Editar Protese' ? '' : 'hidden=hidden') ?>>
+                            <div class="form-group mt-2" <?= (TITLE == 'Edit Denture' ? '' : 'hidden=hidden') ?>>
                                 <label>Status</label>
                                 <select name="status" class="form-control">
-                                    <option <?= ($objProtese->status == 'Cadastrada' ? ' selected = selected' : '') ?>>Registered</option>
-                                    <option <?= ($objProtese->status == 'Em produção' ? ' selected = selected' : '') ?>>In production</option>
-                                    <option <?= ($objProtese->status == 'Com terceiros' ? ' selected = selected' : '') ?>>In third-party treatment</option>
-                                    <option <?= ($objProtese->status == 'Entregue' ? ' selected = selected' : '') ?>>Delivered</option>
+                                    <option <?= ($objProtese->status == 'Registered' ? ' selected = selected' : '') ?>>Registered</option>
+                                    <option <?= ($objProtese->status == 'In Production' ? ' selected = selected' : '') ?>>In production</option>
+                                    <option <?= ($objProtese->status == 'In third-party treatment' ? ' selected = selected' : '') ?>>In third-party treatment</option>
+                                    <option <?= ($objProtese->status == 'Delivered' ? ' selected = selected' : '') ?>>Delivered</option>
                                 </select>
                             </div>
                         </div>
@@ -118,7 +118,7 @@
                     <textarea name="observacao" class="form-control" placeholder="Teeth especifications, comments, etc..." rows="3"><?= $objProtese->observacao ?></textarea>
                     <div class="d-flex justify-content-center p-2">
 
-                        <input type="button" onclick="validaProtese()" name="<?= BTN ?>" class="  btn btn-lg btn-success btInput" style="width:20%" value="<?= (TITLE == "Register Denture" ? 'Register' : 'Edit') ?>">
+                        <input type="submit"  name="<?= BTN ?>" class="  btn btn-lg btn-success btInput" style="width:20%" value="<?= (TITLE == "Register Denture" ? 'Register' : 'Edit') ?>">
 
                     </div>
                 </form>
@@ -126,3 +126,4 @@
         </div>
     </div>
 </div>
+<!-- onclick="validaProtese()" -->

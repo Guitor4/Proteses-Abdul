@@ -66,7 +66,7 @@ foreach ($clinica as $c) {
 
 $resultados = strlen($resultados) ? $resultados :
   '<tr>'
-  . '<td colspan = "6" class = "text-center"> Nenhuma clínica encontrada</td>'
+  . '<td colspan = "6" class = "text-center"> No clinics found</td>'
   . '</tr>';
 
 
