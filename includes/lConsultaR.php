@@ -3,7 +3,7 @@
     <section class="d-flex justify-content-center mt-2">
       <div class="col-4">
         <div class="bg-dark rounded p-2">
-          <h5 style="color: white; text-align: center ">Buscar Prontuário</h5>
+          <h5 style="color: white; text-align: center ">Search Denture</h5>
           <form method="post" action="">
             <div class="col-10 form-group p-2" style="margin:auto">
 

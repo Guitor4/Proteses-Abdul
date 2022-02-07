@@ -34,13 +34,13 @@
                             <div class="form-group">
                                 <label>Profile: </label>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="perfil" id="" value="Funcionário" checked="">
+                                    <input class="form-check-input" type="radio" name="perfil" id="" value="Employee" checked="">
                                     <label class="form-check-label" for="exampleRadios3">
                                         Employee
                                     </label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="perfil" value="Administrador" <?= $objFuncionario->perfil == 'Administrador' ? 'checked' : '' ?>>
+                                    <input class="form-check-input" type="radio" name="perfil" value="Administrator" <?= $objFuncionario->perfil == 'Administrador' ? 'checked' : '' ?>>
                                     <label class="form-check-label">
                                         Administrator
                                     </label>

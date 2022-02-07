@@ -225,6 +225,6 @@ class db
         if ($st->rowcount() > 0) {
             return $st;
         }
-        return 'usuario não cadastrado';
+        return 'User not registered';
     }
 }

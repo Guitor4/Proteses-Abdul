@@ -69,7 +69,7 @@ foreach ($innerTratamentos as $dados) {
                     
                     <td>
                     
-                    <a class = "btn btn-success" href = cadRastreio.php?rProtese='.$dados->idProtese .'>Selecionar</a>
+                    <a class = "btn btn-success" href = cadRastreio.php?rProtese='.$dados->idProtese .'>Select</a>
                     <a ' . $disabled . 'href = protese.php?idProtese='.$dados->idProtese .'&term=1 >Detail</a>
                     </td>
                     </tr>';
@@ -78,7 +78,7 @@ foreach ($innerTratamentos as $dados) {
 
 $resultados = strlen($resultados) ? $resultados :
         '<tr>'
-        . '<td colspan = "12" class = "text-center"> No Appointments found in the history</td>'
+        . '<td colspan = "12" class = "text-center"> No Dentures found in the history</td>'
         . '</tr>';
 
 //$rastreio = Rastreio::getRastreios(null,null,null,null,'fkProtese');

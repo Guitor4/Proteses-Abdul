@@ -105,7 +105,7 @@
                                 <label>Status</label>
                                 <select name="status" class="form-control">
                                     <option <?= ($objProtese->status == 'Registered' ? ' selected = selected' : '') ?>>Registered</option>
-                                    <option <?= ($objProtese->status == 'In Production' ? ' selected = selected' : '') ?>>In production</option>
+                                    <option <?= ($objProtese->status == 'In production' ? ' selected = selected' : '') ?>>In production</option>
                                     <option <?= ($objProtese->status == 'In third-party treatment' ? ' selected = selected' : '') ?>>In third-party treatment</option>
                                     <option <?= ($objProtese->status == 'Delivered' ? ' selected = selected' : '') ?>>Delivered</option>
                                 </select>

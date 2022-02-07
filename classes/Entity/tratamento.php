@@ -54,7 +54,7 @@ class Tratamento
                 . 'inner JOIN dentista on CFKDentista=idDentista '
                 . 'inner JOIN clinica on CFKClinica=idClinica '
                 . 'inner JOIN paciente on fkProntuario=prontuario '
-                . 'where idProtese not in (select fkProtese from rastreio where statusRastreio != "Finalizado") '. $where.$order.$limit)
+                . 'where idProtese not in (select fkProtese from rastreio where statusRastreio != "Finished" or statusRastreio != "In third-party treatment") and idProtese not in (select idProtese from protese where status = "In third-party treatment" or status = "Delivered") '. $where.$order.$limit)
                 ->fetchAll(PDO::FETCH_CLASS, self::class);
     }
 

@@ -222,8 +222,8 @@ if (isset($_POST['cadFoto'])) {
 if (isset($_GET['status']) && $_GET['status'] == 'error1') {
     $alerta = "<script>
     Swal.fire({
-      title: 'Image couldn't be registered',
-      text: \"There is already an image with the same name registered, please change the image name before registering it\",
+      title: \"Image couldn't be registered\",
+      text: \"There is already an image with the same name registered or the image it's too large, please check the image size or change the image name before registering it\",
       icon: 'error',
       confirmButtonColor: '#3085d6',
       confirmButtonText: 'Ok'

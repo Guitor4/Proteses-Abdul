@@ -449,7 +449,7 @@ function FotoAntes() {
   document.getElementById("apresenta_Tratamentos").innerHTML = "";
   document.getElementById("mostraTitulo").innerHTML = ""; */
   var valorAjax = document.getElementById("aux").value;
-
+ 
   $("#apresenta_Fotos").html("<p>Waiting...</p>");
   $.ajax({
     type: "POST",
@@ -497,7 +497,7 @@ function FotoAntes() {
           tabela +=
             '<div class="row">\n\
                         <div class="col-5" >\n\
-                            <img ' +
+                            <img class = small_img ' +
             semFoto +
             ' src="' +
             dados[i].img +
@@ -525,7 +525,9 @@ function FotoAntes() {
                     </div><hr>';
         }
         $("#apresenta_Fotos").html(tabela).show();
+        console.log('Isso rodou antes da função')
       }
+      modalImg();
     },
   });
 }
@@ -582,7 +584,7 @@ function FotoDepois() {
             var nome = dados[i].img.substring(8);
           tabela +='<div class="row">\n\
                         <div class="col-5" >\n\
-                            <img ' +
+                            <img class = small_img ' +
             semFoto +
             ' src="' +
             dados[i].img +
@@ -610,7 +612,10 @@ function FotoDepois() {
                     </div><hr>';
         }
         $("#apresenta_Fotos").html(tabela).show();
+        console.log('Isso rodou antes da função')
+        modalImg();
       }
+      
     },
   });
 }
@@ -825,3 +830,24 @@ function validaTerceirizado(){
   document.formTerceirizado.submit();
 }
 
+function modalImg(){
+  console.log('Isso rodou dentro da função')
+  let teste = 0;
+  let imagens = document.querySelectorAll('.small_img');
+  let modal = document.querySelector('.model');
+  let modalImg = document.querySelector('#model_img')
+  let btClose = document.querySelector('#bt_close')
+  let srcVal = "";
+
+  for (let i = 0; i < imagens.length; i++){
+    imagens[i].addEventListener('click',function(){
+      teste = 1
+      srcVal= imagens[i].getAttribute('src');
+      modalImg.setAttribute('src', srcVal);
+      modal.classList.toggle('model_active')
+    })
+  }
+  btClose.addEventListener('click',function(){
+      modal.classList.remove('model_active');   
+  });
+}

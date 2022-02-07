@@ -30,7 +30,6 @@ if (isset($_POST[BTN])) {
         $objFuncionario = new Funcionario;
         $objFuncionario->idFuncionario = $_GET['id'];
         $objFuncionario->nomeFuncionario = $_POST['nomeFuncionario'];
-        $objFuncionario->dtContrato = $_POST['dtContrato'];
         $objFuncionario->sexo = $_POST['sexo'];
         $objFuncionario->telefone = ($_POST['telefone']);
         $objFuncionario->email = $_POST['email'];
