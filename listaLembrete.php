@@ -4,6 +4,7 @@ include __DIR__ . '   .\vendor\autoload.php';
 include __DIR__ . './includes/sessionStart.php';
 
 define('NAME', 'Reminder ');
+define('IDENTIFICACAO', 0);
 define('LINK', 'listaLembrete.php?pagina=1');
 
 use Classes\Entity\Lembrete;

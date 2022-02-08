@@ -4,6 +4,7 @@ include __DIR__.'./vendor/autoload.php';
 include __DIR__.'./includes/sessionStart.php';
 
 define('NAME', 'Settings');
+define('IDENTIFICACAO', 0);
 
 $json = json_decode(file_get_contents('config.json'));
 $intervalo = $json->conf->intervaloHorarioConsulta;
