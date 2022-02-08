@@ -14,7 +14,7 @@ $marca = new MarcaDente;
 if (isset($_POST[BTN])) {
 
     $marca->nomeMarca = $_POST['nomeMarca'];
-    $marca->descricao = ($_POST['descricao'] != null ? $_POST['descricao'] : 'Sem Descrição');
+    $marca->descricao = ($_POST['descricao'] != null ? $_POST['descricao'] : 'No description');
 
     $marca->cadastrarMarcaDente();
 
