@@ -233,7 +233,7 @@ if (isset($_GET['status']) && $_GET['status'] == 'error1') {
 if (isset($_GET['status']) && $_GET['status'] == 'error2') {
     $alerta = "<script>
     Swal.fire({
-      title: 'there are no registered dentures',
+      title: 'There are no registered dentures',
       text: \"A Denture was not registered for this appointment despite the procedure having been registered, please register it and only then return to view the PDF\",
       icon: 'error',
       confirmButtonColor: '#3085d6',

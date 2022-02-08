@@ -4,6 +4,7 @@ include __DIR__ . ('./vendor/autoload.php');
 include __DIR__ . ('./includes/sessionStart.php');
 
 define('TITLE', 'Edit Tooth Brand');
+define('IDENTIFICACAO', 0);
 define('BTN', 'editMarca');
 
 use Classes\Entity\MarcaDente;

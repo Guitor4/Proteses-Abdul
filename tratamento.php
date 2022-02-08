@@ -13,6 +13,7 @@ $tratamento = Tratamento::getTratamento('consulta,procedimento','fkConsulta = ' 
 $paciente = Paciente::getPaciente($tratamento->fkProntuario);
 
 define('TITLE', $paciente->nomePaciente);
+define('IDENTIFICACAO', 0);
 /* echo '<pre>';print_r($tratamento);print_r($paciente);echo'<pre>';exit; */
 
 include(__DIR__ . '/includes/header.php');
