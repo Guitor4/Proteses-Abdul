@@ -4,7 +4,7 @@ require __DIR__ . ('./vendor/autoload.php');
 
 use Classes\Dao\db;
 
-$query1 = "select idConsulta,nomePaciente,dataConsulta,horaConsulta,statusConsulta from consulta inner join paciente on prontuario = fkProntuario where statusConsulta != 'Finalizada' and dataConsulta BETWEEN \"2021-12-04\" AND \"2100-12-31\" ORDER BY horaConsulta,dataConsulta,nomePaciente desc";
+$query1 = "select idConsulta,nomePaciente,dataConsulta,horaConsulta,statusConsulta from consulta inner join paciente on prontuario = fkProntuario where statusConsulta != 'Finished' and dataConsulta BETWEEN \"2021-12-04\" AND \"2100-12-31\" ORDER BY horaConsulta,dataConsulta,nomePaciente desc";
 date_default_timezone_set('America/Sao_Paulo');
 $eventoConsultas = (new db())->executeSQL($query1);
 
@@ -20,7 +20,7 @@ if ($eventoConsultas->rowCount() > 0) {
     while ($row_eventoConsultas = $eventoConsultas->fetch(PDO::FETCH_ASSOC)) {
         $data = $row_eventoConsultas['horaConsulta'];
         $hora = date('H:i:s', strtotime("{$data} + {$v[0]} hours {$v[1]} minutes {$v[2]} seconds"));
-        ($row_eventoConsultas['statusConsulta'] != 'Finalizada' ? $props ="'extendedProps' :{ ['status' => 'done']}" : $props ='' );
+        ($row_eventoConsultas['statusConsulta'] != 'Finished' ? $props ="'extendedProps' :{ ['status' => 'done']}" : $props ='' );
         $array[] = array(
             'id' => $row_eventoConsultas['idConsulta'],
             'title' => "Consulta de " . $row_eventoConsultas['nomePaciente'],

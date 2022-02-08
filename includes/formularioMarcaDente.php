@@ -16,7 +16,7 @@
                     </div>
                     <div class="d-flex justify-content-center p-2">
 
-                        <input type="submit" name="<?= BTN?>" class="  btn btn-lg btn-success btInput" value="<?= (TITLE == "Register Tooth Brand" ? 'Register' : 'Edit') ?>">
+                        <input type="submit" name="<?= BTN ?>" class="  btn btn-lg btn-success btInput" value="<?= (TITLE == "Register Tooth Brand" ? 'Register' : 'Edit') ?>">
 
                     </div>
                 </div>

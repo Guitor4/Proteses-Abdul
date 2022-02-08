@@ -46,6 +46,7 @@
             $("#exampleModalLabel").html('Register Appointment Window')
             $('.selectpicker').selectpicker();
         }
+
         function click2(id) {
             var btn = document.getElementById(id);
             btn.click();
@@ -154,18 +155,18 @@
                         </a>
                         <ul class="dropdown-menu text-center" style="width:100%" aria-labelledby="perfil">
 
-                        <li><a class="dropdown-item" href="./listaDentista.php?pagina=1">Dentists</a></li>
-                                <li><a class="dropdown-item" href="./listaClinica.php?pagina=1">Clinics</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="./listaRastreio.php?pagina=1">Tracking</a></li>
+                            <li><a class="dropdown-item" href="./listaDentista.php?pagina=1">Dentists</a></li>
+                            <li><a class="dropdown-item" href="./listaClinica.php?pagina=1">Clinics</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="./listaRastreio.php?pagina=1">Tracking</a></li>
 
-                                <li><a class="dropdown-item" href="./listaProcedimento.php?pagina=1">Proceedings</a></li>
+                            <li><a class="dropdown-item" href="./listaProcedimento.php?pagina=1">Proceedings</a></li>
 
-                                <li><a class="dropdown-item" href="./listaTerceiro.php?pagina=1">Providers</a></li>
-                                <li><a class="dropdown-item" href="./listaServicoTerceiro.php?pagina=1">Services</a></li>
-                                <li><a class="dropdown-item" href="./listaTerceirizado.php?pagina=1">Services Providers </a></li>
+                            <li><a class="dropdown-item" href="./listaTerceiro.php?pagina=1">Providers</a></li>
+                            <li><a class="dropdown-item" href="./listaServicoTerceiro.php?pagina=1">Services</a></li>
+                            <li><a class="dropdown-item" href="./listaTerceirizado.php?pagina=1">Services Providers </a></li>
                             <li><a class="dropdown-item" href="./config.php">Settings</a></li>
                         </ul>
                     </li>

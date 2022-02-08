@@ -21,6 +21,10 @@ function getServicoTerceiro(valor) {
         }
       }
     },
+    error: function(){
+      var options = '<option value = " " hidden>No Services Registered</option>';
+      $("#servico_terceiro").html(options).show();
+    },
   });
 }
 function getServicoTerceiro2(valor) {

@@ -42,7 +42,7 @@ if (isset($_GET['data'])) {
 }
 $horariosDisponiveis = array();
 $array = [];
-$query = 'select horaConsulta from consulta where dataConsulta = "' . $data . '" and statusConsulta != "Finalizada"';
+$query = 'select horaConsulta from consulta where dataConsulta = "' . $data . '" and statusConsulta != "Finished"';
 /* echo "<pre>"; print_r($query); echo "<pre>";exit; */
 $horariosUtilizados = (new db())->executeSQL($query);
 if ($horariosUtilizados->rowCount() > 0) {

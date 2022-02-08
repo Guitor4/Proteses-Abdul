@@ -60,7 +60,7 @@
                             <option value="" hidden>Escolher Servico</option>
 
                             <?php
-                            if (TITLE == "Editar Rastreio") {
+                            if (TITLE == "Edit Tracking") {
                                 foreach ($servico as $serv) {
                                     $selected = ($rastreio->RFKServico == $serv->idServico ? 'selected = selected' : '');
                                     echo "<option value =" . $serv->idServico . " hidden " . $selected . ">" . $serv->nomeServico . "</option>";
@@ -94,7 +94,7 @@
                     </div>
                     <div class="d-flex justify-content-center p-2">
 
-                        <input type="submit" onclick="validaRastreio()" name="<?= BTN ?>" class="  btn btn-lg btn-success btInput" value="<?= (TITLE == "Register Tracking" ? 'Register' : 'Edit') ?>">
+                        <input type="button"  onclick="validaRastreio()" name="<?=BTN?>" class="  btn btn-lg btn-success btInput" value="<?= (TITLE == "Register Tracking" ? 'Register' : 'Edit') ?>">
 
                     </div>
             </div>

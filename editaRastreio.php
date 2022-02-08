@@ -27,6 +27,9 @@ if (isset($_GET['id'])) {
 
 $rastreioEdit = new rastreio();
 
+/* if(isset($_POST['arnaldo'])){
+  echo "<pre>"; print_r($_POST); echo "<pre>";exit;
+} */
 
 if (
   //Checa se existem

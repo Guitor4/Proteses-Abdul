@@ -7,6 +7,7 @@ use \Classes\Entity\procedimento;
 
 define('TITLE', 'Register Proceeding');
 define('IDENTIFICACAO', '0');
+define('BTN', '');
 $objProcedimento = new Procedimento;
 if (isset($_POST['nomeProcedimento'])) {
 

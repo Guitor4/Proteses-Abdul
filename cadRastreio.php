@@ -80,9 +80,9 @@ if (
     unset($_POST['cadastrarRastreio']);
 /* echo "<pre>"; print_r($_POST); echo "<pre>";exit; */
     $rastreio->cadastrarRastreio();
-    $lembrete->titulo = 'Retorno de Prótese';
+    $lembrete->titulo = 'Denture\'s return';
     $lembrete->dataLembrete = $_POST['dtRetorno'];
-    $lembrete->descricao = 'Data de retorno da Prótese nº' . $_POST['fkProtese'];
+    $lembrete->descricao = 'Return of denture n°' . $_POST['fkProtese'];
     $lembrete->Funcionario = $_SESSION['idFuncionario'];
 
 

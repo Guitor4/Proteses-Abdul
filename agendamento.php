@@ -22,7 +22,7 @@ if (isset($_GET['id'])) {
   /* echo "<pre>"; print_r($ConsultaInnerJoin); echo "<pre>";exit; */
   $objProcedimento = Procedimento::getProcedimentos('idProcedimento not in (select fkProcedimento from tratamento where fkConsulta =' . $_GET['id'] . ')');
   /* echo "<pre>"; print_r($objProcedimento); echo "<pre>";exit; */
-  if ($ConsultaInnerJoin->statusConsulta == 'Finalizada') {
+  if ($ConsultaInnerJoin->statusConsulta == 'Finished') {
     $tratamentos = tratamento::getTratamentos('procedimento', 'fkConsulta =' . $_GET['id'], 'fkProcedimento,idProcedimento');
     /*  echo "<pre>"; print_r($tratamentos); echo "<pre>";exit; */
     $resultados = '';

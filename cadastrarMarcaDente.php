@@ -4,6 +4,7 @@ include __DIR__ . './vendor/autoload.php';
 include __DIR__ . './includes/sessionStart.php';
 
 define('TITLE', 'Register Tooth Brand');
+define('IDENTIFICACAO', 0);
 define('BTN', 'cadastrarMarcaDente');
 
 use Classes\Entity\MarcaDente;
