@@ -167,7 +167,7 @@ CREATE TABLE `protese` (
   `marcaDente` varchar(45) NOT NULL,
   `extensao` varchar(50) NOT NULL,
   `qtdDente` int(11) NOT NULL,
-  `ouro` enum('sim','nao') NOT NULL,
+  `ouro` enum('yes','no') NOT NULL,
   `qtdOuro` int(11) NOT NULL,
   `dataRegistro` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `status` varchar(50) NOT NULL,
