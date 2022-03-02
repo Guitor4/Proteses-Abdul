@@ -37,7 +37,7 @@ $terceiro = terceiro::getTerceiros();
 
 if (isset($_GET['rProtese'])) {
     $innerTratamento = tratamento::getTratamentoInner($_GET['rProtese']);
-    //echo'<pre>';print_r($innerTratamento);echo'</pre>';exit;
+    /* echo'<pre>';print_r($innerTratamento);echo'</pre>';exit; */
 }
 
 //echo'<pre>';print_r($innerTratamento);echo'</pre>';exit;
@@ -89,6 +89,7 @@ if (
     $lembrete->cadastrarLembrete();
 
     if ($rastreio->idRastreio > 0) {
+        $rastreio->atualizarStatusProtese($innerTratamento->idProtese);
         header('Location: listaRastreio.php?pagina=1&status=success1&id=' . $rastreio->idRastreio);
     } else {
         header('Location: listaRastreio.php?pagina=1&status=error1');
@@ -98,7 +99,6 @@ if (
 
 }
 if (isset($_GET['rProtese'])) {
-
     $rastreio->fkProtese = $_GET['rProtese'];
 }
 

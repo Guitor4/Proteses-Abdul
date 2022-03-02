@@ -69,10 +69,10 @@ if (
     $objProtese->ouro = (isset($_POST['ouroDente']) == "on" ? "Yes" : "No");
     $objProtese->qtdOuro = (isset($_POST['qtdOuro']) ? $_POST['qtdOuro'] : 0);
     $objProtese->paciente = $_POST['paciente'];
-    $objProtese->status = 'Cadastrada';
+    $objProtese->status = 'Registered';
     $objProtese->observacao = $_POST['observacao'];
-    $objProtese->fkConsultaT = (isset($_GET['idConsulta']) ? $_GET['idConsulta'] : 'Erro');
-    $objProtese->fkProcedimentoT = (isset($_GET['idProcedimento']) ? $_GET['idProcedimento'] : 'Erro');
+    $objProtese->fkConsultaT = (isset($_GET['idConsulta']) ? $_GET['idConsulta'] : 'Error');
+    $objProtese->fkProcedimentoT = (isset($_GET['idProcedimento']) ? $_GET['idProcedimento'] : 'Error');
 
     /* echo "<pre>"; print_r($objProtese); echo "<pre>";exit; */
     //Executa a função cadastrar que está localizada na classe "Protese".

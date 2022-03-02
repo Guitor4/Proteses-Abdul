@@ -95,16 +95,7 @@ class Rastreio {
                         . 'where idRastreio='.$pesq)
                 ->fetchObject(self::class);
     }
-    
-   
-    
-    
-    /*SELECT * FROM consulta c INNER JOIN tratamento t
-ON c.idConsulta=t.fkConsulta
-INNER JOIN paciente p
-ON c.fkProntuario=p.prontuario
-INNER JOIN procedimento pr
-ON t.fkProcedimento=pr.idProcedimento;
-*/
-    
+    public function atualizarStatusProtese($id){
+        return (new db)->executeSQL("update protese set status = \"In third-party treatment\" where idProtese = ".$id);
+    }
 }

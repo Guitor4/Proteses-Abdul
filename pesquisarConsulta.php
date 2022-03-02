@@ -96,7 +96,7 @@ foreach ($consultas as $consulta) {
 }
 $resultados = strlen($resultados) ? $resultados :
   '<tr>'
-  . '<td colspan = "12" class = "text-center"> No appointmnets were found in history</td>'
+  . '<td colspan = "12" class = "text-center"> No appointments were found in history</td>'
   . '</tr>';
 
 
